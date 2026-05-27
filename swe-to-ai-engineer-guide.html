@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Engineer → AI Engineer | Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFAB91;
+      --peach-light: #FFD0BB;
+      --peach-soft: #FFF0E8;
+      --pink: #F48FB1;
+      --pink-deep: #E91E8C;
+      --pink-light: #FCE4EC;
+      --cream: #FFF8F3;
+      --text-dark: #3D2B1F;
+      --text-mid: #7A4F3A;
+      --text-soft: #A0745C;
+      --border: rgba(244, 143, 177, 0.25);
+      --shadow: rgba(255, 100, 130, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #FFF0E8 0%, #FCE4EC 35%, #FFE4CC 65%, #FFF0F5 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: var(--text-dark);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,171,145,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -150px; right: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(244,143,177,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 60px 30px 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .creator-block {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+
+    .creator-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.3px;
+    }
+
+    .creator-handle {
+      font-size: 14px;
+      font-weight: 600;
+      color: #E91E8C;
+      letter-spacing: 1px;
+    }
+
+    .guide-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .guide-title span {
+      background: linear-gradient(135deg, #E91E8C, #FF7043);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .guide-sub {
+      font-size: 15px;
+      color: var(--text-soft);
+      margin-bottom: 24px;
+    }
+
+    .salary-pill {
+      display: inline-block;
+      background: linear-gradient(135deg, #E91E8C, #FF7043);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 28px;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 22px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 24px var(--shadow);
+    }
+
+    .card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #E91E8C;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    /* ── SKILL TAGS ── */
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-tag {
+      background: rgba(255,255,255,0.85);
+      border: 1.5px solid rgba(244,143,177,0.3);
+      color: var(--text-mid);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 50px;
+    }
+    .dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: linear-gradient(135deg, #E91E8C, #FF7043);
+      border-radius: 50%;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+
+    /* ── MISTAKES ── */
+    .mistake-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(244,143,177,0.12);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .mistake-item:last-child { border-bottom: none; }
+    .mistake-item strong { color: #C2185B; }
+
+    /* ── PHASES BAR ── */
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .phase-card {
+      border-radius: 18px;
+      padding: 22px 16px;
+      text-align: center;
+      color: white;
+    }
+    .phase-card.p1 { background: linear-gradient(135deg, #F48FB1, #E91E8C); }
+    .phase-card.p2 { background: linear-gradient(135deg, #FFAB91, #FF7043); }
+    .phase-card.p3 { background: linear-gradient(135deg, #F06292, #AD1457); }
+    .phase-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
+    .phase-weeks { font-size: 11px; opacity: 0.7; margin-bottom: 8px; }
+    .phase-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; }
+
+    /* ── STEP CARDS ── */
+    .step-card {
+      background: rgba(255,255,255,0.68);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255,255,255,0.75);
+      border-radius: 22px;
+      padding: 32px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 24px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+    }
+    .s1::before { background: linear-gradient(180deg, #F48FB1, #E91E8C); }
+    .s2::before { background: linear-gradient(180deg, #FFAB91, #FF7043); }
+    .s3::before { background: linear-gradient(180deg, #F06292, #AD1457); }
+    .s4::before { background: linear-gradient(180deg, #CE93D8, #7B1FA2); }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--text-dark);
+      opacity: 0.08;
+      line-height: 1;
+      margin-bottom: -6px;
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .step-tagline {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .core-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--text-soft); margin-bottom: 10px;
+    }
+
+    .core-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .core-skill {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 50px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(244,143,177,0.3);
+      color: var(--text-mid);
+    }
+
+    .learn-list { list-style: none; margin-bottom: 20px; }
+    .learn-list li {
+      font-size: 14px; line-height: 1.7;
+      padding: 7px 0 7px 22px;
+      border-bottom: 1px solid rgba(244,143,177,0.1);
+      position: relative;
+    }
+    .learn-list li:last-child { border-bottom: none; }
+    .learn-list li::before { content: '→'; position: absolute; left: 0; color: #E91E8C; font-size: 13px; top: 8px; }
+    .learn-list li strong { color: var(--text-dark); font-weight: 600; }
+
+    /* ── MILESTONE ── */
+    .milestone {
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+    .m1 { background: rgba(244,143,177,0.1); border: 1px solid rgba(244,143,177,0.25); }
+    .m2 { background: rgba(255,171,145,0.1); border: 1px solid rgba(255,171,145,0.3); }
+    .m3 { background: rgba(240,98,146,0.08); border: 1px solid rgba(240,98,146,0.2); }
+    .m4 { background: rgba(206,147,216,0.1); border: 1px solid rgba(206,147,216,0.25); }
+    .milestone-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-soft); margin-bottom: 6px; }
+    .milestone h4 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text-dark); margin-bottom: 8px; }
+    .milestone p { font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+
+    /* ── COURSE LINK ── */
+    .course-link {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.75);
+      border: 1.5px solid rgba(244,143,177,0.3);
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.22s ease;
+    }
+    .course-link:hover {
+      background: rgba(255,255,255,0.95);
+      border-color: rgba(233,30,140,0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(233,30,140,0.12);
+    }
+    .course-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #F48FB1, #FF7043);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .course-name { font-weight: 600; font-size: 14px; color: var(--text-dark); margin-bottom: 3px; }
+    .course-meta { font-size: 12px; color: var(--text-soft); }
+    .course-arrow { margin-left: auto; color: #E91E8C; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+
+    /* ── READING ORDER ── */
+    .reading-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .r-item {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(244,143,177,0.3);
+      padding: 6px 14px; border-radius: 50px;
+      font-size: 13px; font-weight: 500; color: var(--text-mid);
+    }
+    .r-arrow { color: #E91E8C; font-size: 15px; }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: linear-gradient(135deg, #FCE4EC, #FFE0CC, #FCE4EC);
+      border: 1.5px solid rgba(244,143,177,0.35);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: '';
+      position: absolute; top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(233,30,140,0.12) 0%, transparent 70%);
+    }
+    .closing h2 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--text-dark); margin-bottom: 12px; position: relative; z-index: 1; }
+    .closing p { font-size: 15px; color: var(--text-soft); max-width: 460px; margin: 0 auto 28px; line-height: 1.7; position: relative; z-index: 1; }
+    .closing-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #E91E8C, #FF7043);
+      color: white; font-weight: 700; font-size: 15px;
+      padding: 13px 34px; border-radius: 50px;
+      text-decoration: none; position: relative; z-index: 1;
+      box-shadow: 0 6px 20px rgba(233,30,140,0.25);
+    }
+
+    /* ── FOOTER ── */
+    .footer { text-align: center; padding: 28px; color: var(--text-soft); font-size: 13px; position: relative; z-index: 1; }
+    .footer a { color: #E91E8C; text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .header { padding: 44px 20px 36px; }
+      .phases-grid { grid-template-columns: 1fr; }
+      .closing { padding: 36px 22px; }
+      .step-card, .card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="creator-block">
+      <div class="creator-name">Unnati Tripathi</div>
+      <div class="creator-handle">@aiwithunnati</div>
+    </div>
+    <div class="guide-title">Software Engineer <span>→</span> AI Engineer</div>
+    <p class="guide-sub">12-Week Transition Roadmap · No Prior AI Experience Required</p>
+    <div class="salary-pill">Earn $200K+ a year 🚀</div>
+  </div>
+
+  <div class="container">
+
+    <!-- WHAT YOU ALREADY KNOW -->
+    <div class="card">
+      <div class="card-label">Your Foundation</div>
+      <div class="card-title">What You Already Know as a Software Engineer</div>
+      <div class="skill-tags">
+        <span class="skill-tag"><span class="dot"></span>API Interactions — REST/GraphQL, auth & errors</span>
+        <span class="skill-tag"><span class="dot"></span>System Design — scalable, maintainable services</span>
+        <span class="skill-tag"><span class="dot"></span>Deployment — Docker, cloud platforms, CI/CD</span>
+        <span class="skill-tag"><span class="dot"></span>Testing — unit, integration & e2e strategies</span>
+        <span class="skill-tag"><span class="dot"></span>Version Control — Git branching, code reviews</span>
+      </div>
+    </div>
+
+    <!-- MISTAKES -->
+    <div class="card">
+      <div class="card-label">Watch Out</div>
+      <div class="card-title">⚠️ Common Mistakes to Avoid</div>
+      <div class="mistake-item"><strong>LLM ≠ Database</strong> — Same prompt → different output every time. Build for non-determinism from day one.</div>
+      <div class="mistake-item"><strong>Test before you build</strong> — Validate AI output quality before wiring it into a system.</div>
+      <div class="mistake-item"><strong>Models are not interchangeable</strong> — Swapping GPT-4 for Claude changes behaviour — always re-evaluate.</div>
+    </div>
+
+    <!-- PHASES -->
+    <div class="card-label" style="padding-left:4px; margin-bottom:12px;">The 12-Week Roadmap</div>
+    <div class="phases-grid">
+      <div class="phase-card p1">
+        <div class="phase-label">Phase 1</div>
+        <div class="phase-weeks">Weeks 1–4</div>
+        <div class="phase-name">LLM & RAG</div>
+      </div>
+      <div class="phase-card p2">
+        <div class="phase-label">Phase 2</div>
+        <div class="phase-weeks">Weeks 5–8</div>
+        <div class="phase-name">Agents & Eval</div>
+      </div>
+      <div class="phase-card p3">
+        <div class="phase-label">Phase 3</div>
+        <div class="phase-weeks">Weeks 9–12</div>
+        <div class="phase-name">Production & Scale</div>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step-card s1">
+      <div class="step-num">01</div>
+      <div class="step-title">#1 Forget Machine Learning Theory</div>
+      <div class="step-tagline">Call LLM APIs, not train models · Weeks 1–4</div>
+      <div class="core-label">Core Skills</div>
+      <div class="core-skills">
+        <span class="core-skill">LLM APIs</span>
+        <span class="core-skill">Prompt Engineering</span>
+        <span class="core-skill">Embeddings</span>
+        <span class="core-skill">Vector Databases</span>
+        <span class="core-skill">RAG Pipelines</span>
+      </div>
+      <ul class="learn-list">
+        <li><strong>Call an LLM API</strong> — authenticate, send a prompt, handle streaming responses & errors. Practice with OpenAI and Anthropic SDKs.</li>
+        <li><strong>Prompt Engineering</strong> — few-shot prompting, chain-of-thought, structured outputs (JSON / XML tags).</li>
+        <li><strong>Embeddings & Semantic Search</strong> — convert text to vectors, understand cosine similarity, query by meaning.</li>
+        <li><strong>Vector Databases</strong> — store and retrieve embeddings at scale. Try Chroma (local) then Pinecone or Weaviate.</li>
+        <li><strong>RAG Pipeline from scratch</strong> — ingest docs → chunk → embed → store → retrieve → pass to LLM. Build without LangChain first.</li>
+      </ul>
+      <div class="milestone m1">
+        <div class="milestone-label">🎯 Milestone Project</div>
+        <h4>RAG Document Chatbot</h4>
+        <p>Build a chatbot that answers questions from your own documents. Must refuse questions not covered by docs. Include chunking strategy and a basic eval script.</p>
+      </div>
+      <a href="https://www.coursera.org/professional-certificates/generative-ai-for-software-development" target="_blank" class="course-link">
+        <div class="course-icon">🎓</div>
+        <div class="course-info">
+          <div class="course-name">DeepLearning.AI — Generative AI for Software Development</div>
+          <div class="course-meta">Coursera · By Laurence Moroney (ex-Google AI lead) · Free to audit · 32K+ enrolled</div>
+        </div>
+        <div class="course-arrow">↗</div>
+      </a>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-card s2">
+      <div class="step-num">02</div>
+      <div class="step-title">#2 Learn the Artificial Intelligence Stack</div>
+      <div class="step-tagline">LangChain, RAG & Vector Databases · Weeks 5–8</div>
+      <div class="core-label">Core Skills</div>
+      <div class="core-skills">
+        <span class="core-skill">Function Calling</span>
+        <span class="core-skill">Tool Use</span>
+        <span class="core-skill">Agentic Loops</span>
+        <span class="core-skill">RAG Evaluation</span>
+        <span class="core-skill">LangChain / LlamaIndex</span>
+      </div>
+      <ul class="learn-list">
+        <li><strong>Function / Tool Calling</strong> — define a JSON schema, have the LLM decide when to call it, execute it, feed result back.</li>
+        <li><strong>Agentic Loop Pattern</strong> — Observe → Think → Act → Repeat. Learn ReAct and how to give agents memory.</li>
+        <li><strong>Multi-Step Retrieval</strong> — agents that plan which documents to fetch, decide if they need more info, and self-correct.</li>
+        <li><strong>RAG Evaluation with RAGAS</strong> — measure faithfulness, answer relevance, and context recall.</li>
+        <li><strong>LangChain / LlamaIndex</strong> — now you've built from scratch, learn the frameworks to move faster.</li>
+        <li><strong>Guardrails & Safety</strong> — input validation, output filtering, prompt injection defence.</li>
+      </ul>
+      <div class="milestone m2">
+        <div class="milestone-label">🎯 Milestone Project</div>
+        <h4>Autonomous Customer Support Agent</h4>
+        <p>Build an agent that reads support tickets, classifies urgency, pulls docs via RAG, drafts responses, and triggers webhooks for P1 tickets. Evaluate with RAGAS.</p>
+      </div>
+      <a href="https://www.datacamp.com/tracks/associate-ai-engineer-for-developers" target="_blank" class="course-link">
+        <div class="course-icon">📊</div>
+        <div class="course-info">
+          <div class="course-name">DataCamp — Associate AI Engineer for Developers</div>
+          <div class="course-meta">Updated May 2026 · 82K+ enrolled · No prerequisites · 4.9★</div>
+        </div>
+        <div class="course-arrow">↗</div>
+      </a>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card s3">
+      <div class="step-num">03</div>
+      <div class="step-title">#3 Build One RAG App</div>
+      <div class="step-tagline">One project beats 10 certificates · Weeks 9–12</div>
+      <div class="core-label">Core Skills</div>
+      <div class="core-skills">
+        <span class="core-skill">Prompt Caching</span>
+        <span class="core-skill">Observability</span>
+        <span class="core-skill">Latency Profiling</span>
+        <span class="core-skill">Error Handling</span>
+        <span class="core-skill">LLMOps</span>
+        <span class="core-skill">Cost Optimisation</span>
+      </div>
+      <ul class="learn-list">
+        <li><strong>Prompt Caching</strong> — cache expensive prefix computations to slash latency and cost by 80–90% on repeated calls.</li>
+        <li><strong>Observability & Tracing</strong> — instrument every LLM call with trace ID, log tokens used, latency, and model version.</li>
+        <li><strong>Robust Error Handling</strong> — retry with exponential back-off, handle rate-limit (429) and context-length errors gracefully.</li>
+        <li><strong>Cost Optimisation</strong> — choose the right model tier, batch non-urgent requests, cache embeddings.</li>
+        <li><strong>LLMOps fundamentals</strong> — model versioning, A/B testing prompts in production, shadow deployments, rollback strategies.</li>
+      </ul>
+      <div class="milestone m3">
+        <div class="milestone-label">🎯 Milestone Project</div>
+        <h4>Production-Grade Artificial Intelligence Feature</h4>
+        <p>Take your Week 5–8 agent and make it production-ready: deploy to cloud (Railway, Fly.io, or AWS ECS), add full observability, prompt caching, graceful degradation, and a CI eval gate.</p>
+      </div>
+      <a href="https://www.coursera.org/professional-certificates/ibm-generative-ai-engineering" target="_blank" class="course-link">
+        <div class="course-icon">🏗️</div>
+        <div class="course-info">
+          <div class="course-name">IBM Generative AI Engineering — Coursera</div>
+          <div class="course-meta">Covers RAG, LangChain, builds a real QA bot project · Free to audit</div>
+        </div>
+        <div class="course-arrow">↗</div>
+      </a>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card s4">
+      <div class="step-num">04</div>
+      <div class="step-title">#4 Software Engineer Skills are Your Advantage</div>
+      <div class="step-tagline">You're already halfway there — redirect your skills</div>
+      <ul class="learn-list">
+        <li><strong>Most Artificial Intelligence failures are engineering failures</strong> — bad error handling, untested pipelines, no observability — not model failures.</li>
+        <li><strong>Ship something small every two weeks</strong> — evaluate obsessively. The field moves fast.</li>
+        <li><strong>Your ability to build reliable systems</strong> is what separates you from prompt engineers.</li>
+        <li><strong>API calls, system design, deployment, testing</strong> — you already know this. You just need to redirect it.</li>
+      </ul>
+      <div class="milestone m4">
+        <div class="milestone-label">💡 Closing Advice</div>
+        <h4>Your Software Engineer Background is a Genuine Superpower</h4>
+        <p>Most people trying to break into Artificial Intelligence are starting from scratch. You already know how to code, debug, and ship. That's the hard part. The switch isn't as hard as you think.</p>
+      </div>
+      <a href="https://huggingface.co/learn/llm-course" target="_blank" class="course-link">
+        <div class="course-icon">🤗</div>
+        <div class="course-info">
+          <div class="course-name">Hugging Face LLM Course — Completely Free</div>
+          <div class="course-meta">huggingface.co · Fine-tuning, RAG & deployment · The go-to free reference</div>
+        </div>
+        <div class="course-arrow">↗</div>
+      </a>
+    </div>
+
+    <!-- READING ORDER -->
+    <div class="card">
+      <div class="card-label">Recommended</div>
+      <div class="card-title">📚 Reading Order</div>
+      <div class="reading-flow">
+        <span class="r-item">Prompting Guide</span>
+        <span class="r-arrow">→</span>
+        <span class="r-item">RAG Techniques repo</span>
+        <span class="r-arrow">→</span>
+        <span class="r-item">RAGAS docs</span>
+        <span class="r-arrow">→</span>
+        <span class="r-item">Chip Huyen's AI Engineering book</span>
+        <span class="r-arrow">→</span>
+        <span class="r-item">MLOps Zoomcamp</span>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing">
+      <h2>Ready to Make the Switch? 🚀</h2>
+      <p>Follow along for weekly Artificial Intelligence Engineering content — breaking down complex concepts into actionable guides for developers.</p>
+      <a href="https://www.instagram.com/aiwithunnati" target="_blank" class="closing-btn">Follow @aiwithunnati on Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Created by <a href="https://www.instagram.com/aiwithunnati" target="_blank">Unnati Tripathi · @aiwithunnati</a> · All course links verified May 2026</p>
+  </div>
+
+</body>
+</html>
