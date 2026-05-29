@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-Day AI Agents Course — Google & Kaggle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #ffe8e0 0%, #ffc8d0 45%, #ffd4b0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255,255,255,0.38);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 28px;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    padding: 36px 30px 32px;
+    box-shadow: 0 8px 40px rgba(180,80,100,0.12);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #7a1f35;
+    letter-spacing: 0.3px;
+    line-height: 1.1;
+  }
+
+  .handle {
+    font-size: 13px;
+    font-weight: 500;
+    color: #b54060;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #c94060, #e8836a);
+    border-radius: 2px;
+    margin: 14px auto 0;
+  }
+
+  .course-box {
+    background: rgba(255,255,255,0.55);
+    border-radius: 18px;
+    padding: 18px 20px;
+    text-align: center;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255,255,255,0.8);
+  }
+
+  .course-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #6b1a2a;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+
+  .course-meta {
+    font-size: 12px;
+    font-weight: 600;
+    color: #c94060;
+    letter-spacing: 0.4px;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    justify-content: center;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(201,64,96,0.2);
+    border-radius: 30px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #7a1f35;
+    letter-spacing: 0.3px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #b54060;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-left: 2px;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 9px;
+    border: 1px solid rgba(255,255,255,0.75);
+    transition: transform 0.15s ease;
+  }
+
+  .item:hover {
+    transform: translateX(3px);
+  }
+
+  .num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c94060, #e8836a);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    box-shadow: 0 3px 10px rgba(201,64,96,0.3);
+  }
+
+  .item-body {}
+
+  .item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b1a2a;
+    line-height: 1.3;
+  }
+
+  .item-sub {
+    font-size: 11px;
+    color: #a04060;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  .link-section {
+    margin-top: 18px;
+    background: linear-gradient(135deg, #c94060, #d96845);
+    border-radius: 16px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .link-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .link-url {
+    display: inline-block;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    word-break: break-all;
+    line-height: 1.5;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 1px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 11px;
+    color: #b54060;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card { animation: fadeUp 0.5s ease both; }
+  .item:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+  .item:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
+  .item:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
+  .item:nth-child(4) { animation: fadeUp 0.5s 0.34s ease both; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="header">
+    <div class="name">Unnati Tripathi</div>
+    <div class="handle">@aiwithunnati</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="course-box">
+    <div class="course-title">5-Day FREE AI Agents Course<br>by Google & Kaggle</div>
+    <div class="course-meta">June 15 – 19, 2026 &nbsp;·&nbsp; Completely Free</div>
+  </div>
+
+  <div class="badges">
+    <span class="badge">Certificate</span>
+    <span class="badge">Badge</span>
+    <span class="badge">Capstone Project</span>
+    <span class="badge">1.5M+ Learners</span>
+  </div>
+
+  <div class="section-label">What you'll learn</div>
+
+  <div class="item">
+    <div class="num">1</div>
+    <div class="item-body">
+      <div class="item-title">Build AI agents from scratch</div>
+      <div class="item-sub">Foundational to production-ready</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">2</div>
+    <div class="item-body">
+      <div class="item-title">Tools, memory &amp; security</div>
+      <div class="item-sub">Everything employers want in 2026</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">3</div>
+    <div class="item-body">
+      <div class="item-title">Deploy agents to production</div>
+      <div class="item-sub">Real-world deployment skills</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">4</div>
+    <div class="item-body">
+      <div class="item-title">Vibe Coding</div>
+      <div class="item-sub">Natural language as your code interface</div>
+    </div>
+  </div>
+
+  <div class="link-section">
+    <div class="link-label">Register here — it's FREE</div>
+    <a class="link-url" href="https://www.kaggle.com/competitions/5-day-ai-agents-intensive-vibecoding-course-with-google/" target="_blank">
+      kaggle.com/competitions/5-day-ai-agents-intensive-<br>vibecoding-course-with-google
+    </a>
+  </div>
+
+  <div class="footer">Guide by @aiwithunnati · Daily AI updates that actually matter</div>
+
+</div>
+
+</body>
+</html>
