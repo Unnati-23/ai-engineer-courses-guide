@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top 5 AI Resources — Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:    #f9a8c9;
+      --peach:   #ffd6b0;
+      --rose:    #f472a8;
+      --cream:   #fff7f2;
+      --dark:    #3b1a2e;
+      --mid:     #7a3558;
+      --accent:  #e8527a;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #fde8d8 0%, #fbc4d4 40%, #ffd6b0 70%, #fce4ec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 32px;
+      border: 1.5px solid rgba(255,255,255,0.75);
+      box-shadow: 0 24px 80px rgba(244,114,168,0.18), 0 4px 24px rgba(0,0,0,0.06);
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #f472a8 0%, #fb923c 60%, #fbbf24 100%);
+      padding: 44px 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      width: 260px; height: 260px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      top: -80px; right: -60px;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      width: 140px; height: 140px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      bottom: -40px; left: 30px;
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 span {
+      color: #fff3cd;
+    }
+
+    .header-sub {
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .author-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+
+    .author-info strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .author-info span {
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 36px 40px 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    /* ── RESOURCE CARD ── */
+    .resource {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(244,114,168,0.15);
+      margin-bottom: 14px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      animation: fadeUp 0.6s ease both;
+      text-decoration: none;
+    }
+
+    .resource:nth-child(1) { animation-delay: 0.1s; }
+    .resource:nth-child(2) { animation-delay: 0.2s; }
+    .resource:nth-child(3) { animation-delay: 0.3s; }
+    .resource:nth-child(4) { animation-delay: 0.4s; }
+    .resource:nth-child(5) { animation-delay: 0.5s; }
+
+    .resource:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(244,114,168,0.18);
+    }
+
+    .resource-num {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .n1 { background: linear-gradient(135deg, #f472a8, #e8527a); }
+    .n2 { background: linear-gradient(135deg, #fb923c, #f97316); }
+    .n3 { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    .n4 { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+    .n5 { background: linear-gradient(135deg, #34d399, #059669); }
+
+    .resource-content { flex: 1; }
+
+    .resource-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .resource-desc {
+      font-size: 12.5px;
+      color: var(--mid);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,82,122,0.3);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .resource-link:hover { color: var(--rose); }
+    .resource-link svg { width: 10px; height: 10px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-daily  { background: #fce7f3; color: #be185d; }
+    .badge-weekly { background: #fef3c7; color: #92400e; }
+    .badge-blog   { background: #ede9fe; color: #5b21b6; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(244,114,168,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--mid);
+    }
+    .footer-text strong {
+      color: var(--accent);
+    }
+
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #f472a8, #fb923c);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .instagram-btn:hover { opacity: 0.88; transform: scale(1.03); }
+    .instagram-btn svg { width: 14px; height: 14px; }
+
+    @media (max-width: 480px) {
+      .header { padding: 32px 24px 28px; }
+      .body { padding: 28px 24px 32px; }
+      .resource { padding: 16px 16px; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">✦ Curated by Unnati</div>
+    <h1>Top 5 AI Resources<br><span>Stay Updated Daily</span></h1>
+    <p class="header-sub">The exact newsletters & blogs the AI community reads.</p>
+    <div class="author-row">
+      <div class="author-avatar">✨</div>
+      <div class="author-info">
+        <strong>Unnati Tripathi</strong>
+        <span>@aiwithunnati</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <p class="section-label">🔗 Resources</p>
+
+    <!-- 1 -->
+    <div class="resource">
+      <div class="resource-num n1">1</div>
+      <div class="resource-content">
+        <div class="resource-title">The Rundown AI <span class="badge badge-daily">Daily</span></div>
+        <div class="resource-desc">Daily AI Updates — bite-sized news on tools, launches & trends</div>
+        <a class="resource-link" href="https://www.therundown.ai" target="_blank">
+          therundown.ai
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H3M9 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="resource">
+      <div class="resource-num n2">2</div>
+      <div class="resource-content">
+        <div class="resource-title">TLDR AI <span class="badge badge-daily">Daily</span></div>
+        <div class="resource-desc">Quick Tech Updates — dense summaries of papers, launches & infra</div>
+        <a class="resource-link" href="https://tldr.tech/ai" target="_blank">
+          tldr.tech/ai
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H3M9 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="resource">
+      <div class="resource-num n3">3</div>
+      <div class="resource-content">
+        <div class="resource-title">Simon Willison's Blog <span class="badge badge-blog">Blog</span></div>
+        <div class="resource-desc">Deep Dev Insights — same-day technical breakdowns of new releases</div>
+        <a class="resource-link" href="https://simonwillison.net" target="_blank">
+          simonwillison.net
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H3M9 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="resource">
+      <div class="resource-num n4">4</div>
+      <div class="resource-content">
+        <div class="resource-title">Import AI <span class="badge badge-weekly">Weekly</span></div>
+        <div class="resource-desc">Weekly AI Analysis — deep-dive by Anthropic co-founder Jack Clark</div>
+        <a class="resource-link" href="https://importai.substack.com" target="_blank">
+          importai.substack.com
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H3M9 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="resource">
+      <div class="resource-num n5">5</div>
+      <div class="resource-content">
+        <div class="resource-title">The Batch <span class="badge badge-weekly">Weekly</span></div>
+        <div class="resource-desc">AI Education Weekly — by Andrew Ng, best for ongoing ML literacy</div>
+        <a class="resource-link" href="https://www.deeplearning.ai/the-batch" target="_blank">
+          deeplearning.ai/the-batch
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H3M9 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="footer-text">Made with 🩷 by <strong>Unnati Tripathi</strong></p>
+      <a class="instagram-btn" href="https://www.instagram.com/aiwithunnati" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        @aiwithunnati
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
