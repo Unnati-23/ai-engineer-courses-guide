@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Claude.AI Shortcuts & Hacks</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --peach: #FFDAC1;
+    --pink: #FFB5C8;
+    --rose: #FF8FAB;
+    --blush: #FFF0F3;
+    --coral: #FF6B8A;
+    --dark: #2D1B2E;
+    --mid: #6B3A5A;
+    --soft: #C97A9A;
+    --white: #FFFBFC;
+    --gold: #E8956D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, #FFF0F3 0%, #FFE4EC 25%, #FFDAC1 50%, #FFE8D6 75%, #FFF5F0 100%);
+    min-height: 100vh;
+    color: var(--dark);
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,143,171,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(255,107,138,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--coral));
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 20px rgba(255,107,138,0.3);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 7vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--coral), var(--rose));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--mid);
+    font-weight: 400;
+    margin-top: 14px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--soft);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* QUICK START */
+  .quickstart {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+
+  .qs-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,143,171,0.2);
+    border-radius: 24px;
+    padding: 36px 40px;
+    box-shadow: 0 8px 40px rgba(255,107,138,0.08);
+  }
+
+  .qs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .qs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .qs-item {
+    background: linear-gradient(135deg, rgba(255,218,193,0.4), rgba(255,181,200,0.3));
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--mid);
+    border: 1px solid rgba(255,143,171,0.15);
+    line-height: 1.5;
+  }
+
+  .qs-item strong {
+    color: var(--coral);
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--dark);
+    margin-bottom: 28px;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--coral));
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
+  /* COMMANDS GRID */
+  .commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .cmd-card {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255,143,171,0.18);
+    box-shadow: 0 4px 20px rgba(255,107,138,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cmd-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--rose), var(--coral));
+    border-radius: 18px 0 0 18px;
+  }
+
+  .cmd-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(255,107,138,0.12);
+  }
+
+  .cmd-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .cmd-name {
+    font-family: 'DM Sans', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--coral);
+    background: rgba(255,107,138,0.08);
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .cmd-savings {
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, var(--rose), var(--coral));
+    padding: 3px 9px;
+    border-radius: 50px;
+    white-space: nowrap;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .cmd-feature {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+
+  .cmd-desc {
+    font-size: 13px;
+    color: #6B5060;
+    line-height: 1.55;
+  }
+
+  /* COMBINATIONS */
+  .combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+
+  .combo-card {
+    background: linear-gradient(135deg, rgba(255,143,171,0.12), rgba(255,181,200,0.08));
+    border: 1px solid rgba(255,143,171,0.25);
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .combo-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+
+  .combo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .combo-saving {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--coral), var(--rose));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .combo-commands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .combo-cmd {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mid);
+    background: rgba(255,255,255,0.7);
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,143,171,0.2);
+  }
+
+  /* PRO TIPS */
+  .tips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .tip-item {
+    background: rgba(255,255,255,0.6);
+    border-radius: 16px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255,143,171,0.15);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .tip-num {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--rose), var(--coral));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .tip-text {
+    font-size: 13.5px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  .tip-text strong {
+    color: var(--dark);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 50px 20px 60px;
+  }
+
+  .footer-card {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--coral));
+    color: white;
+    border-radius: 20px;
+    padding: 28px 50px;
+    box-shadow: 0 12px 40px rgba(255,107,138,0.3);
+  }
+
+  .footer-card p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+  }
+
+  .footer-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  .published {
+    font-size: 12px;
+    color: var(--soft);
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* CATEGORY LABEL */
+  .cat-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: white;
+    background: linear-gradient(135deg, var(--mid), var(--coral));
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 16px 36px; }
+    .qs-card { padding: 24px 20px; }
+    .commands-grid { grid-template-columns: 1fr; }
+    .combos-grid { grid-template-columns: 1fr; }
+    .tips-list { grid-template-columns: 1fr; }
+    .footer-card { padding: 24px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🎯 Token Saving Guide · May 2026</div>
+  <h1>50 Claude.AI<br><span>Shortcuts & Hacks</span></h1>
+  <p class="hero-sub">Reduce Token Usage · Boost Efficiency · Cut Costs</p>
+  <div class="hero-meta">
+    <span>📱 For Instagram Audience</span>
+    <span>🤖 AI & Dev Professionals</span>
+    <span>⚡ 50 Commands</span>
+  </div>
+</div>
+
+<!-- QUICK START -->
+<div class="quickstart">
+  <div class="qs-card">
+    <div class="qs-title">🎯 Quick Start Guide</div>
+    <div class="qs-grid">
+      <div class="qs-item"><strong>Step 1</strong>Type any /command in Claude.ai chat to activate the feature</div>
+      <div class="qs-item"><strong>Step 2</strong>Combine commands: /brief /code /focus for maximum efficiency</div>
+      <div class="qs-item"><strong>Step 3</strong>Check token savings next to each hack for cost insights</div>
+      <div class="qs-item"><strong>Step 4</strong>Combine 3–5 hacks per prompt for exponential gains</div>
+    </div>
+  </div>
+</div>
+
+<!-- ALL 50 COMMANDS -->
+<div class="section">
+  <div class="cat-label">All 50 Shortcuts & Commands</div>
+  <div class="section-title">The Complete Command Library</div>
+  <div class="commands-grid">
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/ghost</span><span class="cmd-savings">Prevents context storage</span></div>
+      <div class="cmd-feature">Ghost Mode</div>
+      <div class="cmd-desc">Hide your entire conversation from Claude's training data. Perfect for sensitive projects, confidential work, or testing.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/council</span><span class="cmd-savings">1 prompt = multiple views</span></div>
+      <div class="cmd-feature">Council Mode</div>
+      <div class="cmd-desc">Get responses from multiple Claude perspectives simultaneously. Great for diverse viewpoints on complex problems.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/research</span><span class="cmd-savings">No need to paste articles</span></div>
+      <div class="cmd-feature">Research Mode</div>
+      <div class="cmd-desc">Enable web search and real-time information gathering. Automatically searches and includes current data in responses.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/focus</span><span class="cmd-savings">Smaller context = fewer tokens</span></div>
+      <div class="cmd-feature">Focus Mode</div>
+      <div class="cmd-desc">Limit context window to only recent messages. Reduces clutter and forces Claude to be concise in long conversations.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/brief</span><span class="cmd-savings">Response cut 30–50%</span></div>
+      <div class="cmd-feature">Brief Mode</div>
+      <div class="cmd-desc">Claude gives shorter, punchier responses automatically. No fluff, no explanations, just output. Perfect for lists and quick answers.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/code</span><span class="cmd-savings">Skips generic explanations</span></div>
+      <div class="cmd-feature">Code Mode</div>
+      <div class="cmd-desc">Optimized for coding tasks. Claude focuses on code quality, efficiency, and minimal explanation. Syntax highlighting and execution-ready output.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/creative</span><span class="cmd-savings">Full creative output</span></div>
+      <div class="cmd-feature">Creative Mode</div>
+      <div class="cmd-desc">Unlock longer-form, more imaginative responses. For writing, brainstorming, storytelling. Claude is less constrained by brevity.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/deep</span><span class="cmd-savings">More tokens, higher quality</span></div>
+      <div class="cmd-feature">Deep Analysis Mode</div>
+      <div class="cmd-desc">Enable extended thinking and complex reasoning. Claude takes more time to analyze before responding. Better for research and strategy.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/nocite</span><span class="cmd-savings">Removes 10–20% overhead</span></div>
+      <div class="cmd-feature">No Citations Mode</div>
+      <div class="cmd-desc">Skip source citations in web search results. Saves tokens on citation formatting. Use when sources are less important than content.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/format:json</span><span class="cmd-savings">Eliminates reformatting</span></div>
+      <div class="cmd-feature">Specify Output Format</div>
+      <div class="cmd-desc">Directly specify format: /format:json, /format:markdown, /format:csv. Claude won't waste tokens reformatting later.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/length:short</span><span class="cmd-savings">30–50% token reduction</span></div>
+      <div class="cmd-feature">Set Response Length</div>
+      <div class="cmd-desc">Use /length:short, /length:medium, /length:long. Built-in constraint prevents verbose responses upfront.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/audience:tech</span><span class="cmd-savings">Prevents re-explanation</span></div>
+      <div class="cmd-feature">Target Audience Setting</div>
+      <div class="cmd-desc">Set audience: /audience:executive, /audience:technical, /audience:beginner. Claude auto-adjusts complexity and tone.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/cache</span><span class="cmd-savings">Cached = 90% reduction</span></div>
+      <div class="cmd-feature">Enable Response Caching</div>
+      <div class="cmd-desc">Cache repeated responses locally. If you ask similar questions, Claude pulls from cache instead of regenerating.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/batch:10</span><span class="cmd-savings">40–60% less than separate prompts</span></div>
+      <div class="cmd-feature">Batch Mode</div>
+      <div class="cmd-desc">Process multiple items in one response. /batch:10 tells Claude to handle 10 items efficiently. Better than asking separately.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/summary</span><span class="cmd-savings">Saves time vs rereading</span></div>
+      <div class="cmd-feature">Auto-Summary Mode</div>
+      <div class="cmd-desc">Claude automatically summarizes its own response at the end. Useful for long outputs where you want both detail and overview.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/template</span><span class="cmd-savings">20% fewer tokens</span></div>
+      <div class="cmd-feature">Use Template Mode</div>
+      <div class="cmd-desc">Apply saved response templates (JSON, markdown, reports). Claude fills in the template structure instead of generating from scratch.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/noexplain</span><span class="cmd-savings">Removes 40–60% of response</span></div>
+      <div class="cmd-feature">Skip Explanations</div>
+      <div class="cmd-desc">Tells Claude not to explain its reasoning. Gives output only. Massive token saver for experienced users who understand concepts.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/stream</span><span class="cmd-savings">Feels faster</span></div>
+      <div class="cmd-feature">Streaming Mode</div>
+      <div class="cmd-desc">Get response token-by-token in real-time instead of waiting for complete response. Better UX, same token count but perceived faster.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/compare:A,B,C</span><span class="cmd-savings">Tables use 30% fewer tokens</span></div>
+      <div class="cmd-feature">Structured Comparison</div>
+      <div class="cmd-desc">Create a comparison table of A vs B vs C automatically. More efficient than asking descriptively.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/list:bullets</span><span class="cmd-savings">No follow-up reformatting</span></div>
+      <div class="cmd-feature">Optimize List Output</div>
+      <div class="cmd-desc">/list:bullets, /list:numbers, /list:prose. Pre-specify format to avoid reformatting requests.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/think</span><span class="cmd-savings">Adds 20–30% tokens</span></div>
+      <div class="cmd-feature">Show Thinking Process</div>
+      <div class="cmd-desc">Claude shows its reasoning step-by-step. Useful for learning or debugging but adds token overhead.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/quiet</span><span class="cmd-savings">50–70% shorter responses</span></div>
+      <div class="cmd-feature">Quiet Mode</div>
+      <div class="cmd-desc">Ultra-minimal responses. Just the answer, nothing else. Like /brief but even shorter.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/context:5</span><span class="cmd-savings">Exponential token savings</span></div>
+      <div class="cmd-feature">Limit Context Window Size</div>
+      <div class="cmd-desc">/context:5 limits Claude to last 5 messages only. Forces conciseness in long conversations.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/pro</span><span class="cmd-savings">Faster, more context</span></div>
+      <div class="cmd-feature">Pro Mode (Claude Pro)</div>
+      <div class="cmd-desc">Access Claude's advanced features: longer context, faster processing, priority processing. Requires Claude Pro subscription.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/beta</span><span class="cmd-savings">Varies by feature</span></div>
+      <div class="cmd-feature">Access Beta Features</div>
+      <div class="cmd-desc">Opt-in to beta/experimental features. New commands or modes available here before public release.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/clear</span><span class="cmd-savings">Next prompt doesn't count previous</span></div>
+      <div class="cmd-feature">Clear Conversation History</div>
+      <div class="cmd-desc">Start fresh in same thread without creating new conversation. Resets context but keeps you in same chat.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/revert</span><span class="cmd-savings">Zero new tokens used</span></div>
+      <div class="cmd-feature">Revert to Previous Response</div>
+      <div class="cmd-desc">Go back to Claude's previous response without regenerating. Saves tokens vs hitting regenerate.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/edit:text</span><span class="cmd-savings">Only edit tokens, not full</span></div>
+      <div class="cmd-feature">Edit Last Response In-Place</div>
+      <div class="cmd-desc">Edit Claude's last response directly instead of asking for a new one. Lighter than regeneration.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/branch</span><span class="cmd-savings">No extra tokens for organisation</span></div>
+      <div class="cmd-feature">Create Conversation Branch</div>
+      <div class="cmd-desc">Split conversation at any point to explore alternative responses without losing main thread.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/export:md</span><span class="cmd-savings">No generation tokens</span></div>
+      <div class="cmd-feature">Export Conversation</div>
+      <div class="cmd-desc">/export:pdf, /export:txt, /export:json. Downloads conversation without regenerating content.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/model:haiku</span><span class="cmd-savings">Haiku is 90% cheaper</span></div>
+      <div class="cmd-feature">Switch Claude Model</div>
+      <div class="cmd-desc">/model:opus, /model:sonnet, /model:haiku. Choose different Claude versions for cost/speed optimization.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/quality:draft</span><span class="cmd-savings">Draft uses 40–60% fewer tokens</span></div>
+      <div class="cmd-feature">Set Response Quality</div>
+      <div class="cmd-desc">/quality:draft, /quality:standard, /quality:premium. Draft is faster and cheaper.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/custom:formal</span><span class="cmd-savings">Shorthand vs long instructions</span></div>
+      <div class="cmd-feature">Custom Behavior Rules</div>
+      <div class="cmd-desc">Apply custom instruction sets without full system prompts: /custom:no-markdown, /custom:formal.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/memory</span><span class="cmd-savings">30–50% savings on follow-ups</span></div>
+      <div class="cmd-feature">Enable Memory</div>
+      <div class="cmd-desc">Claude remembers previous conversations with you. You don't need to re-explain context every session.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/share</span><span class="cmd-savings">No regeneration tokens</span></div>
+      <div class="cmd-feature">Share Conversation Link</div>
+      <div class="cmd-desc">Generate shareable link to conversation without regenerating. Read-only access for others.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/version:2024</span><span class="cmd-savings">Avoids web search when not needed</span></div>
+      <div class="cmd-feature">Use Specific Knowledge Cutoff</div>
+      <div class="cmd-desc">Access Claude's knowledge from a specific date if available. Useful for historical consistency.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/timeout:10</span><span class="cmd-savings">Forces concise responses</span></div>
+      <div class="cmd-feature">Set Response Timeout</div>
+      <div class="cmd-desc">Force response within X seconds. Claude prioritizes speed over depth if timeout is short.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/confidence</span><span class="cmd-savings">Minimal overhead, useful</span></div>
+      <div class="cmd-feature">Show Confidence Levels</div>
+      <div class="cmd-desc">Claude indicates confidence in answers (high/medium/low). Adds metadata without much overhead.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/cite:apa</span><span class="cmd-savings">One-format request</span></div>
+      <div class="cmd-feature">Citation Format Control</div>
+      <div class="cmd-desc">/cite:apa, /cite:chicago, /cite:mla. Specifies citation style upfront instead of reformatting.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/voice:casual</span><span class="cmd-savings">Shorthand avoids re-explaining</span></div>
+      <div class="cmd-feature">Voice/Tone Control</div>
+      <div class="cmd-desc">/voice:professional, /voice:casual, /voice:humorous. Sets tone without lengthy explanations.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/private</span><span class="cmd-savings">No privacy overhead</span></div>
+      <div class="cmd-feature">Private Mode</div>
+      <div class="cmd-desc">Conversation data not saved to your account history. Lighter privacy than /ghost.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/limit:500</span><span class="cmd-savings">Forces maximum concision</span></div>
+      <div class="cmd-feature">Set Absolute Token Limit</div>
+      <div class="cmd-desc">/limit:500 means Claude's response cannot exceed 500 tokens. Hard cap.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/follow-up:off</span><span class="cmd-savings">Removes 2–5% overhead</span></div>
+      <div class="cmd-feature">Disable Follow-Up Suggestions</div>
+      <div class="cmd-desc">Claude won't suggest follow-up questions. Saves tokens on UI suggestions.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/examples:off</span><span class="cmd-savings">20–30% reduction</span></div>
+      <div class="cmd-feature">Skip Example Output</div>
+      <div class="cmd-desc">Claude won't include examples in responses. Saves tokens for users who understand concepts.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/math:latex</span><span class="cmd-savings">One-format math</span></div>
+      <div class="cmd-feature">Math Notation Control</div>
+      <div class="cmd-desc">/math:latex, /math:unicode, /math:text. Specifies notation upfront to avoid reformatting.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/coding:python</span><span class="cmd-savings">Avoids language-switching</span></div>
+      <div class="cmd-feature">Lock Coding Language</div>
+      <div class="cmd-desc">/coding:python, /coding:javascript. Claude stays in language instead of asking or mixing.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/api-ready</span><span class="cmd-savings">Avoids manual parsing</span></div>
+      <div class="cmd-feature">API-Ready Output Format</div>
+      <div class="cmd-desc">Format output for direct API integration (JSON schema, no prose). Perfect for integrations.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/debug</span><span class="cmd-savings">Helps you measure</span></div>
+      <div class="cmd-feature">Debug Mode</div>
+      <div class="cmd-desc">Claude shows approximate token count of request and response. Useful for optimization.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/archive</span><span class="cmd-savings">Prevents context bloat</span></div>
+      <div class="cmd-feature">Auto-Archive Old Conversations</div>
+      <div class="cmd-desc">Old conversations automatically archived from active list. Keeps context window fresh.</div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-top"><span class="cmd-name">/smart-cache</span><span class="cmd-savings">70–90% savings on repeats</span></div>
+      <div class="cmd-feature">Intelligent Caching (Latest)</div>
+      <div class="cmd-desc">Claude automatically caches common patterns. Detects repetition and serves cached responses. Game-changer.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRO COMBINATIONS -->
+<div class="section">
+  <div class="cat-label">🚀 Pro Combinations</div>
+  <div class="section-title">Maximum Token Savings</div>
+  <div class="combos-grid">
+    <div class="combo-card">
+      <div class="combo-number">Combination #1</div>
+      <div class="combo-title">Quick Answers</div>
+      <div class="combo-saving">60–70% savings</div>
+      <div class="combo-commands">
+        <span class="combo-cmd">/brief</span>
+        <span class="combo-cmd">/noexplain</span>
+        <span class="combo-cmd">/limit:300</span>
+      </div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-number">Combination #2</div>
+      <div class="combo-title">Coding Tasks</div>
+      <div class="combo-saving">40–50% savings</div>
+      <div class="combo-commands">
+        <span class="combo-cmd">/code</span>
+        <span class="combo-cmd">/noexplain</span>
+        <span class="combo-cmd">/format:json</span>
+        <span class="combo-cmd">/coding:python</span>
+      </div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-number">Combination #3</div>
+      <div class="combo-title">Private Batch Work</div>
+      <div class="combo-saving">45–55% savings</div>
+      <div class="combo-commands">
+        <span class="combo-cmd">/ghost</span>
+        <span class="combo-cmd">/batch:5</span>
+        <span class="combo-cmd">/format:table</span>
+        <span class="combo-cmd">/quiet</span>
+      </div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-number">Combination #4</div>
+      <div class="combo-title">Research</div>
+      <div class="combo-saving">20–30% savings</div>
+      <div class="combo-commands">
+        <span class="combo-cmd">/research</span>
+        <span class="combo-cmd">/format:json</span>
+        <span class="combo-cmd">/nocite</span>
+        <span class="combo-cmd">/length:medium</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP 5 PRO TIPS -->
+<div class="section">
+  <div class="cat-label">💡 Top 5 Pro Tips</div>
+  <div class="section-title">Power User Secrets</div>
+  <div class="tips-list">
+    <div class="tip-item">
+      <div class="tip-num">1</div>
+      <div class="tip-text"><strong>/smart-cache is the game-changer</strong>Repeat questions cost 70–90% fewer tokens after first use.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">2</div>
+      <div class="tip-text"><strong>/debug mode shows token count</strong>Use it to measure your savings progress in real time.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">3</div>
+      <div class="tip-text"><strong>/model:haiku is 90% cheaper</strong>Use it for quick tasks. Save Opus for deep reasoning only.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">4</div>
+      <div class="tip-text"><strong>Never ask the same thing twice</strong>Use /cache and /smart-cache to reuse responses instead.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-num">5</div>
+      <div class="tip-text"><strong>/batch mode + /format:table</strong>The best token-to-output ratio available. Use together always.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer">
+  <div class="footer-card">
+    <p>Follow for more AI content like this</p>
+    <h3>Comment "Claude" for the DM 🚀</h3>
+  </div>
+  <p class="published">Published May 31, 2026 · For Instagram Audience · L&D & AI Professionals</p>
+</div>
+
+</body>
+</html>
