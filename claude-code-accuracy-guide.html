@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#F5F0E8;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>From 65% to 94% Claude Code Accuracy | AI With Unnati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body, div, section, header, footer, nav, main, p, h1, h2, h3, ul, ol, li, a, span, code {
+      color-scheme: light !important;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background-color: #F5F0E8 !important;
+    }
+
+    body {
+      font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #F5F0E8 !important;
+      color: #1a1a1a !important;
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-text-fill-color: #1a1a1a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html { background-color: #F5F0E8 !important; }
+      body { background-color: #F5F0E8 !important; color: #1a1a1a !important; -webkit-text-fill-color: #1a1a1a !important; }
+      p, h1, h2, h3, li, span, a, code, ol, ul { color: #1a1a1a !important; -webkit-text-fill-color: #1a1a1a !important; }
+      nav { background-color: #F5F0E8 !important; }
+      .cream-bg { background-color: #F5F0E8 !important; }
+      .white-bg { background-color: #ffffff !important; }
+      .olive-bg { background-color: #eef0eb !important; }
+    }
+
+    nav {
+      background-color: #F5F0E8 !important;
+      border-bottom: 1px solid #ddd;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    nav .brand {
+      font-family: 'Oswald', sans-serif;
+      color: #C8231E !important;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      -webkit-text-fill-color: #C8231E !important;
+    }
+    nav .links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    nav .links a {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #1a1a1a !important;
+      text-decoration: none;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+
+    .hero {
+      background-color: #C8231E !important;
+      padding: 60px 24px 50px;
+    }
+    .hero * { color: white !important; -webkit-text-fill-color: white !important; }
+    .hero .meta { font-size: 0.85rem; margin-bottom: 10px; opacity: 0.85; }
+    .hero .meta a { text-decoration: underline; }
+    .tag {
+      display: inline-block;
+      border: 2px solid white;
+      color: white !important;
+      -webkit-text-fill-color: white !important;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+    .hero p { font-size: 1.05rem; max-width: 640px; line-height: 1.75; }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px;
+      background-color: #F5F0E8 !important;
+    }
+
+    .source-box {
+      border-left: 4px solid #C8231E;
+      background-color: #ffffff !important;
+      padding: 18px 22px;
+      margin: 40px 0;
+      font-size: 0.95rem;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+    .source-box a {
+      color: #C8231E !important;
+      -webkit-text-fill-color: #C8231E !important;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .body-section { padding: 40px 0 10px; background-color: #F5F0E8 !important; }
+    .body-section p {
+      margin-bottom: 20px;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+    .body-section p strong { font-weight: 700; color: #1a1a1a !important; -webkit-text-fill-color: #1a1a1a !important; }
+
+    .section-header {
+      background-color: #C8231E !important;
+      padding: 24px 24px 22px;
+      margin: 50px -24px 30px;
+    }
+    .section-header * { color: white !important; -webkit-text-fill-color: white !important; }
+    .section-tag {
+      display: inline-block;
+      border: 2px solid white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.5rem, 5vw, 2.1rem);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .quote-block {
+      font-style: italic;
+      color: #444 !important;
+      -webkit-text-fill-color: #444 !important;
+      font-size: 1rem;
+      line-height: 1.75;
+      padding: 4px 0;
+    }
+
+    .install-steps { padding: 10px 0 30px; background-color: #F5F0E8 !important; }
+    .install-steps ol { list-style: none; counter-reset: steps; padding: 0; }
+    .install-steps li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+    .install-steps li::before {
+      content: counter(steps) ".";
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+      min-width: 26px;
+      padding-top: 2px;
+    }
+    .install-steps code {
+      font-family: 'Courier New', monospace;
+      background-color: rgba(0,0,0,0.08) !important;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .install-steps p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+    .install-steps a {
+      color: #C8231E !important;
+      -webkit-text-fill-color: #C8231E !important;
+      font-weight: 600;
+    }
+
+    .why-box {
+      background-color: #eef0eb !important;
+      border-left: 4px solid #8a9a6a;
+      padding: 22px 24px;
+      margin: 40px 0;
+    }
+    .why-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: #6a7a4a !important;
+      -webkit-text-fill-color: #6a7a4a !important;
+      margin-bottom: 10px;
+    }
+    .why-box p {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: #333 !important;
+      -webkit-text-fill-color: #333 !important;
+    }
+
+    .cta-section {
+      background-color: #C8231E !important;
+      padding: 30px 24px;
+      margin: 0 -24px 0;
+    }
+    .cta-card {
+      background-color: #F5F0E8 !important;
+      padding: 28px 24px;
+      margin-bottom: 20px;
+    }
+    .cta-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: #C8231E !important;
+      -webkit-text-fill-color: #C8231E !important;
+      margin-bottom: 8px;
+    }
+    .cta-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .cta-card p {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: #444 !important;
+      -webkit-text-fill-color: #444 !important;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #C8231E !important;
+      color: white !important;
+      -webkit-text-fill-color: white !important;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      padding: 14px 28px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    footer {
+      background-color: #F5F0E8 !important;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 30px 24px;
+      font-size: 0.85rem;
+      color: #777 !important;
+      -webkit-text-fill-color: #777 !important;
+    }
+    footer a {
+      color: #C8231E !important;
+      -webkit-text-fill-color: #C8231E !important;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#">AI WITH UNNATI</a>
+  <div class="links">
+    <a href="#">Home</a>
+    <a href="#">Free Guides</a>
+    <a href="#">Build With AI</a>
+    <a href="#">Contact Me</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container" style="background:transparent !important;">
+    <p class="meta">A free guide by <strong>Unnati Tripathi</strong> &nbsp;·&nbsp; <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a></p>
+    <div class="tag">CLAUDE CODE</div>
+    <h1>From 65% to 94%<br>Claude Code<br>Accuracy</h1>
+    <p>There's a single 65-line file that fixes almost every problem people have with Claude Code. It's built from Andrej Karpathy's three biggest complaints about AI coding agents. Drop it in your project folder and Claude reads it automatically.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="source-box">
+    <strong>Source:</strong> <a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">Get the Karpathy CLAUDE.md skill file on GitHub →</a>
+  </div>
+
+  <div class="body-section">
+    <p>Andrej Karpathy is one of the most respected voices in AI. He was a founding member of OpenAI, ran AI at Tesla, founded Eureka Labs, and joined Anthropic on May 19, 2026. When he posts about why AI coding agents are broken, the rest of the industry pays attention.</p>
+    <p>He has three specific complaints about how Claude Code (and every other AI coding agent) actually behaves in the wild. <strong>One — silent assumptions</strong> instead of clarifying questions. <strong>Two — overcomplication</strong>: writing 200 lines when 20 would do. <strong>Three — touching code you never asked it to touch</strong>, sneaking refactors into a 1-line fix.</p>
+    <p>Someone took those three complaints and turned them into a 65-line <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:3px;color:#1a1a1a;-webkit-text-fill-color:#1a1a1a;">CLAUDE.md</code> file. Drop it into the root of any project, and Claude Code reads it automatically at the start of every session. <strong>Developers using it report accuracy jumps from around 65% up to 94%</strong> on their own benchmark tasks. Setup time: 30 seconds.</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">COMPLAINT 1</div>
+    <h2>Silent Assumptions Instead of Asking</h2>
+  </div>
+
+  <div class="body-section">
+    <p>When a coding agent isn't sure what you mean, it has two choices: ask, or guess. Almost every coding agent guesses by default, because guessing produces output and asking feels like friction. The result is code that compiles but solves a problem you didn't actually have.</p>
+    <p>The Karpathy file forces the opposite behavior. Before writing any code, Claude has to either confirm its understanding of the task in one sentence, or surface the specific ambiguity it ran into and ask. Karpathy's framing from his original post:</p>
+    <p class="quote-block">"The models make wrong assumptions on your behalf and just run along with them without checking. They don't manage their confusion, don't seek clarifications, don't surface inconsistencies."</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">COMPLAINT 2</div>
+    <h2>Overcomplication as the Default</h2>
+  </div>
+
+  <div class="body-section">
+    <p>Ask Claude to add a button and you'll often get back a button, a wrapper component, a styled-components theme update, a config file for the wrapper, and a small refactor of the parent. Five files. One feature. Nobody asked for the abstraction.</p>
+    <p>The file's second rule is <strong>simplicity first</strong>: minimum viable code, no speculative abstractions, no preemptive flexibility. If the requirement is to write three similar lines, write three similar lines. The agent only abstracts when there's evidence three things will actually become five.</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">COMPLAINT 3</div>
+    <h2>Touching Code You Didn't Ask About</h2>
+  </div>
+
+  <div class="body-section">
+    <p>Most developers have lost an afternoon to this: a one-line bug fix that comes back as a 200-line diff because the agent decided to clean up the file while it was in there. The third rule is <strong>surgical changes</strong>. Edit only what was requested. Leave everything else alone. Don't refactor adjacent code. Don't rename variables. Don't reformat. If you think the surrounding code is bad, say so — don't silently change it.</p>
+    <p>There is a fourth rule too: <strong>goal-driven execution</strong>. Every task gets a verifiable success criterion at the start. Did the test pass? Did the bug repro disappear? Did the rendered output match the screenshot? You can't be "done" until the criterion is hit, and you can't be "done with a bunch of opinions added on" either.</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag">INSTALL</div>
+    <h2>How to Actually Set It Up (30 Seconds)</h2>
+  </div>
+
+  <div class="install-steps">
+    <ol>
+      <li><span>Open the GitHub repo: <a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">github.com/multica-ai/andrej-karpathy-skills</a></span></li>
+      <li><span>Copy the contents of <code>CLAUDE.md</code> from the repo.</span></li>
+      <li><span>Paste it into a new file called <code>CLAUDE.md</code> in the root folder of your project. That's the same folder as your <code>package.json</code> or your <code>pyproject.toml</code> or your <code>.git</code> directory.</span></li>
+      <li><span>Save the file. That's it. The next time you open Claude Code in that project, it reads <code>CLAUDE.md</code> automatically at the start of the session. No flags, no commands, no config.</span></li>
+    </ol>
+    <p style="padding-top:4px;">If you already have a <code>CLAUDE.md</code> in your project, append the Karpathy rules to the end of your existing file. Claude reads the whole thing.</p>
+  </div>
+
+  <div class="why-box">
+    <div class="why-label">WHY IT WORKS</div>
+    <p>The file isn't magic. It's just a tight set of rules in a place Claude reads by default. The reason people see 65% → 94% jumps is that Claude Code's default behavior is much sloppier than its capability, and a thoughtful system prompt closes the gap. Comment <strong>KARPATHY</strong> on the original post and I'll DM you the file plus the install steps as a copy-paste block.</p>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-label">FOR YOUR JOB</div>
+      <h3>Set Up Claude for Your Specific Job</h3>
+      <p>If you're ready to set up Claude for your specific job, with custom skills, connectors, and automations built around the work you do every day, follow along on Instagram for step-by-step guides.</p>
+      <a class="btn" href="https://www.instagram.com/aiwithunnati" target="_blank">Follow @aiwithunnati →</a>
+    </div>
+    <div class="cta-card">
+      <div class="cta-label">GET THE AGENTS</div>
+      <h3>Get Access to All My AI Agents</h3>
+      <p>These are the exact AI agents and workflows I use for content creation, automation, and research — automating 90% of day-to-day operations. Stay tuned for the full bundle.</p>
+      <a class="btn" href="https://www.instagram.com/aiwithunnati" target="_blank">Follow on Instagram →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Unnati Tripathi · <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> · All rights reserved.</p>
+</footer>
+
+</body>
+</html>
