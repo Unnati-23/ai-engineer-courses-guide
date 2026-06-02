@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tally Setup Guide — by Unnati Tripathi</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f5f0e8;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      background: #c0392b;
+      color: #f5f0e8;
+      padding: 60px 40px 50px;
+      text-align: center;
+      border-bottom: 6px solid #922b21;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: #f5f0e8;
+      color: #c0392b;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .hero .author {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      letter-spacing: 1px;
+    }
+
+    .hero .author a {
+      color: #f5f0e8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* WHAT IS TALLY */
+    .intro-card {
+      background: #fff;
+      border-left: 5px solid #c0392b;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .intro-card h2 {
+      font-size: 1.3rem;
+      color: #c0392b;
+      margin-bottom: 12px;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-card p {
+      line-height: 1.8;
+      color: #333;
+    }
+
+    /* STEPS */
+    .steps-title {
+      font-size: 1.8rem;
+      color: #c0392b;
+      font-weight: normal;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .steps-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 36px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: #c0392b;
+      color: #f5f0e8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .step-body {
+      flex: 1;
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px 26px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .step-body h3 {
+      font-size: 1.15rem;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .step-body p {
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .step-body p:last-child { margin-bottom: 0; }
+
+    .step-body a {
+      display: inline-block;
+      background: #c0392b;
+      color: #f5f0e8;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+
+    .step-body a:hover { background: #922b21; }
+
+    .step-body .note {
+      background: #fdf3f2;
+      border: 1px solid #f0c4c0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: #7b241c;
+      margin-top: 12px;
+    }
+
+    /* CAPSULE SECTION */
+    .capsule-section {
+      background: #c0392b;
+      color: #f5f0e8;
+      border-radius: 12px;
+      padding: 36px 40px;
+      margin: 48px 0;
+      text-align: center;
+    }
+
+    .capsule-section h2 {
+      font-size: 1.6rem;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .capsule-section p {
+      opacity: 0.9;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 20px;
+    }
+
+    .capsule-section .models {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .capsule-section .model-chip {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #f5f0e8;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+    }
+
+    /* LINKS */
+    .links-section {
+      margin-top: 48px;
+    }
+
+    .links-section h2 {
+      font-size: 1.4rem;
+      color: #c0392b;
+      font-weight: normal;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .link-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: #1a1a1a;
+      border-top: 3px solid #c0392b;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: block;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .link-card .link-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin-bottom: 6px;
+    }
+
+    .link-card .link-title {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .link-card .link-url {
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #c0392b;
+      color: #f5f0e8;
+      text-align: center;
+      padding: 36px 24px;
+      margin-top: 60px;
+    }
+
+    footer .footer-name {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: #f5f0e8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    footer .footer-note {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .step { flex-direction: column; }
+      .step-num { width: 38px; height: 38px; font-size: 1rem; }
+      .capsule-section { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">Step-by-Step Guide</div>
+    <h1>How to Set Up <span>Tally</span><br>in Claude</h1>
+    <p>Track your Claude token usage in real time — and never lose your work when limits hit. Switch to ChatGPT, Gemini, or Grok in one click.</p>
+    <div class="author">
+      By <strong>Unnati Tripathi</strong> &nbsp;·&nbsp;
+      Instagram: <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- WHAT IS TALLY -->
+    <div class="intro-card">
+      <h2>What is Tally?</h2>
+      <p>Tally is a free Chrome extension that sits quietly below your Claude message box and shows your live token usage, messages remaining, and when your session resets. It's model-aware — so it knows exactly how many Opus, Sonnet, or Haiku messages you have left. And if you hit your limit, its <strong>Capsule</strong> feature exports your full context to another AI in one click.</p>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps-title">Setup in 4 Steps</div>
+    <div class="steps-subtitle">From zero to tracking in under 2 minutes</div>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Install Google Chrome</h3>
+        <p>Tally is a Chrome extension, so you need Google Chrome installed on your computer. If you already have it, skip to Step 2.</p>
+        <a href="https://www.google.com/chrome/" target="_blank">Download Google Chrome →</a>
+        <div class="note">⚠️ Tally does NOT work in Safari, Firefox, or Pinterest's browser. Must be Chrome.</div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Add Tally to Chrome</h3>
+        <p>Open the Chrome Web Store listing for Tally and click <strong>"Add to Chrome"</strong> → <strong>"Add extension"</strong>. The button will only be active when you're in Chrome.</p>
+        <a href="https://chromewebstore.google.com/detail/tally-claude-token-counte/baicaaiepddobodaccgfffdimceidbp" target="_blank">Install Tally from Chrome Web Store →</a>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Complete the Onboarding</h3>
+        <p>After installing, a welcome page opens (1 of 3). Click <strong>"Show me how →"</strong> and follow the 3-step onboarding. It takes under a minute and shows you where everything appears.</p>
+        <p>Then open <strong>claude.ai</strong> — you'll see the Tally strip at the bottom of the message box showing your session % and reset time.</p>
+        <a href="https://claude.ai/new" target="_blank">Open Claude →</a>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Change Your Model Anytime</h3>
+        <p>Inside Claude, click the model name (e.g. <strong>"Sonnet 4.6 Low ∨"</strong>) in the message bar to switch between Claude models at any time — no need to wait for a limit.</p>
+        <p>For deeper settings, click the <strong>Tally icon</strong> in your Chrome toolbar to see your full usage breakdown, weekly limits, and Capsule options.</p>
+        <a href="https://tally.app" target="_blank">Visit Tally Website →</a>
+      </div>
+    </div>
+
+    <!-- CAPSULE SECTION -->
+    <div class="capsule-section">
+      <h2>When Claude Hits Its Limit — Use Capsule</h2>
+      <p>Tally's Capsule feature packages your entire conversation context and opens it in another AI with one click. Your work continues without starting over.</p>
+      <div class="models">
+        <div class="model-chip">ChatGPT</div>
+        <div class="model-chip">Gemini</div>
+        <div class="model-chip">Grok</div>
+      </div>
+      <p style="margin-top:18px; font-size:0.9rem;">Click the Tally icon in your toolbar → find <strong>Capsule</strong> → choose your model.</p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="links-section">
+      <h2>All the Links You Need</h2>
+      <div class="links-grid">
+        <a class="link-card" href="https://chromewebstore.google.com/detail/tally-claude-token-counte/baicaaiepddobodaccgfffdimceidbp" target="_blank">
+          <div class="link-label">Install</div>
+          <div class="link-title">Tally on Chrome Web Store</div>
+          <div class="link-url">chromewebstore.google.com</div>
+        </a>
+        <a class="link-card" href="https://tally.app" target="_blank">
+          <div class="link-label">Official Site</div>
+          <div class="link-title">Tally Website</div>
+          <div class="link-url">tally.app</div>
+        </a>
+        <a class="link-card" href="https://claude.ai/new" target="_blank">
+          <div class="link-label">Use</div>
+          <div class="link-title">Claude.ai</div>
+          <div class="link-url">claude.ai/new</div>
+        </a>
+        <a class="link-card" href="https://www.google.com/chrome/" target="_blank">
+          <div class="link-label">Required</div>
+          <div class="link-title">Download Google Chrome</div>
+          <div class="link-url">google.com/chrome</div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/aiwithunnati" target="_blank">
+          <div class="link-label">Follow</div>
+          <div class="link-title">@aiwithunnati on Instagram</div>
+          <div class="link-url">instagram.com/aiwithunnati</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Unnati Tripathi</div>
+    <div>
+      Follow for more AI tips →
+      <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a>
+    </div>
+    <div class="footer-note">Guide created for educational purposes · claude.ai · tally.app</div>
+  </footer>
+
+</body>
+</html>
