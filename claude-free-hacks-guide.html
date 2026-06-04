@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Claude Free Limit Hacks — aiwithunnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --red: #C0392B;
+    --red-dark: #96281B;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE8DF;
+    --black: #1A1A1A;
+    --grey: #5A5A5A;
+    --border: #D5CFC4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    text-align: center;
+  }
+
+  nav .brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  nav .links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  nav .links a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  nav .links a:hover { color: var(--red); }
+
+  .hero {
+    background: var(--red);
+    padding: 48px 24px 40px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1.0;
+    color: #fff;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 20px;
+  }
+
+  .hero .meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 36px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .hack-card {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .hack-header {
+    background: var(--red);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hack-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .hack-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .hack-body {
+    padding: 16px 18px;
+  }
+
+  .hack-body .what {
+    font-size: 14px;
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .hack-body .how-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 7px;
+  }
+
+  .how-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .how-steps li {
+    font-size: 13px;
+    color: var(--black);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .how-steps li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  .pro-tip {
+    background: #fff;
+    border-left: 3px solid var(--red);
+    padding: 10px 14px;
+    margin-top: 12px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .pro-tip .tip-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+
+  .pro-tip p {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  .note-box {
+    border-left: 4px solid var(--red);
+    background: var(--cream-dark);
+    padding: 14px 18px;
+    margin: 20px 0 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .note-box p {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  .note-box strong { color: var(--black); }
+
+  .bonus-section {
+    background: var(--red);
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .bonus-inner {
+    padding: 36px 24px;
+  }
+
+  .bonus-inner .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 10px;
+  }
+
+  .bonus-inner h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  .bonus-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .bonus-card h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .bonus-card p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+  }
+
+  .bonus-card a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .cta-section {
+    background: var(--cream-dark);
+    padding: 40px 24px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-section .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: var(--black);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  footer {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--border);
+  }
+
+  footer a {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 38px; }
+    .section h2 { font-size: 26px; }
+    nav .brand { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">AI WITH UNNATI</span>
+  <div class="links">
+    <a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a>
+    <a href="#">All Guides</a>
+    <a href="#">AI Tools</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--red)">
+<div class="hero">
+  <div class="label">Claude · Free Tier · 2026 Guide</div>
+  <h1>MAKE YOUR CLAUDE FREE LIMIT LAST WAY LONGER</h1>
+  <p>Claude's free tier resets every 5 hours — not 24. Most people burn through it in the first session because they're using it wrong. Here are the exact habits that change that.</p>
+  <div class="meta">By Unnati · @aiwithunnati</div>
+</div>
+</div>
+
+<!-- HACKS -->
+<div class="section">
+  <div class="section-label">The Hacks</div>
+  <h2>7 HABITS THAT SAVE YOUR FREE LIMIT</h2>
+
+  <!-- HACK 1 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>SUMMARIZE AND START FRESH</h3>
+      <span class="hack-tag">Hack 1</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">Long conversations eat your limit fast. Every message you send in a long chat costs more tokens because Claude has to re-read everything above it. The fix is simple — summarize and start fresh every 15 to 20 messages.</p>
+      <div class="how-label">How to do it:</div>
+      <ul class="how-steps">
+        <li>After 15–20 messages, type: "Summarize everything we've discussed so far in bullet points"</li>
+        <li>Copy Claude's summary</li>
+        <li>Start a brand new chat</li>
+        <li>Paste the summary at the top with: "Here's context from our last session:"</li>
+        <li>Continue exactly where you left off</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>If you use Claude Code, type /compact to automatically compress the conversation. Type /clear to start completely fresh on a new topic.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 2 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>EDIT YOUR PROMPT, DON'T CORRECT IT</h3>
+      <span class="hack-tag">Hack 2</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">When Claude gives you a wrong answer, most people send a follow-up message correcting it. That wastes two message slots — your correction AND Claude's new response. Instead, go back and edit your original prompt.</p>
+      <div class="how-label">How to do it:</div>
+      <ul class="how-steps">
+        <li>On claude.ai, hover over your original message</li>
+        <li>Click the edit (pencil) icon</li>
+        <li>Rewrite your prompt to be clearer</li>
+        <li>Hit send — Claude responds fresh with no wasted messages</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>This also gives you a better answer. Editing your prompt forces you to be more specific — and specific prompts always get better results than corrections.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 3 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>COMBINE EVERYTHING INTO ONE PROMPT</h3>
+      <span class="hack-tag">Hack 3</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">Asking Claude 5 separate questions uses 5 message slots. Asking all 5 in one message uses 1. It sounds obvious but almost nobody does it. Every single question you ask separately is a wasted slot.</p>
+      <div class="how-label">How to do it:</div>
+      <ul class="how-steps">
+        <li>Before you send anything, write down everything you want to ask</li>
+        <li>Combine it all into one structured message</li>
+        <li>Number your questions: "1. ... 2. ... 3. ..."</li>
+        <li>Send once — Claude answers everything together</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>Use "Low effort" mode in Claude's settings for simple questions. It uses fewer tokens and responds faster. Save "High" effort for complex tasks only.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 4 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>USE CLAUDE PROJECTS FOR FILES</h3>
+      <span class="hack-tag">Hack 4</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">If you upload the same document or file every single conversation, you're wasting tokens every single time. Claude Projects lets you upload files once and access them across all your conversations in that project.</p>
+      <div class="how-label">How to set it up:</div>
+      <ul class="how-steps">
+        <li>On claude.ai, click "Projects" in the left sidebar</li>
+        <li>Create a new project — name it by topic (e.g. "Work Documents")</li>
+        <li>Upload your files to the project once</li>
+        <li>Every chat inside that project can access those files automatically</li>
+        <li>No more re-uploading the same thing every session</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>Add a "custom instructions" note to your project — tell Claude your background, your preferences, and what you need most. It reads this automatically in every chat inside the project.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 5 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>TURN ON MEMORY IN SETTINGS</h3>
+      <span class="hack-tag">Hack 5</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">Claude has a memory feature that remembers important things about you across all conversations — so you never have to re-explain your background, your job, or your preferences every time you start a new chat.</p>
+      <div class="how-label">How to turn it on:</div>
+      <ul class="how-steps">
+        <li>Go to claude.ai</li>
+        <li>Click your profile icon → Settings</li>
+        <li>Find "Memory" and toggle it ON</li>
+        <li>In any chat, type: "Remember that I am [your context]"</li>
+        <li>Claude saves it and uses it automatically in all future chats</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>Tell Claude your profession, your skill level, and how you like responses formatted. Example: "Remember I'm a non-technical marketer. Always explain things simply without jargon."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 6 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>USE LOW EFFORT MODE FOR SIMPLE TASKS</h3>
+      <span class="hack-tag">Hack 6</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">Claude has an Effort setting — Low, Medium, High, and Max. Higher effort means more thorough responses but burns your limit faster. For simple questions, always use Low effort. Save High for complex tasks.</p>
+      <div class="how-label">How to use it:</div>
+      <ul class="how-steps">
+        <li>In any Claude chat, click the model settings or effort dropdown</li>
+        <li>For quick questions, summaries, or rewrites → select Low</li>
+        <li>For deep analysis, code, or complex planning → select High</li>
+        <li>Max effort is for the hardest tasks only — it uses limits very fast</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>Turn off "Adaptive thinking" for simple tasks. It's a reasoning feature that uses extra tokens when Claude decides it's needed. Great for complex work, wasteful for basic questions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HACK 7 -->
+  <div class="hack-card">
+    <div class="hack-header">
+      <h3>USE THE 5-HOUR RESET TO YOUR ADVANTAGE</h3>
+      <span class="hack-tag">Hack 7</span>
+    </div>
+    <div class="hack-body">
+      <p class="what">Most people think Claude's free limit resets every 24 hours. It doesn't. It resets on a rolling 5-hour window. This means you can use Claude up to 3 times a day on the free tier if you time it right.</p>
+      <div class="how-label">The strategy:</div>
+      <ul class="how-steps">
+        <li>Session 1: Morning — use Claude for your first set of tasks</li>
+        <li>Wait 5 hours — limit resets</li>
+        <li>Session 2: Afternoon — full limit again</li>
+        <li>Wait 5 hours — limit resets again</li>
+        <li>Session 3: Evening — full limit one more time</li>
+      </ul>
+      <div class="pro-tip">
+        <div class="tip-label">Pro Tip</div>
+        <p>Use off-peak hours (early morning or late night) when possible. Anthropic prioritizes paid users during peak demand — free tier responses are faster and limits are slightly more generous off-peak.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <p><strong>Important:</strong> All hacks above work on the standard claude.ai free tier. Claude's free tier is permanent — it never expires and requires no credit card. The usage window resets on a rolling 5-hour basis, not a fixed 24-hour reset.</p>
+  </div>
+</div>
+
+<!-- BONUS: FREE ACCESS METHODS -->
+<div style="background:var(--red)">
+<div class="bonus-inner">
+  <div class="label">Bonus Section</div>
+  <h2>OTHER WAYS TO ACCESS CLAUDE FOR FREE</h2>
+
+  <div class="bonus-card">
+    <h4>POE.COM</h4>
+    <p>Multi-model platform. Access Claude, GPT-4, and Gemini all in one place with daily free message limits. Best for quick daily use across multiple AI models.</p>
+  </div>
+
+  <div class="bonus-card">
+    <h4>BRAVE BROWSER — LEO AI</h4>
+    <p>Install Brave browser and get Claude Haiku built in completely free. No account. No credit card. No sign-up. Works the moment you install it.</p>
+  </div>
+
+  <div class="bonus-card">
+    <h4>DUCKDUCKGO AI CHAT</h4>
+    <p>DuckDuckGo's AI Chat feature includes free access to Claude with privacy protection. No account needed. Go to duckduckgo.com and click "AI Chat."</p>
+  </div>
+
+  <div class="bonus-card">
+    <h4>ANTHROPIC GUEST PASSES (/PASSES)</h4>
+    <p>Type /passes in any Claude chat to generate shareable guest passes. Each pass gives someone temporary full Claude access. Great for sharing with friends who want to try it.</p>
+  </div>
+
+  <div class="bonus-card">
+    <h4>CLAUDE FOR STUDENTS</h4>
+    <p>If you're enrolled at a partner university, you may already have free Claude Pro access. Check with your university's IT department or visit <a href="https://claude.ai/education" target="_blank">claude.ai/education</a> to see if your institution is listed.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="label">Follow for daily updates</div>
+  <h2>WANT MORE AI GUIDES LIKE THIS?</h2>
+  <p>I post one AI update every day — new tools, news, jobs, hacks, and research — simplified so you don't have to spend hours keeping up.</p>
+  <a class="cta-btn" href="https://www.instagram.com/aiwithunnati" target="_blank">FOLLOW @AIWITHUNNATI →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Guide by <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> · Information verified June 2026 · Sources: Anthropic official docs, Engadget, StartupHub.ai
+</footer>
+
+</body>
+</html>
