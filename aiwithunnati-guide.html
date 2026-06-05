@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Projects for PMs: Resource Guide – Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C0272D;
+      --red-dark: #9B1E23;
+      --cream: #F5F0E8;
+      --cream-dark: #EDE8DF;
+      --black: #1A1A1A;
+      --gray: #555;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--black);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--cream);
+      border-bottom: 2px solid var(--black);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--red);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      background: var(--red);
+      color: white;
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--black);
+      color: white;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 28px;
+      opacity: 0.92;
+    }
+
+    .hero-meta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* BONUS CALLOUT */
+    .bonus-banner {
+      background: var(--black);
+      color: white;
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .bonus-banner p {
+      font-size: 0.95rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .bonus-banner a {
+      color: var(--red);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* SECTION HEADERS */
+    .section-block {
+      margin-top: 56px;
+    }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      color: var(--red);
+      letter-spacing: 1px;
+      border-bottom: 3px solid var(--black);
+      padding-bottom: 8px;
+      margin-bottom: 28px;
+    }
+
+    /* RESOURCE CARD */
+    .resource-card {
+      background: white;
+      border: 2px solid var(--black);
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 6px 6px 0 var(--black);
+    }
+
+    .resource-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .resource-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+
+    .resource-card a {
+      display: inline-block;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      word-break: break-all;
+    }
+
+    .resource-card a:hover {
+      color: var(--red-dark);
+      border-color: var(--red-dark);
+    }
+
+    /* BONUS SECTION */
+    .bonus-section {
+      background: var(--red);
+      color: white;
+      padding: 40px 28px;
+      margin-top: 56px;
+      border: 3px solid var(--black);
+    }
+
+    .bonus-section .section-number {
+      color: white;
+      border-color: white;
+    }
+
+    .bonus-section .resource-card {
+      background: var(--red-dark);
+      border-color: white;
+      color: white;
+    }
+
+    .bonus-section .resource-card h3 { color: white; }
+    .bonus-section .resource-card p { color: rgba(255,255,255,0.85); }
+    .bonus-section .resource-card a {
+      color: var(--cream);
+      border-color: var(--cream);
+    }
+
+    /* CTA */
+    .cta-block {
+      background: var(--black);
+      color: white;
+      padding: 48px 28px;
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .cta-block h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .cta-block p {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 28px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      text-decoration: none;
+      border: 2px solid white;
+      transition: background 0.15s;
+    }
+
+    .cta-btn:hover { background: var(--red-dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--cream-dark);
+      border-top: 2px solid var(--black);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer strong { color: var(--red); }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">AI with Unnati</a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Free Guides</a></li>
+      <li><a href="https://instagram.com/aiwithunnati" target="_blank">Instagram</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Free Resource Guide</div>
+    <h1>AI Projects for PMs:<br>Resource Guide</h1>
+    <p>Everything you need to build real AI PM projects and land $200K+ roles in 2026. Curated by Unnati Tripathi.</p>
+    <div class="hero-meta">By Unnati Tripathi &nbsp;|&nbsp; @aiwithunnati on Instagram</div>
+  </section>
+
+  <!-- BONUS BANNER -->
+  <div class="bonus-banner">
+    <p>Follow <a href="https://instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> on Instagram for daily AI PM tips, templates, and career resources.</p>
+  </div>
+
+  <main>
+
+    <!-- 1. AI PRD RESOURCES -->
+    <div class="section-block">
+      <div class="section-number">1. AI PRD Resources</div>
+
+      <div class="resource-card">
+        <h3>Lenny's Newsletter: PRD Examples & Templates</h3>
+        <p>Use this to understand what strong PRDs and 1-pagers look like, especially problem framing and product clarity.</p>
+        <a href="https://www.lennysnewsletter.com/p/prds-1-pagers-examples" target="_blank">lennysnewsletter.com/p/prds-1-pagers-examples →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>ProductPlan: Product Requirements Document Guide</h3>
+        <p>Good starter reference for PRD structure, purpose, and common sections.</p>
+        <a href="https://www.productplan.com/glossary/product-requirements-document/" target="_blank">productplan.com/glossary/product-requirements-document →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Atlassian: Product Requirements Guide</h3>
+        <p>Helpful for writing lightweight, agile PRDs that align teams without over-documenting.</p>
+        <a href="https://www.atlassian.com/agile/product-management/requirements" target="_blank">atlassian.com/agile/product-management/requirements →</a>
+      </div>
+    </div>
+
+    <!-- 2. AI EVALUATION RESOURCES -->
+    <div class="section-block">
+      <div class="section-number">2. AI Evaluation Resources</div>
+
+      <div class="resource-card">
+        <h3>OpenAI Evals</h3>
+        <p>Framework for testing LLM outputs and building custom evaluations for AI product behavior.</p>
+        <a href="https://github.com/openai/evals" target="_blank">github.com/openai/evals →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>OpenAI: Working with Evals</h3>
+        <p>Practical OpenAI guide for evaluating model outputs against expected style, quality, and behavior.</p>
+        <a href="https://developers.openai.com/api/docs/guides/evals" target="_blank">developers.openai.com/api/docs/guides/evals →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>LangSmith Evaluation Docs</h3>
+        <p>Useful for testing AI apps across datasets, evaluators, experiments, and production monitoring.</p>
+        <a href="https://docs.langchain.com/langsmith/evaluation" target="_blank">docs.langchain.com/langsmith/evaluation →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>LangSmith Evaluation Quickstart</h3>
+        <p>Good hands-on starting point for building your first evaluation flow.</p>
+        <a href="https://docs.langchain.com/langsmith/evaluation-quickstart" target="_blank">docs.langchain.com/langsmith/evaluation-quickstart →</a>
+      </div>
+    </div>
+
+    <!-- 3. AI LAUNCH PLAN RESOURCES -->
+    <div class="section-block">
+      <div class="section-number">3. AI Launch Plan Resources</div>
+
+      <div class="resource-card">
+        <h3>Reforge: Product Launch Examples</h3>
+        <p>Real product launch examples and templates for planning rollout, risks, and launch execution.</p>
+        <a href="https://www.reforge.com/artifacts/c/product-development/product-launch" target="_blank">reforge.com/artifacts/c/product-development/product-launch →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Reforge: Build a Go-to-Market Launch Plan</h3>
+        <p>Helpful for structuring launch goals, activities, validation, and cross-functional alignment.</p>
+        <a href="https://www.reforge.com/guides/build-a-go-to-market-launch-plan" target="_blank">reforge.com/guides/build-a-go-to-market-launch-plan →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>ProductPlan: Go-To-Market Strategy</h3>
+        <p>Good reference for GTM basics, customer journey, channels, pricing, sales, and launch planning.</p>
+        <a href="https://www.productplan.com/glossary/go-to-market-strategy/" target="_blank">productplan.com/glossary/go-to-market-strategy →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Atlassian: Product Launch Checklist</h3>
+        <p>Simple checklist for pre-launch planning, stakeholder alignment, and post-launch follow-up.</p>
+        <a href="https://www.atlassian.com/agile/product-management/product-launch-checklist" target="_blank">atlassian.com/agile/product-management/product-launch-checklist →</a>
+      </div>
+    </div>
+
+    <!-- 4. AI RISK & SAFETY RESOURCES -->
+    <div class="section-block">
+      <div class="section-number">4. AI Risk & Safety Resources</div>
+
+      <div class="resource-card">
+        <h3>Google Secure AI Framework (SAIF)</h3>
+        <p>Security framework for building AI systems with stronger privacy, security, and risk controls.</p>
+        <a href="https://saif.google/" target="_blank">saif.google →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>NIST AI Risk Management Framework</h3>
+        <p>Core AI risk framework covering governance, mapping, measurement, and risk management.</p>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank">nist.gov/itl/ai-risk-management-framework →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>NIST AI RMF Resource Center</h3>
+        <p>More detailed AI RMF resources, playbooks, and implementation guidance.</p>
+        <a href="https://airc.nist.gov/airmf-resources/airmf/" target="_blank">airc.nist.gov/airmf-resources/airmf →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>OpenAI Safety Best Practices</h3>
+        <p>Practical guidance on moderation, adversarial testing, human oversight, and safer deployment.</p>
+        <a href="https://developers.openai.com/api/docs/guides/safety-best-practices" target="_blank">developers.openai.com/api/docs/guides/safety-best-practices →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Google People + AI Guidebook</h3>
+        <p>Strong product and UX resource for designing human-centered AI products.</p>
+        <a href="https://pair.withgoogle.com/guidebook/" target="_blank">pair.withgoogle.com/guidebook →</a>
+      </div>
+    </div>
+
+    <!-- 5. AI PRODUCT METRICS RESOURCES -->
+    <div class="section-block">
+      <div class="section-number">5. AI Product Metrics Resources</div>
+
+      <div class="resource-card">
+        <h3>Amplitude: Product Analytics Guide</h3>
+        <p>Great primer on tracking user behavior, activation, retention, and product journeys.</p>
+        <a href="https://amplitude.com/guides/product-analytics" target="_blank">amplitude.com/guides/product-analytics →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Amplitude: Product Analytics Fundamentals</h3>
+        <p>Beginner-friendly resource for learning analytics concepts and asking better product questions.</p>
+        <a href="https://amplitude.com/product-analytics-fundamentals" target="_blank">amplitude.com/product-analytics-fundamentals →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Reforge: Identify Key Product Metrics with an Altitude Scorecard</h3>
+        <p>Useful framework for choosing the right product metrics and connecting them to business impact.</p>
+        <a href="https://www.reforge.com/guides/identify-key-product-metrics-with-an-altitude-scorecard" target="_blank">reforge.com/guides/identify-key-product-metrics →</a>
+      </div>
+    </div>
+
+    <!-- BONUS -->
+    <div class="bonus-section">
+      <div class="section-number">Bonus AI PM Resources</div>
+
+      <div class="resource-card">
+        <h3>Google People + AI Research (PAIR)</h3>
+        <p>Collection of AI product, UX, and responsible design resources from Google's PAIR team.</p>
+        <a href="https://pair.withgoogle.com/" target="_blank">pair.withgoogle.com →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>Google Codelab: Building Trusted AI Products with the PAIR Guidebook</h3>
+        <p>Hands-on walkthrough for applying human-centered AI principles to product decisions.</p>
+        <a href="https://codelabs.developers.google.com/codelabs/pair-guidebook" target="_blank">codelabs.developers.google.com/codelabs/pair-guidebook →</a>
+      </div>
+
+      <div class="resource-card">
+        <h3>ProductBoard: PRD Glossary</h3>
+        <p>Another solid PRD reference for structuring product requirements around user problems.</p>
+        <a href="https://www.productboard.com/glossary/product-requirements-document/" target="_blank">productboard.com/glossary/product-requirements-document →</a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2>Follow for More AI PM Content</h2>
+      <p>Daily tips, templates, and career resources to help you break into AI product management.</p>
+      <a href="https://instagram.com/aiwithunnati" target="_blank" class="cta-btn">Follow @aiwithunnati →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Built by <strong>Unnati Tripathi</strong> &nbsp;|&nbsp; <a href="https://instagram.com/aiwithunnati" target="_blank" style="color: var(--red); font-weight:700;">@aiwithunnati</a></p>
+  </footer>
+
+</body>
+</html>
