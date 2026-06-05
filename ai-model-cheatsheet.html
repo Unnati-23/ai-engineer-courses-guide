@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Model Decision Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8271D;
+    --red-dark: #A01F16;
+    --red-light: #D94034;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE8DE;
+    --black: #1A1A1A;
+    --grey: #555;
+    --white: #FFFFFF;
+    --tag-green: #4A6741;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--cream);
+    border-bottom: 1px solid #ddd;
+    padding: 18px 24px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    color: var(--black);
+  }
+  nav .insta {
+    font-size: 12px;
+    color: var(--grey);
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+  nav .insta a { color: var(--red); text-decoration: none; font-weight: 600; }
+  nav .insta a:hover { text-decoration: underline; }
+  nav .links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  nav .links a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+  nav .links a:hover { color: var(--red); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--red);
+    padding: 60px 24px 56px;
+    text-align: left;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .tag {
+    display: inline-block;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(42px, 8vw, 72px);
+    color: white;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+  .hero-note {
+    margin-top: 24px;
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border-left: 3px solid white;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: white;
+    font-style: italic;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+  .section-red {
+    background: var(--red);
+    width: 100%;
+  }
+  .section-red .section {
+    padding: 48px 24px;
+  }
+  .section-cream {
+    background: var(--cream);
+  }
+  .section-cream-dark {
+    background: var(--cream-dark);
+  }
+
+  /* ── SECTION LABELS ── */
+  .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .section-red .label { color: rgba(255,255,255,0.6); }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 40px);
+    text-transform: uppercase;
+    line-height: 1.0;
+    color: var(--black);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .section-red h2 { color: white; }
+
+  /* ── CARDS ── */
+  .card {
+    background: white;
+    border-radius: 2px;
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+  .card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+  .card .cost-badge {
+    display: inline-block;
+    background: var(--cream-dark);
+    border: 1px solid #ddd;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    margin-top: 12px;
+    color: var(--black);
+  }
+
+  /* ── DECISION TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead tr {
+    background: var(--black);
+    color: white;
+  }
+  thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid #ddd;
+    background: white;
+  }
+  tbody tr:nth-child(even) { background: var(--cream); }
+  tbody td {
+    padding: 14px;
+    color: var(--grey);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--black);
+  }
+  tbody td:nth-child(2) {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 0.5px;
+  }
+  .model-cost {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── ROUTING RULE ── */
+  .steps {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .steps li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    background: white;
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    padding-top: 6px;
+    line-height: 1.5;
+  }
+  .step-text strong { color: white; }
+
+  .result-box {
+    background: rgba(255,255,255,0.12);
+    border-left: 3px solid white;
+    padding: 16px 20px;
+    margin-top: 24px;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+  }
+
+  /* ── PRICING GRID ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .price-card {
+    background: white;
+    padding: 20px 16px;
+    text-align: center;
+    border-top: 3px solid var(--red);
+  }
+  .price-card .model { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; text-transform: uppercase; color: var(--black); }
+  .price-card .price { font-size: 13px; color: var(--grey); margin-top: 6px; line-height: 1.5; }
+  .price-card .tier { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+
+  /* ── OPEN SOURCE TABLE ── */
+  .os-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .os-card {
+    background: white;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .os-card .name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  .os-card .os-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .os-card p { font-size: 13px; color: var(--grey); line-height: 1.5; }
+
+  /* ── WHEN TO USE OPEN SOURCE ── */
+  .checklist {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+  .checklist li::before {
+    content: "→";
+    color: white;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .checklist li strong { color: white; }
+
+  /* ── GOLDEN RULE ── */
+  .quote-block {
+    background: var(--red);
+    padding: 40px 28px;
+    margin: 0 auto;
+    max-width: 720px;
+    text-align: center;
+  }
+  .quote-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    color: white;
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .quote-block cite {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-style: normal;
+  }
+
+  /* ── STAY CURRENT ── */
+  .link-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .link-item {
+    background: white;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 13px;
+    font-weight: 600;
+    border-left: 3px solid var(--red);
+    transition: background 0.15s;
+  }
+  .link-item:hover { background: var(--cream-dark); }
+  .link-item .arrow { color: var(--red); font-size: 16px; }
+
+  /* ── PRO TIP ── */
+  .pro-tip {
+    background: var(--cream-dark);
+    border-left: 4px solid var(--red);
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+  .pro-tip .pt-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .pro-tip p { font-size: 14px; color: var(--grey); line-height: 1.6; }
+  .pro-tip strong { color: var(--black); }
+
+  /* ── FOOTER / CTA ── */
+  .cta-section {
+    background: var(--red);
+    width: 100%;
+  }
+  .cta-section .section {
+    text-align: center;
+  }
+  .cta-section h2 { color: white; margin-bottom: 12px; }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 15px; max-width: 440px; margin: 0 auto 28px; }
+  .btn {
+    display: inline-block;
+    background: white;
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    margin: 6px;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: var(--cream); }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  footer {
+    background: var(--black);
+    padding: 28px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  footer span { color: var(--red); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--red);
+    margin: 16px 0 24px;
+  }
+  .section-red .divider { background: rgba(255,255,255,0.5); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .price-grid { grid-template-columns: 1fr 1fr; }
+    .link-grid { grid-template-columns: 1fr; }
+    .os-card { grid-template-columns: 1fr; }
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Unnati Tripathi</div>
+  <div class="insta"><a href="https://instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a></div>
+
+  <div class="links">
+    <a href="#decision-table">Decision Table</a>
+    <a href="#routing">Routing Rule</a>
+    <a href="#open-source">Open Source</a>
+    <a href="#stay-current">Stay Current</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--red);">
+  <div class="hero">
+    <div class="tag">Free Guide by Unnati Tripathi · @aiwithunnati · June 2026</div>
+    <h1>The AI Model<br>Decision<br>Cheat Sheet</h1>
+    <p>Stop overpaying. Most teams send every request to a flagship model. Here's exactly which model to use for every task — and how to cut your API bill by 60–80%.</p>
+    <div class="hero-note">Based on real production data · Prices current as of June 2026</div>
+  </div>
+</div>
+
+<!-- DECISION TABLE -->
+<div id="decision-table" class="section-cream">
+  <div class="section">
+    <div class="label">The Full Breakdown</div>
+    <h2>Model Decision<br>Table</h2>
+    <div class="divider"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Use Case</th>
+            <th>Model</th>
+            <th>When to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Prototyping / Vibe Coding</td>
+            <td>Gemini Flash<span class="model-cost">$0.30/1M in</span></td>
+            <td>Low stakes, high iteration. Don't burn flagship budget while you're figuring out what to build.</td>
+          </tr>
+          <tr>
+            <td>Production Coding & Agents</td>
+            <td>Claude Sonnet 4.6<span class="model-cost">$3/$15 per 1M</span></td>
+            <td>Best tool use and agent reliability in production. 79.6% SWE-bench Verified — within 1.2pts of Opus at 40% less cost.</td>
+          </tr>
+          <tr>
+            <td>Hard Reasoning & Research</td>
+            <td>Claude Opus 4.7<span class="model-cost">$5/$25 per 1M</span></td>
+            <td>Complex analysis, deep research, long documents. Reserve for tasks where quality directly impacts outcome.</td>
+          </tr>
+          <tr>
+            <td>High Volume / Routing Layer</td>
+            <td>Haiku 4.5 or Gemini Flash<span class="model-cost">$1/$5 per 1M (Haiku)</span></td>
+            <td>Classification, routing, simple extraction. 90% of your requests belong here. ~5x cheaper than Opus.</td>
+          </tr>
+          <tr>
+            <td>Large Codebase / Long Context</td>
+            <td>Gemini 3.1 Pro<span class="model-cost">$2/$12 per 1M</span></td>
+            <td>2M token context window. Load an entire codebase in one prompt. Nothing else at this price comes close.</td>
+          </tr>
+          <tr>
+            <td>Broad Generalist Tasks</td>
+            <td>GPT-5.5<span class="model-cost">$5/$30 per 1M</span></td>
+            <td>Multi-step knowledge work, writing, research, data analysis. Most versatile model when you need one that does everything.</td>
+          </tr>
+          <tr>
+            <td>Image Generation</td>
+            <td>Flux<span class="model-cost">Varies</span></td>
+            <td>Diffusion model — completely different architecture from LLMs. Best-in-class for image generation.</td>
+          </tr>
+          <tr>
+            <td>Video Generation</td>
+            <td>Veo 3.1 or Kling 3.0<span class="model-cost">~$0.15/sec (Veo fast)</span></td>
+            <td>Sora shut down April 2026. Veo 3.1 leads on quality + native audio. Kling 3.0 is cheapest premium option at ~$0.10/sec.</td>
+          </tr>
+          <tr>
+            <td>Fine-tuning / Privacy / Self-host</td>
+            <td>Gemma 4<span class="model-cost">Free (open source)</span></td>
+            <td>Full control, air-gapped environments, custom fine-tuning. No data leaves your infra.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ROUTING RULE -->
+<div id="routing" class="section-red">
+  <div class="section">
+    <div class="label">The Big Mistake</div>
+    <h2>The Routing<br>Rule</h2>
+    <div class="divider"></div>
+    <p style="color:rgba(255,255,255,0.8); font-size:15px; margin-bottom:24px;">Most teams make one mistake: they send every request to a flagship model. That kills your budget fast. Here's what engineers actually do in production:</p>
+
+    <ul class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">Put <strong>Haiku 4.5 or Gemini Flash</strong> in front as a cheap classifier</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">Route <strong>90% of requests</strong> there — simple, fast, cheap</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">Escalate the hard <strong>10% to Sonnet or Opus</strong></div>
+      </li>
+    </ul>
+
+    <div class="result-box">
+      Result: 60–80% cost reduction. Users notice nothing.
+    </div>
+  </div>
+</div>
+
+<!-- PRICING BREAKDOWN -->
+<div class="section-cream-dark">
+  <div class="section">
+    <div class="label">Claude Pricing Tiers</div>
+    <h2>Cost Breakdown</h2>
+    <div class="divider"></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="tier">Fast / Cheap</div>
+        <div class="model">Haiku 4.5</div>
+        <div class="price">$1 in<br>$5 out<br>per 1M tokens</div>
+      </div>
+      <div class="price-card">
+        <div class="tier">Production</div>
+        <div class="model">Sonnet 4.6</div>
+        <div class="price">$3 in<br>$15 out<br>per 1M tokens</div>
+      </div>
+      <div class="price-card">
+        <div class="tier">Frontier</div>
+        <div class="model">Opus 4.7</div>
+        <div class="price">$5 in<br>$25 out<br>per 1M tokens</div>
+      </div>
+    </div>
+    <div class="pro-tip">
+      <div class="pt-label">Pro Tip</div>
+      <p>Stack <strong>prompt caching (up to 90% savings)</strong> and <strong>batch processing (50% off)</strong> on top of routing. On a high-volume workload this can cut your bill by up to <strong>95%</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN SOURCE -->
+<div id="open-source" class="section-red">
+  <div class="section">
+    <div class="label">When Proprietary Isn't the Answer</div>
+    <h2>When to Use<br>Open Source</h2>
+    <div class="divider"></div>
+    <p style="color:rgba(255,255,255,0.8); font-size:15px; margin-bottom:20px;">Most engineers default to proprietary APIs. But there are specific situations where open source wins every time.</p>
+    <ul class="checklist">
+      <li><div><strong>Privacy is non-negotiable</strong> — your data cannot leave your infrastructure. Healthcare, legal, finance, government.</div></li>
+      <li><div><strong>You need to fine-tune</strong> — proprietary models don't let you train on your own data. Open source does.</div></li>
+      <li><div><strong>Massive scale</strong> — self-hosting eliminates per-token costs entirely. At high enough volume, infra cost beats API pricing.</div></li>
+      <li><div><strong>Air-gapped environments</strong> — no internet access. Open source is your only option.</div></li>
+      <li><div><strong>Full control</strong> — model behavior, versioning, deployment, everything.</div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- OPEN SOURCE STACK -->
+<div class="section-cream">
+  <div class="section">
+    <div class="label">The Open Source Stack 2026</div>
+    <h2>Your Options</h2>
+    <div class="divider"></div>
+    <div class="os-grid">
+      <div class="os-card">
+        <div>
+          <div class="os-label">Fine-tuning</div>
+          <div class="name">Gemma 4</div>
+        </div>
+        <p>Google's open model. Strong coding performance. Runs locally. Free. Best for custom fine-tuning and self-hosted environments.</p>
+      </div>
+      <div class="os-card">
+        <div>
+          <div class="os-label">General Purpose</div>
+          <div class="name">Llama 4</div>
+        </div>
+        <p>Meta's flagship open model. Large community, lots of tooling. Great for self-hosted agents and general production use.</p>
+      </div>
+      <div class="os-card">
+        <div>
+          <div class="os-label">Cost-sensitive</div>
+          <div class="name">Mistral Small 4</div>
+        </div>
+        <p>~40% of GPT-5.4 cost, comparable performance on most tasks. Best for cost-sensitive production workloads.</p>
+      </div>
+      <div class="os-card">
+        <div>
+          <div class="os-label">Budget Coding</div>
+          <div class="name">DeepSeek V4</div>
+        </div>
+        <p>$0.28 per 1M input tokens. Tier A coding performance. Best value for coding at scale when cost is the primary constraint.</p>
+      </div>
+    </div>
+    <div class="pro-tip" style="margin-top:20px;">
+      <div class="pt-label">The Tradeoff</div>
+      <p>Open source requires you to manage infra, handle scaling, and maintain the model yourself. <strong>Real engineering overhead.</strong> Only go this route if the use case genuinely requires it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GOLDEN RULE -->
+<div class="quote-block">
+  <blockquote>"The model is not the product.<br>The system around it is."</blockquote>
+  <cite>A cheap model in a great system beats a frontier model in a bad one.<br>Optimize your architecture before you optimize your model choice.</cite>
+</div>
+
+<!-- STAY CURRENT -->
+<div id="stay-current" class="section-cream-dark">
+  <div class="section">
+    <div class="label">Models change every few weeks in 2026</div>
+    <h2>Stay Current</h2>
+    <div class="divider"></div>
+    <p style="font-size:14px; color:var(--grey); margin-bottom:4px;">Bookmark these to keep your model choices up to date:</p>
+    <div class="link-grid">
+      <a href="https://anthropic.com/pricing" target="_blank" class="link-item">Anthropic Pricing <span class="arrow">→</span></a>
+      <a href="https://openai.com/pricing" target="_blank" class="link-item">OpenAI Pricing <span class="arrow">→</span></a>
+      <a href="https://ai.google.dev/pricing" target="_blank" class="link-item">Gemini Pricing <span class="arrow">→</span></a>
+      <a href="https://artificialanalysis.ai" target="_blank" class="link-item">Live Benchmarks <span class="arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section">
+    <div class="label" style="color:rgba(255,255,255,0.6);">Want More?</div>
+    <h2>Want the Full<br>AI Guide?</h2>
+    <p>I've mapped it all out. Follow <strong>@aiwithunnati</strong> on Instagram for weekly AI content, or comment "AI" to get the full model decision framework.</p>
+    <a href="https://instagram.com/aiwithunnati" target="_blank" class="btn">Follow @aiwithunnati →</a>
+    <a href="#decision-table" class="btn btn-outline">Back to Top</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>AI With Unnati</span> · by Unnati Tripathi · <a href="https://instagram.com/aiwithunnati" target="_blank" style="color:var(--red); text-decoration:none;">@aiwithunnati</a> · Updated June 2026
+</footer>
+
+</body>
+</html>
