@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusX Learning Guide | AI with Unnati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #C8202A;
+      --dark-red: #9B1219;
+      --cream: #F5F0E8;
+      --dark: #1A1A1A;
+      --card-bg: #FDFAF4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    /* HEADER */
+    header {
+      background: var(--cream);
+      text-align: center;
+      padding: 28px 20px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .site-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--red);
+    }
+
+    nav {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    nav a.active {
+      font-weight: 700;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--red);
+      padding: 48px 24px 44px;
+      color: white;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      border: 2px solid white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 560px;
+      opacity: 0.95;
+    }
+
+    .by-line {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+
+    .by-line span {
+      font-weight: 700;
+      opacity: 1;
+    }
+
+    /* SOURCE BLOCK */
+    .source-block {
+      background: var(--card-bg);
+      border-left: 4px solid var(--red);
+      margin: 32px 24px;
+      padding: 20px 20px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .source-block p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* WHY IT WORKS */
+    .why-block {
+      background: #EDEAE0;
+      margin: 0 24px 32px;
+      padding: 24px 20px;
+      border-radius: 6px;
+    }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .why-block p {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* PLAYLIST CARDS */
+    .playlists-section {
+      background: var(--red);
+      padding: 40px 24px;
+    }
+
+    .playlists-section .section-label {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    .playlists-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      color: white;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--red);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1.5px;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 18px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: #eee;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      color: #555;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      padding: 14px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--dark-red);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+    }
+
+    .btn-outline:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    /* BONUS SECTION */
+    .bonus-section {
+      padding: 36px 24px;
+      background: var(--cream);
+    }
+
+    .bonus-section .section-label {
+      margin-bottom: 8px;
+    }
+
+    .bonus-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .bonus-section p {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 22px;
+    }
+
+    .bonus-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .bonus-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.93rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bonus-list li a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--red);
+      color: white;
+      text-align: center;
+      padding: 36px 24px;
+    }
+
+    footer .site-title {
+      color: white;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: white;
+      font-weight: 600;
+    }
+
+    .footer-copy {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.78rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="site-title">AI WITH UNNATI</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#" class="active">Free Guides</a>
+      <a href="#">Content</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">CAMPUSX PLAYLIST GUIDE</div>
+    <h1>3 FREE YOUTUBE PLAYLISTS TO MASTER AI & ML</h1>
+    <p>These are the three CampusX playlists I recommend most — completely free on YouTube. From Machine Learning basics to Deep Learning to building AI apps with LangChain. Start here, go deep.</p>
+    <div class="by-line">
+      A free guide by <span>Unnati Tripathi</span> &nbsp;·&nbsp;
+      Instagram: <span>@aiwithunnati</span>
+    </div>
+  </section>
+
+  <!-- SOURCE BLOCK -->
+  <div class="source-block">
+    <p><strong>Source:</strong> All playlists below are by <strong>CampusX</strong> (Nitish Singh) — one of the best free Hindi/English ML channels on YouTube. Over 100+ structured videos per playlist, completely free.</p>
+  </div>
+
+  <!-- WHY IT WORKS -->
+  <div class="why-block">
+    <div class="section-label">WHY THESE PLAYLISTS</div>
+    <p>Most people jump between random YouTube tutorials and end up confused. These three playlists are structured like a proper course — Day 1 to Day 100, concept by concept. CampusX doesn't just teach algorithms in isolation. He teaches the entire workflow end-to-end. That's what makes this different.</p>
+  </div>
+
+  <!-- PLAYLISTS -->
+  <section class="playlists-section">
+    <div class="section-label">THE 3 PLAYLISTS</div>
+    <h2>START YOUR LEARNING JOURNEY HERE</h2>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-num">01</div>
+      <div class="card-tag">Beginner → Advanced</div>
+      <h3>100 DAYS OF MACHINE LEARNING</h3>
+      <p>The most structured free ML course on YouTube. Covers the complete ML lifecycle — data preprocessing, EDA, feature engineering, supervised & unsupervised learning, model evaluation, and deployment. 100 days, 100 videos, zero cost.</p>
+      <a class="btn" href="https://youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" target="_blank">WATCH PLAYLIST →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-tag">After ML Basics</div>
+      <h3>100 DAYS OF DEEP LEARNING</h3>
+      <p>Once you're done with ML basics, this is your next step. Covers neural networks from scratch, CNNs, RNNs, LSTMs, transformers, and more. Built to take you from understanding backprop to building real deep learning models.</p>
+      <a class="btn" href="https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" target="_blank">WATCH PLAYLIST →</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-num">03</div>
+      <div class="card-tag">GenAI + LLMs</div>
+      <h3>GENERATIVE AI USING LANGCHAIN</h3>
+      <p>This is where it gets exciting. Build real AI applications using LangChain — RAG pipelines, agents, chains, memory, and more. Hands-on, practical, and free. Perfect if you want to go from knowing AI to building with it.</p>
+      <a class="btn" href="https://youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" target="_blank">WATCH PLAYLIST →</a>
+    </div>
+  </section>
+
+  <!-- BONUS SECTION -->
+  <section class="bonus-section">
+    <div class="section-label">BONUS FROM CAMPUSX</div>
+    <h2>MORE FREE PLAYLISTS ON THE CHANNEL</h2>
+    <p>CampusX has a full ecosystem of free content. Once you finish the 3 main playlists above, here's what to explore next:</p>
+
+    <ul class="bonus-list">
+      <li>
+        100 Days of Python (Start here if new to Python)
+        <a href="https://youtube.com/playlist?list=PLKnIA16_Rmvb1RYR-iTA_hzckhdONtSW4" target="_blank">WATCH →</a>
+      </li>
+      <li>
+        Agentic AI using LangGraph
+        <a href="https://youtube.com/playlist?list=PLKnIA16_RmvYsvB8qkUQuJmJNuiCUJFPL" target="_blank">WATCH →</a>
+      </li>
+      <li>
+        MCP – Model Context Protocol
+        <a href="https://youtube.com/playlist?list=PLKnIA16_Rmva_oZ9F4ayUu9qcWgF7Fyc0" target="_blank">WATCH →</a>
+      </li>
+      <li>
+        FastAPI for Machine Learning (Deployment)
+        <a href="https://youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" target="_blank">WATCH →</a>
+      </li>
+    </ul>
+
+    <a class="btn btn-outline" href="https://youtube.com/@campusx-official" target="_blank">VISIT CAMPUSX CHANNEL →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="site-title">AI WITH UNNATI</div>
+    <p>
+      Follow me on Instagram <a href="https://instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> for daily AI tools,<br/>
+      career tips, and free resources for the Indian tech community.
+    </p>
+    <div class="footer-copy">
+      © 2026 Unnati Tripathi · All rights reserved
+    </div>
+  </footer>
+
+</body>
+</html>
