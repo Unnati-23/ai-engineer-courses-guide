@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Ethics & Governance Jobs Guide | aiwithunnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --dark-red: #9B1C1C;
+    --cream: #F5F0E8;
+    --off-white: #FAF7F2;
+    --dark: #1A1A1A;
+    --mid: #444;
+    --border: #D4C9B8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    color: var(--dark);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px 14px;
+    text-align: center;
+  }
+
+  .site-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+
+  .site-nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .site-nav a { color: var(--mid); text-decoration: none; }
+  .site-nav a.active { color: var(--dark); font-weight: 700; }
+
+  /* HERO */
+  .hero {
+    background: var(--red);
+    padding: 40px 28px 36px;
+    color: white;
+  }
+
+  .hero-meta {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+  }
+
+  .hero-meta a { color: white; text-decoration: none; opacity: 0.9; }
+
+  .hero-tag {
+    display: inline-block;
+    border: 1.5px solid white;
+    padding: 3px 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    line-height: 1.0;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 600px;
+  }
+
+  /* SOURCE BOX */
+  .source-box {
+    background: var(--off-white);
+    border-left: 4px solid var(--red);
+    padding: 16px 20px;
+    margin: 0;
+  }
+
+  .source-box p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+
+  .source-box a {
+    color: var(--red);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* SECTION BLOCK */
+  .section-block {
+    background: var(--off-white);
+    padding: 32px 28px;
+    margin-top: 2px;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .section-block h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--dark);
+    margin-bottom: 18px;
+    line-height: 1.1;
+  }
+
+  /* RED SECTION */
+  .red-section {
+    background: var(--red);
+    padding: 32px 28px;
+    margin-top: 2px;
+    color: white;
+  }
+
+  .red-section .section-label {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .red-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 18px;
+    line-height: 1.1;
+  }
+
+  .red-section p {
+    color: rgba(255,255,255,0.92);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* COMPANY CARDS */
+  .company-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .company-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .company-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+
+  .company-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--dark);
+    letter-spacing: 0.5px;
+  }
+
+  .role-tag {
+    background: var(--red);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .company-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--red);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .company-detail {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+
+  .company-detail strong {
+    color: var(--dark);
+  }
+
+  .salary-badge {
+    display: inline-block;
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    padding: 5px 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--dark);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .apply-btn {
+    display: inline-block;
+    background: var(--dark);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    text-decoration: none;
+    margin-top: 12px;
+  }
+
+  .apply-btn:hover { background: var(--red); }
+
+  /* SALARY TABLE */
+  .salary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 4px;
+  }
+
+  .salary-table th {
+    background: var(--dark);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.75rem;
+  }
+
+  .salary-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--mid);
+  }
+
+  .salary-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.02);
+  }
+
+  .salary-table td:first-child {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  /* STUDY LIST */
+  .study-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .study-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--mid);
+  }
+
+  .study-num {
+    background: var(--red);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .study-list li strong {
+    color: var(--dark);
+    display: block;
+    font-size: 0.94rem;
+    margin-bottom: 2px;
+  }
+
+  .study-list li a {
+    color: var(--red);
+    text-decoration: none;
+    font-size: 0.82rem;
+  }
+
+  /* CERT CARDS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .cert-card {
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    padding: 14px 16px;
+  }
+
+  .cert-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .cert-card-sub {
+    font-size: 0.78rem;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .cert-card-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .cert-card a {
+    color: var(--red);
+    text-decoration: none;
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* STAT STRIP */
+  .stat-strip {
+    background: var(--dark);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* CTA BLOCK */
+  .cta-block {
+    background: var(--red);
+    padding: 32px 28px;
+    text-align: center;
+    color: white;
+  }
+
+  .cta-block h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .cta-block p {
+    font-size: 0.95rem;
+    opacity: 0.92;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    text-decoration: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 20px 28px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: #999;
+  }
+
+  footer strong { color: var(--mid); }
+
+  /* DIVIDER */
+  .divider {
+    height: 2px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: var(--cream);
+    border-left: 4px solid var(--dark);
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+
+  .info-box p {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  .info-box strong { color: var(--dark); }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.4rem; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr; }
+    .company-card-header { flex-direction: column; }
+    .site-nav { gap: 16px; font-size: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-logo">AI WITH UNNATI</div>
+  <nav class="site-nav">
+    <a href="#">Home</a>
+    <a href="#" class="active">Free Guides</a>
+    <a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-meta">A free guide by <strong>Unnati Tripathi</strong> &nbsp;·&nbsp; <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a></div>
+  <div class="hero-tag">AI Careers · No Tech Degree Needed</div>
+  <h1>6 BIG TECH COMPANIES HIRING FOR AI ROLES RIGHT NOW</h1>
+  <p>Microsoft, Google, Meta, IBM, Salesforce & JPMorgan are actively hiring for AI Ethics & Governance roles — and you don't need to write a single line of code. Here's everything you need to know.</p>
+</div>
+
+<!-- WHY THIS IS HAPPENING -->
+<div class="source-box">
+  <p><strong>Why now?</strong> The EU AI Act's high-risk enforcement kicks in August 2026 with fines up to €35M or 7% of global revenue. Companies are racing to hire compliance and ethics talent — and the supply is critically low. <strong>98.5% of organisations say they need more AI governance professionals</strong> (IAPP 2025–26 Report).</p>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div>
+    <div class="stat-num">45%</div>
+    <div class="stat-label">YoY growth in AI ethics roles</div>
+  </div>
+  <div>
+    <div class="stat-num">14K+</div>
+    <div class="stat-label">Open AI governance jobs globally</div>
+  </div>
+  <div>
+    <div class="stat-num">₹60L+</div>
+    <div class="stat-label">Senior level India salary</div>
+  </div>
+</div>
+
+<!-- THE 6 COMPANIES -->
+<div class="section-block">
+  <div class="section-label">The Companies</div>
+  <h2>WHO IS HIRING & WHAT EXACTLY FOR</h2>
+
+  <div class="company-grid">
+
+    <!-- MICROSOFT -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">01. Microsoft</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">Principal AI Ethics Advisor / Responsible AI Program Leader</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Design responsible AI frameworks, run bias evaluations, advise product teams on ethical deployment, engage with regulators.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Legal, policy, compliance, philosophy, risk management or MBA. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 5–10 years in compliance, policy or ethics roles.</div>
+      <div class="salary-badge">$185K – $275K USD globally &nbsp;|&nbsp; ₹25–50 LPA India GCC roles</div>
+      <br>
+      <a class="apply-btn" href="https://jobs.careers.microsoft.com/global/en/search?q=responsible+AI&l=en_US" target="_blank">Apply at Microsoft →</a>
+    </div>
+
+    <!-- GOOGLE -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">02. Google</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">AI Principles Lead / Program Lead, Governance / Policy Analyst</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Lead AI governance coordination with risk & compliance teams, centralize audit reporting, build ethical AI policy for Google's products globally.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Public policy, law, risk management, business strategy. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 7+ years in GTM strategy, policy or compliance. Bachelor's degree or equivalent.</div>
+      <div class="salary-badge">$160K – $250K USD globally &nbsp;|&nbsp; ₹20–45 LPA India roles</div>
+      <br>
+      <a class="apply-btn" href="https://www.google.com/about/careers/applications/jobs/results/?q=AI+governance+policy&location=India" target="_blank">Apply at Google →</a>
+    </div>
+
+    <!-- META -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">03. Meta</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">Director, AI Policy / AI Policy Manager</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Develop AI policy strategy, evaluate policy implications of AI products, engage with global regulators, bridge product teams with policy needs.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Law, public policy, political science, international relations. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 12+ years for Director level; 5–8 years for Manager level. Bachelor's in policy/law.</div>
+      <div class="salary-badge">$228K – $291K USD (Director) &nbsp;|&nbsp; ₹30–55 LPA India</div>
+      <br>
+      <a class="apply-btn" href="https://www.metacareers.com/jobs?q=AI+policy" target="_blank">Apply at Meta →</a>
+    </div>
+
+    <!-- IBM -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">04. IBM</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">Chief AI Ethics Officer / AI Governance Specialist / Responsible AI Consultant</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Build and enforce AI governance frameworks using IBM's AI Fairness 360 toolkit, conduct bias audits, ensure compliance with global AI regulations.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Risk management, compliance, law, consulting, or business. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 3–8 years in GRC, audit or compliance roles. AIGP certification a strong plus.</div>
+      <div class="salary-badge">$120K – $200K USD globally &nbsp;|&nbsp; ₹15–40 LPA India</div>
+      <br>
+      <a class="apply-btn" href="https://www.ibm.com/employment/in/en/?q=AI+governance+ethics" target="_blank">Apply at IBM →</a>
+    </div>
+
+    <!-- SALESFORCE -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">05. Salesforce</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">VP of Ethical AI Practice / Responsible AI Specialist</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Lead ethics review programs, run fairness assessments, translate regulatory requirements into product decisions, manage ethics team.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Ethics, philosophy, law, business or compliance. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 5–8 years for specialist; 10+ years for VP level.</div>
+      <div class="salary-badge">$150K – $280K USD (VP) &nbsp;|&nbsp; ₹20–50 LPA India</div>
+      <br>
+      <a class="apply-btn" href="https://careers.salesforce.com/en/jobs/?q=AI+ethics+responsible&team=&country=India" target="_blank">Apply at Salesforce →</a>
+    </div>
+
+    <!-- JPMORGAN -->
+    <div class="company-card">
+      <div class="company-card-header">
+        <div class="company-name">06. JPMorgan Chase</div>
+        <div class="role-tag">Hiring Now</div>
+      </div>
+      <div class="company-role">Head of AI Ethics & Fairness / AI Risk Manager / Model Governance Analyst</div>
+      <div class="company-detail"><strong>What you'll do:</strong> Identify AI vulnerabilities in financial models, ensure AI compliance with banking regulations (SR 11-7), manage model risk for credit scoring & fraud detection AI.</div>
+      <div class="company-detail"><strong>Background needed:</strong> Finance, risk management, law, audit or compliance. No coding required.</div>
+      <div class="company-detail"><strong>Experience:</strong> 5–10 years in financial risk, audit or model governance.</div>
+      <div class="salary-badge">$140K – $220K USD globally &nbsp;|&nbsp; ₹18–45 LPA India</div>
+      <br>
+      <a class="apply-btn" href="https://careers.jpmorgan.com/global/en/search-jobs?keywords=AI+governance+ethics" target="_blank">Apply at JPMorgan →</a>
+    </div>
+
+  </div><!-- end company-grid -->
+</div>
+
+<!-- SALARY TABLE INDIA -->
+<div class="section-block">
+  <div class="section-label">India Salaries 2026</div>
+  <h2>WHAT THESE ROLES PAY IN INDIA</h2>
+  <p style="font-size:0.88rem;color:var(--mid);margin-bottom:16px;">Based on data from Glassdoor India, 6figr, and IAPP 2025–26 Salary Report. Bangalore, Mumbai & Delhi NCR pay 10–20% more than other cities.</p>
+
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Entry (0–3 yrs)</th>
+        <th>Mid (3–7 yrs)</th>
+        <th>Senior (7+ yrs)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>AI Ethics Officer</td>
+        <td>₹15–20 LPA</td>
+        <td>₹25–35 LPA</td>
+        <td>₹40–60 LPA</td>
+      </tr>
+      <tr>
+        <td>AI Policy Analyst</td>
+        <td>₹8–12 LPA</td>
+        <td>₹15–25 LPA</td>
+        <td>₹30–50 LPA</td>
+      </tr>
+      <tr>
+        <td>AI Risk Manager</td>
+        <td>₹10–18 LPA</td>
+        <td>₹20–35 LPA</td>
+        <td>₹40–60 LPA</td>
+      </tr>
+      <tr>
+        <td>AI Compliance Manager</td>
+        <td>₹8–15 LPA</td>
+        <td>₹18–30 LPA</td>
+        <td>₹35–50 LPA</td>
+      </tr>
+      <tr>
+        <td>AI Governance Lead</td>
+        <td>₹15–20 LPA</td>
+        <td>₹25–40 LPA</td>
+        <td>₹50–70 LPA</td>
+      </tr>
+      <tr>
+        <td>AI Auditor</td>
+        <td>₹8–12 LPA</td>
+        <td>₹15–25 LPA</td>
+        <td>₹30–45 LPA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <p>💡 <strong>Salary booster:</strong> Holding one certification adds a 13% salary premium. Holding multiple certifications adds 27%+ (IAPP 2025–26 Salary Survey). Financial services and healthcare roles pay 20–30% above general tech.</p>
+  </div>
+</div>
+
+<!-- WHAT TO STUDY -->
+<div class="red-section">
+  <div class="section-label">Study Roadmap</div>
+  <h2>WHAT YOU NEED TO LEARN</h2>
+  <p style="margin-bottom:20px;">You don't need to code. But you need to understand AI well enough to govern it. Here's what to focus on:</p>
+
+  <ul class="study-list">
+    <li>
+      <div class="study-num">1</div>
+      <div>
+        <strong>AI Fundamentals (non-technical)</strong>
+        How AI works, types of models, what LLMs are, bias & fairness basics. No maths needed.
+        <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">→ AI For Everyone by Andrew Ng (Free on Coursera)</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num">2</div>
+      <div>
+        <strong>AI Ethics & Fairness Frameworks</strong>
+        Learn NIST AI Risk Management Framework, EU AI Act basics, and OECD AI Principles.
+        <a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank">→ NIST AI RMF (Free)</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num">3</div>
+      <div>
+        <strong>EU AI Act (August 2026 enforcement)</strong>
+        The single biggest driver of hiring right now. Understand high-risk AI categories, obligations, and penalties.
+        <a href="https://artificialintelligenceact.eu/" target="_blank">→ EU AI Act Explorer (Free)</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num">4</div>
+      <div>
+        <strong>Risk Management & Compliance Basics</strong>
+        GRC (Governance, Risk, Compliance) concepts. ISO 42001 AI Management Standard.
+        <a href="https://www.iso.org/standard/81230.html" target="_blank">→ ISO 42001 Overview</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num">5</div>
+      <div>
+        <strong>Build a Portfolio (no code needed)</strong>
+        Write an AI Policy doc for a real/fake company. Conduct a bias audit report on a public AI tool. Document your findings in a PDF or Notion page. This is your proof of work.
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section-block">
+  <div class="section-label">Certifications</div>
+  <h2>CERTIFICATIONS THAT GET YOU HIRED</h2>
+  <p style="font-size:0.88rem;color:var(--mid);margin-bottom:18px;">No experience prerequisites for most of these. Pick one and start.</p>
+
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <div class="cert-card-title">AIGP — AI Governance Professional</div>
+      <div class="cert-card-sub">by IAPP · $649–$799 · No prerequisites</div>
+      <div class="cert-card-tag">⭐ Most Recommended</div>
+      <a href="https://iapp.org/certify/aigp" target="_blank">→ iapp.org/certify/aigp</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-title">Google Generative AI Leader</div>
+      <div class="cert-card-sub">by Google Cloud · Non-technical · For leaders</div>
+      <div class="cert-card-tag">No coding needed</div>
+      <a href="https://cloud.google.com/learn/certification/cloud-digital-leader" target="_blank">→ Google Cloud Certifications</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-title">ISO 42001 Lead Implementer</div>
+      <div class="cert-card-sub">AI Management Systems · High employer demand</div>
+      <div class="cert-card-tag">Governance Focus</div>
+      <a href="https://pecb.com/en/education-and-certification-for-individuals/iso-iec-42001" target="_blank">→ PECB ISO 42001</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-title">Microsoft AI Skills Challenge</div>
+      <div class="cert-card-sub">Free · Self-paced · Recognised by Microsoft</div>
+      <div class="cert-card-tag">Free to start</div>
+      <a href="https://learn.microsoft.com/en-us/ai/" target="_blank">→ Microsoft AI Learning</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-title">GARP Risk & AI Certificate</div>
+      <div class="cert-card-sub">For finance professionals · 80 MCQs · 4 hours</div>
+      <div class="cert-card-tag">Finance Focused</div>
+      <a href="https://www.garp.org/risk-intelligence/ai" target="_blank">→ GARP RAI Certificate</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-title">IBM AI Fundamentals</div>
+      <div class="cert-card-sub">Free on Coursera · Beginner friendly · IBM badge</div>
+      <div class="cert-card-tag">Best for Beginners</div>
+      <a href="https://www.coursera.org/ibm" target="_blank">→ IBM on Coursera</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHERE TO APPLY -->
+<div class="red-section">
+  <div class="section-label">Where to Apply</div>
+  <h2>JOB BOARDS TO BOOKMARK</h2>
+
+  <ul class="study-list">
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">LinkedIn — AI Ethics & Governance</strong>
+        <span style="color:rgba(255,255,255,0.8);font-size:0.85rem;">14,000+ open roles globally. Search "AI Ethics", "AI Governance", "Responsible AI"</span>
+        <a href="https://www.linkedin.com/jobs/ai-ethics-jobs-worldwide" target="_blank" style="color:rgba(255,255,255,0.9);">→ linkedin.com/jobs (search AI Ethics)</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">AI Tech Privacy Job Board</strong>
+        <span style="color:rgba(255,255,255,0.8);font-size:0.85rem;">Dedicated board for AI governance, ethics, and policy roles worldwide</span>
+        <a href="https://www.aitechprivacy.com/ai-jobs" target="_blank" style="color:rgba(255,255,255,0.9);">→ aitechprivacy.com/ai-jobs</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">Microsoft Careers</strong>
+        <a href="https://jobs.careers.microsoft.com/global/en/search?q=responsible+AI" target="_blank" style="color:rgba(255,255,255,0.9);">→ jobs.careers.microsoft.com</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">Google Careers</strong>
+        <a href="https://www.google.com/about/careers/applications/jobs/results/?q=AI+governance" target="_blank" style="color:rgba(255,255,255,0.9);">→ careers.google.com</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">Meta Careers</strong>
+        <a href="https://www.metacareers.com/jobs?q=AI+policy" target="_blank" style="color:rgba(255,255,255,0.9);">→ metacareers.com</a>
+      </div>
+    </li>
+    <li>
+      <div class="study-num" style="background:white;color:var(--red);">→</div>
+      <div>
+        <strong style="color:white;">Indeed India — AI Governance</strong>
+        <a href="https://www.indeed.com/jobs?q=AI+governance+ethics&l=India" target="_blank" style="color:rgba(255,255,255,0.9);">→ indeed.com (search AI governance India)</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- BACKGROUNDS THAT FIT -->
+<div class="section-block">
+  <div class="section-label">Who This Is For</div>
+  <h2>YOUR BACKGROUND IS YOUR ADVANTAGE</h2>
+
+  <div class="company-grid">
+    <div class="company-card" style="border-left:3px solid var(--red);">
+      <div class="company-name" style="font-size:1.1rem;">⚖️ Law & Legal</div>
+      <div class="company-detail" style="margin-top:6px;">Best fit for AI Compliance Manager, AI Policy Analyst, AI Auditor. Your regulatory knowledge is the exact skill companies need for EU AI Act compliance.</div>
+    </div>
+    <div class="company-card" style="border-left:3px solid var(--red);">
+      <div class="company-name" style="font-size:1.1rem;">📊 MBA & Business</div>
+      <div class="company-detail" style="margin-top:6px;">Best fit for AI Governance Lead, Chief AI Officer, Responsible AI Consultant. Stakeholder management + business strategy = high demand.</div>
+    </div>
+    <div class="company-card" style="border-left:3px solid var(--red);">
+      <div class="company-name" style="font-size:1.1rem;">🏦 Finance & Risk</div>
+      <div class="company-detail" style="margin-top:6px;">Best fit for AI Risk Manager, Model Governance Analyst at JPMorgan, HDFC, and banks. Pays 20–30% above general tech.</div>
+    </div>
+    <div class="company-card" style="border-left:3px solid var(--red);">
+      <div class="company-name" style="font-size:1.1rem;">🏛 Public Policy</div>
+      <div class="company-detail" style="margin-top:6px;">Best fit for AI Policy Analyst, Director of AI Policy at Meta/Google. Your government or NGO background is directly transferable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h2>WANT MORE GUIDES LIKE THIS?</h2>
+  <p>Follow <strong>@aiwithunnati</strong> on Instagram for weekly AI career guides, tools, and resources — all made for the Indian audience.</p>
+  <a class="cta-btn" href="https://www.instagram.com/aiwithunnati" target="_blank">Follow @aiwithunnati →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Unnati Tripathi</strong> · <a href="https://www.instagram.com/aiwithunnati" target="_blank" style="color:var(--red);text-decoration:none;">@aiwithunnati</a> · All rights reserved.</p>
+  <p style="margin-top:6px;">This guide is for educational purposes. Salary data sourced from IAPP 2025–26, Glassdoor India, 6figr, and company postings.</p>
+  <p style="margin-top:8px;background:#f0ebe0;padding:10px 14px;border-left:3px solid #C0392B;text-align:left;font-size:0.76rem;color:#666;line-height:1.6;">⚠️ <strong style="color:#444;">Disclaimer:</strong> Job listings are subject to change. Always verify on the company's official careers page before applying. This guide was last updated June 2026.</p>
+</footer>
+
+</body>
+</html>
