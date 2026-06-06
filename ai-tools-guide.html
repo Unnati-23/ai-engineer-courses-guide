@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Only AI Tools List You Need – Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Source+Serif+4:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --red: #C0392B;
+      --red-dark: #A93226;
+      --dark: #1A1A1A;
+      --sage: #7A8C7E;
+      --card-bg: #FDFAF4;
+    }
+
+    body {
+      background: var(--cream);
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--cream);
+      border-bottom: 1px solid #DDD8CC;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    nav .site-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--red);
+      display: block;
+      margin-bottom: 10px;
+    }
+    nav .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    nav .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 400;
+    }
+    nav .nav-links a:hover { color: var(--red); }
+    nav .nav-links a.active { font-weight: 600; }
+
+    /* HERO */
+    .hero {
+      background: var(--red);
+      padding: 56px 24px 48px;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .hero-meta a {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1.5px solid #fff;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 10vw, 64px);
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 17px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.65;
+      max-width: 580px;
+    }
+
+    /* MAIN CONTENT WRAP */
+    .content-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* WHY BOX */
+    .why-box {
+      background: #EBE8E0;
+      border-left: 4px solid var(--sage);
+      padding: 28px 24px;
+      margin: 32px 0;
+    }
+    .why-box .label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 10px;
+    }
+    .why-box p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* SECTION DIVIDER */
+    .section-banner {
+      background: var(--red);
+      padding: 40px 24px 32px;
+      margin: 0 -16px;
+    }
+    .section-banner .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+    .section-banner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 7vw, 44px);
+      color: #fff;
+      letter-spacing: 2px;
+      line-height: 1.05;
+    }
+
+    /* TOOL CARD */
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid #DDD8CC;
+      padding: 28px 24px;
+      margin: 16px 0;
+    }
+    .tool-card .tool-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .tool-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .tool-card .emoji-row {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .tool-card p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #444;
+      margin-bottom: 14px;
+    }
+    .tool-card .use-for {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .tool-card ul {
+      margin: 0 0 16px 0;
+      padding-left: 18px;
+    }
+    .tool-card ul li {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+    .tool-card .cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 22px;
+      margin-top: 4px;
+    }
+    .tool-card .cta-btn:hover { background: var(--red-dark); }
+    .tool-card .free-badge {
+      display: inline-block;
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      margin-left: 10px;
+      vertical-align: middle;
+      border: 1px solid #A5D6A7;
+    }
+    .tool-card .paid-badge {
+      display: inline-block;
+      background: #FFF3E0;
+      color: #E65100;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      margin-left: 10px;
+      vertical-align: middle;
+      border: 1px solid #FFCC80;
+    }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: var(--red);
+      padding: 36px 24px;
+      margin: 0 -16px;
+      text-align: center;
+    }
+    .cta-banner .label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+    .cta-banner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 6vw, 38px);
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      max-width: 500px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+    .cta-banner a {
+      display: inline-block;
+      background: #fff;
+      color: var(--red);
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+    }
+    .cta-banner a:hover { background: var(--cream); }
+
+    /* FOOTER */
+    footer {
+      background: var(--cream);
+      text-align: center;
+      padding: 28px 16px;
+      border-top: 1px solid #DDD8CC;
+    }
+    footer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* SPACERS */
+    .spacer { height: 32px; }
+    .spacer-sm { height: 16px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="site-title">UNNATI TRIPATHI</span>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#" class="active">Free Guides</a>
+      <a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION (red) -->
+  <div style="background:var(--red); padding: 0 16px;">
+    <div class="hero" style="max-width:700px; margin:0 auto; padding: 56px 0 48px;">
+      <div class="hero-meta">
+        A free guide by Unnati Tripathi
+        <a href="https://www.instagram.com/aiwithunnati" target="_blank">↗ Instagram @aiwithunnati</a>
+      </div>
+      <div class="hero-tag">AI Tools 2026</div>
+      <h1>THE ONLY AI TOOLS LIST YOU NEED IN 2026</h1>
+      <p>Stop getting overwhelmed. Here's the exact tool for each job — image generation, video, coding, writing, research, news, notes, presentations, planning, and marketing. No fluff, just links.</p>
+    </div>
+  </div>
+
+  <!-- WHY BOX -->
+  <div class="content-wrap">
+    <div class="why-box">
+      <div class="label">Why This Guide</div>
+      <p>There are thousands of AI tools in 2026 — but you only need one per category. This guide breaks down exactly what to use, what it does, and where to get it. Comment <strong>TOOLS</strong> on the original post and I'll DM you this guide link.</p>
+    </div>
+  </div>
+
+  <!-- TOOLS SECTION BANNER -->
+  <div class="content-wrap">
+    <div class="section-banner">
+      <div class="section-label">The Full List</div>
+      <h2>10 AI TOOLS,<br>10 USE CASES</h2>
+    </div>
+  </div>
+
+  <!-- ========== TOOL CARDS ========== -->
+  <div class="content-wrap">
+    <div class="spacer-sm"></div>
+
+    <!-- 1. IMAGE GENERATION -->
+    <div class="tool-card">
+      <div class="tool-num">01 / IMAGE GENERATION</div>
+      <h3>ChatGPT Images 2.0 <span class="paid-badge">Free + Paid</span></h3>
+      <div class="emoji-row">🎨</div>
+      <p>OpenAI's most advanced image model (gpt-image-2), launched April 21, 2026. It reasons before it renders — meaning accurate text inside images, correct UI layouts, realistic spatial logic, and support for Hindi/Bengali/Japanese text. A huge leap over anything before it.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Social media graphics with correct Hindi/English text</li>
+        <li>Product mockups, UI wireframes, marketing visuals</li>
+        <li>Concept art, illustrations, and photo-realistic scenes</li>
+        <li>Instant mode (free) or Thinking mode (paid, slower but better)</li>
+      </ul>
+      <a class="cta-btn" href="https://chatgpt.com" target="_blank">Try ChatGPT Images →</a>
+    </div>
+
+    <!-- 2. AI VIDEO -->
+    <div class="tool-card">
+      <div class="tool-num">02 / AI VIDEO GENERATION</div>
+      <h3>Google Veo 3 <span class="free-badge">Free tier</span></h3>
+      <div class="emoji-row">🎬</div>
+      <p>Google DeepMind's state-of-the-art video generation model. Veo 3 (and 3.1) generates high-fidelity 8-second to 2-minute clips with native audio, realistic physics, and cinematic style control. Now available free via Google Vids and Gemini — no extra subscription needed for basic use.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Short-form content for Reels, Shorts, TikTok</li>
+        <li>B-roll, product videos, explainer animations</li>
+        <li>Portrait (9:16) and landscape (16:9) output</li>
+        <li>Image-to-video: upload a photo and animate it</li>
+      </ul>
+      <a class="cta-btn" href="https://gemini.google.com" target="_blank">Try Veo via Gemini →</a>
+    </div>
+
+    <!-- 3. CODING -->
+    <div class="tool-card">
+      <div class="tool-num">03 / CODING</div>
+      <h3>Claude (Anthropic) <span class="free-badge">Free + Pro</span></h3>
+      <div class="emoji-row">💻</div>
+      <p>The best AI for coding in 2026 — hands down. Claude Code (the terminal agent) lets you build entire apps just by describing them. It reads your project files, writes code, runs terminal commands, and fixes bugs autonomously. Developers worldwide use it to 10× their output.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Building full-stack apps, APIs, automation scripts</li>
+        <li>Debugging, refactoring, code review</li>
+        <li>Claude Code (CLI) for agentic coding in your terminal</li>
+        <li>Understanding complex codebases and documentation</li>
+      </ul>
+      <a class="cta-btn" href="https://claude.ai" target="_blank">Try Claude →</a>
+    </div>
+
+    <!-- 4. WRITING -->
+    <div class="tool-card">
+      <div class="tool-num">04 / WRITING</div>
+      <h3>ChatGPT Custom GPTs <span class="paid-badge">ChatGPT Plus</span></h3>
+      <div class="emoji-row">✍️</div>
+      <p>ChatGPT's Custom GPTs let you train the model on your writing style — paste in your past posts, emails, or scripts, and it learns your voice. For content creators, this is huge: you get a writing assistant that sounds like <em>you</em>, not generic AI.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Instagram captions and reel scripts in your voice</li>
+        <li>Long-form blog posts, newsletters, LinkedIn content</li>
+        <li>Email templates that match your brand tone</li>
+        <li>Build once → reuse across all future content</li>
+      </ul>
+      <a class="cta-btn" href="https://chatgpt.com" target="_blank">Try ChatGPT →</a>
+    </div>
+
+    <!-- 5. RESEARCH -->
+    <div class="tool-card">
+      <div class="tool-num">05 / RESEARCH</div>
+      <h3>Perplexity AI <span class="free-badge">Free + Pro</span></h3>
+      <div class="emoji-row">🔍</div>
+      <p>Perplexity is the best AI-powered answer engine in 2026. Unlike ChatGPT, every answer comes with citations from real sources — so you can verify what it says. It now supports multi-step deep research reports, making it ideal for fact-heavy content creation and business research.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Research with cited, verifiable sources</li>
+        <li>Deep Research mode — multi-step reports on any topic</li>
+        <li>Competitor analysis, market research, trend deep-dives</li>
+        <li>Fact-checking claims before posting</li>
+      </ul>
+      <a class="cta-btn" href="https://perplexity.ai" target="_blank">Try Perplexity →</a>
+    </div>
+
+    <!-- 6. REAL-TIME NEWS -->
+    <div class="tool-card">
+      <div class="tool-num">06 / REAL-TIME NEWS & TRENDS</div>
+      <h3>Grok (xAI) <span class="free-badge">Free on X</span></h3>
+      <div class="emoji-row">📡</div>
+      <p>Grok is built by Elon Musk's xAI and is deeply integrated with X (formerly Twitter). It has real-time access to what's trending on X — so if a topic is blowing up right now, Grok knows about it. It's the fastest way to catch AI news, viral topics, and breaking stories.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Real-time trending topics and viral AI news</li>
+        <li>What people are saying about a product or event right now</li>
+        <li>Finding content angles based on current trends</li>
+        <li>Available free on X.com and the Grok app</li>
+      </ul>
+      <a class="cta-btn" href="https://grok.com" target="_blank">Try Grok →</a>
+    </div>
+
+    <!-- 7. NOTES & PDF -->
+    <div class="tool-card">
+      <div class="tool-num">07 / NOTES & PDFs</div>
+      <h3>NotebookLM (Google) <span class="free-badge">Free</span></h3>
+      <div class="emoji-row">📓</div>
+      <p>Google's NotebookLM lets you upload PDFs, docs, YouTube videos, and audio files — then chat with all of it at once. Its "Audio Overview" feature turns dense documents into a podcast-style conversation. Perfect for studying, summarising research papers, or understanding long reports fast.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Summarising and querying research PDFs and reports</li>
+        <li>Audio Overview — turn any document into a podcast</li>
+        <li>Organising notes from multiple sources in one place</li>
+        <li>Understanding lecture slides, books, and YouTube videos</li>
+      </ul>
+      <a class="cta-btn" href="https://notebooklm.google.com" target="_blank">Try NotebookLM →</a>
+    </div>
+
+    <!-- 8. PRESENTATIONS -->
+    <div class="tool-card">
+      <div class="tool-num">08 / PRESENTATIONS</div>
+      <h3>Gamma <span class="free-badge">Free + Paid</span></h3>
+      <div class="emoji-row">📊</div>
+      <p>Gamma turns a prompt or document into a beautifully designed presentation in under 60 seconds. It handles layout, design, and content automatically — no Canva or PowerPoint skills needed. Ideal for pitch decks, client proposals, and explainer slides.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Pitch decks and investor presentations</li>
+        <li>Client reports and proposals</li>
+        <li>Educational explainers and course content</li>
+        <li>Paste your notes → Gamma designs the whole thing</li>
+      </ul>
+      <a class="cta-btn" href="https://gamma.app" target="_blank">Try Gamma →</a>
+    </div>
+
+    <!-- 9. PLANNING -->
+    <div class="tool-card">
+      <div class="tool-num">09 / PLANNING</div>
+      <h3>Notion AI <span class="free-badge">Free + Paid</span></h3>
+      <div class="emoji-row">🗓️</div>
+      <p>Notion is the best all-in-one workspace for planning in 2026 — and with Notion AI built in, you can generate project plans, content calendars, SOPs, and task lists from a single prompt. It connects your docs, databases, and tasks so everything lives in one place.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Content calendars, weekly planning, goal tracking</li>
+        <li>Project management with AI-generated task breakdowns</li>
+        <li>SOPs, wikis, and team documentation</li>
+        <li>AI auto-fills databases, summarises pages, drafts content</li>
+      </ul>
+      <a class="cta-btn" href="https://notion.so" target="_blank">Try Notion →</a>
+    </div>
+
+    <!-- 10. MARKETING / SMALL BUSINESS -->
+    <div class="tool-card">
+      <div class="tool-num">10 / SMALL BUSINESS & MARKETING</div>
+      <h3>Canva AI <span class="free-badge">Free + Pro</span></h3>
+      <div class="emoji-row">🎯</div>
+      <p>Canva is the go-to design platform for small business owners and creators in 2026. With Magic Studio (AI image generation, background removal, video generation, and brand kit), you can create professional-grade marketing assets without any design experience.</p>
+      <span class="use-for">Use it for:</span>
+      <ul>
+        <li>Instagram posts, Stories, Reels thumbnails</li>
+        <li>Business cards, flyers, brochures, presentations</li>
+        <li>Social media content calendar + scheduling</li>
+        <li>Brand kits — consistent colours, fonts, logos across everything</li>
+      </ul>
+      <a class="cta-btn" href="https://canva.com" target="_blank">Try Canva →</a>
+    </div>
+
+    <div class="spacer"></div>
+  </div>
+
+  <!-- QUICK REFERENCE BANNER -->
+  <div class="content-wrap">
+    <div class="section-banner">
+      <div class="section-label">Quick Reference</div>
+      <h2>THE CHEAT SHEET</h2>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="why-box" style="padding: 28px 20px;">
+      <div class="label">Save This</div>
+      <p style="font-family:'Oswald',sans-serif; font-size:15px; line-height:2; color:#222;">
+        🎨 <strong>Image Generation</strong> → <a href="https://chatgpt.com" target="_blank" style="color:var(--red);">ChatGPT Images 2.0</a><br>
+        🎬 <strong>AI Video</strong> → <a href="https://gemini.google.com" target="_blank" style="color:var(--red);">Google Veo 3 via Gemini</a><br>
+        💻 <strong>Coding</strong> → <a href="https://claude.ai" target="_blank" style="color:var(--red);">Claude (Anthropic)</a><br>
+        ✍️ <strong>Writing</strong> → <a href="https://chatgpt.com" target="_blank" style="color:var(--red);">ChatGPT Custom GPTs</a><br>
+        🔍 <strong>Research</strong> → <a href="https://perplexity.ai" target="_blank" style="color:var(--red);">Perplexity AI</a><br>
+        📡 <strong>Real-Time News</strong> → <a href="https://grok.com" target="_blank" style="color:var(--red);">Grok by xAI</a><br>
+        📓 <strong>Notes & PDFs</strong> → <a href="https://notebooklm.google.com" target="_blank" style="color:var(--red);">NotebookLM (Google)</a><br>
+        📊 <strong>Presentations</strong> → <a href="https://gamma.app" target="_blank" style="color:var(--red);">Gamma</a><br>
+        🗓️ <strong>Planning</strong> → <a href="https://notion.so" target="_blank" style="color:var(--red);">Notion AI</a><br>
+        🎯 <strong>Marketing</strong> → <a href="https://canva.com" target="_blank" style="color:var(--red);">Canva AI</a>
+      </p>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- FOLLOW CTA BANNER -->
+  <div class="content-wrap">
+    <div class="cta-banner">
+      <div class="label">Want More Like This?</div>
+      <h2>FOLLOW @AIWITHUNNATI</h2>
+      <p>I post weekly guides on AI tools, Claude Code tips, and AI career roadmaps — all made for Indian creators and professionals.</p>
+      <a href="https://www.instagram.com/aiwithunnati" target="_blank">Follow on Instagram →</a>
+    </div>
+  </div>
+
+  <div style="height:40px; background:var(--cream);"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Unnati Tripathi · <a href="https://www.instagram.com/aiwithunnati" target="_blank" style="color:var(--red); text-decoration:none;">@aiwithunnati</a> · All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
