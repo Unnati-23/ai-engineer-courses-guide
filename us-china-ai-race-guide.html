@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US vs China AI Race 2026 — AI with Unnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF6B9D;
+    --peach: #FFB347;
+    --deep-pink: #E91E8C;
+    --cream: #FFF8F2;
+    --dark: #1A1A2E;
+    --card-bg: #ffffff;
+    --text: #2D2D2D;
+    --muted: #7A7A8C;
+    --gradient: linear-gradient(135deg, #FF6B9D 0%, #FFB347 100%);
+    --gradient-soft: linear-gradient(135deg, #fff0f6 0%, #fff8ee 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: white;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(255,107,157,0.1);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  /* HERO */
+  .hero {
+    background: var(--gradient);
+    padding: 60px 24px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 250px; height: 250px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    max-width: 480px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-meta span {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .hero-meta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: background 0.2s;
+  }
+
+  .hero-meta a:hover { background: rgba(255,255,255,0.3); }
+
+  /* SOURCE BOX */
+  .source-box {
+    background: white;
+    border-left: 4px solid var(--pink);
+    padding: 18px 20px;
+    margin: 28px 24px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 16px rgba(255,107,157,0.08);
+  }
+
+  .source-box p {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .source-box a {
+    color: var(--pink);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .source-box a:hover { text-decoration: underline; }
+
+  /* STAT HERO */
+  .stat-hero {
+    background: var(--gradient);
+    margin: 0 24px 28px;
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-hero::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .stat-hero .big-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-hero .stat-label {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    padding: 0 24px;
+    margin-bottom: 16px;
+    margin-top: 36px;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    margin: 0 24px 16px;
+    border-radius: 14px;
+    padding: 22px 20px;
+    box-shadow: 0 2px 20px rgba(255,107,157,0.07);
+    border: 1px solid rgba(255,107,157,0.08);
+  }
+
+  .card-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* COMPARISON TABLE */
+  .comparison-section {
+    background: var(--gradient);
+    margin: 28px 0;
+    padding: 36px 24px;
+  }
+
+  .comparison-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .compare-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 18px 14px;
+  }
+
+  .compare-card .country-flag {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .compare-card .country-name {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .compare-stat {
+    margin-bottom: 10px;
+  }
+
+  .compare-stat .label {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.65);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .compare-stat .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  /* MODEL CARDS */
+  .model-section {
+    padding: 0 24px;
+  }
+
+  .model-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 20px rgba(255,107,157,0.07);
+    border: 1px solid rgba(255,107,157,0.08);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .model-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255,107,157,0.15);
+  }
+
+  .model-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .model-info { flex: 1; }
+
+  .model-use {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .model-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .model-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .model-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 6px;
+    transition: opacity 0.2s;
+  }
+
+  .model-link:hover { opacity: 0.85; }
+
+  .model-badge {
+    display: inline-block;
+    background: var(--gradient-soft);
+    border: 1px solid rgba(255,107,157,0.2);
+    color: var(--pink);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* STEEL ANALOGY */
+  .analogy-section {
+    background: var(--dark);
+    margin: 28px 0;
+    padding: 36px 24px;
+  }
+
+  .analogy-section .section-tag {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .analogy-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .analogy-section p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .analogy-timeline {
+    margin-top: 24px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .timeline-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .timeline-content h4 {
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .timeline-content p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0;
+  }
+
+  /* KEY STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 0 24px 16px;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(255,107,157,0.07);
+    border: 1px solid rgba(255,107,157,0.08);
+  }
+
+  .stat-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: var(--gradient-soft);
+    border: 1px solid rgba(255,107,157,0.15);
+    border-left: 4px solid var(--pink);
+    margin: 0 24px 16px;
+    border-radius: 0 12px 12px 0;
+    padding: 18px 20px;
+  }
+
+  .highlight-box p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 500;
+  }
+
+  .highlight-box strong {
+    color: var(--deep-pink);
+  }
+
+  /* BOTTOM CTA */
+  .bottom-cta {
+    background: var(--gradient);
+    margin: 28px 0 0;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .bottom-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .bottom-cta p {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--deep-pink);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+  }
+
+  footer a {
+    color: var(--pink);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,107,157,0.2), transparent);
+    margin: 8px 24px;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .checklist li::before {
+    content: '✦';
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 0.75rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 2rem; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">AI with Unnati</span>
+  <ul class="nav-links">
+    <li><a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a></li>
+    <li><a href="https://unnati-23.github.io/ai-engineer-courses-guide/" target="_blank">Guides</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">🌏 AI Race 2026</span>
+  <h1>The US vs China AI Race — And Why It's Closer Than You Think</h1>
+  <p>The US spent 23x more on AI in 2025. China still nearly closed the gap. Here's exactly what's happening — and which Chinese models to use right now.</p>
+  <div class="hero-meta">
+    <span>A free guide by Unnati Tripathi</span>
+    <a href="https://www.instagram.com/aiwithunnati" target="_blank">↗ @aiwithunnati</a>
+  </div>
+</div>
+
+<!-- SOURCE -->
+<div class="source-box">
+  <p><strong>Source:</strong> <a href="https://thenextweb.com/news/stanford-ai-index-2026-china-us-performance-gap" target="_blank">Stanford AI Index 2026 Report — The Next Web →</a><br>
+  <span style="font-size:0.8rem;color:var(--muted);font-weight:400;">Published April 19, 2026 · All data verified as of June 2026</span></p>
+</div>
+
+<!-- THE BIG STAT -->
+<div class="stat-hero">
+  <div class="big-number">2.7%</div>
+  <div class="stat-label">Performance gap between the best US & Chinese AI models<br><span style="font-size:0.8rem;opacity:0.8">Down from 31.6% in May 2023 — despite US spending 23x more</span></div>
+</div>
+
+<!-- KEY NUMBERS -->
+<div class="section-header">
+  <span class="section-tag">The Numbers</span>
+  <h2>What $285.9 Billion vs $12.4 Billion Looks Like</h2>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="number">$285.9B</div>
+    <div class="label">🇺🇸 US Private AI Investment (2025)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">$12.4B</div>
+    <div class="label">🇨🇳 China Private AI Investment (2025)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">23x</div>
+    <div class="label">More the US spent vs China</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">2.7%</div>
+    <div class="label">Remaining performance gap between top models</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <p>California alone invested <strong>$218 billion</strong> — more than 75% of the entire US total. Yet China's best model sits just <strong>39 Arena points</strong> behind Claude Opus 4.6 (1,503 vs 1,464). That gap is shrinking every month.</p>
+</div>
+
+<!-- COMPARISON -->
+<div class="comparison-section">
+  <h2>Where Each Country Leads</h2>
+  <div class="comparison-grid">
+    <div class="compare-card">
+      <span class="country-flag">🇺🇸</span>
+      <span class="country-name">United States</span>
+      <div class="compare-stat">
+        <span class="label">Private Investment</span>
+        <span class="value">$285.9B</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Notable AI Models</span>
+        <span class="value">50 models</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Data Centres</span>
+        <span class="value">5,427</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Top Model Score</span>
+        <span class="value">1,503 Arena</span>
+      </div>
+    </div>
+    <div class="compare-card">
+      <span class="country-flag">🇨🇳</span>
+      <span class="country-name">China</span>
+      <div class="compare-stat">
+        <span class="label">Private Investment</span>
+        <span class="value">$12.4B</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Notable AI Models</span>
+        <span class="value">30 models</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Global AI Patents</span>
+        <span class="value">69.7%</span>
+      </div>
+      <div class="compare-stat">
+        <span class="label">Top Model Score</span>
+        <span class="value">1,464 Arena</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEEL ANALOGY -->
+<div class="analogy-section">
+  <span class="section-tag">The Playbook</span>
+  <h2>China Did This Before. In 2000, It Was Steel.</h2>
+  <p>China flooded the steel market with product priced 50% below competitors. America's biggest mills shut down. Obama imposed 236% anti-dumping duties. Too late — China was already producing half the world's steel. The US? Just 7%.</p>
+  <p>Now it's running the exact same playbook with AI. Everything the US spent billions building, China either gave away for free — or priced 90% cheaper.</p>
+
+  <div class="analogy-timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">1</div>
+      <div class="timeline-content">
+        <h4>Flood with Open Source</h4>
+        <p>DeepSeek, Qwen, GLM — released freely while US labs charge premium prices.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">2</div>
+      <div class="timeline-content">
+        <h4>Price 90% Below Competitors</h4>
+        <p>Chinese API pricing undercuts OpenAI and Anthropic by 80–90% on equivalent tasks.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">3</div>
+      <div class="timeline-content">
+        <h4>Scale Adoption, Not Just Models</h4>
+        <p>China installed 295,000 industrial robots last year — nearly 9x the US (34,200). AI adoption in manufacturing is already dominant.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">4</div>
+      <div class="timeline-content">
+        <h4>Energy Advantage</h4>
+        <p>China's electricity reserve margin has never dipped below 80% — twice necessary capacity. The US power grid is identified as a key AI bottleneck in the Stanford report.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TALENT CRISIS -->
+<div class="section-header">
+  <span class="section-tag">The Silent Crisis</span>
+  <h2>AI Talent Migration to the US Has Dropped 89%</h2>
+</div>
+
+<div class="card">
+  <p>Since 2017, the number of AI researchers moving to the US has dropped 89% — with 80% of that decline happening in just the last year. The Stanford report calls it "precipitous." Switzerland now ranks #1 globally for AI researchers per capita.</p>
+</div>
+
+<div class="highlight-box">
+  <p><strong>What this means:</strong> The US spending advantage buys hardware and infrastructure — but not the intellectual capital that turns compute into capability. DeepSeek proved in January 2025 that a Chinese lab could match Silicon Valley's best with a fraction of the resources. The conditions producing that are strengthening, not weakening.</p>
+</div>
+
+<!-- DIVIDER -->
+<div class="divider"></div>
+
+<!-- MODEL GUIDE -->
+<div class="section-header" style="margin-top:32px;">
+  <span class="section-tag">Your Practical Guide</span>
+  <h2>Which Chinese AI Model to Use for Which Task</h2>
+</div>
+
+<p style="padding:0 24px;font-size:0.88rem;color:var(--muted);margin-bottom:20px;">In 2026, one model is not enough. Here's exactly which model to reach for — and why.</p>
+
+<div class="model-section">
+
+  <div class="model-card">
+    <div class="model-icon">🎨</div>
+    <div class="model-info">
+      <span class="model-use">Frontend & Design</span>
+      <div class="model-name">Kimi K2 <span class="model-badge">8x cheaper</span></div>
+      <p class="model-desc">Moonshot AI's flagship model. Exceptional at frontend code, UI generation, and design tasks. Matches GPT-4o on benchmarks at a fraction of the cost. Best for: React components, CSS, landing pages, design-to-code.</p>
+      <a class="model-link" href="https://kimi.ai" target="_blank">Try Kimi →</a>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-icon">⚙️</div>
+    <div class="model-info">
+      <span class="model-use">Backend, APIs & Databases</span>
+      <div class="model-name">GLM-4 by Zhipu AI <span class="model-badge">Autonomous</span></div>
+      <p class="model-desc">Zhipu AI's most capable model for complex backend tasks. Strong at long-context reasoning, API design, and database queries. Supports tool use and autonomous multi-step coding workflows.</p>
+      <a class="model-link" href="https://open.bigmodel.cn" target="_blank">Try GLM-4 →</a>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-icon">🔍</div>
+    <div class="model-info">
+      <span class="model-use">Code Review</span>
+      <div class="model-name">MiniMax Text-01</div>
+      <p class="model-desc">MiniMax's frontier model with a 1M token context window. Outstanding for code review, finding bugs across large codebases, and understanding entire repos in a single pass. One of the best long-context models available.</p>
+      <a class="model-link" href="https://www.minimaxi.com" target="_blank">Try MiniMax →</a>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-icon">🧠</div>
+    <div class="model-info">
+      <span class="model-use">All-Round Reasoning</span>
+      <div class="model-name">DeepSeek V3 <span class="model-badge">Free</span></div>
+      <p class="model-desc">The model that shocked Silicon Valley. DeepSeek V3 is free, open-source, and rivals GPT-4o on most benchmarks. Reasoning, coding, writing, math — exceptional at everything. The best free AI model available anywhere.</p>
+      <a class="model-link" href="https://chat.deepseek.com" target="_blank">Try DeepSeek →</a>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-icon">💡</div>
+    <div class="model-info">
+      <span class="model-use">Deep Reasoning & Research</span>
+      <div class="model-name">DeepSeek R1 <span class="model-badge">Open Source</span></div>
+      <p class="model-desc">DeepSeek's reasoning-focused model. Briefly matched the top US model in February 2025. Best for: step-by-step problem solving, research, complex analysis, and math. The open-source reasoning model that changed everything.</p>
+      <a class="model-link" href="https://chat.deepseek.com" target="_blank">Try DeepSeek R1 →</a>
+    </div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-icon">🌐</div>
+    <div class="model-info">
+      <span class="model-use">Multimodal & Search</span>
+      <div class="model-name">Qwen-Max by Alibaba</div>
+      <p class="model-desc">Alibaba's frontier model — strong at image understanding, multilingual tasks, and web-grounded answers. Part of the Qwen3 family. Best for: visual tasks, translation, and Chinese-language content.</p>
+      <a class="model-link" href="https://tongyi.aliyun.com" target="_blank">Try Qwen →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- KEY TAKEAWAYS -->
+<div class="section-header" style="margin-top:32px;">
+  <span class="section-tag">What This Means For You</span>
+  <h2>The Real Takeaway from the Stanford Report</h2>
+</div>
+
+<div class="card">
+  <span class="card-tag">Bottom Line</span>
+  <ul class="checklist">
+    <li>The US leads on investment and top model performance — but by less than 3%.</li>
+    <li>China leads on patents (69.7% of global filings), publications, robotics, and energy infrastructure.</li>
+    <li>The performance gap has collapsed from 31.6% to 2.7% in 3 years — while the spending gap grew to 23x.</li>
+    <li>AI talent migration to the US dropped 89% — the US advantage is hardware, not people.</li>
+    <li>Chinese models are free or 90% cheaper — and nearly as good. That changes everything for builders.</li>
+    <li>The best strategy in 2026: use the right model for the right job. Don't be loyal to one ecosystem.</li>
+  </ul>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Follow for AI Content Nobody Else Is Making</h2>
+  <p>I break down AI models, tools, and career strategies for the Indian audience — backed by real data, not hype.</p>
+  <a class="cta-btn" href="https://www.instagram.com/aiwithunnati" target="_blank">↗ Follow @aiwithunnati</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with ♥ by <a href="https://www.instagram.com/aiwithunnati" target="_blank">Unnati Tripathi</a> · @aiwithunnati</p>
+  <p style="margin-top:8px;">Data sourced from <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">Stanford AI Index 2026</a> · <a href="https://thenextweb.com/news/stanford-ai-index-2026-china-us-performance-gap" target="_blank">The Next Web</a></p>
+  <p style="margin-top:8px;">© 2026 AI with Unnati. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
