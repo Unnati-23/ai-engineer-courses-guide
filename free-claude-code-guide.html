@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Claude Code Setup Guide — Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C8232C;
+      --red-dark: #9E1A21;
+      --cream: #F5F0E8;
+      --cream-dark: #EDE7D9;
+      --black: #1A1A1A;
+      --white: #FFFFFF;
+      --code-bg: #1A1A1A;
+      --code-text: #F5F0E8;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--cream);
+      border-bottom: 2px solid var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      background: var(--red);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      border: 2px solid var(--white);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta a {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s;
+    }
+
+    .hero-meta a:hover { background: var(--red-dark); }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--cream-dark);
+      border-left: 5px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem auto;
+      max-width: 760px;
+    }
+
+    .callout-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+    }
+
+    .callout a {
+      color: var(--red);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid #D9D2C4;
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 0.03em;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 1rem; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--red);
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+
+    .step-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--black);
+    }
+
+    .step-content p {
+      font-size: 0.92rem;
+      color: #444;
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+
+    /* CODE BLOCKS */
+    .code-block {
+      background: var(--code-bg);
+      color: var(--code-text);
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.82rem;
+      padding: 1rem 1.25rem;
+      border-radius: 2px;
+      overflow-x: auto;
+      position: relative;
+      margin: 0.5rem 0;
+    }
+
+    .code-block code { display: block; white-space: pre; }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-btn:hover { background: var(--red-dark); }
+
+    /* WARNING BOX */
+    .warning {
+      background: #FFF8E1;
+      border-left: 4px solid #F5A623;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .warning strong { color: #B8750A; }
+
+    /* NOTE BOX */
+    .note {
+      background: var(--cream-dark);
+      border-left: 4px solid var(--black);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* OS TABS */
+    .os-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .os-tab {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      font-family: 'Inter', sans-serif;
+      color: #888;
+      transition: all 0.15s;
+    }
+
+    .os-tab.active {
+      color: var(--black);
+      border-bottom-color: var(--red);
+    }
+
+    .os-content { display: none; }
+    .os-content.active { display: block; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: var(--red);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--white);
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.88);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    /* FOOTER */
+    footer {
+      background: var(--cream);
+      border-top: 2px solid var(--black);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: #777;
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* HONEST SECTION */
+    .honest-section {
+      background: var(--black);
+      padding: 3rem 2rem;
+    }
+
+    .honest-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .honest-section .section-eyebrow { color: #F5A623; }
+
+    .honest-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .honest-section p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .honest-section strong { color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 0.75rem 1rem; }
+      .nav-links { gap: 1rem; }
+      .section { padding: 2rem 1.25rem; }
+      .step { grid-template-columns: 36px 1fr; gap: 0.75rem; }
+      .os-tab { padding: 0.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">AI WITH UNNATI</a>
+  <ul class="nav-links">
+    <li><a href="#mac">Mac Guide</a></li>
+    <li><a href="#windows">Windows Guide</a></li>
+    <li><a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Free Guide · Claude Code</div>
+  <h1>Run Claude Code For Completely Free</h1>
+  <p>No $20/month subscription. No paid plan. Set it up in under 2 minutes on Mac or Windows using a free GitHub repo and a free API key.</p>
+  <div class="hero-meta">
+    <a href="https://github.com/Alishahryar1/free-claude-code" target="_blank">↗ GitHub Repo</a>
+    <a href="https://www.instagram.com/aiwithunnati" target="_blank">↗ @aiwithunnati</a>
+  </div>
+</section>
+
+<!-- WHAT IS THIS -->
+<div class="section">
+  <div class="section-eyebrow">What This Is</div>
+  <h2>Free Claude Code — What You're Actually Getting</h2>
+
+  <div class="callout">
+    <div class="callout-label">Honest Disclaimer</div>
+    <p>This gives you the <strong>Claude Code interface and tooling</strong> running for free. The underlying AI model is a <strong>free third-party model</strong> (via OpenRouter — e.g. DeepSeek, Qwen) not the real Claude. It's perfect for coding tasks. It is <strong>not</strong> the same Claude you chat with on claude.ai.</p>
+  </div>
+
+  <p style="font-size:0.95rem;color:#444;line-height:1.7;">The <a href="https://github.com/Alishahryar1/free-claude-code" target="_blank" style="color:var(--red);font-weight:700;text-decoration:none;border-bottom:1px solid var(--red);">free-claude-code</a> repo by Alishahryar1 works as a local proxy server. It intercepts Claude Code's API calls and reroutes them to a free model of your choice. You get the full Claude Code experience — terminal interface, file editing, code execution — powered by a free model.</p>
+</div>
+
+<!-- OS TABS SECTION -->
+<div class="section" id="mac">
+  <div class="section-eyebrow">Step-by-Step Setup</div>
+  <h2>Install Guide</h2>
+
+  <div class="os-tabs">
+    <button class="os-tab active" onclick="switchTab('mac-tab', this)">🍎 Mac</button>
+    <button class="os-tab" onclick="switchTab('windows-tab', this)">🪟 Windows</button>
+  </div>
+
+  <!-- MAC -->
+  <div class="os-content active" id="mac-tab">
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Open Terminal</h3>
+          <p>Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, hit Enter.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Run the Install Command</h3>
+          <p>Paste this in your terminal and press Enter:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>curl -fsSL "https://github.com/Alishahryar1/free-claude-code/blob/main/scripts/install.sh?raw=1" | bash</code>
+          </div>
+          <p>Wait for it to finish. You'll see a list of packages installing — this is normal.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Fix the PATH (Important — Don't Skip)</h3>
+          <p>After install, the commands won't work yet because your terminal doesn't know where they are. Run this fix:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc</code>
+          </div>
+          <div class="warning">
+            <strong>⚠ If you skip this step</strong>, you'll get <code>zsh: command not found: fcc-server</code> every time you try to run it.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Start the Proxy Server</h3>
+          <p>Run this command — keep this terminal tab open the whole time you're using Claude Code:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>fcc-server</code>
+          </div>
+          <p>Once it starts, open your browser and go to:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>http://127.0.0.1:8082/admin</code>
+          </div>
+          <div class="note">If that doesn't work, try <strong>http://localhost:8082/admin</strong></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Get Your Free OpenRouter API Key</h3>
+          <p>Go to <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--red);font-weight:700;">openrouter.ai/keys</a> — sign up free with Google, click <strong>Create Key</strong>, copy it.</p>
+          <p>Back in the admin panel, scroll down to <strong>OpenRouter API Key</strong>, paste your key, click <strong>Validate</strong> then <strong>Apply</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Select a Free Model</h3>
+          <p>In the admin panel, click <strong>Model Config</strong> in the left sidebar. In the <strong>Default Model</strong> field, paste:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>open_router/deepseek/deepseek-r1-0528:free</code>
+          </div>
+          <p>Click <strong>Validate</strong> then <strong>Apply</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h3>Launch Claude Code</h3>
+          <p>Open a <strong>new terminal tab</strong> (Cmd+T) — don't close the fcc-server tab. Then run:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>fcc-claude</code>
+          </div>
+          <p>Select <strong>"Yes, I trust this folder"</strong> and press Enter. Claude Code is now live. 🎉</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WINDOWS -->
+  <div class="os-content" id="windows-tab" id="windows">
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Open PowerShell</h3>
+          <p>Press <strong>Win + S</strong>, type <strong>PowerShell</strong>, right-click and select <strong>Run as Administrator</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Run the Install Command</h3>
+          <p>Paste this in PowerShell and press Enter:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>irm "https://github.com/Alishahryar1/free-claude-code/blob/main/scripts/install.ps1?raw=1" | iex</code>
+          </div>
+          <p>If you get a security error, first run this to allow scripts, then retry the command above:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Start the Proxy Server</h3>
+          <p>Once installation is complete, run:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>fcc-server</code>
+          </div>
+          <p>Then open your browser and go to:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>http://127.0.0.1:8082/admin</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Get Your Free OpenRouter API Key</h3>
+          <p>Go to <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--red);font-weight:700;">openrouter.ai/keys</a> — sign up free with Google, create a key, copy it.</p>
+          <p>In the admin panel, scroll to <strong>OpenRouter API Key</strong>, paste it, click <strong>Validate</strong> then <strong>Apply</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Select a Free Model</h3>
+          <p>Click <strong>Model Config</strong> in the sidebar. In Default Model, paste:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>open_router/deepseek/deepseek-r1-0528:free</code>
+          </div>
+          <p>Click <strong>Validate</strong> then <strong>Apply</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Launch Claude Code</h3>
+          <p>Open a <strong>new PowerShell window</strong> — keep fcc-server running in the first one. Then run:</p>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <code>fcc-claude</code>
+          </div>
+          <p>Select <strong>"Yes, I trust this folder"</strong>. Claude Code is now running free. 🎉</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HONEST SECTION -->
+<div class="honest-section">
+  <div class="honest-inner">
+    <div class="section-eyebrow">Be Honest With Yourself</div>
+    <h2>What You're Actually Getting</h2>
+    <p><strong>The Claude Code interface</strong> — yes, completely free. The terminal UI, file editing, code execution, all of it.</p>
+    <p><strong>Actual Claude (Anthropic's model)</strong> — no. The AI underneath is a free third-party model like DeepSeek or Qwen via OpenRouter. It does the job for most coding tasks.</p>
+    <p>This is <strong>not</strong> the same Claude you chat with on claude.ai. That requires an Anthropic subscription. This is the <strong>coding tool shell</strong> with a free model powering it.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready To Set It Up?</h2>
+  <p>The full repo is on GitHub. Star it, follow the guide above, and you're running Claude Code for free in under 2 minutes.</p>
+  <a class="btn-primary" href="https://github.com/Alishahryar1/free-claude-code" target="_blank">↗ Open GitHub Repo</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Guide by <strong>Unnati Tripathi</strong> · <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> · © 2026. All rights reserved.</p>
+</footer>
+
+<script>
+  function switchTab(tabId, btn) {
+    document.querySelectorAll('.os-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function copyCode(btn) {
+    const code = btn.nextElementSibling.textContent.trim();
+    navigator.clipboard.writeText(code).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
