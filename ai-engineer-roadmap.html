@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Levels to Become an AI Engineer — @aiwithunnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:    #C8211A;
+    --red2:   #A81A14;
+    --cream:  #F5F0E8;
+    --dark:   #1A1A1A;
+    --mid:    #444;
+    --muted:  #777;
+    --border: #DDD5C8;
+    --white:  #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    text-align: center;
+  }
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .nav-links a.active { font-weight: 800; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--red);
+    padding: 60px 24px 52px;
+  }
+  .hero-inner { max-width: 700px; margin: auto; }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(48px, 10vw, 88px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 20px;
+  }
+  .hero-body {
+    font-size: 17px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    font-weight: 400;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .hero-source {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-left: 4px solid rgba(255,255,255,0.5);
+    padding: 16px 20px;
+    max-width: 560px;
+  }
+  .hero-source strong { color: var(--white); font-size: 13px; }
+  .hero-source p { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 52px 0; }
+  section + section { border-top: 2px solid var(--border); }
+
+  /* ── WHY BOX ── */
+  .why-box {
+    border-left: 4px solid var(--red);
+    background: rgba(200,33,26,0.04);
+    padding: 22px 24px;
+    margin-bottom: 0;
+  }
+  .why-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .why-box p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* ── LEVEL CARD ── */
+  .level-card { margin-bottom: 0; }
+  .level-section { padding: 52px 0; border-top: 2px solid var(--border); }
+
+  .level-header {
+    margin-bottom: 24px;
+  }
+  .level-num-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .level-label-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .level-num-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .level-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(30px, 6vw, 50px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 28px;
+  }
+  .skill-chip {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 3px;
+  }
+
+  /* ── RESOURCES ── */
+  .res-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .res-list { list-style: none; }
+  .res-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .res-list li:last-child { border-bottom: none; }
+  .res-icon {
+    width: 36px; height: 36px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .res-info { flex: 1; }
+  .res-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .res-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .res-link {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--red);
+    text-decoration: none;
+    padding: 7px 14px;
+    flex-shrink: 0;
+    align-self: center;
+    transition: background .15s;
+  }
+  .res-link:hover { background: var(--red2); }
+
+  /* ── BADGES ── */
+  .free-badge {
+    display: inline-block;
+    background: #E8F5ED;
+    border: 1px solid #9DCCAA;
+    color: #1E6B3A;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .paid-badge {
+    display: inline-block;
+    background: #FFF4E0;
+    border: 1px solid #F0C060;
+    color: #7A4800;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── RED SECTION BLOCKS ── */
+  .red-block {
+    background: var(--red);
+    padding: 48px 20px;
+  }
+  .red-block-inner {
+    max-width: 780px;
+    margin: auto;
+  }
+  .red-card {
+    background: var(--cream);
+    padding: 28px 24px;
+    margin-bottom: 16px;
+  }
+  .red-card:last-child { margin-bottom: 0; }
+  .red-card-eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .red-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 5vw, 34px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .red-card p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .btn-red {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .btn-red:hover { background: var(--red2); }
+
+  /* ── PROJECTS ── */
+  .section-head {
+    margin-bottom: 36px;
+  }
+  .section-head .eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .section-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--dark);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .section-head p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.6;
+  }
+
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 2px;
+  }
+  .proj-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    padding: 22px 18px 18px;
+    position: relative;
+  }
+  .proj-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+  }
+  .proj-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .proj-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 7px;
+    line-height: 1.3;
+  }
+  .proj-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .proj-tag {
+    display: inline-block;
+    background: rgba(200,33,26,0.07);
+    border: 1px solid rgba(200,33,26,0.2);
+    color: var(--red);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    margin-top: 10px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--cream);
+    border-top: 2px solid var(--border);
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  footer strong { color: var(--red); font-weight: 700; }
+
+  @media (max-width: 580px) {
+    .proj-grid { grid-template-columns: 1fr; }
+    .res-list li { flex-wrap: wrap; }
+    .res-link { margin-top: 8px; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Learn AI With Unnati</a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Free Guide</a></li>
+    <li><a href="#">Build With AI</a></li>
+    <li><a href="#">Contact Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">A free guide by Unnati Tripathi &nbsp;·&nbsp; @aiwithunnati</div>
+    <h1>8 Levels to<br>Become an<br>AI Engineer</h1>
+    <p class="hero-body">Every verified resource + 15 portfolio projects that actually land jobs. All links checked and working. Drop this in your browser and start from Level 1.</p>
+    <div class="hero-source">
+      <strong>Source:</strong>
+      <p>Includes resources from DeepLearning.AI, Anthropic, freeCodeCamp, Harvard CS50, LangChain, and the BASWE 15 AI Engineering Projects Guide.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- WHY IT WORKS -->
+  <section style="padding: 48px 0 0;">
+    <div class="why-box">
+      <div class="why-label">Why This Guide</div>
+      <p>Most roadmaps list tools. This one tells you what to learn, where to learn it (free), and what to build — in the exact order that takes you from Python basics to deploying production AI systems. Comment <strong>AI</strong> on the Reel and I'll DM you this guide directly.</p>
+    </div>
+  </section>
+
+  <!-- LEVEL 1 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 01</span>
+        <span class="level-num-tag">Foundation</span>
+      </div>
+      <div class="level-title">Core Engineering Skills</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">Git & GitHub</div>
+      <div class="skill-chip">REST APIs & JSON</div>
+      <div class="skill-chip">Docker</div>
+      <div class="skill-chip">SQL</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🐍</div>
+        <div class="res-info">
+          <div class="res-name">freeCodeCamp — Python Full Course for Beginners <span class="free-badge">Free</span></div>
+          <div class="res-desc">Complete Python fundamentals — lists, functions, OOP, projects. 9-hour YouTube course by Dave Gray.</div>
+        </div>
+        <a class="res-link" href="https://www.freecodecamp.org/news/ultimate-beginners-python-course/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🎓</div>
+        <div class="res-info">
+          <div class="res-name">CS50P — Harvard Python Course <span class="free-badge">Free</span></div>
+          <div class="res-desc">Rigorous Harvard-quality Python. Think like a programmer, not just write code.</div>
+        </div>
+        <a class="res-link" href="https://cs50.harvard.edu/python/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🌿</div>
+        <div class="res-info">
+          <div class="res-name">Git & GitHub — The Odin Project <span class="free-badge">Free</span></div>
+          <div class="res-desc">Commits, branches, pull requests, workflows. Hands-on exercises throughout.</div>
+        </div>
+        <a class="res-link" href="https://www.theodinproject.com/paths/foundations/courses/foundations#git-basics" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📡</div>
+        <div class="res-info">
+          <div class="res-name">REST APIs & JSON — freeCodeCamp YouTube <span class="free-badge">Free</span></div>
+          <div class="res-desc">REST API design, HTTP methods, JSON structure, calling APIs with Python requests.</div>
+        </div>
+        <a class="res-link" href="https://www.youtube.com/watch?v=qbLc5a9jdXo" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🐳</div>
+        <div class="res-info">
+          <div class="res-name">Docker Official Get Started Guide <span class="free-badge">Free</span></div>
+          <div class="res-desc">Containers, images, Dockerfile, docker-compose. The official and most trusted source.</div>
+        </div>
+        <a class="res-link" href="https://docs.docker.com/get-started/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🗄️</div>
+        <div class="res-info">
+          <div class="res-name">SQLBolt — Interactive SQL Course <span class="free-badge">Free</span></div>
+          <div class="res-desc">19 interactive lessons in your browser. SELECT, JOIN, GROUP BY, subqueries. Zero setup.</div>
+        </div>
+        <a class="res-link" href="https://sqlbolt.com/" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 2 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 02</span>
+        <span class="level-num-tag">LLM Basics</span>
+      </div>
+      <div class="level-title">Working with Language Models</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">Prompt Engineering</div>
+      <div class="skill-chip">Tokens & Context Windows</div>
+      <div class="skill-chip">OpenAI / Anthropic APIs</div>
+      <div class="skill-chip">Structured Outputs</div>
+      <div class="skill-chip">Function Calling</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🤖</div>
+        <div class="res-info">
+          <div class="res-name">ChatGPT Prompt Engineering for Developers — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">The non-negotiable starting point. Co-taught by Andrew Ng & Isa Fulford (OpenAI). System prompts, few-shot, chain-of-thought, structured outputs.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🏗️</div>
+        <div class="res-info">
+          <div class="res-name">Building Systems with the ChatGPT API — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Multi-step systems: classification → routing → processing → evaluation. How production AI actually works.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📖</div>
+        <div class="res-info">
+          <div class="res-name">Anthropic Prompt Engineering Docs <span class="free-badge">Free</span></div>
+          <div class="res-desc">Official Claude-specific prompting best practices, structured outputs, and function calling.</div>
+        </div>
+        <a class="res-link" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🔑</div>
+        <div class="res-info">
+          <div class="res-name">OpenAI API Quickstart Documentation <span class="free-badge">Free</span></div>
+          <div class="res-desc">Official OpenAI docs for API calls, function calling, structured outputs, token management.</div>
+        </div>
+        <a class="res-link" href="https://platform.openai.com/docs/quickstart" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">⚡</div>
+        <div class="res-info">
+          <div class="res-name">Prompt Engineering Guide — DAIR.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Open-source guide covering Zero-Shot, Few-Shot, CoT, ReAct, and all major prompting techniques.</div>
+        </div>
+        <a class="res-link" href="https://www.promptingguide.ai/" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 3 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 03</span>
+        <span class="level-num-tag">RAG & Retrieval</span>
+      </div>
+      <div class="level-title">Embeddings & Vector Databases</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">Embeddings</div>
+      <div class="skill-chip">Chunking Strategies</div>
+      <div class="skill-chip">pgvector / Pinecone</div>
+      <div class="skill-chip">Reranking & Hybrid Search</div>
+      <div class="skill-chip">LangChain / LlamaIndex</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🔍</div>
+        <div class="res-info">
+          <div class="res-name">LangChain: Chat With Your Data — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">RAG fundamentals — document loading, splitting, embeddings, vector stores, retrieval. Taught by Harrison Chase (LangChain founder).</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🧠</div>
+        <div class="res-info">
+          <div class="res-name">Building & Evaluating Advanced RAG — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Chunking, reranking, hybrid search, parent-document retrieval. Production-level RAG patterns.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/building-and-evaluating-advanced-rag/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📦</div>
+        <div class="res-info">
+          <div class="res-name">Vector Databases: from Embeddings to Apps — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Embeddings, vector search, Weaviate, semantic search patterns. Practical and hands-on.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/vector-databases-embeddings-applications/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🦙</div>
+        <div class="res-info">
+          <div class="res-name">LlamaIndex Official Docs & Tutorials <span class="free-badge">Free</span></div>
+          <div class="res-desc">Official LlamaIndex docs with quickstart, RAG pipeline guides, and advanced retrieval patterns.</div>
+        </div>
+        <a class="res-link" href="https://docs.llamaindex.ai/en/stable/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🌲</div>
+        <div class="res-info">
+          <div class="res-name">Pinecone Learning Center <span class="free-badge">Free</span></div>
+          <div class="res-desc">Guides on vector databases, similarity search, hybrid search, and production RAG architectures.</div>
+        </div>
+        <a class="res-link" href="https://www.pinecone.io/learn/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🐘</div>
+        <div class="res-info">
+          <div class="res-name">pgvector — PostgreSQL Vector Extension <span class="free-badge">Free</span></div>
+          <div class="res-desc">Store and query vector embeddings directly in PostgreSQL. Essential for production RAG.</div>
+        </div>
+        <a class="res-link" href="https://github.com/pgvector/pgvector" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 4 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 04</span>
+        <span class="level-num-tag">Agentic AI</span>
+      </div>
+      <div class="level-title">Agents, Tools & Orchestration</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">LangGraph</div>
+      <div class="skill-chip">FastAPI</div>
+      <div class="skill-chip">MCP</div>
+      <div class="skill-chip">Claude Code</div>
+      <div class="skill-chip">Multi-Agent Systems</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🕸️</div>
+        <div class="res-info">
+          <div class="res-name">AI Agents in LangGraph — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Build agents from scratch, then rebuild with LangGraph. Taught by Harrison Chase (LangChain) and Rotem Weiss (Tavily).</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">⚙️</div>
+        <div class="res-info">
+          <div class="res-name">LangGraph Official Documentation <span class="free-badge">Free</span></div>
+          <div class="res-desc">Complete LangGraph docs: state machines, nodes, edges, persistence, human-in-the-loop, multi-agent graphs.</div>
+        </div>
+        <a class="res-link" href="https://langchain-ai.github.io/langgraph/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🚀</div>
+        <div class="res-info">
+          <div class="res-name">FastAPI Official Tutorial <span class="free-badge">Free</span></div>
+          <div class="res-desc">Complete FastAPI tutorial — async APIs, Pydantic models, dependency injection, Docker deployment.</div>
+        </div>
+        <a class="res-link" href="https://fastapi.tiangolo.com/tutorial/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🔌</div>
+        <div class="res-info">
+          <div class="res-name">MCP (Model Context Protocol) — Anthropic <span class="free-badge">Free</span></div>
+          <div class="res-desc">Build custom tools, connect Claude to any data source, create your own MCP servers.</div>
+        </div>
+        <a class="res-link" href="https://modelcontextprotocol.io/introduction" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">💻</div>
+        <div class="res-info">
+          <div class="res-name">Claude Code Documentation — Anthropic <span class="free-badge">Free</span></div>
+          <div class="res-desc">Official Claude Code docs — CLI setup, agentic coding workflows, custom commands, MCP integration.</div>
+        </div>
+        <a class="res-link" href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🤝</div>
+        <div class="res-info">
+          <div class="res-name">Multi-Agent Systems with crewAI — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Automate complex workflows with multi-AI agent systems. Design roles, define tasks, orchestrate collaboration.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 5 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 05</span>
+        <span class="level-num-tag">Evaluation & Monitoring</span>
+      </div>
+      <div class="level-title">Observability & Quality</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">LangSmith / Phoenix</div>
+      <div class="skill-chip">LLM-as-Judge</div>
+      <div class="skill-chip">Great Expectations</div>
+      <div class="skill-chip">Tracing & Observability</div>
+      <div class="skill-chip">Cost & Latency Tuning</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🔭</div>
+        <div class="res-info">
+          <div class="res-name">LangSmith Documentation & Tutorials <span class="free-badge">Free tier</span></div>
+          <div class="res-desc">Native LangChain/LangGraph integration. Tracing, evaluation datasets, prompt testing, debugging complex chains.</div>
+        </div>
+        <a class="res-link" href="https://docs.smith.langchain.com/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🌅</div>
+        <div class="res-info">
+          <div class="res-name">Arize Phoenix — Open-Source LLM Observability <span class="free-badge">Free</span></div>
+          <div class="res-desc">Open-source observability for LLMs and agents. Tracing, evals, hallucination detection. Self-hostable.</div>
+        </div>
+        <a class="res-link" href="https://phoenix.arize.com/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📊</div>
+        <div class="res-info">
+          <div class="res-name">LLM Evaluation Course — Evidently AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">10 end-to-end code tutorials: building eval datasets, custom LLM judges, RAG evaluations, adversarial testing.</div>
+        </div>
+        <a class="res-link" href="https://www.evidentlyai.com/llm-evaluations-course" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">⚖️</div>
+        <div class="res-info">
+          <div class="res-name">Evaluating and Debugging Generative AI — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Use W&B to track, evaluate, and debug LLM pipelines. Covers LLM-as-Judge, tracing, experiment tracking.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/evaluating-debugging-generative-ai/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">💸</div>
+        <div class="res-info">
+          <div class="res-name">Langfuse — Open-Source LLM Engineering Platform <span class="free-badge">Free tier</span></div>
+          <div class="res-desc">Open-source. Tracing, prompt management, cost tracking, evaluations. Free cloud tier with 50k observations/month.</div>
+        </div>
+        <a class="res-link" href="https://langfuse.com/docs" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 6 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 06</span>
+        <span class="level-num-tag">AI Safety & Governance</span>
+      </div>
+      <div class="level-title">Guardrails, Ethics & Compliance</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">Guardrails</div>
+      <div class="skill-chip">EU AI Act / GDPR</div>
+      <div class="skill-chip">Red Teaming</div>
+      <div class="skill-chip">PII & Data Handling</div>
+      <div class="skill-chip">Risk Assessment</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🛡️</div>
+        <div class="res-info">
+          <div class="res-name">NeMo Guardrails — NVIDIA <span class="free-badge">Free</span></div>
+          <div class="res-desc">Open-source toolkit for adding programmable safety guardrails to LLM-based applications.</div>
+        </div>
+        <a class="res-link" href="https://github.com/NVIDIA/NeMo-Guardrails" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🏛️</div>
+        <div class="res-info">
+          <div class="res-name">EU AI Act Official Portal <span class="free-badge">Free</span></div>
+          <div class="res-desc">Risk categories, compliance requirements, prohibited uses. Essential reading for enterprise AI work.</div>
+        </div>
+        <a class="res-link" href="https://artificialintelligenceact.eu/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🔴</div>
+        <div class="res-info">
+          <div class="res-name">Red Teaming LLM Applications — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Hands-on red teaming: jailbreaks, prompt injections, model vulnerabilities, automated red-teaming.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/red-teaming-llm-applications/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📋</div>
+        <div class="res-info">
+          <div class="res-name">NIST AI Risk Management Framework <span class="free-badge">Free</span></div>
+          <div class="res-desc">The official US government AI risk framework — used by enterprise AI teams globally for compliance.</div>
+        </div>
+        <a class="res-link" href="https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🔐</div>
+        <div class="res-info">
+          <div class="res-name">OWASP Top 10 for LLMs <span class="free-badge">Free</span></div>
+          <div class="res-desc">Definitive security risk list for LLM apps — prompt injection, insecure output handling, data poisoning.</div>
+        </div>
+        <a class="res-link" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 7 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 07</span>
+        <span class="level-num-tag">ML Engineering</span>
+      </div>
+      <div class="level-title">Training, Fine-Tuning & MLOps</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">scikit-learn</div>
+      <div class="skill-chip">PyTorch</div>
+      <div class="skill-chip">MLflow / DVC</div>
+      <div class="skill-chip">Fine-tuning (LoRA)</div>
+      <div class="skill-chip">CI with GitHub Actions</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">🔬</div>
+        <div class="res-info">
+          <div class="res-name">Hugging Face LoRA Fine-Tuning Tutorial <span class="free-badge">Free</span></div>
+          <div class="res-desc">Step-by-step fine-tuning with LoRA/QLoRA using HF PEFT + TRL. Works on M-series Mac and consumer GPUs.</div>
+        </div>
+        <a class="res-link" href="https://huggingface.co/blog/dvgodoy/fine-tuning-llm-hugging-face" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🏋️</div>
+        <div class="res-info">
+          <div class="res-name">Unsloth — Efficient LoRA Fine-Tuning <span class="free-badge">Free</span></div>
+          <div class="res-desc">2x faster LoRA fine-tuning, 70% less VRAM. Free Colab notebooks for Llama 3, Mistral, Gemma.</div>
+        </div>
+        <a class="res-link" href="https://github.com/unslothai/unsloth" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📐</div>
+        <div class="res-info">
+          <div class="res-name">Machine Learning Zoomcamp — DataTalks.Club <span class="free-badge">Free</span></div>
+          <div class="res-desc">Free ML course: scikit-learn, regression, classification, neural nets, Docker + FastAPI deployment.</div>
+        </div>
+        <a class="res-link" href="https://datatalks.club/courses/mlzoomcamp.html" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📈</div>
+        <div class="res-info">
+          <div class="res-name">MLflow Official Documentation <span class="free-badge">Free</span></div>
+          <div class="res-desc">Track experiments, log parameters, register models, serve ML models in production. Industry-standard MLOps.</div>
+        </div>
+        <a class="res-link" href="https://mlflow.org/docs/latest/index.html" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🧬</div>
+        <div class="res-info">
+          <div class="res-name">DVC (Data Version Control) — Official Docs <span class="free-badge">Free</span></div>
+          <div class="res-desc">Version control for datasets and ML models. Git for data — essential for reproducible ML experiments.</div>
+        </div>
+        <a class="res-link" href="https://dvc.org/doc/start" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🔄</div>
+        <div class="res-info">
+          <div class="res-name">GitHub Actions for CI/CD — GitHub Docs <span class="free-badge">Free</span></div>
+          <div class="res-desc">Automate ML workflows: run evals on every PR, test pipelines, auto-deploy models.</div>
+        </div>
+        <a class="res-link" href="https://docs.github.com/en/actions" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- LEVEL 8 -->
+  <section class="level-section">
+    <div class="level-header">
+      <div class="level-num-row">
+        <span class="level-label-tag">Level 08</span>
+        <span class="level-num-tag">Production AI</span>
+      </div>
+      <div class="level-title">Scale, Reliability & System Design</div>
+    </div>
+    <div class="skills-row">
+      <div class="skill-chip">End-to-End System Design</div>
+      <div class="skill-chip">Model Routing & Caching</div>
+      <div class="skill-chip">Monitoring in Production</div>
+      <div class="skill-chip">Continuous Evals</div>
+      <div class="skill-chip">Scaling & Reliability</div>
+    </div>
+    <div class="res-label">Best Resources</div>
+    <ul class="res-list">
+      <li>
+        <div class="res-icon">📚</div>
+        <div class="res-info">
+          <div class="res-name">AI Engineering Book — Chip Huyen <span class="paid-badge">Paid</span></div>
+          <div class="res-desc">The definitive textbook: system design, RAG, evals, cost optimization, production AI challenges.</div>
+        </div>
+        <a class="res-link" href="https://www.oreilly.com/library/view/ai-engineering/9781098166298/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🌊</div>
+        <div class="res-info">
+          <div class="res-name">LLM Engineering Handbook — GitHub (Free Chapters) <span class="free-badge">Free</span></div>
+          <div class="res-desc">By Paul Iusztin & Maxime Labonne. RAG, evals, LangChain, fine-tuning end-to-end. Full code on GitHub.</div>
+        </div>
+        <a class="res-link" href="https://github.com/PacktPublishing/LLM-Engineers-Handbook" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">🏗️</div>
+        <div class="res-info">
+          <div class="res-name">LiteLLM — Unified LLM Gateway <span class="free-badge">Free</span></div>
+          <div class="res-desc">Open-source gateway: unified API for 100+ LLMs, load balancing, fallbacks, cost tracking.</div>
+        </div>
+        <a class="res-link" href="https://docs.litellm.ai/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">📡</div>
+        <div class="res-info">
+          <div class="res-name">OpenTelemetry for LLMs — Official Docs <span class="free-badge">Free</span></div>
+          <div class="res-desc">Industry-standard distributed tracing. Integrates with Prometheus, Grafana for full observability.</div>
+        </div>
+        <a class="res-link" href="https://opentelemetry.io/docs/" target="_blank">Open →</a>
+      </li>
+      <li>
+        <div class="res-icon">⚡</div>
+        <div class="res-info">
+          <div class="res-name">Fast & Efficient LLM Inference with vLLM — DeepLearning.AI <span class="free-badge">Free</span></div>
+          <div class="res-desc">Deploy fine-tuned models for fast inference. LoRA adapter serving, batching, production deployment.</div>
+        </div>
+        <a class="res-link" href="https://www.deeplearning.ai/short-courses/fast-efficient-llm-inference-with-vllm/" target="_blank">Open →</a>
+      </li>
+    </ul>
+  </section>
+
+</div><!-- /container -->
+
+<!-- PROJECTS SECTION -->
+<div class="red-block" style="margin-top: 8px;">
+  <div class="red-block-inner">
+    <div style="margin-bottom: 32px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:10px;">The Portfolio</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,8vw,64px);font-weight:900;text-transform:uppercase;color:#fff;line-height:0.95;margin-bottom:14px;">15 Projects That<br>Actually Land Jobs</div>
+      <p style="font-size:15px;color:rgba(255,255,255,0.8);max-width:540px;line-height:1.6;">From the BASWE AI Engineering Guide. Architectural blueprints you build independently. Two deep, polished projects beat five shallow ones every time.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">01</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Model Regression Detection System</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">CI/CD pipeline that tests LLM features against a golden dataset on every prompt change and alerts via Slack.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 2–5</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">02</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">LLM Cost Autopilot</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Intelligent routing layer that sends each request to the cheapest capable model — cuts costs 30–60%.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 2 + 8</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">03</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Failure Forensics for AI Pipelines</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Observability layer that traces every step and pinpoints exactly where failures originate.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 5 + 8</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">04</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Self-Healing Documentation</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">GitHub Action detecting stale docs after code changes and auto-generating fix PRs.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 3 + 4</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">05</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">LLM Output Arbitration System</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Multi-agent pipeline routing outputs to competing critic models that independently evaluate accuracy.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 4 + 5</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">06</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Production RAG with Hybrid Search</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Dense + sparse (BM25) retrieval, RRF fusion, reranking, citation verification, 50-question eval suite.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 3 Core</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">07</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Semantic Caching Layer</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Drop-in middleware serving cached LLM responses for semantically similar requests — near-zero latency.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 1 + 8</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">08</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Text-to-SQL with Guardrails</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Natural language to SQL with safety middleware blocking all DDL/DML and hallucination detection.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 1 + 6</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">09</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Prompt Versioning & A/B Testing</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Git for prompts — version control, traffic splitting, statistical significance, auto-promotion of winners.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 2 + 5</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">10</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Fine-Tuning Pipeline with LoRA</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Dataset curation → LoRA fine-tuning → eval vs. base model → hyperparameter sweep → vLLM deployment.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 7 Core</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">11</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">LLM Gateway with Rate Limiting</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Production gateway with per-team budgets, multi-provider failover, circuit breakers, Prometheus dashboards.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 4 + 8</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">12</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">AI Feature Flag System</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Gradual rollout platform that auto-monitors quality and triggers rollback if outputs degrade.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 5 + 8</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">13</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Eval Dataset Generator from Prod Logs</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Mines production LLM logs, clusters interactions, and auto-converts them into labeled eval test cases.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 5 Advanced</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">14</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Multi-Modal Document Processor</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">OCR → LLM extraction → Pydantic validation for any document format with human-in-the-loop review.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 2 + 6</div>
+      </div>
+
+      <div style="background:var(--cream);padding:20px 16px 16px;position:relative;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:var(--red);"></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:var(--border);line-height:1;margin-bottom:6px;">15</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);margin-bottom:6px;line-height:1.3;">Agent Orchestration with Memory & HITL</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;">Multi-agent system with supervisor, LangGraph state machine, persistent memory, human escalation.</div>
+        <div style="display:inline-block;background:rgba(200,33,26,.08);border:1px solid rgba(200,33,26,.2);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;margin-top:10px;">Level 4 Advanced</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA CARDS -->
+<div style="background:var(--red);padding:0 20px 48px;">
+  <div style="max-width:780px;margin:auto;display:grid;gap:12px;">
+
+    <div class="red-card">
+      <div class="red-card-eyebrow">Get The Guide</div>
+      <div class="red-card-title">Comment "AI" to Get This Guide</div>
+      <p>Comment <strong>AI</strong> on the Reel and I'll DM you this complete resource guide directly to your Instagram DMs. All 8 levels, all 42 resources, all 15 projects.</p>
+      <a class="btn-red" href="https://www.instagram.com/aiwithunnati" target="_blank">Follow @aiwithunnati →</a>
+    </div>
+
+    <div class="red-card">
+      <div class="red-card-eyebrow">Learn AI With Me</div>
+      <div class="red-card-title">Daily AI Content on Instagram</div>
+      <p>I post short-form educational Reels about AI tools, career paths, and what's actually happening in the AI industry — made for the Indian tech audience.</p>
+      <a class="btn-red" href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 <strong>Unnati Tripathi</strong> · @aiwithunnati · All resource links verified June 2026 · Built for the Indian AI engineering community 🇮🇳
+</footer>
+
+</body>
+</html>
