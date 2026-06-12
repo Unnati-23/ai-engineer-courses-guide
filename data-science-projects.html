@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 Data Science Projects You Can Build in a Weekend | @aiwithunnati</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --cream:#FBF3E7;
+    --red:#D7372C;
+    --black:#191512;
+    --ink:#2A2420;
+    --line:rgba(25,21,18,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .display{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    padding:22px 24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  nav .brand{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(20px,4vw,28px);
+    color:var(--red);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    text-align:center;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--red);
+    color:var(--cream);
+    padding:48px 24px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-top{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    margin-bottom:28px;
+  }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--cream);
+    color:var(--black);
+    padding:7px 16px;
+    border-radius:2px;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    letter-spacing:0.03em;
+    transition:opacity .15s ease;
+  }
+  .pill:hover{opacity:0.85;}
+  .creator{
+    font-size:13px;
+    color:rgba(251,243,231,0.7);
+    margin-right:auto;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--cream);
+    color:var(--red);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.18em;
+    padding:6px 14px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(40px,9vw,84px);
+    line-height:1.02;
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{
+    color:var(--black);
+    -webkit-text-stroke:2px var(--cream);
+    color:transparent;
+  }
+  .hero p.lede{
+    font-size:clamp(15px,2.4vw,19px);
+    max-width:640px;
+    color:rgba(251,243,231,0.92);
+    font-weight:500;
+  }
+  .hero-foot{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:rgba(251,243,231,0.75);
+    text-transform:uppercase;
+  }
+  .hero-foot strong{color:var(--cream);}
+
+  /* ===== INTRO BLOCK ===== */
+  .intro{
+    background:var(--cream);
+    padding:48px 24px 24px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .intro p{
+    font-size:16px;
+    margin-bottom:16px;
+  }
+  .intro .callout{
+    border-left:3px solid var(--red);
+    background:rgba(215,55,44,0.06);
+    padding:16px 18px;
+    margin:24px 0;
+    font-size:14px;
+  }
+  .intro .callout b{color:var(--red);}
+
+  /* ===== PROJECT CARDS ===== */
+  .projects{
+    max-width:760px;
+    margin:0 auto;
+    padding:8px 24px 40px;
+  }
+
+  .card{
+    border:1px solid var(--line);
+    border-radius:4px;
+    margin-bottom:28px;
+    overflow:hidden;
+    background:#fff;
+  }
+
+  .card-head{
+    background:var(--black);
+    color:var(--cream);
+    padding:22px 22px 18px;
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+  }
+  .card-num{
+    font-family:'Anton',sans-serif;
+    font-size:34px;
+    color:var(--red);
+    line-height:1;
+    flex-shrink:0;
+  }
+  .card-head h2{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(20px,4vw,28px);
+    text-transform:uppercase;
+    line-height:1.1;
+    letter-spacing:0.01em;
+  }
+
+  .card-body{
+    padding:22px;
+  }
+
+  .card-body .desc{
+    font-size:15px;
+    margin-bottom:18px;
+  }
+
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .meta-link{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    flex:1;
+    min-width:220px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:12px 14px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .meta-link:hover{
+    border-color:var(--red);
+    background:rgba(215,55,44,0.04);
+  }
+  .meta-link .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-weight:600;
+  }
+  .meta-link .value{
+    font-size:14px;
+    font-weight:600;
+    word-break:break-word;
+  }
+  .meta-link .arrow{
+    font-size:13px;
+    color:var(--red);
+  }
+
+  .skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .skill-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    background:var(--cream);
+    border:1px solid var(--line);
+    color:var(--ink);
+    padding:5px 10px;
+    border-radius:2px;
+    text-transform:uppercase;
+  }
+
+  /* ===== CODE TOGGLE / BLOCK ===== */
+  .code-toggle{
+    margin-top:18px;
+  }
+  .code-toggle summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--red);
+    padding:12px 14px;
+    border:1px solid var(--red);
+    border-radius:3px;
+    background:rgba(215,55,44,0.05);
+    transition:background .15s ease;
+  }
+  .code-toggle summary::-webkit-details-marker{display:none;}
+  .code-toggle summary:hover{background:rgba(215,55,44,0.1);}
+  .code-toggle summary .chev{
+    margin-left:auto;
+    transition:transform .2s ease;
+    font-size:12px;
+  }
+  .code-toggle[open] summary .chev{transform:rotate(90deg);}
+
+  .code-note{
+    font-size:13px;
+    color:var(--ink);
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-left:3px solid var(--red);
+    padding:12px 14px;
+    margin:14px 0;
+    line-height:1.55;
+  }
+  .code-note b{color:var(--red);}
+
+  .code-block{
+    background:var(--black);
+    color:#F2E9DC;
+    border-radius:3px;
+    padding:18px;
+    overflow-x:auto;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    line-height:1.7;
+    margin-top:10px;
+  }
+  .code-block pre{
+    white-space:pre;
+    margin:0;
+  }
+  .code-block .c1{color:#8A8178;} /* comments */
+  .code-block .kw{color:#E8857A;} /* keywords */
+  .code-block .st{color:#9FCB9A;} /* strings */
+  .code-block .fn{color:#F2C879;} /* functions */
+
+  /* ===== CTA ===== */
+  .cta{
+    background:var(--black);
+    color:var(--cream);
+    padding:56px 24px;
+    text-align:center;
+  }
+  .cta-inner{
+    max-width:560px;
+    margin:0 auto;
+  }
+  .cta h2{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(28px,6vw,46px);
+    text-transform:uppercase;
+    margin-bottom:14px;
+    line-height:1.08;
+  }
+  .cta h2 span{color:var(--red);}
+  .cta p{
+    font-size:15px;
+    color:rgba(251,243,231,0.78);
+    margin-bottom:28px;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--red);
+    color:var(--cream);
+    font-family:'Anton',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:18px;
+    padding:18px 38px;
+    border-radius:3px;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 4px 0 var(--cream);
+  }
+  .cta-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 0 var(--cream);
+  }
+  .cta-foot{
+    margin-top:22px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:rgba(251,243,231,0.5);
+    letter-spacing:0.04em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--cream);
+    text-align:center;
+    padding:28px 24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:rgba(25,21,18,0.55);
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--red); text-decoration:none; font-weight:600;}
+
+  @media (max-width:480px){
+    .meta-link{min-width:100%;}
+    .hero{padding:36px 18px 44px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">@aiwithunnati</div>
+</nav>
+
+<header class="hero">
+  <div class="hero-top">
+    <span class="creator">a free guide by Unnati Tripathi</span>
+    <a class="pill" href="https://www.instagram.com/aiwithunnati" target="_blank" rel="noopener">↗ Instagram</a>
+  </div>
+  <span class="eyebrow">Data Science · Weekend Projects</span>
+  <h1>4 Data Science<br>Projects You Can<br>Build in a <span class="accent">Weekend</span></h1>
+  <p class="lede">Four absolute classics, beginner-friendly, with a real dataset and a guided notebook for each. No fluff — pick one, open the notebook, and start building today.</p>
+  <div class="hero-foot">
+    <span><strong>4</strong> projects</span>
+    <span><strong>0</strong> cost</span>
+    <span><strong>1</strong> weekend</span>
+  </div>
+</header>
+
+<section class="intro">
+  <p>Here are 4 beginner-friendly data science projects you can realistically finish in a single weekend — each paired with a real dataset and a notebook that walks you through the entire process, from raw data to a working model.</p>
+  <div class="callout">
+    <b>How to use this guide:</b> for each project, open the dataset link to download the data, then open the guide notebook on Kaggle and click <span class="mono">Copy &amp; Edit</span> to get your own editable copy you can run, tweak, and build on.
+  </div>
+</section>
+
+<section class="projects">
+
+  <!-- PROJECT 1 -->
+  <article class="card">
+    <div class="card-head">
+      <span class="card-num">01</span>
+      <h2>Spam Detection</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Build a classifier that labels a text message as spam or ham. You'll clean the text, turn it into numbers with TF-IDF or a count vectorizer, and train a Naive Bayes model. This is the perfect intro to NLP and text classification: 5,500+ labeled messages, a tiny dataset that trains in seconds, and a result you can actually test by typing in your own message.</p>
+      <div class="meta-row">
+        <a class="meta-link" href="https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset" target="_blank" rel="noopener">
+          <span class="label">Dataset</span>
+          <span class="value">SMS Spam Collection (Kaggle) <span class="arrow">↗</span></span>
+        </a>
+        <a class="meta-link" href="https://www.kaggle.com/code/sid321axn/sms-spam-classifier-naive-bayes-ml-algo" target="_blank" rel="noopener">
+          <span class="label">Guide notebook</span>
+          <span class="value">SMS Spam Classifier — Naive Bayes <span class="arrow">↗</span></span>
+        </a>
+      </div>
+      <div class="skills">
+        <span class="skill-tag">Text Preprocessing</span>
+        <span class="skill-tag">TF-IDF</span>
+        <span class="skill-tag">Naive Bayes</span>
+        <span class="skill-tag">Train/Test Split</span>
+        <span class="skill-tag">Precision &amp; Recall</span>
+      </div>
+
+      <details class="code-toggle">
+        <summary>View starter code <span class="chev">▶</span></summary>
+        <div class="code-note">
+          This code follows the <b>same approach</b> as the guide notebook above (CountVectorizer + Multinomial Naive Bayes) — it's an original write-up by @aiwithunnati so you can copy, run, and test it immediately without opening Kaggle. For deeper EDA and explanations, check the full guide notebook.
+        </div>
+        <div class="code-block"><pre><span class="c1"># 1. Spam Detection — SMS Spam Classifier (Naive Bayes)</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.feature_extraction.text <span class="kw">import</span> CountVectorizer
+<span class="kw">from</span> sklearn.naive_bayes <span class="kw">import</span> MultinomialNB
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> accuracy_score, precision_score, recall_score, confusion_matrix
+
+<span class="c1"># Load dataset (download from the Kaggle dataset link above)</span>
+df = pd.read_csv(<span class="st">"spam.csv"</span>, encoding=<span class="st">"latin-1"</span>)[[<span class="st">"v1"</span>, <span class="st">"v2"</span>]]
+df.columns = [<span class="st">"label"</span>, <span class="st">"message"</span>]
+df[<span class="st">"label"</span>] = df[<span class="st">"label"</span>].<span class="fn">map</span>({<span class="st">"ham"</span>: <span class="st">0</span>, <span class="st">"spam"</span>: <span class="st">1</span>})
+
+<span class="c1"># Train/test split</span>
+X_train, X_test, y_train, y_test = <span class="fn">train_test_split</span>(
+    df[<span class="st">"message"</span>], df[<span class="st">"label"</span>], test_size=<span class="st">0.2</span>, random_state=<span class="st">42</span>
+)
+
+<span class="c1"># Vectorize text (bag-of-words)</span>
+vectorizer = <span class="fn">CountVectorizer</span>(stop_words=<span class="st">"english"</span>)
+X_train_vec = vectorizer.<span class="fn">fit_transform</span>(X_train)
+X_test_vec = vectorizer.<span class="fn">transform</span>(X_test)
+
+<span class="c1"># Train Naive Bayes</span>
+model = <span class="fn">MultinomialNB</span>()
+model.<span class="fn">fit</span>(X_train_vec, y_train)
+
+<span class="c1"># Evaluate</span>
+preds = model.<span class="fn">predict</span>(X_test_vec)
+<span class="fn">print</span>(<span class="st">"Accuracy:"</span>, <span class="fn">accuracy_score</span>(y_test, preds))
+<span class="fn">print</span>(<span class="st">"Precision:"</span>, <span class="fn">precision_score</span>(y_test, preds))
+<span class="fn">print</span>(<span class="st">"Recall:"</span>, <span class="fn">recall_score</span>(y_test, preds))
+<span class="fn">print</span>(<span class="st">"Confusion Matrix:\n"</span>, <span class="fn">confusion_matrix</span>(y_test, preds))
+
+<span class="c1"># Test on your own message</span>
+sample = [<span class="st">"Congratulations! You won a free prize, call now!"</span>]
+sample_vec = vectorizer.<span class="fn">transform</span>(sample)
+<span class="fn">print</span>(<span class="st">"Prediction (1 = spam):"</span>, model.<span class="fn">predict</span>(sample_vec)[<span class="st">0</span>])</pre></div>
+      </details>
+    </div>
+  </article>
+
+  <!-- PROJECT 2 -->
+  <article class="card">
+    <div class="card-head">
+      <span class="card-num">02</span>
+      <h2>Credit Card Fraud Detection</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Detect fraudulent transactions in a real dataset where only 0.172% of transactions are fraud (492 out of 284,807). The whole point of this project is learning to handle imbalanced data: why accuracy is useless here, how to use resampling like SMOTE or undersampling, and how to evaluate with precision, recall, F1, and AUC instead. One of the strongest projects you can put on a CV for data science roles.</p>
+      <div class="meta-row">
+        <a class="meta-link" href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank" rel="noopener">
+          <span class="label">Dataset</span>
+          <span class="value">Credit Card Fraud Detection (Kaggle, ULB) <span class="arrow">↗</span></span>
+        </a>
+        <a class="meta-link" href="https://www.kaggle.com/code/janiobachmann/credit-fraud-dealing-with-imbalanced-datasets" target="_blank" rel="noopener">
+          <span class="label">Guide notebook</span>
+          <span class="value">Credit Fraud — Dealing with Imbalanced Datasets <span class="arrow">↗</span></span>
+        </a>
+      </div>
+      <div class="skills">
+        <span class="skill-tag">Imbalanced Classification</span>
+        <span class="skill-tag">SMOTE</span>
+        <span class="skill-tag">Logistic Regression</span>
+        <span class="skill-tag">ROC-AUC</span>
+        <span class="skill-tag">Confusion Matrix</span>
+      </div>
+
+      <details class="code-toggle">
+        <summary>View starter code <span class="chev">▶</span></summary>
+        <div class="code-note">
+          This code follows the <b>same approach</b> as the guide notebook above (handling extreme class imbalance with SMOTE + Logistic Regression, evaluated with ROC-AUC) — it's an original write-up by @aiwithunnati so you can copy, run, and test it immediately without opening Kaggle. For deeper EDA, outlier removal, and neural network comparisons, check the full guide notebook.
+        </div>
+        <div class="code-block"><pre><span class="c1"># 2. Credit Card Fraud Detection — Imbalanced Classification</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.preprocessing <span class="kw">import</span> StandardScaler
+<span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LogisticRegression
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> classification_report, confusion_matrix, roc_auc_score
+<span class="kw">from</span> imblearn.over_sampling <span class="kw">import</span> SMOTE
+
+<span class="c1"># Load dataset (download from the Kaggle dataset link above)</span>
+df = pd.<span class="fn">read_csv</span>(<span class="st">"creditcard.csv"</span>)
+
+<span class="c1"># Features and target ('Class': 0 = normal, 1 = fraud)</span>
+X = df.<span class="fn">drop</span>(<span class="st">"Class"</span>, axis=<span class="st">1</span>)
+y = df[<span class="st">"Class"</span>]
+
+<span class="c1"># Scale 'Amount' and 'Time' (other columns V1-V28 are already PCA-scaled)</span>
+scaler = <span class="fn">StandardScaler</span>()
+X[[<span class="st">"Amount"</span>, <span class="st">"Time"</span>]] = scaler.<span class="fn">fit_transform</span>(X[[<span class="st">"Amount"</span>, <span class="st">"Time"</span>]])
+
+<span class="c1"># Train/test split (stratify to keep fraud ratio consistent)</span>
+X_train, X_test, y_train, y_test = <span class="fn">train_test_split</span>(
+    X, y, test_size=<span class="st">0.2</span>, random_state=<span class="st">42</span>, stratify=y
+)
+
+<span class="c1"># Handle imbalance with SMOTE (only on training data)</span>
+smote = <span class="fn">SMOTE</span>(random_state=<span class="st">42</span>)
+X_train_res, y_train_res = smote.<span class="fn">fit_resample</span>(X_train, y_train)
+
+<span class="c1"># Train Logistic Regression</span>
+model = <span class="fn">LogisticRegression</span>(max_iter=<span class="st">1000</span>)
+model.<span class="fn">fit</span>(X_train_res, y_train_res)
+
+<span class="c1"># Evaluate (accuracy is misleading here — use precision, recall, F1, AUC)</span>
+preds = model.<span class="fn">predict</span>(X_test)
+probs = model.<span class="fn">predict_proba</span>(X_test)[:, <span class="st">1</span>]
+
+<span class="fn">print</span>(<span class="fn">classification_report</span>(y_test, preds))
+<span class="fn">print</span>(<span class="st">"Confusion Matrix:\n"</span>, <span class="fn">confusion_matrix</span>(y_test, preds))
+<span class="fn">print</span>(<span class="st">"ROC-AUC:"</span>, <span class="fn">roc_auc_score</span>(y_test, probs))</pre></div>
+      </details>
+    </div>
+  </article>
+
+  <!-- PROJECT 3 -->
+  <article class="card">
+    <div class="card-head">
+      <span class="card-num">03</span>
+      <h2>Titanic Survival Prediction</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Predict whether a passenger survived the Titanic based on features like age, sex, ticket class, and fare. This is the most classic beginner ML project for a reason: it walks you through the full workflow end to end, from exploring the data and filling in missing values to engineering features and training a model. Bonus: you can submit your predictions to the live Kaggle leaderboard.</p>
+      <div class="meta-row">
+        <a class="meta-link" href="https://www.kaggle.com/c/titanic" target="_blank" rel="noopener">
+          <span class="label">Dataset</span>
+          <span class="value">Titanic — Machine Learning from Disaster <span class="arrow">↗</span></span>
+        </a>
+        <a class="meta-link" href="https://www.kaggle.com/code/dejavu23/titanic-eda-to-ml-beginner" target="_blank" rel="noopener">
+          <span class="label">Guide notebook</span>
+          <span class="value">Titanic: EDA to ML (Beginner) <span class="arrow">↗</span></span>
+        </a>
+      </div>
+      <div class="skills">
+        <span class="skill-tag">EDA</span>
+        <span class="skill-tag">Feature Engineering</span>
+        <span class="skill-tag">Missing Data</span>
+        <span class="skill-tag">Logistic Regression</span>
+        <span class="skill-tag">Model Evaluation</span>
+      </div>
+
+      <details class="code-toggle">
+        <summary>View starter code <span class="chev">▶</span></summary>
+        <div class="code-note">
+          This code follows the <b>same approach</b> as the guide notebook above (handling missing values, basic feature engineering, Logistic Regression) — it's an original write-up by @aiwithunnati so you can copy, run, and test it immediately without opening Kaggle. For the full EDA, age-binning, and leaderboard submission workflow, check the full guide notebook.
+        </div>
+        <div class="code-block"><pre><span class="c1"># 3. Titanic Survival Prediction</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LogisticRegression
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> accuracy_score, classification_report
+
+<span class="c1"># Load dataset (download train.csv from the Kaggle competition link above)</span>
+df = pd.<span class="fn">read_csv</span>(<span class="st">"train.csv"</span>)
+
+<span class="c1"># Handle missing values</span>
+df[<span class="st">"Age"</span>] = df[<span class="st">"Age"</span>].<span class="fn">fillna</span>(df[<span class="st">"Age"</span>].<span class="fn">median</span>())
+df[<span class="st">"Embarked"</span>] = df[<span class="st">"Embarked"</span>].<span class="fn">fillna</span>(df[<span class="st">"Embarked"</span>].<span class="fn">mode</span>()[<span class="st">0</span>])
+df[<span class="st">"Fare"</span>] = df[<span class="st">"Fare"</span>].<span class="fn">fillna</span>(df[<span class="st">"Fare"</span>].<span class="fn">median</span>())
+
+<span class="c1"># Feature engineering</span>
+df[<span class="st">"FamilySize"</span>] = df[<span class="st">"SibSp"</span>] + df[<span class="st">"Parch"</span>] + <span class="st">1</span>
+df[<span class="st">"Sex"</span>] = df[<span class="st">"Sex"</span>].<span class="fn">map</span>({<span class="st">"male"</span>: <span class="st">0</span>, <span class="st">"female"</span>: <span class="st">1</span>})
+df[<span class="st">"Embarked"</span>] = df[<span class="st">"Embarked"</span>].<span class="fn">map</span>({<span class="st">"S"</span>: <span class="st">0</span>, <span class="st">"C"</span>: <span class="st">1</span>, <span class="st">"Q"</span>: <span class="st">2</span>})
+
+<span class="c1"># Select features</span>
+features = [<span class="st">"Pclass"</span>, <span class="st">"Sex"</span>, <span class="st">"Age"</span>, <span class="st">"Fare"</span>, <span class="st">"FamilySize"</span>, <span class="st">"Embarked"</span>]
+X = df[features]
+y = df[<span class="st">"Survived"</span>]
+
+<span class="c1"># Train/test split</span>
+X_train, X_test, y_train, y_test = <span class="fn">train_test_split</span>(
+    X, y, test_size=<span class="st">0.2</span>, random_state=<span class="st">42</span>
+)
+
+<span class="c1"># Train Logistic Regression</span>
+model = <span class="fn">LogisticRegression</span>(max_iter=<span class="st">1000</span>)
+model.<span class="fn">fit</span>(X_train, y_train)
+
+<span class="c1"># Evaluate</span>
+preds = model.<span class="fn">predict</span>(X_test)
+<span class="fn">print</span>(<span class="st">"Accuracy:"</span>, <span class="fn">accuracy_score</span>(y_test, preds))
+<span class="fn">print</span>(<span class="fn">classification_report</span>(y_test, preds))
+
+<span class="c1"># To submit to the live leaderboard:</span>
+<span class="c1"># 1. Apply the same preprocessing to test.csv</span>
+<span class="c1"># 2. predictions = model.predict(test_features)</span>
+<span class="c1"># 3. Save as submission.csv with PassengerId + Survived columns</span></pre></div>
+      </details>
+    </div>
+  </article>
+
+  <!-- PROJECT 4 -->
+  <article class="card">
+    <div class="card-head">
+      <span class="card-num">04</span>
+      <h2>Fake News Detection</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Train a model that reads a news article and predicts whether it's real or fake. You'll vectorize the article text with TF-IDF and train a classifier like logistic regression, SVM, or a gradient boosting model, reaching surprisingly high accuracy. It's applied NLP on a problem that genuinely matters, and a great way to understand how text becomes features a model can learn from.</p>
+      <div class="meta-row">
+        <a class="meta-link" href="https://www.kaggle.com/datasets/saurabhshahane/fake-news-classification" target="_blank" rel="noopener">
+          <span class="label">Dataset</span>
+          <span class="value">Fake News Classification (Kaggle) <span class="arrow">↗</span></span>
+        </a>
+        <a class="meta-link" href="https://www.kaggle.com/code/elenasm/fake-news-detection-using-tf-idf" target="_blank" rel="noopener">
+          <span class="label">Guide notebook</span>
+          <span class="value">Fake News Detection using TF-IDF <span class="arrow">↗</span></span>
+        </a>
+      </div>
+      <div class="skills">
+        <span class="skill-tag">Text Preprocessing</span>
+        <span class="skill-tag">TF-IDF</span>
+        <span class="skill-tag">Classification</span>
+        <span class="skill-tag">Model Evaluation</span>
+      </div>
+
+      <details class="code-toggle">
+        <summary>View starter code <span class="chev">▶</span></summary>
+        <div class="code-note">
+          This code follows the <b>same approach</b> as the guide notebook above (TF-IDF vectorization + a linear classifier) — it's an original write-up by @aiwithunnati so you can copy, run, and test it immediately without opening Kaggle. For deeper EDA and model comparisons, check the full guide notebook.
+          <br><br>
+          <b>Note:</b> column names can vary slightly depending on which version of the dataset you download — check your CSV's columns with <span class="mono" style="background:rgba(215,55,44,0.08);padding:1px 4px;border-radius:2px;">df.columns</span> first and adjust <span class="mono" style="background:rgba(215,55,44,0.08);padding:1px 4px;border-radius:2px;">"text"</span> / <span class="mono" style="background:rgba(215,55,44,0.08);padding:1px 4px;border-radius:2px;">"label"</span> if needed.
+        </div>
+        <div class="code-block"><pre><span class="c1"># 4. Fake News Detection — TF-IDF + Classification</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.feature_extraction.text <span class="kw">import</span> TfidfVectorizer
+<span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LogisticRegression
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> accuracy_score, classification_report
+
+<span class="c1"># Load dataset (download from the Kaggle dataset link above)</span>
+df = pd.<span class="fn">read_csv</span>(<span class="st">"WELFake_Dataset.csv"</span>)  <span class="c1"># columns: 'title', 'text', 'label' (0 = real, 1 = fake)</span>
+
+<span class="c1"># Drop rows with missing text</span>
+df = df.<span class="fn">dropna</span>(subset=[<span class="st">"text"</span>])
+
+<span class="c1"># If your copy of the dataset uses "REAL"/"FAKE" strings instead of 0/1,</span>
+<span class="c1"># uncomment the line below to map them first:</span>
+<span class="c1"># df["label"] = df["label"].map({"REAL": 0, "FAKE": 1})</span>
+
+<span class="c1"># Train/test split</span>
+X_train, X_test, y_train, y_test = <span class="fn">train_test_split</span>(
+    df[<span class="st">"text"</span>], df[<span class="st">"label"</span>], test_size=<span class="st">0.2</span>, random_state=<span class="st">42</span>
+)
+
+<span class="c1"># TF-IDF vectorization</span>
+vectorizer = <span class="fn">TfidfVectorizer</span>(stop_words=<span class="st">"english"</span>, max_df=<span class="st">0.7</span>)
+X_train_vec = vectorizer.<span class="fn">fit_transform</span>(X_train)
+X_test_vec = vectorizer.<span class="fn">transform</span>(X_test)
+
+<span class="c1"># Train classifier</span>
+model = <span class="fn">LogisticRegression</span>(max_iter=<span class="st">1000</span>)
+model.<span class="fn">fit</span>(X_train_vec, y_train)
+
+<span class="c1"># Evaluate</span>
+preds = model.<span class="fn">predict</span>(X_test_vec)
+<span class="fn">print</span>(<span class="st">"Accuracy:"</span>, <span class="fn">accuracy_score</span>(y_test, preds))
+<span class="fn">print</span>(<span class="fn">classification_report</span>(y_test, preds))
+
+<span class="c1"># Test on a custom headline/article</span>
+sample = [<span class="st">"Scientists confirm new planet found in solar system"</span>]
+sample_vec = vectorizer.<span class="fn">transform</span>(sample)
+<span class="fn">print</span>(<span class="st">"Prediction (1 = fake):"</span>, model.<span class="fn">predict</span>(sample_vec)[<span class="st">0</span>])</pre></div>
+      </details>
+    </div>
+  </article>
+
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Pick One. <span>Start Today.</span></h2>
+    <p>Save this guide, open a notebook, and ship your first project by Sunday night. Follow along for more breakdowns like this every week.</p>
+    <a class="cta-btn" href="https://www.instagram.com/aiwithunnati" target="_blank" rel="noopener">Follow @aiwithunnati →</a>
+    <div class="cta-foot">All links verified · Updated 2026</div>
+  </div>
+</section>
+
+<footer>
+  <p>Made by <a href="https://www.instagram.com/aiwithunnati" target="_blank" rel="noopener">@aiwithunnati</a> — Unnati Tripathi · © 2026</p>
+</footer>
+
+</body>
+</html>
