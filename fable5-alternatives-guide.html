@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fable 5 is Gone — Your Cheat Sheet for What to Use Now</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: linear-gradient(160deg, #ffe4ec 0%, #ffd9c9 50%, #ffc9b8 100%);
+    --card-bg: #fffaf6;
+    --accent: #ff6f91;
+    --accent-dark: #e8527a;
+    --text-dark: #3a2c30;
+    --text-soft: #6e5a5f;
+    --border-soft: #ffd6e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 28px 0 36px;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent-dark);
+    letter-spacing: 0.5px;
+  }
+
+  .tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 18px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
+
+  /* HERO */
+  .hero {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: 2.1rem;
+    line-height: 1.25;
+    color: var(--text-dark);
+  }
+
+  .hero h1 span {
+    color: var(--accent-dark);
+  }
+
+  .hero p {
+    margin-top: 14px;
+    font-size: 1.02rem;
+    color: var(--text-soft);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* RECAP CARD */
+  .recap {
+    margin-top: 36px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 26px 24px;
+    box-shadow: 0 6px 24px rgba(255, 111, 145, 0.08);
+  }
+
+  .recap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--accent-dark);
+    margin-bottom: 10px;
+  }
+
+  .recap p { font-size: 0.95rem; color: var(--text-dark); }
+  .recap p + p { margin-top: 10px; }
+
+  /* SECTION TITLE */
+  .section-title {
+    margin-top: 46px;
+    text-align: center;
+  }
+
+  .section-title .label {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--border-soft);
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--text-dark);
+  }
+
+  /* MODEL CARDS */
+  .model-card {
+    margin-top: 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(255, 111, 145, 0.08);
+  }
+
+  .model-head {
+    background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .model-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .model-head .maker {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  .model-body {
+    padding: 20px 24px;
+  }
+
+  .row {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: flex-start;
+  }
+
+  .row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .row .icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+  }
+
+  .row .content strong {
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .row .content p {
+    font-size: 0.93rem;
+    color: var(--text-dark);
+  }
+
+  .row .content a {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* CTA BLOCK */
+  .cta {
+    margin-top: 44px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+    border-radius: 18px;
+    padding: 30px 26px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .cta p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin-bottom: 18px;
+  }
+
+  .cta .btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--accent-dark);
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+  }
+
+  footer .handle {
+    color: var(--accent-dark);
+    font-weight: 700;
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.7rem; }
+    .section-title h2 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="brand">AI WITH UNNATI</div>
+    <div class="tag">Breaking AI News Guide</div>
+  </header>
+
+  <div class="hero">
+    <h1>Fable 5 is gone.<br><span>Here's what to use instead.</span></h1>
+    <p>On June 12, 2026, the US government issued an export control directive forcing Anthropic to disable Claude Fable 5 and Mythos 5 worldwide — just 4 days after launch. Your work doesn't stop. Here's your cheat sheet.</p>
+  </div>
+
+  <div class="recap">
+    <h2>What actually happened</h2>
+    <p>The US government, citing national security concerns, ordered Anthropic to block <strong>any foreign national, anywhere</strong> — including Anthropic's own non-US employees — from using Fable 5 and Mythos 5. To comply, Anthropic had to disable both models for everyone, everywhere, overnight.</p>
+    <p>The government believes someone found a "jailbreak" — a way to bypass the model's safety rules. Anthropic disagrees with the decision and says it's working to restore access. All other Claude models remain unaffected.</p>
+  </div>
+
+  <div class="section-title">
+    <div class="label">The Cheat Sheet</div>
+    <h2>Closest alternatives to Fable 5</h2>
+  </div>
+
+  <!-- Claude Opus 4.8 -->
+  <div class="model-card">
+    <div class="model-head">
+      <h3>Claude Opus 4.8</h3>
+      <div class="maker">Anthropic</div>
+    </div>
+    <div class="model-body">
+      <div class="row">
+        <div class="icon">🏆</div>
+        <div class="content">
+          <strong>Best For</strong>
+          <p>Overall replacement — closest in raw capability to Fable 5. Strongest for coding, complex reasoning, and long-context work.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="icon">🔑</div>
+        <div class="content">
+          <strong>How to Access</strong>
+          <p>Available now on Claude.ai (Pro plan) and via the Anthropic API. Unaffected by the Fable 5 restriction — works exactly as before.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GPT-5.5 -->
+  <div class="model-card">
+    <div class="model-head">
+      <h3>GPT-5.5</h3>
+      <div class="maker">OpenAI</div>
+    </div>
+    <div class="model-body">
+      <div class="row">
+        <div class="icon">✍️</div>
+        <div class="content">
+          <strong>Best For</strong>
+          <p>Creative writing, general assistant tasks, and long-horizon agent workflows. Strong on Terminal-Bench style multi-step tool use.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="icon">🔑</div>
+        <div class="content">
+          <strong>How to Access</strong>
+          <p>Available via ChatGPT (free tier has daily caps; Plus/Pro unlock full access) and the OpenAI API.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gemini 3.1 Pro -->
+  <div class="model-card">
+    <div class="model-head">
+      <h3>Gemini 3.1 Pro</h3>
+      <div class="maker">Google</div>
+    </div>
+    <div class="model-body">
+      <div class="row">
+        <div class="icon">🔗</div>
+        <div class="content">
+          <strong>Best For</strong>
+          <p>Reasoning tasks, huge context windows (1M tokens), and anyone already living in the Google ecosystem (Docs, Sheets, Gmail).</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="icon">🔑</div>
+        <div class="content">
+          <strong>How to Access</strong>
+          <p>Available via Gemini app (free + Advanced tier at ~$19.99/month) and Google AI Studio / API.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DeepSeek V4 -->
+  <div class="model-card">
+    <div class="model-head">
+      <h3>DeepSeek V4 Pro</h3>
+      <div class="maker">DeepSeek</div>
+    </div>
+    <div class="model-body">
+      <div class="row">
+        <div class="icon">💸</div>
+        <div class="content">
+          <strong>Best For</strong>
+          <p>Best free / lowest-cost option that's still genuinely competitive — strong on coding and agent tool-use at a fraction of the price.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="icon">🔑</div>
+        <div class="content">
+          <strong>How to Access</strong>
+          <p>Free via the DeepSeek web chat app, or via API for developers who want to plug it into their own tools (e.g. through OpenRouter).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Want this saved as a quick-reference guide?</h2>
+    <p>Comment <strong>"FABLE"</strong> on the post and I'll send this cheat sheet straight to your DMs.</p>
+    <a class="btn" href="#">Follow @aiwithunnati →</a>
+  </div>
+
+  <footer>
+    Guide by <span class="handle">@aiwithunnati</span> · Updated June 2026
+  </footer>
+
+</div>
+</body>
+</html>
