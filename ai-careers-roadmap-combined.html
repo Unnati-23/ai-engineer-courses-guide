@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Careers Roadmap 2026 | Tech & Non-Tech Paths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --peach-light: #fff3ee;
+    --peach: #ffd9c9;
+    --pink: #ffc4d6;
+    --pink-deep: #ff8fab;
+    --rose: #e85d75;
+    --plum: #5b3a4e;
+    --ink: #3d2c35;
+    --cream: #fffaf7;
+    --line: rgba(232, 93, 117, 0.18);
+    --gold: #d9a23b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: linear-gradient(160deg, var(--peach-light) 0%, var(--peach) 38%, var(--pink) 100%);
+    line-height: 1.6;
+  }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px 80px; }
+
+  header.hero { padding: 72px 24px 48px; text-align: center; }
+
+  .eyebrow {
+    font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rose); font-weight: 700; margin-bottom: 18px;
+  }
+
+  h1.title {
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    font-size: clamp(2.1rem, 6vw, 3.4rem); margin: 0 0 16px;
+    color: var(--plum); letter-spacing: -0.01em;
+  }
+
+  h1.title em { font-style: italic; color: var(--rose); }
+
+  .subtitle { max-width: 640px; margin: 0 auto; font-size: 1.03rem; opacity: 0.85; }
+
+  .by-line {
+    margin-top: 26px; font-size: 0.9rem; color: var(--plum); opacity: 0.7;
+    font-style: italic; font-family: 'Playfair Display', serif;
+  }
+
+  /* STAT STRIP */
+  .stats {
+    display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+    margin: 36px 0 8px;
+  }
+  .stat {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 16px;
+    padding: 14px 22px; text-align: center; min-width: 110px;
+    box-shadow: 0 10px 26px -18px rgba(232,93,117,0.35);
+  }
+  .stat .num {
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; color: var(--rose);
+  }
+  .stat .lbl { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; }
+
+  .how-to {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 20px;
+    padding: 28px 32px; margin: 40px 0 56px;
+    box-shadow: 0 12px 32px -18px rgba(232, 93, 117, 0.35);
+  }
+  .how-to h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin: 0 0 10px; color: var(--rose); }
+  .how-to p { margin: 0 0 8px; font-size: 0.97rem; }
+  .how-to p:last-child { margin-bottom: 0; }
+
+  /* TRACK HEADERS */
+  .track-header { text-align: center; margin: 70px 0 36px; }
+  .track-tag {
+    display: inline-block; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 700; color: var(--cream); background: var(--rose);
+    padding: 6px 18px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .track-tag.gold { background: var(--gold); }
+  .track-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 10px; color: var(--plum); }
+  .track-header p { max-width: 580px; margin: 0 auto; font-size: 0.97rem; opacity: 0.8; }
+
+  /* STAGE CARDS */
+  .stage {
+    display: flex; gap: 22px; background: var(--cream); border: 1px solid var(--line);
+    border-radius: 22px; padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: 0 14px 36px -22px rgba(232, 93, 117, 0.4);
+    position: relative; overflow: hidden;
+  }
+  .stage::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%;
+    background: linear-gradient(180deg, var(--pink-deep), var(--rose));
+  }
+  .stage-num {
+    flex: 0 0 auto; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
+    font-size: 2.4rem; color: var(--pink-deep); line-height: 1; min-width: 52px;
+  }
+  .stage-body { flex: 1; }
+  .stage-body h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin: 0 0 6px; color: var(--plum); }
+  .stage-goal { font-size: 0.92rem; opacity: 0.75; margin: 0 0 16px; }
+
+  .resource {
+    background: linear-gradient(135deg, var(--peach-light), #fffdfb); border: 1px solid var(--line);
+    border-radius: 14px; padding: 14px 18px; margin-bottom: 10px;
+  }
+  .resource:last-child { margin-bottom: 0; }
+  .resource a { font-weight: 700; color: var(--rose); text-decoration: none; font-size: 0.98rem; }
+  .resource a:hover { text-decoration: underline; }
+  .resource .meta {
+    display: inline-block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: var(--plum); background: var(--pink); border-radius: 999px;
+    padding: 2px 10px; margin-left: 8px; vertical-align: middle;
+  }
+  .resource .meta.audit { background: var(--peach); }
+  .resource p { margin: 6px 0 0; font-size: 0.9rem; opacity: 0.85; }
+  .resource .name { font-weight: 700; color: var(--plum); font-size: 0.98rem; }
+
+  /* FULL ROADMAP CALLOUT (within AI Engineer track) */
+  .deep-dive {
+    background: linear-gradient(135deg, var(--peach), var(--pink));
+    border-radius: 18px; padding: 22px 26px; margin: 8px 0 22px; text-align: center;
+    border: 1px solid var(--line);
+  }
+  .deep-dive p { margin: 0 0 10px; font-size: 0.95rem; }
+  .deep-dive a {
+    display: inline-block; background: var(--rose); color: var(--cream); font-weight: 700;
+    padding: 9px 24px; border-radius: 999px; text-decoration: none; font-size: 0.9rem;
+  }
+
+  /* PLACEHOLDER SECTION */
+  .placeholder {
+    background: repeating-linear-gradient(135deg, var(--cream), var(--cream) 14px, var(--peach-light) 14px, var(--peach-light) 28px);
+    border: 2px dashed var(--pink-deep); border-radius: 22px; padding: 40px 32px; text-align: center;
+  }
+  .placeholder h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--rose); margin: 0 0 10px; }
+  .placeholder p { max-width: 480px; margin: 0 auto; font-size: 0.95rem; opacity: 0.85; }
+
+  /* CALLOUT */
+  .callout {
+    background: linear-gradient(135deg, var(--pink), var(--peach)); border-radius: 22px;
+    padding: 32px 34px; margin: 56px 0; text-align: center; border: 1px solid var(--line);
+  }
+  .callout h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0 0 10px; color: var(--plum); }
+  .callout p { max-width: 560px; margin: 0 auto 14px; font-size: 0.97rem; }
+
+  /* WEEK TIMELINE */
+  .week-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px;
+    margin: 8px 0 22px;
+  }
+  .week-card {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px 18px; box-shadow: 0 10px 26px -18px rgba(232,93,117,0.35);
+  }
+  .week-card .wk {
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--rose);
+    margin-bottom: 4px;
+  }
+  .week-card p { margin: 0; font-size: 0.86rem; opacity: 0.85; }
+
+  /* SKIP BOX */
+  .skip-box {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 22px;
+    padding: 28px 30px; margin-bottom: 22px;
+  }
+  .skip-box h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin: 0 0 14px; color: var(--plum); }
+  .skip-item { border-left: 3px solid var(--gold); padding-left: 14px; margin-bottom: 14px; }
+  .skip-item:last-child { margin-bottom: 0; }
+  .skip-item .name { font-weight: 700; color: var(--plum); }
+  .skip-item p { margin: 4px 0 0; font-size: 0.9rem; opacity: 0.85; }
+
+  /* PROJECT LIST */
+  .project-list { margin: 0; padding-left: 0; list-style: none; }
+  .project-list li {
+    background: linear-gradient(135deg, var(--peach-light), #fffdfb); border: 1px solid var(--line);
+    border-radius: 14px; padding: 12px 18px; margin-bottom: 10px; font-size: 0.92rem;
+  }
+  .project-list li:last-child { margin-bottom: 0; }
+  .project-list .name { font-weight: 700; color: var(--plum); }
+
+  footer { text-align: center; margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--line); }
+  footer p { font-size: 0.85rem; opacity: 0.7; margin: 4px 0; }
+  footer .signoff { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--rose); margin-bottom: 6px; }
+
+  @media (max-width: 600px) {
+    .stage { flex-direction: column; gap: 8px; padding: 22px; }
+    .stage-num { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Confused → Confident</div>
+    <h1 class="title">Your <em>AI Career</em> Roadmap</h1>
+    <p class="subtitle">Three real paths into AI careers — for people who code, people who don't, and everyone figuring out where they fit. No degree required to start. Every resource below is free or free-to-audit, checked June 2026.</p>
+    <p class="by-line">— @aiwithunnati</p>
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="lbl">Career Tracks</div></div>
+      <div class="stat"><div class="num">60+</div><div class="lbl">Free Resources</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Degrees Needed</div></div>
+    </div>
+  </header>
+
+  <div class="how-to">
+    <h2>How to use this guide</h2>
+    <p>Pick the track that matches where you want to end up — not where you are right now. If you've never written code and want to stay non-technical, start with AI Ethics &amp; Governance. If you're ready to learn to build, AI Engineer is your foundation. If you already have some technical comfort and want a client-facing, high-impact role, Forward Deployed Engineer is the path.</p>
+    <p>Within each phase, <strong>pick ONE</strong> resource that matches your learning style — don't try to do everything. Depth beats breadth.</p>
+  </div>
+
+  <!-- TRACK 1: AI ENGINEER -->
+  <div class="track-header">
+    <div class="track-tag">Track 1 · Technical</div>
+    <h2>AI Engineer</h2>
+    <p>For people who want to build AI systems — ML engineer, AI developer, applied AI roles. Real coding, starting from zero.</p>
+  </div>
+
+  <div class="deep-dive">
+    <p>This is the condensed version. For the full curated list with every option per phase, plus the recommended month-by-month timeline, see the dedicated guide:</p>
+    <a href="https://unnati-23.github.io/Claude-Usage-Guide/ai-engineer-roadmap-2026.html" target="_blank" rel="noopener">Open Full AI Engineer Roadmap →</a>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">1</div>
+    <div class="stage-body">
+      <h3>Python Programming</h3>
+      <p class="stage-goal">Your foundation — everything else builds on this.</p>
+      <div class="resource">
+        <a href="https://cs50.harvard.edu/python/" target="_blank" rel="noopener">CS50P — Intro to Programming with Python (Harvard)</a>
+        <span class="meta">Free</span>
+        <p>University-style, ~10 weeks, beginner-friendly. The top pick for a thorough foundation.</p>
+      </div>
+      <div class="resource">
+        <a href="https://youtube.com/playlist?list=PLKnIA16_Rmvb1RYR-iTA_hzckhdONtSW4" target="_blank" rel="noopener">CampusX — 100 Days of Python</a>
+        <span class="meta">Free · Hinglish</span>
+        <p>Self-paced YouTube playlist, great if you prefer learning in Hindi/Hinglish.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">2</div>
+    <div class="stage-body">
+      <h3>Machine Learning Fundamentals</h3>
+      <p class="stage-goal">Understand how AI actually works under the hood — don't skip this.</p>
+      <div class="resource">
+        <a href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener">Machine Learning Specialization — Andrew Ng</a>
+        <span class="meta audit">Free (Audit)</span>
+        <p>Stanford &amp; DeepLearning.AI. The gold standard — rated 4.9/5, taken by 4.8M+ people. Audit for free on Coursera (full content, no certificate).</p>
+      </div>
+      <div class="resource">
+        <a href="https://cs50.harvard.edu/ai/" target="_blank" rel="noopener">CS50's Introduction to AI with Python (Harvard)</a>
+        <span class="meta">Free</span>
+        <p>More CS-focused alternative, ~7 weeks, intermediate level.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">3</div>
+    <div class="stage-body">
+      <h3>RAG, Vectors &amp; Vector Databases</h3>
+      <p class="stage-goal">One of the most in-demand, genuinely useful skills — this is what makes AI useful in real businesses.</p>
+      <div class="resource">
+        <a href="https://www.coursera.org/learn/retrieval-augmented-generation-rag" target="_blank" rel="noopener">Retrieval Augmented Generation (RAG) — DeepLearning.AI</a>
+        <span class="meta audit">Free (Audit)</span>
+        <p>~10 hours, intermediate. Your primary resource for understanding RAG end-to-end.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/" target="_blank" rel="noopener">Building &amp; Evaluating Advanced RAG</a>
+        <span class="meta">Free</span>
+        <p>DeepLearning.AI short course, ~2 hours, hands-on practice.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">4</div>
+    <div class="stage-body">
+      <h3>LLM APIs &amp; Prompt Engineering</h3>
+      <p class="stage-goal">The bridge between theory and building real products — calling LLM APIs from Python and getting consistent results.</p>
+      <div class="resource">
+        <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener">Anthropic Academy — All Free Courses</a>
+        <span class="meta">Free</span>
+        <p>17 official courses (~18-22 hours total) covering the Claude API, MCP, and agent skills — all in one place, all free.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">ChatGPT Prompt Engineering for Developers</a>
+        <span class="meta">Free</span>
+        <p>DeepLearning.AI, ~2 hours. Andrew Ng &amp; Isa Fulford on prompting fundamentals.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">5</div>
+    <div class="stage-body">
+      <h3>Building AI Agents</h3>
+      <p class="stage-goal">This is what's getting people hired in 2026 — autonomous systems that reason, plan, and take action.</p>
+      <div class="resource">
+        <a href="https://academy.langchain.com/courses/foundation-introduction-to-langchain-python" target="_blank" rel="noopener">Introduction to LangChain — Build AI Agents with Python</a>
+        <span class="meta">Free</span>
+        <p>LangChain Academy, ~6 hours. Directly from the creators of LangChain and LangGraph.</p>
+      </div>
+      <div class="resource">
+        <a href="https://huggingface.co/learn/agents-course/unit0/introduction" target="_blank" rel="noopener">Hugging Face AI Agents Course</a>
+        <span class="meta">Free · Certificate</span>
+        <p>Beginner to expert, ~6 weeks, hands-on challenges and a leaderboard.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">6</div>
+    <div class="stage-body">
+      <h3>Model Context Protocol (MCP)</h3>
+      <p class="stage-goal">The open standard reshaping how AI agents connect to tools and data — 97M+ SDK downloads, backed by major AI labs.</p>
+      <div class="resource">
+        <a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" rel="noopener">Introduction to Model Context Protocol — Anthropic</a>
+        <span class="meta">Free</span>
+        <p>~4 hours, intermediate. The official starting point.</p>
+      </div>
+      <div class="resource">
+        <a href="https://huggingface.co/learn/mcp-course" target="_blank" rel="noopener">MCP Course — Hugging Face + Anthropic</a>
+        <span class="meta">Free</span>
+        <p>Beginner to intermediate, self-paced, broader ecosystem perspective.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">7</div>
+    <div class="stage-body">
+      <h3>Git, GitHub &amp; Deployment</h3>
+      <p class="stage-goal">Non-negotiable — this is how you show proof of work to employers.</p>
+      <div class="resource">
+        <span class="name">Git &amp; GitHub Crash Course — freeCodeCamp (YouTube)</span>
+        <span class="meta">Free</span>
+        <p>~1 hour. Can be learned in a weekend — don't delay on this.</p>
+      </div>
+      <div class="resource">
+        <a href="https://huggingface.co/docs/hub/spaces" target="_blank" rel="noopener">Deploy AI Apps for Free — Hugging Face Spaces</a>
+        <span class="meta">Free</span>
+        <p>The easiest free way to make your AI projects visible to employers — push to GitHub, deploy on Spaces.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACK 2: FDE -->
+  <div class="track-header">
+    <div class="track-tag">Track 2 · Technical</div>
+    <h2>Forward Deployed Engineer</h2>
+    <p>For people who want to combine technical AI skills with client-facing work — implementing AI solutions directly inside organizations.</p>
+  </div>
+
+  <div class="deep-dive">
+    <p>Given a strong software engineering background, the biggest deltas for this role are usually: LLM-native engineering patterns, agent infrastructure (MCP, skills, sub-agents), evaluation discipline, and the <em>consulting</em> half of the job — discovery, scoping under ambiguity, and translating between executives and engineers. Ordered roughly foundations → advanced → role-shaped soft skills.</p>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">1</div>
+    <div class="stage-body">
+      <h3>Foundations of LLM-native engineering</h3>
+      <p class="stage-goal">The mental shift from "API that returns text" to "stochastic component you have to engineer around." Read broadly across labs — not just one.</p>
+      <div class="resource">
+        <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic — Building Effective AI Agents</a>
+        <span class="meta">Essay</span>
+        <p>The canonical essay distinguishing workflows (predefined code paths) from agents (LLMs dynamically directing tool use). Covers prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — Effective Context Engineering for AI Agents</a>
+        <span class="meta">Essay</span>
+        <p>The follow-up, defining "context engineering" as the next phase after prompt engineering.</p>
+      </div>
+      <div class="resource">
+        <a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf" target="_blank" rel="noopener">OpenAI — A Practical Guide to Building Agents</a>
+        <span class="meta">PDF</span>
+        <p>OpenAI's own framing of the same shift — useful to read alongside Anthropic's essays for a vendor-agnostic picture.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Chip Huyen — AI Engineering (book)</span>
+        <span class="meta">Book</span>
+        <p>The most comprehensive practitioner text. Covers eval, RAG, fine-tuning tradeoffs, and inference optimization end-to-end.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Practitioner blogs</span>
+        <span class="meta">Ongoing</span>
+        <p><a href="https://simonwillison.net" target="_blank" rel="noopener">Simon Willison</a> (pragmatic, current, vendor-agnostic), <a href="https://hamel.dev" target="_blank" rel="noopener">Hamel Husain</a> (especially the eval posts), and <a href="https://eugeneyan.com" target="_blank" rel="noopener">Eugene Yan</a> (applied ML/LLM patterns from someone who's shipped at scale) — worth following on an ongoing basis.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">2</div>
+    <div class="stage-body">
+      <h3>The major API surfaces</h3>
+      <p class="stage-goal">Be fluent in at least one frontier API end-to-end, and literate in the others — customers always ask "why not the other guy."</p>
+      <div class="resource">
+        <a href="https://docs.claude.com" target="_blank" rel="noopener">Anthropic Claude docs</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API docs</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://ai.google.dev/gemini-api/docs" target="_blank" rel="noopener">Google Gemini API docs</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://www.llama.com" target="_blank" rel="noopener">Meta Llama (open weights)</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <span class="name">Core concepts to internalize regardless of provider</span>
+        <span class="meta">Checklist</span>
+        <p>The chat completions / messages loop and streaming; tool use / function calling (schema design, the tool_call → tool_result loop, parallel tool calls); structured outputs (JSON mode, schemas); prompt caching (a huge cost/latency lever in production); batch APIs (often 50% cost for non-realtime workloads); reasoning / extended-thinking models and when they're worth the latency; context windows, attention budgets, and how performance degrades at the tail.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Deliberate sub-project</span>
+        <span class="meta">Build</span>
+        <p>Ship one real app on the API of your target lab, instrumented with caching + tool use + a proper eval harness. Forces depth.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">3</div>
+    <div class="stage-body">
+      <h3>Prompt &amp; context engineering</h3>
+      <p class="stage-goal">The literature here is much better than it was a year ago.</p>
+      <div class="resource">
+        <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic prompt engineering guide</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI prompting guide</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://www.promptingguide.ai" target="_blank" rel="noopener">DAIR.AI Prompt Engineering Guide</a>
+        <span class="meta">Vendor-agnostic</span>
+      </div>
+      <div class="resource">
+        <span class="name">Patterns worth being fluent in</span>
+        <span class="meta">Checklist</span>
+        <p>Few-shot, chain-of-thought, XML/structured tagging, prefilling, self-consistency, ReAct, reflexion, plan-and-execute.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">4</div>
+    <div class="stage-body">
+      <h3>Agent infrastructure &amp; protocols</h3>
+      <p class="stage-goal">This is where most enterprise FDE work lives today. The patterns are converging across labs.</p>
+      <div class="resource">
+        <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol (MCP)</a>
+        <span class="meta">Standard</span>
+        <p>Open standard for connecting LLMs to tools and data. Originated at Anthropic but adopted broadly. Also see <a href="https://github.com/modelcontextprotocol" target="_blank" rel="noopener">github.com/modelcontextprotocol</a>.</p>
+      </div>
+      <div class="resource">
+        <a href="https://agentskills.io" target="_blank" rel="noopener">Agent Skills</a>
+        <span class="meta">Standard</span>
+        <p>Open standard for packaging procedural knowledge (a SKILL.md + scripts) that an agent loads on demand.</p>
+      </div>
+      <div class="resource">
+        <a href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener">OpenAI Agents SDK</a>
+        <span class="meta">SDK</span>
+      </div>
+      <div class="resource">
+        <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a>
+        <span class="meta">SDK</span>
+        <p>LangChain's graph-based orchestrator.</p>
+      </div>
+      <div class="resource">
+        <span class="name">CrewAI, AutoGen, Mastra</span>
+        <span class="meta">Know they exist</span>
+        <p>Know they exist, know the tradeoffs. Most senior engineers in this space prefer thinner abstractions over heavyweight frameworks.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Concrete build to do once</span>
+        <span class="meta">Build</span>
+        <p>Ship one MCP server publicly. Pick something an enterprise would actually care about (e.g. a wrapper around an internal API shape — Jira-like, ServiceNow-like, Salesforce-like). Two transports (stdio + HTTP), one weekend.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">5</div>
+    <div class="stage-body">
+      <h3>Retrieval &amp; RAG — without over-indexing</h3>
+      <p class="stage-goal">RAG is no longer the centerpiece it was in 2023, but you need to know it cold because most enterprise deployments still involve it.</p>
+      <div class="resource">
+        <a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener">Anthropic — Contextual Retrieval</a>
+        <span class="meta">Essay</span>
+      </div>
+      <div class="resource">
+        <a href="https://www.pinecone.io/learn/" target="_blank" rel="noopener">Pinecone Learning Center</a>
+        <span class="meta">Free</span>
+      </div>
+      <div class="resource">
+        <a href="https://docs.llamaindex.ai" target="_blank" rel="noopener">LlamaIndex docs</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://eugeneyan.com/writing/llm-patterns/" target="_blank" rel="noopener">Eugene Yan — Patterns for Building LLM-based Systems &amp; Products</a>
+        <span class="meta">Essay</span>
+      </div>
+      <div class="resource">
+        <span class="name">What to actually understand</span>
+        <span class="meta">Checklist</span>
+        <p>Chunking strategies, hybrid search (BM25 + dense), reranking, evaluation (recall@k, MRR), and when to use a graph/structured approach instead. Don't spend weeks building a vector DB from scratch — understand at the level of "when to use it, how to evaluate it."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">6</div>
+    <div class="stage-body">
+      <h3>Evaluation frameworks</h3>
+      <p class="stage-goal">The part most engineers underweight. FDEs ship things to customers who need to justify spend — no evals means no production deployment.</p>
+      <div class="resource">
+        <a href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener">Hamel Husain — "Your AI Product Needs Evals"</a>
+        <span class="meta">Required reading</span>
+      </div>
+      <div class="resource">
+        <a href="https://docs.claude.com/en/docs/test-and-evaluate/develop-tests" target="_blank" rel="noopener">Anthropic eval docs</a>
+        <span class="meta">Docs</span>
+      </div>
+      <div class="resource">
+        <a href="https://github.com/openai/evals" target="_blank" rel="noopener">OpenAI Evals</a>
+        <span class="meta">Framework + cookbook</span>
+      </div>
+      <div class="resource">
+        <a href="https://inspect.aisi.org.uk/" target="_blank" rel="noopener">Inspect AI</a>
+        <span class="meta">Open-source</span>
+        <p>UK AISI's open-source framework, widely used in enterprise. (Note: the AI Safety Institute was renamed the AI Security Institute — same acronym, new docs URL.)</p>
+      </div>
+      <div class="resource">
+        <span class="name">Braintrust, Langfuse, Promptfoo</span>
+        <span class="meta">Tooling</span>
+        <p><a href="https://www.braintrust.dev" target="_blank" rel="noopener">Braintrust</a> · <a href="https://langfuse.com" target="_blank" rel="noopener">Langfuse</a> (open-source) · <a href="https://www.promptfoo.dev" target="_blank" rel="noopener">Promptfoo</a></p>
+      </div>
+      <div class="resource">
+        <span class="name">Patterns to learn</span>
+        <span class="meta">Checklist</span>
+        <p>LLM-as-judge (and its failure modes), pairwise comparison, rubric-based grading, golden datasets, regression suites, online eval via user signals. Pick one framework and ship an eval harness with it — the framework matters less than having done it once seriously.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">7</div>
+    <div class="stage-body">
+      <h3>Observability, security &amp; safety</h3>
+      <p class="stage-goal">The boring parts that determine whether a deployment actually survives in production.</p>
+      <div class="resource">
+        <span class="name">Observability — pick one</span>
+        <span class="meta">Tooling</span>
+        <p><a href="https://langfuse.com" target="_blank" rel="noopener">Langfuse</a>, <a href="https://www.braintrust.dev" target="_blank" rel="noopener">Braintrust</a>, <a href="https://phoenix.arize.com" target="_blank" rel="noopener">Arize Phoenix</a>, or <a href="https://www.helicone.ai" target="_blank" rel="noopener">Helicone</a>. Pattern: trace every LLM call, log prompts + completions + tokens + latency + cost, sample for offline eval.</p>
+      </div>
+      <div class="resource">
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a>
+        <span class="meta">Security</span>
+      </div>
+      <div class="resource">
+        <a href="https://simonwillison.net/tags/prompt-injection/" target="_blank" rel="noopener">Simon Willison's prompt injection writing</a>
+        <span class="meta">Security</span>
+      </div>
+      <div class="resource">
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a>
+        <span class="meta">Framework</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">8</div>
+    <div class="stage-body">
+      <h3>Enterprise vertical context</h3>
+      <p class="stage-goal">The JD almost always calls out "financial services, healthcare/life sciences, or another enterprise vertical" as a plus. Pick one and go deep enough to hold a 30-minute discovery conversation with a domain expert.</p>
+      <div class="resource">
+        <span class="name">Financial services</span>
+        <span class="meta">Vertical</span>
+        <p>SR 11-7 (model risk management), trade lifecycle basics, KYC/AML workflows, how compliance reviews AI systems. Reference customers: Bridgewater, Brex, JPMorgan's AI work.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Healthcare / life sciences</span>
+        <span class="meta">Vertical</span>
+        <p>HIPAA, PHI handling, FDA's framework for AI/ML-based SaMD, clinical documentation workflows, EHR integration patterns.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Legal</span>
+        <span class="meta">Vertical</span>
+        <p>Contract review workflows, document retention, privilege. Reference companies: Harvey, Hebbia, Ironclad.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Customer service / CX</span>
+        <span class="meta">Vertical</span>
+        <p>Ticketing, deflection, agent assist, voice. Reference companies: Intercom (Fin), Sierra, Decagon.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Reading</span>
+        <span class="meta">Tip</span>
+        <p>Each frontier lab publishes customer stories — read 5-10 across verticals to see what real deployments look like.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">9</div>
+    <div class="stage-body">
+      <h3>The forward-deployed motion — the <em>consulting</em> half</h3>
+      <p class="stage-goal">This is what most engineers underweight, and it's often what separates strong FDE candidates from strong SWE candidates.</p>
+      <div class="resource">
+        <a href="https://blog.palantir.com/a-day-in-the-life-of-a-palantir-forward-deployed-software-engineer-45ef2de257b1" target="_blank" rel="noopener">Palantir FDE writing</a>
+        <span class="meta">Essay</span>
+        <p>Palantir invented this role — read their playbook, and search YouTube for "Palantir forward deployed" talks.</p>
+      </div>
+      <div class="resource">
+        <span class="name">The Mom Test — Rob Fitzpatrick</span>
+        <span class="meta">Book</span>
+        <p>Short book, the customer-discovery bible.</p>
+      </div>
+      <div class="resource">
+        <span class="name">SPIN Selling — Neil Rackham</span>
+        <span class="meta">Book</span>
+        <p>The question structure FDEs use in technical scoping calls.</p>
+      </div>
+      <div class="resource">
+        <span class="name">The Pyramid Principle — Barbara Minto</span>
+        <span class="meta">Book</span>
+        <p>Writing/communicating for executives.</p>
+      </div>
+      <div class="resource">
+        <span class="name">An Elegant Puzzle — Will Larson</span>
+        <span class="meta">Book + blog</span>
+        <p>Plus his blog <a href="https://lethain.com" target="_blank" rel="noopener">lethain.com</a> — working under ambiguity at staff level.</p>
+      </div>
+      <div class="resource">
+        <span class="name">High Output Management — Andy Grove</span>
+        <span class="meta">Book</span>
+        <p>Still the best book on managing throughput across functions.</p>
+      </div>
+      <div class="resource">
+        <span class="name">Practical exercise</span>
+        <span class="meta">Do this</span>
+        <p>Take one of your past complex projects and write it up as a case study — situation, customer/stakeholder goal, constraints, what you built, measured outcome. FDE interview loops lean heavily on these.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">10</div>
+    <div class="stage-body">
+      <h3>Building your evidence portfolio</h3>
+      <p class="stage-goal">Concrete artifacts an interviewer can read in 10 minutes carry more weight than anything else. Aim for 3-4 of these:</p>
+      <ul class="project-list">
+        <li><span class="name">An MCP server</span> for a non-trivial enterprise-shaped API. Open-source on GitHub with a clear README and a 60-second demo video.</li>
+        <li><span class="name">A custom Agent Skill</span> (or equivalent for whichever lab you're targeting) that does something you actually use.</li>
+        <li><span class="name">A small agent</span> that solves a real workflow you do every week. Show eval results, not just the demo.</li>
+        <li><span class="name">A teardown post:</span> pick one of the frontier engineering posts from Stage 1, implement the pattern, write 800-1200 words on what worked and what didn't. This is exactly the kind of artifact FDEs produce internally.</li>
+        <li><span class="name">A "deployment pattern" writeup:</span> pick a customer profile (e.g. "mid-size insurance company doing claims triage"), sketch the architecture (which cloud, RAG approach, eval setup, guardrails). One page.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="track-header" style="margin-top: 48px;">
+    <div class="track-tag">Suggested 8-Week Sequence</div>
+    <h2 style="font-size: 1.5rem;">From Foundations to Portfolio</h2>
+  </div>
+
+  <div class="week-grid">
+    <div class="week-card"><div class="wk">Week 1</div><p>Rebuild one piece of an existing app of yours on a frontier API with tool use + prompt caching.</p></div>
+    <div class="week-card"><div class="wk">Week 2</div><p>MCP. Ship one MCP server publicly.</p></div>
+    <div class="week-card"><div class="wk">Week 3</div><p>Agent Skills (or your target lab's equivalent). Read 3 reference skills, ship one custom skill that composes with your MCP server.</p></div>
+    <div class="week-card"><div class="wk">Week 4</div><p>Evals. Pick one framework, add an eval harness to the Week 1 project, get a baseline number.</p></div>
+    <div class="week-card"><div class="wk">Week 5</div><p>Multi-agent + sub-agents. Build one orchestrator + 2 sub-agents pattern.</p></div>
+    <div class="week-card"><div class="wk">Week 6</div><p>Deployment surfaces. Deploy your agent to Bedrock or Vertex. Document the security model and data flow.</p></div>
+    <div class="week-card"><div class="wk">Week 7</div><p>Vertical depth. Pick one vertical from Stage 8, build a domain-shaped demo on top of your existing infrastructure.</p></div>
+    <div class="week-card"><div class="wk">Week 8</div><p>Polish. Write up 2-3 artifacts as case studies. Practice talking through them out loud — discovery questions, tradeoffs, what you'd do differently.</p></div>
+  </div>
+
+  <div class="skip-box">
+    <h3>Things explicitly worth <em>not</em> over-investing in</h3>
+    <div class="skip-item">
+      <span class="name">Building a vector DB from scratch.</span>
+      <p>The job is about deploying LLMs well, not winning a RAG benchmark.</p>
+    </div>
+    <div class="skip-item">
+      <span class="name">Fine-tuning.</span>
+      <p>Most frontier labs' top models aren't user-fine-tunable, and the FDE motion almost never needs it. Knowing <em>why</em> prompting + context engineering replace most fine-tuning use cases is more valuable than fine-tuning skill itself.</p>
+    </div>
+    <div class="skip-item">
+      <span class="name">Framework depth for its own sake.</span>
+      <p>Know LangChain / LlamaIndex / CrewAI exist; customers use them. Don't build your reference implementations on top of heavyweight frameworks — most senior engineers in this space prefer thin, direct API calls.</p>
+    </div>
+    <div class="skip-item">
+      <span class="name">Chasing every new model release.</span>
+      <p>Frontier moves weekly. Build for capability classes (reasoning / tool-using / cheap-and-fast / multimodal), not specific model names.</p>
+    </div>
+  </div>
+
+  <!-- TRACK 3: AI ETHICS & GOVERNANCE -->
+  <div class="track-header">
+    <div class="track-tag gold">Track 3 · Non-Tech</div>
+    <h2>AI Ethics &amp; Governance</h2>
+    <p>For people from any background — policy, law, HR, business, social science — who want to work on the rules, frameworks, and oversight that govern how AI gets used. No coding required.</p>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">1</div>
+    <div class="stage-body">
+      <h3>Build your foundation</h3>
+      <p class="stage-goal">Understand what AI is, how organizations think about it, and where ethics fits in.</p>
+      <div class="resource">
+        <a href="https://www.elementsofai.com/" target="_blank" rel="noopener">Elements of AI</a>
+        <span class="meta">Free · Certificate</span>
+        <p>Start here if you haven't already (see Stage 0 of the main guide) — covers what AI can and can't do, and its societal impact, with no math or code.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener">AI For Everyone — Andrew Ng</a>
+        <span class="meta audit">Free (Audit)</span>
+        <p>DeepLearning.AI, ~6 hours. Built for non-technical people — how organizations adopt AI, including the ethical and strategic considerations.</p>
+      </div>
+      <div class="resource">
+        <a href="https://alison.com/course/ai-governance-and-ethics" target="_blank" rel="noopener">AI Governance and Ethics — Alison</a>
+        <span class="meta">Free · Certificate</span>
+        <p>Fully free, including the certificate (80% pass mark). Covers the laws, frameworks, and procedures that govern AI, and key ethical challenges.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">2</div>
+    <div class="stage-body">
+      <h3>Learn the frameworks that matter</h3>
+      <p class="stage-goal">These are the actual standards and regulations companies build their governance programs around.</p>
+      <div class="resource">
+        <a href="https://www.coursera.org/learn/ai-governance" target="_blank" rel="noopener">AI Governance — University of Oxford (Saïd Business School)</a>
+        <span class="meta audit">Free (Audit)</span>
+        <p>Covers why AI systems fail, key risks (bias, misalignment, overreliance), and how to translate ethical principles into practical oversight.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.coursera.org/learn/generative-ai-governance-policy-and-emerging-regulation" target="_blank" rel="noopener">Generative AI: Governance, Policy, and Emerging Regulation — University of Michigan</a>
+        <span class="meta audit">Free (Audit)</span>
+        <p>Covers data management, transparency, risk assessments, and the current regulatory landscape across the US, EU, and G7 countries.</p>
+      </div>
+      <div class="resource">
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a>
+        <span class="meta">Free · Primary source</span>
+        <p>The actual framework many organizations use to structure AI governance. Free, public, and directly citable — reading the source itself is a strong signal in interviews.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">3</div>
+    <div class="stage-body">
+      <h3>Apply it — build your case study portfolio</h3>
+      <p class="stage-goal">For governance roles, employers want evidence you can analyze real situations, not just recite frameworks.</p>
+      <div class="resource">
+        <span class="name">Pick real incidents and write your own analysis</span>
+        <span class="meta">Hands-on</span>
+        <p>Choose 3-4 real, publicly reported AI governance issues (biased hiring tools, content moderation failures, deepfake incidents) and write a short analysis: what went wrong, which framework from Stage 2 would have caught it, and what you'd recommend. This becomes your portfolio.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-num">4</div>
+    <div class="stage-body">
+      <h3>Stay current &amp; build community</h3>
+      <p class="stage-goal">AI governance moves fast — regulations and frameworks change. Staying current is part of the job.</p>
+      <div class="resource">
+        <a href="https://montrealethics.ai/" target="_blank" rel="noopener">Montreal AI Ethics Institute — The AI Ethics Brief</a>
+        <span class="meta">Free newsletter</span>
+        <p>A widely-read, free weekly roundup of AI ethics and governance news — subscribe and start referencing current events in your case studies.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="signoff">This is day one. See you on day two.</p>
+    <p>Made with care for the @aiwithunnati community · June 2026</p>
+    <p>All links checked at time of writing — if something's moved, let me know in the comments.</p>
+  </footer>
+
+</div>
+</body>
+</html>
