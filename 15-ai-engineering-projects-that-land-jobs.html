@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>15 AI Engineering Projects That Actually Land Jobs | Unnati Tripathi</title>
+<meta name="description" content="A step-by-step build guide for mid-level software engineers transitioning into AI engineering. 15 portfolio projects with full architecture, build phases, and verified resources. By Unnati Tripathi (@aiwithunnati).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  color-scheme: light only;
+  --cream: #FAF3E6;
+  --cream-soft: #F4ECDB;
+  --red: #C0202C;
+  --red-dark: #9C1A24;
+  --ink: #1A1A1A;
+  --ink-soft: #46433d;
+  --sage: #5C6B4D;
+  --sage-bg: #E9ECE0;
+  --border: #1A1A1A;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light only;
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, .display {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.08;
+}
+
+a { color: var(--red); text-decoration: underline; text-decoration-color: rgba(192,32,44,0.35); }
+a:hover { text-decoration-color: var(--red); }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+.nav {
+  background: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.wordmark { font-family: 'Anton', sans-serif; color: var(--red); font-size: 1.3rem; letter-spacing: 0.02em; text-decoration: none; }
+.navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+.navlinks a { font-size: 0.85rem; font-weight: 700; text-decoration: none; color: var(--ink); letter-spacing: 0.03em; }
+.navlinks a:hover { color: var(--red); }
+
+/* HERO */
+.hero { background: var(--red); color: var(--cream); padding: 56px 0 48px; }
+.byline-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; font-size: 0.95rem; }
+.byline-row strong { font-weight: 700; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(250,243,230,0.14);
+  border: 1px solid rgba(250,243,230,0.4);
+  color: var(--cream);
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.badge:hover { background: rgba(250,243,230,0.24); }
+.tag {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--red);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+.hero h1 { font-size: 2.6rem; margin: 0 0 18px; }
+.hero .sub { font-size: 1.05rem; max-width: 620px; opacity: 0.95; margin: 0; }
+
+@media (min-width: 640px) {
+  .hero h1 { font-size: 3.4rem; }
+}
+
+/* SECTIONS */
+section.block { padding: 44px 0; border-bottom: 1px solid rgba(0,0,0,0.08); background: var(--cream); }
+section.block h2 { font-size: 1.7rem; color: var(--red); margin: 0 0 20px; }
+section.block p { margin: 0 0 16px; }
+ul.plain { padding-left: 22px; margin: 0 0 16px; }
+ul.plain li { margin-bottom: 10px; }
+
+.callout {
+  background: var(--sage-bg);
+  border-left: 4px solid var(--sage);
+  padding: 20px 24px;
+  margin: 22px 0;
+  border-radius: 2px;
+}
+.callout .callout-label {
+  font-family: 'Anton', sans-serif;
+  color: var(--sage);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+.callout p { margin: 0; }
+
+.callout-red {
+  background: #FBE9E7;
+  border-left: 4px solid var(--red);
+  padding: 20px 24px;
+  margin: 22px 0;
+  border-radius: 2px;
+}
+.callout-red .callout-label {
+  font-family: 'Anton', sans-serif;
+  color: var(--red-dark);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+.callout-red p { margin: 0; }
+
+/* TOC */
+.toc { list-style: none; padding: 0; margin: 0; counter-reset: toc-counter; }
+.toc li { counter-increment: toc-counter; margin-bottom: 10px; }
+.toc a {
+  display: flex; gap: 12px; align-items: baseline;
+  text-decoration: none; color: var(--ink); font-weight: 700;
+  padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.toc a:hover { color: var(--red); }
+.toc a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: 'Anton', sans-serif;
+  color: var(--red);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* PROJECT SECTIONS */
+.project { padding: 56px 0; border-bottom: 1px solid rgba(0,0,0,0.08); background: var(--cream); }
+.project-tag {
+  display: inline-block;
+  background: var(--red);
+  color: var(--cream);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  margin-bottom: 14px;
+}
+.project h2 { font-size: 1.85rem; margin: 0 0 22px; color: var(--ink); }
+.project h3 {
+  font-family: 'DM Sans', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+  color: var(--red);
+  font-size: 1.05rem;
+  margin: 0 0 12px;
+}
+.project h4 {
+  font-family: 'DM Sans', sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 22px 0 10px;
+  color: var(--ink);
+}
+.phase-days {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  text-transform: none;
+  margin-left: 8px;
+}
+
+table.tech {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 10px;
+  font-size: 0.92rem;
+}
+table.tech th {
+  text-align: left;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  border-bottom: 2px solid var(--ink);
+  padding: 8px 10px 8px 0;
+}
+table.tech td {
+  padding: 10px 10px 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  vertical-align: top;
+}
+table.tech td:first-child { font-weight: 700; white-space: nowrap; }
+
+ol.steps { padding-left: 0; margin: 0 0 6px; list-style: none; counter-reset: step-counter; }
+ol.steps li {
+  counter-increment: step-counter;
+  margin-bottom: 14px;
+  padding-left: 38px;
+  position: relative;
+}
+ol.steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 50%;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resource-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.pill {
+  display: inline-block;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.pill:hover { background: var(--ink); color: var(--cream); }
+
+/* RESOURCES SECTION */
+.resource-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+@media (min-width: 700px) { .resource-grid { grid-template-columns: 1fr 1fr; } }
+.resource-cat h4 {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  color: var(--red);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 12px;
+}
+.resource-cat ul { list-style: none; padding: 0; margin: 0; }
+.resource-cat li { margin-bottom: 9px; font-size: 0.92rem; }
+
+/* TIPS SECTION */
+.tips-list { list-style: none; padding: 0; margin: 0; }
+.tips-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.tips-list li:last-child { border-bottom: none; }
+.tips-list strong { color: var(--red); }
+
+/* CTA / FOOTER */
+.cta { background: var(--ink); color: var(--cream); padding: 56px 0; text-align: center; }
+.cta h2 { color: var(--cream); font-size: 1.9rem; margin: 0 0 16px; }
+.cta p { font-size: 1.05rem; margin: 0 0 26px; opacity: 0.9; }
+.cta-btn {
+  display: inline-block;
+  background: var(--red);
+  color: var(--cream);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  padding: 14px 32px;
+  text-decoration: none;
+  margin: 0 8px 12px;
+}
+.cta-btn:hover { background: var(--red-dark); }
+.cta-btn.outline { background: transparent; border: 2px solid var(--cream); }
+
+footer { background: var(--red); color: var(--cream); padding: 28px 0; text-align: center; font-size: 0.85rem; }
+footer a { color: var(--cream); text-decoration: underline; }
+footer .foot-name { font-weight: 700; }
+
+.timeline-box {
+  display: flex; gap: 18px; flex-wrap: wrap; margin: 18px 0 6px;
+}
+.timeline-box .stat {
+  background: var(--cream-soft);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 16px 22px;
+  flex: 1;
+  min-width: 140px;
+}
+.timeline-box .stat .num {
+  font-family: 'Anton', sans-serif;
+  color: var(--red);
+  font-size: 1.6rem;
+  display: block;
+}
+.timeline-box .stat .lbl {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="wordmark" href="#top">AI WITH UNNATI</a>
+    <div class="navlinks">
+      <a href="#toc">Projects</a>
+      <a href="#tips">Tips</a>
+      <a href="#resources">Resources</a>
+      <a href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="byline-row">
+      <span>A free guide by <strong>Unnati Tripathi</strong></span>
+      <a class="badge" href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">&#8599; @aiwithunnati</a>
+    </div>
+    <span class="tag">CAREER GUIDE</span>
+    <h1>15 AI Engineering Projects That Actually Land Jobs</h1>
+    <p class="sub">A step-by-step build guide for mid-level software engineers transitioning into AI engineering.</p>
+  </div>
+</header>
+
+<section class="block" id="how-to-use">
+  <div class="wrap">
+    <h2>How to Use This Guide</h2>
+    <p>This guide contains fifteen complete project build plans. Each one is designed to take a mid-level software engineer with 3&ndash;5 years of production experience and produce a portfolio project that demonstrates AI engineering competence at a level hiring managers are actively looking for.</p>
+    <p>These are not tutorials. They are architectural blueprints with enough detail for you to build each system independently, making your own implementation decisions along the way. That's intentional &mdash; the decisions you make during the build are what you'll talk about in interviews.</p>
+  </div>
+</section>
+
+<section class="block" id="what-makes-different">
+  <div class="wrap">
+    <h2>What Makes These Projects Different</h2>
+    <ul class="plain">
+      <li>Every project solves a real operational problem that AI teams face in production, not an academic exercise.</li>
+      <li>They are designed to leverage your existing production engineering skills (Docker, CI/CD, APIs, databases) as a structural advantage.</li>
+      <li>Each one demonstrates a different dimension of AI engineering competence: evaluation, cost optimization, observability, CI/CD integration, retrieval, fine-tuning, and multi-agent orchestration.</li>
+      <li>None of them are &ldquo;I called an LLM API and deployed a chatbot.&rdquo;</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="timeline">
+  <div class="wrap">
+    <h2>Estimated Timeline</h2>
+    <p>Each project is scoped for roughly 12&ndash;14 days of focused work (2&ndash;3 hours per day). You don't need to build all fifteen. Pick the two or three that best align with the roles you're targeting and build those exceptionally well. Two deep, polished projects beat five shallow ones every time.</p>
+    <div class="timeline-box">
+      <div class="stat"><span class="num">12&ndash;14</span><span class="lbl">Days per project</span></div>
+      <div class="stat"><span class="num">2&ndash;3</span><span class="lbl">Hours per day</span></div>
+      <div class="stat"><span class="num">2&ndash;3</span><span class="lbl">Projects to actually pick</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="tips">
+  <div class="wrap">
+    <h2>Tips That Actually Work</h2>
+    <ul class="tips-list">
+      <li><strong>Depth beats breadth in interviews.</strong> One project you can defend under hard follow-up questions outperforms five you can only describe at a surface level. Interviewers probe for the decisions behind the build, not the feature list.</li>
+      <li><strong>Lead with a number, not a description.</strong> "Reduced LLM cost by 60% across 1,000 test requests" gets remembered. "I built a routing system" does not. Every project in this guide is designed to produce at least one concrete metric &mdash; make sure you capture it during the build, not after.</li>
+      <li><strong>Check tool docs before you rely on memory.</strong> AI tooling changes fast: APIs get renamed, libraries get deprecated, and model lineups shift every few months. Before you write code based on something you read a while ago, pull up the current docs. It's a five-minute habit that prevents hours of debugging stale assumptions.</li>
+      <li><strong>Keep your demo video under the stated time limit.</strong> A reviewer skimming a portfolio will watch a 3-minute Loom in full and skip a 12-minute one entirely. Tight editing is itself a signal of engineering judgment.</li>
+      <li><strong>Don't generate your golden/eval datasets with an LLM.</strong> Several projects in this guide depend on hand-labeled ground truth. If an LLM wrote your test answers, you're evaluating the model against itself &mdash; the eval is only as honest as its labels.</li>
+      <li><strong>Version your prompts like code from day one.</strong> Retrofitting prompt versioning after a project is half-built is painful. Treating prompts as versioned artifacts from the first commit makes every later phase &mdash; experiments, rollbacks, audit trails &mdash; dramatically easier.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="toc">
+  <div class="wrap">
+    <h2>The 15 Projects</h2>
+    <ol class="toc">
+      <li><a href="#project-1">Model Regression Detection System</a></li><li><a href="#project-2">LLM Cost Autopilot</a></li><li><a href="#project-3">Failure Forensics Tool for AI Pipelines</a></li><li><a href="#project-4">Self-Healing Technical Documentation</a></li><li><a href="#project-5">LLM Output Arbitration System</a></li><li><a href="#project-6">RAG Pipeline with Hybrid Search Over Internal Docs</a></li><li><a href="#project-7">Semantic Caching Layer for LLM APIs</a></li><li><a href="#project-8">Text-to-SQL Interface with Guardrails and Hallucination Detection</a></li><li><a href="#project-9">Prompt Versioning and A/B Testing Platform</a></li><li><a href="#project-10">Fine-Tuning Pipeline with LoRA on a Domain-Specific Dataset</a></li><li><a href="#project-11">LLM Gateway with Rate Limiting, Fallback Routing, and Observability</a></li><li><a href="#project-12">AI Feature Flag System with Gradual Rollout and Quality Monitoring</a></li><li><a href="#project-13">Automated Eval Dataset Generator from Production Logs</a></li><li><a href="#project-14">Multi-Modal Document Processor with OCR, LLM Extraction, and Validation</a></li><li><a href="#project-15">Agent Orchestration System with Tool Use, Memory, and Human-in-the-Loop</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="project" id="project-1">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 1</span>
+    <h2>Model Regression Detection System</h2>
+    <h3>What You're Building</h3>
+    <p>A CI/CD-style pipeline that continuously tests any LLM-powered feature against a golden dataset whenever a prompt or model changes, detects quality regressions, and alerts your team via Slack before bad outputs reach users.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Every AI team ships prompt changes blind. This project proves you think about what happens after deployment, the exact mindset hiring managers are desperate for and almost no candidates demonstrate.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Industry standard for ML tooling</td></tr><tr><td>LLM Provider</td><td>OpenAI API (gpt-4o / gpt-4o-mini)</td><td>Widely recognized; easy to swap later</td></tr><tr><td>Eval Framework</td><td>Custom + RAGAS or DeepEval</td><td>Shows you understand eval beyond accuracy</td></tr><tr><td>Data Storage</td><td>SQLite + JSON files</td><td>Zero infrastructure, portable, git-friendly</td></tr><tr><td>Alerting</td><td>Slack Webhooks</td><td>What real teams actually use</td></tr><tr><td>Scheduling</td><td>GitHub Actions</td><td>Runs on every PR; free tier is enough</td></tr><tr><td>Visualization</td><td>Streamlit or simple HTML report</td><td>Quick dashboard for diff views</td></tr><tr><td>Containerization</td><td>Docker</td><td>Shows production readiness</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Define the LLM Feature Under Test<span class="phase-days">(Day 1–2)</span></h4>
+<ol class="steps"><li><strong>Build a simple LLM feature:</strong> A customer support email classifier that reads an email and returns a category (billing, technical, account, general) plus a one-sentence summary. Wrap it in a single Python function with the prompt as a configurable parameter.</li><li><strong>Version your prompts:</strong> Store prompts as versioned YAML files in a /prompts directory. Each file has a version ID, timestamp, the system prompt, and any few-shot examples. This is the “code” you're running CI against.</li><li><strong>Create the interface contract:</strong> Define a simple PromptConfig dataclass that your eval pipeline consumes. Input: email text. Output: structured JSON with category and summary. Keep it typed with Pydantic.</li></ol>
+
+<h4>Build the Golden Dataset<span class="phase-days">(Day 2–4)</span></h4>
+<ol class="steps"><li><strong>Curate 50–100 test cases by hand:</strong> Write real-looking customer emails across all categories. For each one, write the correct category and an ideal summary. Do NOT generate these with an LLM, the whole point is that these are human-verified ground truth.</li><li><strong>Include edge cases deliberately:</strong> Add ambiguous emails that could be two categories, extremely short emails, emails with typos, emails in mixed languages, sarcastic emails. Label these with an “expected_difficulty” field.</li><li><strong>Store as versioned JSON:</strong> Each test case gets a stable ID, the input, expected output, difficulty tag, and a notes field explaining why this case matters. Version the dataset file itself so you can track when the eval bar changes.</li></ol>
+
+<h4>Build the Evaluation Engine<span class="phase-days">(Day 4–7)</span></h4>
+<ol class="steps"><li><strong>Create the test runner:</strong> Write a function that takes a PromptConfig and the golden dataset, runs every test case through the LLM feature, and collects raw outputs. Use async batching to keep costs low and speed high.</li><li><strong>Implement multi-dimensional scoring:</strong> Don't just check if the category matches. Score on: exact category match (binary), summary relevance (use an LLM-as-judge to rate 1–5), latency per request, and token usage. Store all dimensions per test case.</li><li><strong>Build the comparison logic:</strong> The core value of this system is diffing. For every eval run, compare against the previous run. Calculate: overall pass rate delta, per-category accuracy delta, list of specific cases that flipped from pass to fail (regressions), and cases that flipped from fail to pass (improvements).</li><li><strong>Add statistical significance:</strong> If 2 out of 80 cases flipped, is that signal or noise? Implement a simple threshold system: flag as warning if delta exceeds 3%, flag as critical if delta exceeds 8%. Make these configurable.</li></ol>
+
+<h4>Build the Alerting and Reporting Layer<span class="phase-days">(Day 7–9)</span></h4>
+<ol class="steps"><li><strong>Create the diff report:</strong> Generate an HTML report that shows: run metadata (prompt version, model, timestamp), a summary scorecard comparing this run to the baseline, a table of every regressed case showing the old output vs. the new output side by side, and a trend chart showing scores over the last N runs.</li><li><strong>Wire up Slack alerts:</strong> Use Slack's incoming webhook API. Send a structured message with: pass/warn/fail status, the headline numbers (e.g., “3 regressions detected, accuracy dropped from 94% to 89%”), and a link to the full HTML diff report.</li><li><strong>Add drift detection:</strong> Beyond per-run diffs, track a rolling average of scores over time. If the 7-run moving average drops below a threshold even though no single run triggered an alert, fire a “slow drift” warning. This catches gradual degradation that per-run checks miss.</li></ol>
+
+<h4>Wire into CI/CD<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create a GitHub Action workflow:</strong> Trigger the eval pipeline on every PR that modifies files in the /prompts directory. The action should run the eval, generate the report, post a summary comment on the PR with pass/fail status, and block merge if critical regressions are detected.</li><li><strong>Containerize everything:</strong> Write a Dockerfile that packages the eval runner, the golden dataset, and the reporting layer. The container should accept environment variables for the LLM API key, Slack webhook URL, and threshold configs.</li><li><strong>Write a README that reads like internal documentation:</strong> Include a one-paragraph summary of what this does, setup instructions, how to add new test cases to the golden dataset, how to adjust thresholds, and architecture decisions with rationale. Do NOT write it like a tutorial. Write it like onboarding docs for a new teammate joining your team.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 11–12)</span></h4>
+<ol class="steps"><li><strong>Record a 3-minute Loom walkthrough:</strong> Show the system running end to end, change a prompt, trigger the eval, show the Slack alert, walk through the diff report. This is more persuasive than any README.</li><li><strong>Write a short blog post or README section:</strong> Explain the problem (teams ship prompt changes blind), your approach (CI/CD for model behavior), and one specific design decision you're proud of (e.g., why you track slow drift separately from per-run regressions).</li></ol>
+
+    
+<div class="callout-red">
+  <span class="callout-label">INTERVIEW TALKING POINT</span>
+  <p>Lead with how you built the golden dataset. Explain that you seeded it with hand-labeled data, then expanded it over time using failure cases. This signals you understand that evaluation quality is bounded by data quality, a production insight most candidates miss entirely.</p>
+</div>
+
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API reference &#8599;</a><a class="pill" href="https://docs.ragas.io/" target="_blank" rel="noopener">RAGAS documentation &#8599;</a><a class="pill" href="https://deepeval.com/" target="_blank" rel="noopener">DeepEval documentation &#8599;</a><a class="pill" href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener">Slack incoming webhooks &#8599;</a><a class="pill" href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions docs &#8599;</a><a class="pill" href="https://docs.pydantic.dev/" target="_blank" rel="noopener">Pydantic documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-2">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 2</span>
+    <h2>LLM Cost Autopilot</h2>
+    <h3>What You're Building</h3>
+    <p>An intelligent routing layer that sits in front of multiple LLM providers, analyzes each incoming request's complexity, routes it to the cheapest model capable of handling it at acceptable quality, and continuously validates that routing decisions are correct.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Every company running LLMs at scale is bleeding money on over-provisioned model calls. Building a cost optimizer signals that you understand AI engineering as a business problem, not just a technical one, and that's the gap between a junior hire and a senior one.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Ecosystem compatibility</td></tr><tr><td>LLM Providers</td><td>OpenAI, Anthropic, Ollama (local)</td><td>Mix of cloud and local models</td></tr><tr><td>Router</td><td>FastAPI</td><td>Async-native, production-grade</td></tr><tr><td>Classifier</td><td>Scikit-learn or small fine-tuned model</td><td>Lightweight complexity scoring</td></tr><tr><td>Eval</td><td>Custom scoring + LLM-as-judge</td><td>Quality verification loop</td></tr><tr><td>Logging</td><td>SQLite + structured JSON logs</td><td>Full audit trail per request</td></tr><tr><td>Dashboard</td><td>Streamlit or Grafana</td><td>Cost and quality visualization</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Multi-service orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Unified Model Interface<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Create a model registry:</strong> Define a ModelConfig dataclass with provider name, model ID, cost per input token, cost per output token, average latency, and a quality tier (high/medium/low). Populate it with real, current pricing for the models in your registry, plus a local model via Ollama.</li><li><strong>Build the abstraction layer:</strong> Write a single send_request(prompt, model_config) function that handles the provider-specific API calls behind a unified interface. Every call returns a standardized Response object with the output text, tokens used (input + output), latency, cost, and the model ID.</li><li><strong>Test every provider:</strong> Send the same 10 prompts to every model in your registry. Log the outputs, costs, and latencies. This gives you baseline data for the routing logic and validates your abstraction layer works.</li></ol>
+
+<h4>Build the Complexity Classifier<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Define complexity tiers:</strong> Create three tiers. Tier 1 (simple): reformatting, extraction, basic Q&amp;A from provided context. Tier 2 (moderate): summarization, classification, structured analysis. Tier 3 (complex): multi-step reasoning, creative generation, nuanced judgment calls.</li><li><strong>Build a labeled dataset:</strong> Write 200+ example prompts across all three tiers. Label each one by hand. Include features you'll extract: token count, presence of instructions like “analyze” or “compare,” number of constraints, whether context is provided, and output format complexity.</li><li><strong>Train the classifier:</strong> Start with a simple scikit-learn model (logistic regression or random forest) on your extracted features. You're not optimizing for classifier perfection, you're building the routing skeleton. Track accuracy and confusion matrix. Anything above 80% accuracy on a held-out set is fine for V1.</li><li><strong>Create the routing map:</strong> Map each complexity tier to a model. Tier 1 routes to your cheapest model, Tier 2 to a mid-tier model, Tier 3 to your highest-quality model. Store this as a configurable YAML so you can swap models without code changes as pricing and model lineups shift.</li></ol>
+
+<h4>Build the Async Quality Verification Loop<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Define quality thresholds per use case:</strong> For each request type, define what “good enough” means. For extraction tasks, did it get all the key fields? For summarization, LLM-as-judge score above 4/5. For classification, does the label match what your highest-tier model would have said?</li><li><strong>Build the async verifier:</strong> After the response is returned to the user, queue an async job that sends the same prompt to the highest-tier model and compares outputs. Score the agreement. If the cheap model's output diverges significantly, log it as a routing failure.</li><li><strong>Implement auto-escalation:</strong> If the verifier catches a failure, automatically re-run the request with the higher-tier model and return the better result (if latency permits). Log the escalation event with original model, escalated model, cost delta, and the quality gap that triggered it.</li><li><strong>Feed failures back to the classifier:</strong> Every routing failure becomes a new training example for the complexity classifier. Build a simple feedback loop that retrains the classifier weekly using accumulated failure data. This is the flywheel that makes the system get smarter over time.</li></ol>
+
+<h4>Build the Logging and Cost Dashboard<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Log everything:</strong> Every request gets a row in your database with timestamp, prompt hash, complexity tier, routed model, cost, latency, quality score from verifier, and whether it was escalated. This is your audit trail.</li><li><strong>Build the cost dashboard:</strong> Show total cost per day/week with a comparison to what it would have cost using your highest-tier model for everything (“you saved $X”), routing distribution (pie chart of which models handle what percentage), quality score distribution, and escalation rate over time.</li><li><strong>Add the money shot metric:</strong> Calculate and prominently display the cost reduction percentage. If routing to cheaper models saved 60% compared to sending everything to the most expensive model, that number is the headline of your portfolio piece.</li></ol>
+
+<h4>Expose as an API<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Build the FastAPI service:</strong> A single POST /v1/completions endpoint that accepts a standard chat completion request. The user doesn't choose the model, the router does. Return the response with metadata showing which model was selected and why.</li><li><strong>Add configuration endpoints:</strong> GET /v1/models (list available models and their costs), GET /v1/stats (cost savings summary), and PUT /v1/routing-config (update tier-to-model mappings without redeploying).</li><li><strong>Containerize and document:</strong> Docker-compose with the API service, a background worker for async verification, and the SQLite database. Write a README with architecture diagram, setup instructions, and the cost savings number front and center.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Run a realistic load test:</strong> Send 500–1,000 diverse prompts through the system. Generate the final cost savings report. Screenshot the dashboard. These artifacts are what you put in your portfolio.</li><li><strong>Write the case study:</strong> Frame it as “I built a system that reduced LLM API costs by X% while maintaining Y% quality parity.” Lead with the number. Explain the routing logic. Show the feedback loop. This is a story a VP of Engineering immediately understands.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API reference &#8599;</a><a class="pill" href="https://docs.claude.com/en/api/overview" target="_blank" rel="noopener">Anthropic API reference &#8599;</a><a class="pill" href="https://ollama.com/" target="_blank" rel="noopener">Ollama &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation &#8599;</a><a class="pill" href="https://scikit-learn.org/stable/" target="_blank" rel="noopener">scikit-learn documentation &#8599;</a><a class="pill" href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-3">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 3</span>
+    <h2>Failure Forensics Tool for AI Pipelines</h2>
+    <h3>What You're Building</h3>
+    <p>An observability layer for multi-step AI pipelines that traces every intermediate step, identifies exactly where failures originate when the final output is bad, and feeds flagged failures back into a growing evaluation dataset.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>When a multi-step AI pipeline produces garbage, most teams have no idea which step broke. You're building the tool that answers “where did this go wrong?”, essentially a mini LangSmith/Braintrust. Being able to articulate why observability matters for AI systems is a senior-level signal.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Standard for ML tooling</td></tr><tr><td>Pipeline Framework</td><td>Custom chain or LangChain</td><td>Demonstrates orchestration knowledge</td></tr><tr><td>LLM Provider</td><td>OpenAI API</td><td>Widely available</td></tr><tr><td>Tracing</td><td>OpenTelemetry + custom spans</td><td>Industry-standard observability</td></tr><tr><td>Storage</td><td>SQLite + JSON trace files</td><td>Simple, inspectable, git-friendly</td></tr><tr><td>Visualization</td><td>React frontend or Streamlit</td><td>Interactive trace explorer</td></tr><tr><td>Feedback Loop</td><td>Simple REST API</td><td>Humans flag bad outputs</td></tr><tr><td>Containerization</td><td>Docker</td><td>Production packaging</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Multi-Step Pipeline<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Design a 4-step pipeline:</strong> Step 1 (Intake) accepts a raw document (text, markdown, or simulated PDF text). Step 2 (Extraction) uses an LLM to extract structured entities (names, dates, amounts, key terms). Step 3 (Classification) classifies the document type (contract, invoice, report, correspondence). Step 4 (Summarization) generates a structured summary tailored to the document type.</li><li><strong>Make each step a clean, isolated function:</strong> Each step takes a typed input and returns a typed output. Use Pydantic models for every intermediate data structure. This is critical, if your steps are spaghetti, your tracing will be meaningless.</li><li><strong>Inject realistic failure modes:</strong> Deliberately include documents that will break things, a contract with no dates, an invoice with amounts in different currencies, a document that's ambiguously between two categories. You need failures to trace.</li></ol>
+
+<h4>Build the Tracing Layer<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Create a Trace object:</strong> Every pipeline execution gets a unique trace_id. The Trace contains a list of Span objects (one per step), the final output, and a status (success/failure/degraded).</li><li><strong>Instrument each step with spans:</strong> Wrap each pipeline step in a context manager that automatically captures step name, input (serialized), output (serialized), LLM prompt sent, LLM raw response, token count, latency, and any errors. Use a decorator pattern so instrumenting a new step is one line of code.</li><li><strong>Add confidence scoring at each step:</strong> After each LLM call, have the model also output a confidence score (1–5) for its own response. Store this in the span. When you're tracing backward from a failure, low-confidence spans are your primary suspects.</li><li><strong>Store traces as structured JSON:</strong> Write each complete trace to a JSON file and index it in SQLite (trace_id, timestamp, status, final_score). This gives you both human-readable traces and queryable metadata.</li></ol>
+
+<h4>Build the Backward Trace Analyzer<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Implement root cause analysis logic:</strong> When a trace is flagged as failed, walk backward through the spans. At each step, ask: is this step's output a reasonable transformation of its input? Use an LLM-as-judge to score each step's output quality given its input. The first step with a significant quality drop is your root cause.</li><li><strong>Categorize failure types:</strong> Create a taxonomy: Extraction Hallucination (extracted entities that don't exist in the source), Misclassification (wrong document type), Propagation Error (step N was correct but step N+1 misinterpreted its output), Prompt Failure (the LLM ignored instructions), and Context Loss (important information from earlier steps was dropped).</li><li><strong>Build the evidence chain:</strong> For each diagnosed failure, produce a structured explanation, for example: “Step 2 (Extraction) hallucinated the entity 'John Smith' which does not appear in the source document. This propagated to Step 4, which included it in the summary.” Include the specific input/output pairs as evidence.</li></ol>
+
+<h4>Build the Visual Trace Explorer<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create the trace view:</strong> A visual representation of the pipeline where each step is a node. Color-code by status, green (healthy), yellow (low confidence), red (identified root cause). Clicking a node shows the full span details, input, output, prompt, confidence score.</li><li><strong>Add the diff view:</strong> For failed traces, show a side-by-side comparison: what the step received vs. what it produced vs. what it should have produced (based on the golden dataset or human correction). Highlight the specific divergence.</li><li><strong>Build the flagging interface:</strong> A simple button that lets a user mark any trace as “bad output.” When clicked, the system runs the backward trace analysis and displays the root cause diagnosis. The user can confirm or override the diagnosis.</li></ol>
+
+<h4>Build the Feedback-to-Eval Loop<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Auto-generate eval cases from flags:</strong> Every time a human flags a bad output and confirms the root cause, automatically create a new test case: the original input, the failing step, the bad output, the human-corrected output, and the failure category. Append it to a growing eval dataset.</li><li><strong>Build regression tracking:</strong> Periodically re-run the accumulated eval dataset against the current pipeline. Track whether known failure cases are still failing or have been fixed. Show a trend line of “known issues resolved” over time.</li><li><strong>Create failure analytics:</strong> Dashboard showing most common failure types, which pipeline step fails most often, failure rate over time, and average time to root cause. This is the data that tells a product team where to invest engineering effort.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Prepare a demo scenario:</strong> Process 50 documents through the pipeline. Ensure at least 8–10 produce failures of different types. Record a Loom showing a bad output, opening the trace explorer, diagnosing the root cause, flagging it, and showing the eval dataset growing.</li><li><strong>Write the architecture doc:</strong> Include a diagram of the pipeline with the tracing layer, the backward analysis flow, and the feedback loop. Frame it as: “I built an observability system that reduces mean time to root cause for AI pipeline failures from hours of manual debugging to seconds of automated diagnosis.”</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry documentation &#8599;</a><a class="pill" href="https://python.langchain.com/" target="_blank" rel="noopener">LangChain documentation &#8599;</a><a class="pill" href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API reference &#8599;</a><a class="pill" href="https://docs.pydantic.dev/" target="_blank" rel="noopener">Pydantic documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-4">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 4</span>
+    <h2>Self-Healing Technical Documentation</h2>
+    <h3>What You're Building</h3>
+    <p>A GitHub Action that monitors a codebase, detects when code changes make documentation inaccurate, identifies the specific stale sections, and either auto-generates a PR with corrected docs or flags the discrepancies for human review.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>This project lives inside a CI/CD pipeline, not a Streamlit demo. It solves a universal engineering pain point that every interviewer has personally experienced. And it demonstrates the full AI engineering stack, embeddings, retrieval, LLM generation, and production deployment, in a system that other engineers would actually want to install.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+ / TypeScript</td><td>Your choice; both work in GitHub Actions</td></tr><tr><td>Embeddings</td><td>OpenAI text-embedding-3-small</td><td>Cheap, fast, high quality</td></tr><tr><td>Vector Store</td><td>ChromaDB (file-based)</td><td>No server needed; persists to disk</td></tr><tr><td>LLM</td><td>GPT-4o or Claude Sonnet</td><td>Strong code understanding</td></tr><tr><td>Git Integration</td><td>PyGithub + git diff</td><td>PR creation and diff parsing</td></tr><tr><td>CI/CD</td><td>GitHub Actions</td><td>Native integration, free tier</td></tr><tr><td>Containerization</td><td>Docker (for the Action)</td><td>Reproducible runs</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Code-to-Docs Mapping<span class="phase-days">(Day 1–4)</span></h4>
+<ol class="steps"><li><strong>Parse the codebase into semantic chunks:</strong> Write a parser that walks through the codebase and extracts meaningful units, function signatures with docstrings, class definitions, API endpoint definitions, configuration schemas, and CLI command definitions. Each chunk gets a stable identifier (file path + function/class name).</li><li><strong>Parse documentation into sections:</strong> Split markdown docs into sections by heading. Each section gets its heading path (e.g., “Configuration &gt; Environment Variables”), the raw content, and a list of code references it mentions (function names, class names, config keys, CLI commands).</li><li><strong>Build the link graph:</strong> Create explicit links between doc sections and code chunks. Start with simple heuristics, if a doc section mentions a function name that exists in the codebase, link them. Then enhance with embeddings, compute embeddings for both code chunks and doc sections, and link any pairs with cosine similarity above a threshold.</li><li><strong>Store the mapping:</strong> Persist the code-to-docs graph as a JSON file in the repo. This is your index. When code changes, you'll query this graph to find which doc sections might be affected.</li></ol>
+
+<h4>Build the Change Detection Pipeline<span class="phase-days">(Day 4–7)</span></h4>
+<ol class="steps"><li><strong>Parse the git diff:</strong> On every PR, extract the list of changed files and the specific changes (added/removed/modified lines). Map each change to the code chunks it affects using your code parser.</li><li><strong>Filter for meaningful changes:</strong> Not every code change affects docs. Skip comment-only changes, whitespace changes, internal refactors that don't change behavior, and test file changes. Focus on API signature changes, configuration changes, new/removed features, and behavioral changes to existing functions.</li><li><strong>Identify affected doc sections:</strong> For each meaningful code change, query your code-to-docs graph to find linked documentation sections. These are your “suspects”, sections that might now be stale.</li><li><strong>Verify staleness with an LLM:</strong> For each suspect doc section, send the LLM the old code, the new code, and the doc section content. Ask it to determine whether the documentation is still accurate given the code change. If not, ask it to explain specifically what's wrong. This step filters out false positives.</li></ol>
+
+<h4>Build the Doc Repair Engine<span class="phase-days">(Day 7–10)</span></h4>
+<ol class="steps"><li><strong>Generate targeted corrections:</strong> For each confirmed stale section, send the LLM the current doc section, the new code, and the staleness diagnosis from Phase 2. Ask it to rewrite only the stale parts, preserving the original style, tone, and structure. Explicitly instruct it not to rewrite parts that are still accurate.</li><li><strong>Validate the corrections:</strong> Run a second LLM pass that checks: does the corrected doc accurately describe the new code? Did it preserve the parts that were already correct? Is the writing style consistent with the rest of the document? This is your quality gate before creating a PR.</li><li><strong>Handle different correction modes:</strong> Not all staleness is the same. For simple changes (renamed parameter, updated default value), auto-fix with high confidence. For complex changes (new feature, removed capability), generate a draft with clear TODO markers and request human review. Let the confidence level determine the mode.</li></ol>
+
+<h4>Build the GitHub Action<span class="phase-days">(Day 10–12)</span></h4>
+<ol class="steps"><li><strong>Package as a GitHub Action:</strong> Create a Dockerfile and action.yml that defines the Action's inputs (LLM API key, confidence threshold, auto-merge for high-confidence fixes), outputs (list of stale sections found, corrections generated), and triggers (runs on PRs that modify code files).</li><li><strong>Implement the PR workflow:</strong> For high-confidence fixes, create a new branch, apply the corrections, open a PR with a clear description of what changed and why. For low-confidence flags, add a comment on the original PR listing the doc sections that need human review, with links to the specific sections.</li><li><strong>Add a PR comment summary:</strong> On every PR that triggers the Action, post a comment: “Doc Check Results: 3 sections verified accurate, 1 auto-fixed (see PR #42), 2 flagged for review.” Include links to everything. This is what makes the tool feel integrated and professional.</li></ol>
+
+<h4>Test on a Real Repository<span class="phase-days">(Day 12–13)</span></h4>
+<ol class="steps"><li><strong>Fork a real open-source project:</strong> Pick a well-documented project (FastAPI, Pydantic, or similar). Fork it, install your Action, and deliberately make code changes that should invalidate docs. Test that the Action correctly identifies the staleness and generates reasonable fixes.</li><li><strong>Measure accuracy:</strong> Across your test cases, track true positives (correctly identified stale docs), false positives (flagged accurate docs as stale), false negatives (missed actual staleness), and correction quality (are the fixes actually right?). Report these numbers in your README.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Make it installable:</strong> Publish to the GitHub Actions marketplace, it's free. Having an Action that other people can actually install is a fundamentally different portfolio signal than a repo that just sits there.</li><li><strong>Record the demo:</strong> Show a code change being pushed, the Action running, the PR comment appearing, and the auto-generated doc fix PR. Keep it under 3 minutes. Lead with the problem (“every team's docs are perpetually stale”) and end with the result.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://platform.openai.com/docs/guides/embeddings" target="_blank" rel="noopener">OpenAI embeddings guide &#8599;</a><a class="pill" href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB documentation &#8599;</a><a class="pill" href="https://pygithub.readthedocs.io/" target="_blank" rel="noopener">PyGithub documentation &#8599;</a><a class="pill" href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions docs &#8599;</a><a class="pill" href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener">GitHub Actions Marketplace &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-5">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 5</span>
+    <h2>LLM Output Arbitration System</h2>
+    <h3>What You're Building</h3>
+    <p>A multi-agent pipeline that takes any LLM-generated output, routes it to multiple competing critic models that independently evaluate it for accuracy, consistency, and completeness, then synthesizes their critiques into a single confidence-scored verdict with actionable callouts.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Instead of building yet another system that generates answers, you're building one that catches bad answers. This flips the script on every other portfolio project out there and demonstrates the evaluation mindset that AI teams are actively hiring for but rarely see in candidates.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Ecosystem standard</td></tr><tr><td>Agent Framework</td><td>LangGraph</td><td>Top-requested framework in AI eng roles</td></tr><tr><td>LLM Providers</td><td>OpenAI + Anthropic + Ollama</td><td>Multi-provider comparison is the point</td></tr><tr><td>Structured Output</td><td>Pydantic + instructor library</td><td>Type-safe LLM outputs</td></tr><tr><td>Storage</td><td>SQLite + JSON</td><td>Audit trail for every arbitration</td></tr><tr><td>API</td><td>FastAPI</td><td>Production-grade serving</td></tr><tr><td>Visualization</td><td>React or Streamlit</td><td>Verdict explorer UI</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Design the Critic Agent Architecture<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Define the evaluation dimensions:</strong> Create three specialized critic roles. The Factual Accuracy Critic checks whether claims are verifiable and internally consistent. The Logical Consistency Critic checks whether the reasoning follows and conclusions are supported. The Completeness Critic checks whether the response addresses all parts of the question and flags gaps.</li><li><strong>Design the structured critique format:</strong> Each critic returns a Pydantic model with dimension (accuracy/logic/completeness), score (1–5), a list of specific issues found (each with a quote from the original, the problem description, and severity), and an overall confidence in their own assessment. Use the instructor library to enforce structured outputs from every model.</li><li><strong>Assign different models to different critics:</strong> This is deliberate. Route each critic through a different model or provider. The disagreements between models are the most valuable signal. If all three used the same model, they'd share the same blind spots.</li></ol>
+
+<h4>Build the Orchestration Layer with LangGraph<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Define the graph:</strong> Create a LangGraph state graph with nodes for input parsing, parallel critic dispatch, critique collection, disagreement detection, adjudication, and verdict synthesis. The graph should handle the full lifecycle from receiving an output to delivering a verdict.</li><li><strong>Implement parallel critic dispatch:</strong> All three critics should run in parallel, not sequentially. Use LangGraph's branching to fan out to all critics simultaneously and fan in when all results are collected. This keeps latency reasonable and mirrors how real multi-agent systems are built.</li><li><strong>Build the disagreement detector:</strong> After collecting all critiques, compare them. Flag cases where critics disagree on whether something is an issue, where severity ratings differ by more than 2 points, or where one critic found issues the others missed entirely. These disagreements are the interesting cases.</li><li><strong>Handle edge cases in the graph:</strong> What if one critic's API call fails? Implement retry logic and graceful degradation, the system should still produce a verdict from the remaining critics, with a note that one dimension has lower confidence. What if all critics agree it's perfect? Short-circuit the adjudicator and return a high-confidence pass.</li></ol>
+
+<h4>Build the Adjudicator Agent<span class="phase-days">(Day 6–8)</span></h4>
+<ol class="steps"><li><strong>Design the adjudication prompt:</strong> The adjudicator receives the original output being evaluated, all three critic reports, and the list of detected disagreements. Its job is to weigh the evidence, resolve conflicts, and produce a final verdict. Prompt it to reason through each disagreement explicitly.</li><li><strong>Implement evidence-based resolution:</strong> When critics disagree about a factual claim, the adjudicator should attempt to verify it. When they disagree on logic, the adjudicator should trace the reasoning chain step by step. When they disagree on completeness, the adjudicator should re-read the original question and determine what was actually required.</li><li><strong>Produce the final verdict:</strong> A structured output with overall quality score (1–10), confidence level, a list of confirmed issues (with severity and evidence), a list of dismissed flags (issues one critic raised but the adjudicator overruled, with reasoning), and a one-paragraph summary of the assessment.</li></ol>
+
+<h4>Build the Verdict Explorer UI<span class="phase-days">(Day 8–10)</span></h4>
+<ol class="steps"><li><strong>Create the main verdict view:</strong> Display the original output with inline annotations. Each flagged issue should be highlighted in the text with a colored marker (red for confirmed issues, yellow for low-confidence flags, green for explicitly validated claims). Clicking a marker shows the full evidence chain.</li><li><strong>Build the critic comparison panel:</strong> A side-by-side view showing all three critics' assessments next to each other. Highlight agreements in green and disagreements in orange. This visual makes the multi-agent architecture immediately comprehensible to anyone reviewing your portfolio.</li><li><strong>Add a batch mode:</strong> Allow submitting multiple outputs for arbitration. Show results in a sortable table with output excerpt, overall score, number of issues found, and confidence. This demonstrates the system works at scale, not just for one-off demos.</li></ol>
+
+<h4>Expose as an API and Add Analytics<span class="phase-days">(Day 10–12)</span></h4>
+<ol class="steps"><li><strong>Build the FastAPI service:</strong> POST /v1/arbitrate accepts an LLM output (and optionally the original prompt) and returns the full verdict. POST /v1/arbitrate/batch accepts multiple outputs. GET /v1/arbitrations/{id} retrieves a past verdict. Keep the API clean and well-documented with OpenAPI specs.</li><li><strong>Add analytics on critic behavior:</strong> Over many arbitrations, track which critic finds the most issues, which critic is overruled by the adjudicator most often, which failure types are most common, and how often critics agree vs. disagree. This meta-analysis is portfolio gold.</li><li><strong>Containerize everything:</strong> Docker-compose with the FastAPI service, the LangGraph pipeline, and the SQLite database. Include a docker-compose.yml that spins up Ollama locally for the completeness critic so reviewers can run the full system without paid API keys for all three providers.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 12–14)</span></h4>
+<ol class="steps"><li><strong>Prepare compelling test cases:</strong> Run the system against a factually incorrect LLM response (planted errors), a logically flawed argument, a response that technically answers the question but misses the point, and a genuinely good response (to show it can give a clean bill of health). Screenshot the verdicts for all four.</li><li><strong>Write the narrative:</strong> Frame it as “I built a system where AI models audit each other's work. Three specialized critics independently evaluate any LLM output, and an adjudicator resolves their disagreements into a single verdict.” Lead with the architecture diagram showing the parallel fan-out pattern. End with the analytics showing that multi-model critique catches issues that single-model self-evaluation misses.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">LangGraph on GitHub &#8599;</a><a class="pill" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph documentation &#8599;</a><a class="pill" href="https://python.useinstructor.com/" target="_blank" rel="noopener">Instructor (structured outputs) &#8599;</a><a class="pill" href="https://ollama.com/" target="_blank" rel="noopener">Ollama &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-6">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 6</span>
+    <h2>RAG Pipeline with Hybrid Search Over Internal Docs</h2>
+    <h3>What You're Building</h3>
+    <p>A production-grade Retrieval-Augmented Generation system that ingests a company's internal documentation, indexes it with both dense vector and sparse keyword search, retrieves the most relevant context for any question, and generates grounded answers with inline source citations.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>RAG is the single most requested skill in AI engineering job descriptions. But most candidates build a toy demo with a single PDF. You're building a system with hybrid retrieval, chunking strategy decisions, and citation verification, the production concerns that separate a real RAG engineer from someone who followed a quickstart tutorial.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Ecosystem standard</td></tr><tr><td>Embeddings</td><td>OpenAI text-embedding-3-small</td><td>Cost-effective, high quality</td></tr><tr><td>Vector Store</td><td>ChromaDB or Qdrant</td><td>File-based or containerized</td></tr><tr><td>Sparse Search</td><td>BM25 via rank_bm25</td><td>Keyword matching for exact terms</td></tr><tr><td>LLM</td><td>GPT-4o or Claude Sonnet</td><td>Strong grounding and citation</td></tr><tr><td>Chunking</td><td>LangChain text splitters</td><td>Configurable overlap and size</td></tr><tr><td>API</td><td>FastAPI</td><td>Async-native, production-grade</td></tr><tr><td>Containerization</td><td>Docker</td><td>Reproducible deployment</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Ingestion and Chunking Pipeline<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Build a multi-format document loader:</strong> Accept markdown, text, HTML, and PDF files. Normalize everything into clean plaintext with metadata (source file, section heading, page number). Store raw documents alongside processed versions so you can re-index without re-uploading.</li><li><strong>Implement configurable chunking:</strong> Build three chunking strategies and make them switchable, fixed-size with overlap (baseline), recursive character splitting by section headers (structure-aware), and semantic chunking that splits on topic boundaries using embedding similarity. Track which strategy each chunk used.</li><li><strong>Generate and store embeddings:</strong> Embed every chunk using text-embedding-3-small. Store in ChromaDB with metadata, source document, chunk index, section heading, chunking strategy, and character count. Build the BM25 index in parallel over the same chunks. Both indexes must stay in sync.</li><li><strong>Add deduplication:</strong> Before inserting a chunk, check for near-duplicates (cosine similarity &gt; 0.95 against existing chunks). Flag and skip duplicates. This prevents the retriever from wasting context window slots on redundant content when the same information appears in multiple docs.</li></ol>
+
+<h4>Build the Hybrid Retrieval Engine<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Implement dense retrieval:</strong> Query the vector store with the embedded user question. Return the top-k chunks ranked by cosine similarity. Start with k=10.</li><li><strong>Implement sparse retrieval:</strong> Run the same query through BM25 over the chunk corpus. Return top-k by BM25 score. This catches exact keyword matches that semantic search might miss, critical for technical documentation with specific function names, config keys, or error codes.</li><li><strong>Build the fusion layer:</strong> Implement Reciprocal Rank Fusion (RRF) to combine dense and sparse results into a single ranked list. RRF assigns scores based on rank position across both lists and merges them. Make the weighting configurable (e.g., 0.7 dense / 0.3 sparse) so you can tune it per use case.</li><li><strong>Add a reranker:</strong> After fusion, send the top 20 candidates through a cross-encoder reranker (use a small model or LLM-as-judge) that scores each chunk's relevance to the actual question. Keep the top 5. This second pass dramatically improves precision and is a strong interview talking point.</li></ol>
+
+<h4>Build the Generation and Citation Layer<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Design the grounded generation prompt:</strong> Construct a system prompt that instructs the LLM to answer only from the provided context, cite specific chunks using bracketed references ([1], [2]), and explicitly state when the context doesn't contain enough information to answer. Include the retrieved chunks as numbered context blocks.</li><li><strong>Implement citation verification:</strong> After generation, parse the model's citations and verify each one. Does [1] actually support the claim it's attached to? Send each citation-claim pair to an LLM-as-judge for verification. Flag unsupported citations. This is the quality layer most RAG systems skip entirely.</li><li><strong>Build the answer confidence scorer:</strong> Score each answer on retrieval confidence (how relevant were the top chunks?), citation coverage (what percentage of claims have verified citations?), and answer completeness (did the response address all parts of the question?). Return a composite confidence score alongside the answer.</li><li><strong>Handle the “I don't know” case gracefully:</strong> If retrieval confidence is below a threshold, don't hallucinate. Return a structured response that says what the system found, what it couldn't find, and which documents might be worth checking manually. This is more useful than a fabricated answer and signals production maturity.</li></ol>
+
+<h4>Build the Evaluation Framework<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create a golden Q&amp;A dataset:</strong> Write 50+ question-answer pairs by hand, each tied to specific sections of your document corpus. Include straightforward lookups, multi-hop questions (answer requires combining information from two documents), questions with no answer in the corpus, and ambiguous questions.</li><li><strong>Implement automated eval metrics:</strong> For each test case, measure answer correctness (LLM-as-judge against golden answer), faithfulness (are all claims grounded in retrieved context?), retrieval relevance (were the right chunks retrieved?), and citation accuracy (do citations actually support claims?). Run the full suite on every pipeline change.</li><li><strong>Build a chunking strategy comparison:</strong> Run the same eval suite across your three chunking strategies. Generate a comparison report showing which strategy wins on which metrics. This data drives your architecture decisions and gives you concrete numbers for interviews.</li></ol>
+
+<h4>Expose as an API and Dashboard<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Build the FastAPI service:</strong> POST /v1/ask accepts a question and returns the answer with citations, confidence scores, and source metadata. GET /v1/documents lists indexed documents. POST /v1/ingest accepts new documents for indexing. Include OpenAPI documentation.</li><li><strong>Build a simple query dashboard:</strong> A Streamlit or React frontend where you can ask questions and see the generated answer with clickable citations, the retrieved chunks ranked by relevance, confidence scores broken down by dimension, and a toggle to compare hybrid vs. dense-only retrieval side by side.</li><li><strong>Containerize everything:</strong> Docker-compose with the API service, ChromaDB, and the frontend. Include a seed script that indexes a sample documentation corpus so reviewers can spin it up and test immediately.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record a demo walkthrough:</strong> Show ingesting a set of documents, asking questions of varying difficulty, the citation verification catching a hallucination, and the hybrid vs. dense-only comparison. Keep it under 4 minutes.</li><li><strong>Write the case study:</strong> Frame it as “I built a RAG system with hybrid search that achieves X% faithfulness and Y% citation accuracy on a 50-question eval suite.” Lead with the numbers. Explain why hybrid beats dense-only for technical documentation. Show the chunking strategy comparison data.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://platform.openai.com/docs/guides/embeddings" target="_blank" rel="noopener">OpenAI embeddings guide &#8599;</a><a class="pill" href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB documentation &#8599;</a><a class="pill" href="https://qdrant.tech/documentation/" target="_blank" rel="noopener">Qdrant documentation &#8599;</a><a class="pill" href="https://pypi.org/project/rank-bm25/" target="_blank" rel="noopener">rank-bm25 on PyPI &#8599;</a><a class="pill" href="https://python.langchain.com/" target="_blank" rel="noopener">LangChain documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-7">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 7</span>
+    <h2>Semantic Caching Layer for LLM APIs</h2>
+    <h3>What You're Building</h3>
+    <p>A middleware caching service that sits between your application and any LLM provider, detects semantically similar requests that have already been answered, and serves cached responses instantly, cutting latency to near-zero and reducing API costs by 30–60% on typical workloads.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Every company running LLMs at scale has the same problem: redundant API calls burning money and adding latency. Building a semantic cache proves you think about infrastructure efficiency, not just model accuracy, and it's the kind of system that engineering managers immediately understand the ROI of.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Ecosystem compatibility</td></tr><tr><td>Embeddings</td><td>OpenAI text-embedding-3-small</td><td>Fast, cheap, high quality</td></tr><tr><td>Vector Store</td><td>Redis + RedisVL or Qdrant</td><td>Sub-millisecond lookups</td></tr><tr><td>Proxy Layer</td><td>FastAPI</td><td>Drop-in API replacement</td></tr><tr><td>Cache Policy</td><td>Custom TTL + similarity threshold</td><td>Tunable hit rate vs. freshness</td></tr><tr><td>Monitoring</td><td>Prometheus + Grafana</td><td>Real-time hit rate dashboards</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Multi-service orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Cache Index and Similarity Engine<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Design the cache key strategy:</strong> You can't use exact string matching, “What is Python?” and “Explain Python to me” should hit the same cache entry. Embed every incoming prompt using text-embedding-3-small and store the embedding alongside the response in your vector store.</li><li><strong>Build the similarity lookup:</strong> On every incoming request, embed the prompt and query the vector store for the nearest neighbor. If cosine similarity exceeds a configurable threshold (start at 0.95), it's a cache hit. Return the stored response. If below threshold, it's a miss, forward to the LLM provider.</li><li><strong>Implement cache storage:</strong> After a cache miss, forward the request to the actual LLM, capture the full response (including token counts, model ID, and finish reason), and store it alongside the prompt embedding. Include metadata: timestamp, TTL expiry, hit count, and the original prompt text for debugging.</li><li><strong>Handle system prompt and parameters:</strong> Two identical user prompts with different system prompts or temperature settings should NOT share cache entries. Incorporate the system prompt hash and key generation parameters (temperature, max_tokens, model) into the cache key. This prevents cross-contamination between different use cases.</li></ol>
+
+<h4>Build the Drop-In Proxy API<span class="phase-days">(Day 3–5)</span></h4>
+<ol class="steps"><li><strong>Mirror the OpenAI API contract:</strong> Build a FastAPI service that accepts the exact same request format as the OpenAI chat completions endpoint. This means any application can switch to your cache proxy by just changing the base URL, zero code changes. Return the same response format with an additional header indicating cache hit/miss.</li><li><strong>Add provider routing:</strong> Behind the proxy, support multiple LLM providers (OpenAI, Anthropic, Ollama). Route based on the model field in the request. The cache layer is provider-agnostic, a cached OpenAI response can't be served for an Anthropic request, but the cache logic itself is shared.</li><li><strong>Implement streaming support:</strong> Cache hits should return instantly (no streaming needed). Cache misses should stream the response from the provider to the client while simultaneously buffering it for cache storage. This is the tricky part, you need to handle partial responses and only cache complete, successful responses.</li></ol>
+
+<h4>Build Cache Policies and Eviction<span class="phase-days">(Day 5–8)</span></h4>
+<ol class="steps"><li><strong>Implement TTL-based expiration:</strong> Every cache entry gets a configurable TTL. For factual/stable queries, set long TTLs (24h+). For queries that reference time or current events, set short TTLs (1h) or disable caching entirely. Build a classifier that auto-assigns TTL tiers based on prompt content.</li><li><strong>Add cache invalidation triggers:</strong> When the system prompt for a feature changes, invalidate all cache entries associated with that system prompt hash. When a model is upgraded, invalidate entries for that model. Provide API endpoints for manual invalidation by prefix or tag.</li><li><strong>Build the similarity threshold tuner:</strong> Expose an endpoint that lets you test different similarity thresholds against historical data. Show at 0.90 threshold, hit rate is X% but Y% of hits returned slightly wrong answers. At 0.98 threshold, hit rate drops to Z% but accuracy is near-perfect. This tradeoff visualization is the core interview talking point.</li><li><strong>Implement adaptive thresholds:</strong> Different request types have different tolerance for approximate matches. Classification tasks can tolerate lower similarity (0.90) because the answer space is constrained. Creative generation tasks need higher similarity (0.98) or should skip caching entirely. Let the system learn these thresholds from feedback.</li></ol>
+
+<h4>Build Monitoring and Analytics<span class="phase-days">(Day 8–10)</span></h4>
+<ol class="steps"><li><strong>Instrument everything with Prometheus metrics:</strong> Track cache hit rate (overall and per-model), average latency for hits vs. misses, estimated cost savings per hour/day, cache size and eviction rate, and similarity score distribution for hits and near-misses. Export as Prometheus metrics.</li><li><strong>Build the Grafana dashboard:</strong> Create panels showing real-time hit rate, cumulative cost savings (the money shot), latency comparison (cached vs. uncached P50/P95/P99), cache capacity utilization, and a time series of the similarity threshold's effect on hit rate over the past 7 days.</li><li><strong>Add a near-miss analyzer:</strong> Track queries that fell just below the similarity threshold. These are potential cache hits if the threshold were slightly lower. Analyzing near-misses lets you tune the threshold with real data and identify opportunities for query normalization (e.g., stripping filler words before embedding).</li></ol>
+
+<h4>Containerize and Load Test<span class="phase-days">(Day 10–12)</span></h4>
+<ol class="steps"><li><strong>Docker-compose the full stack:</strong> Services include the FastAPI proxy, Redis (with RedisVL), Prometheus, Grafana, and an optional Ollama instance for local model testing. Include pre-configured Grafana dashboards so reviewers see data immediately.</li><li><strong>Run a realistic load test:</strong> Send 2,000+ requests through the system using a mix of unique and repeated queries (simulating realistic usage patterns). Measure hit rate convergence over time, latency percentiles, and total cost savings. These numbers are your portfolio headline.</li><li><strong>Write the README as an internal proposal:</strong> Frame it as “Here's what this would save us if deployed in front of our LLM calls.” Include the load test results, the cost savings projection, and a deployment guide. This isn't a tutorial, it's a business case with code attached.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 12–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show a fresh query hitting the LLM (with latency), the same query hitting the cache (instant), a semantically similar query also hitting the cache, and the Grafana dashboard showing cost savings accumulate in real time.</li><li><strong>Lead with the number:</strong> “A drop-in caching layer that reduced LLM API costs by X% and P95 latency by Y% on a 2,000-request load test.” That's the headline. Everything else is supporting evidence.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://redis.io/docs/latest/integrate/redisvl/" target="_blank" rel="noopener">RedisVL documentation &#8599;</a><a class="pill" href="https://qdrant.tech/documentation/" target="_blank" rel="noopener">Qdrant documentation &#8599;</a><a class="pill" href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">Prometheus documentation &#8599;</a><a class="pill" href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">Grafana documentation &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-8">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 8</span>
+    <h2>Text-to-SQL Interface with Guardrails and Hallucination Detection</h2>
+    <h3>What You're Building</h3>
+    <p>A natural language interface that translates plain English questions into SQL queries against a real database, executes them safely with guardrails preventing destructive operations, validates that the generated SQL actually answers the question asked, and presents results with a confidence score.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Text-to-SQL is one of the highest-value applications of LLMs in enterprise settings, and it's notoriously hard to get right. Building one with guardrails and hallucination detection proves you can ship AI features that a compliance team would actually approve, which is the bar for production AI at any serious company.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Standard for data tooling</td></tr><tr><td>LLM</td><td>GPT-4o or Claude Sonnet</td><td>Strong structured output</td></tr><tr><td>Database</td><td>PostgreSQL or DuckDB</td><td>Real SQL engine, not a SQLite toy</td></tr><tr><td>Schema Extraction</td><td>SQLAlchemy</td><td>Automatic schema introspection</td></tr><tr><td>Guardrails</td><td>Custom middleware</td><td>Prevents destructive queries</td></tr><tr><td>Validation</td><td>LLM-as-judge + result check</td><td>Hallucination detection</td></tr><tr><td>API</td><td>FastAPI</td><td>Production-grade serving</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>DB + API orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Schema-Aware Prompt Engine<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Auto-extract the database schema:</strong> Use SQLAlchemy to introspect the database and produce a structured representation, tables, columns with types, primary/foreign key relationships, and sample values for categorical columns. This becomes the context the LLM uses to write SQL.</li><li><strong>Build the dynamic prompt constructor:</strong> For each user question, assemble a prompt with the relevant schema (not the entire database, filter to tables likely needed), foreign key relationships, sample values for disambiguation, and any column descriptions or business glossary terms. Include 3–5 few-shot examples of question-to-SQL pairs specific to this schema.</li><li><strong>Implement schema filtering:</strong> For large databases, sending the entire schema wastes context and confuses the model. Build a lightweight relevance filter, embed the user question, embed table/column descriptions, and include only tables above a similarity threshold. This keeps the prompt focused and improves generation accuracy.</li><li><strong>Handle ambiguity explicitly:</strong> When the user's question maps to multiple possible interpretations (e.g., “revenue” could mean gross or net), return a structured clarification request instead of guessing. List the interpretations with example queries for each. This is a production feature most demos skip.</li></ol>
+
+<h4>Build the SQL Generation and Safety Layer<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Generate SQL with structured output:</strong> Use the instructor library or function calling to ensure the LLM returns the SQL query, a natural language explanation of what it does, a confidence score, and a list of tables and columns accessed. Validate the SQL syntax before execution using sqlparse.</li><li><strong>Implement the guardrail middleware:</strong> Before any query executes, pass it through a safety layer that blocks all DDL (CREATE, ALTER, DROP), blocks all DML writes (INSERT, UPDATE, DELETE), enforces a row limit (LIMIT 1000 if none specified), rejects queries with subqueries deeper than 3 levels, and blocks queries estimated to scan more than N rows using EXPLAIN. Make each rule configurable and log every blocked query with the reason.</li><li><strong>Add query sandboxing:</strong> Execute all generated queries in a read-only transaction that rolls back automatically. Use a database user with SELECT-only permissions as a second layer of defense. Even if the guardrail layer misses something, the database permissions prevent damage.</li><li><strong>Build the execution layer:</strong> Run the validated SQL, capture results as a DataFrame, and package the response with raw results (capped at the row limit), execution time, rows returned, and the EXPLAIN plan. Log everything for auditability.</li></ol>
+
+<h4>Build the Hallucination Detection System<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Implement SQL-to-question verification:</strong> After generating the SQL, send the query back to the LLM with the prompt: “What question does this SQL query answer?” Compare the back-translated question to the original. If they diverge significantly, the SQL probably doesn't answer the right question. Score the alignment and flag low-confidence translations.</li><li><strong>Add result sanity checking:</strong> After execution, perform basic sanity checks: are aggregated values within plausible ranges? Do counts match expected magnitudes? Are date ranges within the data's timespan? Are there NULL-heavy columns that might indicate a bad JOIN? Flag anomalies with specific explanations.</li><li><strong>Build the multi-query validation:</strong> For complex questions, generate two different SQL approaches independently (e.g., using different JOIN strategies or aggregation methods). Execute both. If results match, confidence is high. If they diverge, flag the discrepancy and present both results with explanations. Agreement between independent approaches is a strong correctness signal.</li><li><strong>Create a confidence scoring system:</strong> Combine signals into a single confidence score: SQL syntax validity, back-translation alignment, result sanity check pass rate, multi-query agreement, and schema coverage (did the query use the tables/columns you'd expect for this question type?). Display confidence prominently alongside every result.</li></ol>
+
+<h4>Build the Query Interface<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Build the API endpoints:</strong> POST /v1/query accepts a natural language question and returns the generated SQL, execution results, confidence score, and any guardrail warnings. GET /v1/schema returns the database schema. GET /v1/history returns past queries and results for the session.</li><li><strong>Create a Streamlit or React frontend:</strong> A clean interface with a text input for natural language questions, the generated SQL displayed with syntax highlighting (editable for power users), results in a sortable data table, the confidence score with a breakdown of contributing signals, and a history panel showing past queries.</li><li><strong>Add a feedback loop:</strong> Let users mark results as correct or incorrect. Store this feedback alongside the query. Incorrect results become new test cases for the eval suite. Correct results become new few-shot examples that improve future generation. This is the flywheel.</li></ol>
+
+<h4>Build the Evaluation Suite<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Create a golden query dataset:</strong> Write 50+ natural language questions with verified correct SQL and expected results. Include simple lookups, multi-table JOINs, aggregations with GROUP BY, date range filters, questions with ambiguous phrasing, and questions the database cannot answer. This is your regression suite.</li><li><strong>Run automated evals:</strong> For each test case, measure SQL exact match (does the generated SQL match the golden query?), execution match (do results match regardless of SQL approach?), hallucination detection rate (does the system correctly flag bad queries?), and guardrail effectiveness (are dangerous queries blocked?).</li><li><strong>Containerize and document:</strong> Docker-compose with PostgreSQL seeded with sample data, the FastAPI service, and the frontend. Include a README that leads with the eval numbers: “X% execution accuracy, Y% hallucination detection rate, zero unsafe queries executed across Z test cases.”</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show a natural language question being translated to SQL, the guardrail blocking a dangerous query, the hallucination detector catching a bad translation, and the multi-query validation resolving a discrepancy. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a text-to-SQL system with a X% accuracy rate that blocks 100% of destructive operations and detects Y% of hallucinated queries before they reach the user.” Lead with safety. Companies care more about not breaking things than about accuracy percentages.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://docs.sqlalchemy.org/" target="_blank" rel="noopener">SQLAlchemy documentation &#8599;</a><a class="pill" href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">PostgreSQL documentation &#8599;</a><a class="pill" href="https://duckdb.org/docs/" target="_blank" rel="noopener">DuckDB documentation &#8599;</a><a class="pill" href="https://pypi.org/project/sqlparse/" target="_blank" rel="noopener">sqlparse on PyPI &#8599;</a><a class="pill" href="https://python.useinstructor.com/" target="_blank" rel="noopener">Instructor (structured outputs) &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-9">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 9</span>
+    <h2>Prompt Versioning and A/B Testing Platform</h2>
+    <h3>What You're Building</h3>
+    <p>A platform that treats prompts as versioned artifacts (like code), lets teams deploy multiple prompt variants simultaneously, splits traffic between them, measures performance across custom metrics, and declares statistically significant winners, bringing the rigor of feature flagging and experimentation to LLM-powered features.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Most AI teams change prompts by editing a string in production and hoping for the best. This project shows you understand that prompt engineering at scale is an experimentation problem, not a guessing game. It signals the kind of operational maturity that distinguishes senior AI engineers from junior ones.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Standard for ML tooling</td></tr><tr><td>LLM Provider</td><td>OpenAI / Anthropic</td><td>Multi-provider support</td></tr><tr><td>Storage</td><td>PostgreSQL</td><td>Versioning, experiments, results</td></tr><tr><td>Statistics</td><td>scipy.stats</td><td>Significance testing</td></tr><tr><td>API</td><td>FastAPI</td><td>Experiment management + serving</td></tr><tr><td>Dashboard</td><td>React or Streamlit</td><td>Experiment monitoring</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full stack orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Prompt Registry<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Design the versioning schema:</strong> Every prompt gets a unique ID, a version number (auto-incrementing), the system prompt text, any few-shot examples, model parameters (temperature, max_tokens), a commit message explaining the change, and a timestamp. Store in PostgreSQL. This is git for prompts.</li><li><strong>Build the registry API:</strong> POST /prompts creates a new prompt. POST /prompts/{id}/versions creates a new version. GET /prompts/{id}/versions lists all versions with diffs. GET /prompts/{id}/versions/{v} retrieves a specific version. Add a diff endpoint that shows exactly what changed between any two versions.</li><li><strong>Add rollback support:</strong> Any version can be marked as the “active” version for production. Rolling back is just changing which version is active, no code deploy needed. Log every activation/deactivation event with who triggered it and why. This audit trail is critical for production trust.</li><li><strong>Implement prompt templates with variables:</strong> Prompts should support template variables (e.g., {{user_name}}, {{context}}) that get filled at request time. The versioning system versions the template, not the filled prompt. Validate that all variables in the template are provided at serve time.</li></ol>
+
+<h4>Build the Experiment Engine<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Design the experiment schema:</strong> An experiment has a name, the prompt ID being tested, two or more variant versions, traffic split percentages (e.g., 50/50 or 80/10/10), primary metric (what defines “better”), target sample size for significance, and status (draft/running/completed/cancelled).</li><li><strong>Build the traffic splitter:</strong> When a request comes in for a prompt that has an active experiment, the splitter assigns the request to a variant based on the configured percentages. Use consistent hashing on a user ID or session ID so the same user always sees the same variant. Log the assignment.</li><li><strong>Implement the serving endpoint:</strong> POST /v1/completions accepts a prompt ID and input variables. The system resolves the active version (or experiment variant), fills the template, calls the LLM, logs the full request/response with the variant assignment, and returns the response. The caller doesn't know or care about the experiment.</li><li><strong>Add guardrails for experiments:</strong> Auto-stop experiments if a variant's error rate exceeds a threshold (e.g., 10% API failures). Auto-stop if the losing variant is performing significantly worse than baseline on the primary metric. Notify the experiment owner when either condition triggers. This prevents bad prompts from affecting too many users.</li></ol>
+
+<h4>Build the Metrics and Analysis Layer<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Define pluggable metric collectors:</strong> Build a metric framework where teams can register custom evaluation functions. Built-in metrics include latency, token usage, cost, and error rate. Custom metrics include LLM-as-judge quality score, task-specific accuracy, and user satisfaction signals. Each metric runs asynchronously after the response is returned.</li><li><strong>Implement statistical significance testing:</strong> For each experiment, continuously calculate the mean and variance of each metric per variant, a two-sample t-test (or Mann-Whitney U for non-normal distributions) comparing variants, the p-value and confidence interval, and the minimum detectable effect size given current sample size. Display whether the experiment has reached significance.</li><li><strong>Build the results dashboard:</strong> For each running experiment, show real-time metric comparison across variants (bar charts with confidence intervals), sample size progress toward the significance target, a time series of metric values to detect trends or instability, and a clear “winner/no winner/inconclusive” status with the supporting statistics.</li><li><strong>Add automated winner declaration:</strong> When an experiment reaches statistical significance at the configured confidence level (default 95%), automatically mark the winning variant, notify the experiment owner, and optionally auto-promote the winner to the active version. Include a 24-hour hold period before auto-promotion in case of data quality issues.</li></ol>
+
+<h4>Build the Management Interface<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create the experiment management UI:</strong> A dashboard where teams can create new experiments from the prompt registry, configure traffic splits and metrics, monitor running experiments, view completed experiment results with full statistical analysis, and promote winners to production with one click.</li><li><strong>Add prompt comparison tools:</strong> A side-by-side view where you can pick any two prompt versions, send the same set of test inputs to both, and see outputs compared with automated quality scores. This is useful for quick sanity checks before launching a full experiment.</li><li><strong>Build the audit log:</strong> Every action is logged: prompt creation, version changes, experiment start/stop, variant assignments, winner promotions, and rollbacks. This log answers “who changed the prompt that broke the feature last Tuesday?”, a question every AI team eventually needs to answer.</li></ol>
+
+<h4>Integration and Testing<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Build a demo scenario:</strong> Seed the system with a customer support email classifier. Create three prompt variants with meaningfully different approaches (e.g., zero-shot vs. few-shot vs. chain-of-thought). Run an experiment with 500+ synthetic requests. Let it converge to a winner.</li><li><strong>Containerize the full stack:</strong> Docker-compose with PostgreSQL, the FastAPI service, the experiment dashboard, and a worker for async metric computation. Include seed data so reviewers can see a completed experiment immediately.</li><li><strong>Write integration tests:</strong> Test prompt versioning and rollback, traffic splitting consistency (same user always gets same variant), metric collection accuracy, significance calculation correctness (use known distributions), and auto-stop on error rate spikes.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Walk through creating a prompt, launching an experiment, watching metrics converge, the system declaring a winner with statistical backing, and promoting the winner to production. Show the audit log. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a prompt experimentation platform that brings feature-flagging rigor to LLM development. Teams can test prompt changes against live traffic and get statistically significant results instead of guessing.” Position it as infrastructure, not a toy.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://docs.scipy.org/doc/scipy/reference/stats.html" target="_blank" rel="noopener">scipy.stats documentation &#8599;</a><a class="pill" href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">PostgreSQL documentation &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation &#8599;</a><a class="pill" href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API reference &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-10">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 10</span>
+    <h2>Fine-Tuning Pipeline with LoRA on a Domain-Specific Dataset</h2>
+    <h3>What You're Building</h3>
+    <p>An end-to-end pipeline that takes a domain-specific dataset, applies LoRA (Low-Rank Adaptation) fine-tuning to an open-source base model, evaluates the fine-tuned model against the base model on task-specific benchmarks, and packages the result for deployment, with full experiment tracking and reproducibility.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Fine-tuning is where AI engineering meets ML engineering. Most candidates either can't fine-tune at all or run a notebook once and call it done. Building a reproducible pipeline with evaluation and experiment tracking proves you can own the full model customization lifecycle that production AI teams need.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>ML ecosystem standard</td></tr><tr><td>Base Model</td><td>An open-weight model in the 7–8B range</td><td>Strong open-source options</td></tr><tr><td>Fine-Tuning</td><td>Hugging Face PEFT + TRL</td><td>Industry-standard LoRA tooling</td></tr><tr><td>Training</td><td>Unsloth or QLoRA</td><td>Memory-efficient on consumer GPU</td></tr><tr><td>Dataset</td><td>Custom domain-specific</td><td>Your unique value add</td></tr><tr><td>Eval</td><td>Custom + lm-evaluation-harness</td><td>Rigorous benchmarking</td></tr><tr><td>Experiment Tracking</td><td>Weights &amp; Biases or MLflow</td><td>Reproducible runs</td></tr><tr><td>Deployment</td><td>vLLM or Ollama</td><td>Fast inference serving</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Training Dataset<span class="phase-days">(Day 1–4)</span></h4>
+<ol class="steps"><li><strong>Choose a specific domain and task:</strong> Pick a narrow, well-defined task where you can demonstrate clear improvement over the base model. Examples include legal clause classification, medical note summarization, code review comment generation, or customer support tone matching. The domain doesn't need to be exotic, it needs to be measurable.</li><li><strong>Curate and format the training data:</strong> Collect or create 500–2,000 high-quality examples in instruction-following format (instruction, input, output). Quality matters more than quantity, each example should represent the exact behavior you want the model to learn. Clean aggressively: remove duplicates, fix formatting inconsistencies, and verify correctness.</li><li><strong>Build train/validation/test splits:</strong> Split your data 80/10/10. Ensure no data leakage between splits (especially important if examples were derived from the same source documents). The test set is sacred, never train on it, never tune hyperparameters against it. It's your honest performance measure.</li><li><strong>Create the evaluation benchmark:</strong> Beyond the test split, create 30–50 handcrafted evaluation examples that cover edge cases, hard examples, and failure modes you expect. Score each one with task-specific metrics (not just perplexity). This benchmark is how you prove the fine-tuned model is better, not just different.</li></ol>
+
+<h4>Set Up the Training Pipeline<span class="phase-days">(Day 4–7)</span></h4>
+<ol class="steps"><li><strong>Configure LoRA parameters:</strong> Set up PEFT with LoRA targeting the attention layers (q_proj, v_proj as baseline). Key hyperparameters: rank (start with 16), alpha (2x rank), dropout (0.05). Document why you chose these values. Use QLoRA (4-bit quantization) if running on a consumer GPU with limited VRAM.</li><li><strong>Build the training script with experiment tracking:</strong> Write a configurable training script that logs to Weights &amp; Biases (or MLflow): all hyperparameters, training loss curves, validation metrics at each checkpoint, GPU memory usage, and training duration. Every run should be reproducible from its config file alone.</li><li><strong>Implement early stopping and checkpointing:</strong> Save model checkpoints at regular intervals. Track validation loss and stop training when it plateaus or starts increasing. This prevents overfitting and saves compute. Log which checkpoint was selected as the best and why.</li><li><strong>Run a hyperparameter sweep:</strong> Test at least 3 configurations varying rank (8, 16, 32), learning rate (1e-4, 2e-4, 5e-4), and number of epochs (1, 3, 5). Log all runs to the experiment tracker. Produce a comparison table showing how each configuration performs on the validation set. This data drives your final configuration choice.</li></ol>
+
+<h4>Evaluate and Compare Models<span class="phase-days">(Day 7–10)</span></h4>
+<ol class="steps"><li><strong>Run the base model against your benchmark:</strong> Before any fine-tuning claims, establish the baseline. Run the base model (with the same prompt template) against your entire evaluation benchmark. Score every example. Store these results, they're the denominator in every improvement claim you make.</li><li><strong>Run the fine-tuned model against the same benchmark:</strong> Using the best checkpoint from training, evaluate on the exact same benchmark with the exact same scoring criteria. Compare head-to-head on every example. Calculate overall accuracy/quality improvement, per-category performance breakdown, examples where fine-tuning helped, and examples where it hurt (regressions).</li><li><strong>Add LLM-as-judge evaluation:</strong> Beyond automated metrics, use a strong frontier model as a judge to blindly compare base vs. fine-tuned outputs on each test example. Have it score quality on a 1–5 scale and explain its reasoning. This gives you a human-interpretable quality signal alongside automated metrics.</li><li><strong>Test for catastrophic forgetting:</strong> Fine-tuning can degrade general capabilities. Run a subset of standard benchmarks (common sense QA, instruction following) on both the base and fine-tuned model. If general performance dropped significantly, you may need to reduce training epochs or adjust LoRA rank. Document the tradeoffs.</li></ol>
+
+<h4>Build the Inference Pipeline<span class="phase-days">(Day 10–12)</span></h4>
+<ol class="steps"><li><strong>Package the LoRA adapter for deployment:</strong> Export the trained LoRA adapter weights (not the full model). The adapter is tiny (typically under 100MB) while the base model is large (16GB+). This separation means you can swap adapters without reloading the base model, useful for serving multiple domain-specific models from one base.</li><li><strong>Set up inference serving:</strong> Deploy using vLLM (for production-grade batched inference) or Ollama (for simpler local deployment). Load the base model, attach the LoRA adapter, and expose a chat completions API. Benchmark tokens per second, latency P50/P95, and max concurrent requests.</li><li><strong>Build an A/B comparison endpoint:</strong> Create an API that accepts a prompt and returns responses from both the base model and the fine-tuned model side by side. Include quality scores from the automated eval. This endpoint powers your demo and makes the improvement immediately visible.</li></ol>
+
+<h4>Containerize and Document<span class="phase-days">(Day 12–13)</span></h4>
+<ol class="steps"><li><strong>Package the full pipeline:</strong> Create a reproducible setup with a training script that can be re-run with a single command, a data processing pipeline that produces training-ready datasets from raw inputs, an evaluation harness that benchmarks any model against your test suite, and an inference server with the fine-tuned model loaded.</li><li><strong>Write the experiment report:</strong> A structured document showing the problem and why fine-tuning was the right approach (vs. few-shot prompting or RAG), dataset statistics and curation methodology, hyperparameter sweep results, head-to-head comparison (base vs. fine-tuned) with specific examples, and catastrophic forgetting analysis.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show the base model struggling with a domain-specific task, the fine-tuned model handling it correctly, the experiment-tracking dashboard with training curves, and the A/B comparison endpoint with real examples. Under 4 minutes.</li><li><strong>Write the headline:</strong> “I fine-tuned an open-weight model on [domain] data using LoRA and improved task performance from X% to Y% while maintaining Z% of general capabilities.” Every number should be backed by the evaluation data in your repo.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://huggingface.co/docs/peft" target="_blank" rel="noopener">Hugging Face PEFT documentation &#8599;</a><a class="pill" href="https://huggingface.co/docs/trl" target="_blank" rel="noopener">Hugging Face TRL documentation &#8599;</a><a class="pill" href="https://unsloth.ai/docs" target="_blank" rel="noopener">Unsloth documentation &#8599;</a><a class="pill" href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank" rel="noopener">lm-evaluation-harness on GitHub &#8599;</a><a class="pill" href="https://docs.wandb.ai/" target="_blank" rel="noopener">Weights &amp; Biases documentation &#8599;</a><a class="pill" href="https://mlflow.org/docs/latest/index.html" target="_blank" rel="noopener">MLflow documentation &#8599;</a><a class="pill" href="https://docs.vllm.ai/" target="_blank" rel="noopener">vLLM documentation &#8599;</a><a class="pill" href="https://ollama.com/" target="_blank" rel="noopener">Ollama &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-11">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 11</span>
+    <h2>LLM Gateway with Rate Limiting, Fallback Routing, and Observability</h2>
+    <h3>What You're Building</h3>
+    <p>A production API gateway that sits in front of all your organization's LLM calls, enforces per-team rate limits and budgets, automatically falls back to alternative providers when a primary provider has an outage or rate-limits you, and provides unified observability across every LLM interaction.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Every company with more than one team using LLMs ends up building something like this. It's pure infrastructure engineering applied to AI, exactly the skill set that mid-level SWEs already have and that AI teams desperately need. This project lets you lead with your production engineering strengths while demonstrating deep AI systems knowledge.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+ or Go</td><td>High-throughput proxy layer</td></tr><tr><td>Proxy</td><td>FastAPI or net/http</td><td>Async-native request handling</td></tr><tr><td>Rate Limiting</td><td>Redis + token bucket</td><td>Distributed, sub-ms enforcement</td></tr><tr><td>Config</td><td>YAML + hot reload</td><td>No-deploy policy changes</td></tr><tr><td>Observability</td><td>OpenTelemetry + Prometheus</td><td>Industry-standard tracing</td></tr><tr><td>Dashboard</td><td>Grafana</td><td>Unified metrics visualization</td></tr><tr><td>Providers</td><td>OpenAI, Anthropic, Ollama</td><td>Multi-provider support</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full stack orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Unified Proxy Layer<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Build the provider abstraction:</strong> Create a unified interface that normalizes requests across OpenAI, Anthropic, and Ollama. Incoming requests use a standard format. The gateway translates to each provider's API format, calls the provider, and translates the response back to the standard format. The caller never knows which provider served the request.</li><li><strong>Implement request authentication and routing:</strong> Every request includes a team API key. The gateway validates the key, looks up the team's configuration (allowed models, rate limits, budget), and routes to the appropriate provider. Teams can be restricted to specific models or providers based on their plan.</li><li><strong>Add streaming passthrough:</strong> Support both streaming and non-streaming responses. For streaming, the gateway acts as a transparent proxy: it forwards chunks from the provider to the client in real time while simultaneously logging the complete response for observability. This is critical for latency-sensitive applications.</li><li><strong>Handle request enrichment:</strong> The gateway can inject standard system prompts, append compliance disclaimers, or add content filters before forwarding to the provider. Make this configurable per team. This centralizes policy enforcement without requiring every team to implement it themselves.</li></ol>
+
+<h4>Build Rate Limiting and Budget Enforcement<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Implement token bucket rate limiting:</strong> Use Redis to maintain per-team token buckets with configurable rates (requests per minute, tokens per minute). Enforce limits before forwarding the request. Return standard 429 responses with Retry-After headers when limits are hit. This must be atomic and distributed-safe.</li><li><strong>Add budget caps:</strong> Each team gets a monthly or daily budget in dollars. Track spending by computing cost per request (input tokens times input price plus output tokens times output price). When a team approaches their limit (80%), send a warning. When they hit it, block requests and return a clear error explaining the budget cap.</li><li><strong>Build tiered rate limits:</strong> Different request types get different limits. A batch data processing job should have a lower priority than a real-time user-facing request. Implement priority queues so high-priority requests get served even when overall limits are near capacity.</li><li><strong>Create the admin API:</strong> Endpoints for viewing current rate limit status per team, adjusting limits and budgets without restart, viewing spending dashboards, and setting up alerts when teams approach limits. All changes are logged with who made them and when.</li></ol>
+
+<h4>Build the Fallback and Resilience Layer<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Implement health checking:</strong> The gateway continuously monitors each provider's health: send lightweight test requests every 30 seconds, track error rates and latency P99 over rolling windows, and maintain a status (healthy/degraded/down) for each provider-model combination. Store health history for post-incident analysis.</li><li><strong>Build automatic fallback routing:</strong> When a primary provider is degraded or down, automatically route requests to a configured fallback. Example: if one provider is timing out, route to another. Define fallback chains per model tier (not per specific model) so the system always finds an available option.</li><li><strong>Add retry with exponential backoff:</strong> Before falling back to another provider, retry the primary with exponential backoff (up to 3 retries). Distinguish between retryable errors (rate limits, timeouts) and non-retryable errors (auth failures, content policy violations). Only fall back for retryable errors that exhaust retries.</li><li><strong>Implement circuit breakers:</strong> If a provider fails more than N times in M seconds, open the circuit, stop sending requests to that provider entirely and route everything to fallbacks. After a cooldown period, send a single test request (half-open state). If it succeeds, close the circuit and resume normal routing. Log every state change.</li></ol>
+
+<h4>Build the Observability Layer<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Instrument with OpenTelemetry:</strong> Add distributed tracing spans for request receipt, authentication, rate limit check, provider selection, LLM API call, response processing, and response delivery. Every span includes team ID, model requested, model served, token counts, latency, and cost.</li><li><strong>Export Prometheus metrics:</strong> Key metrics include requests per second (by team, model, provider), error rate (by team, model, provider, error type), latency percentiles (P50, P95, P99 by provider), token throughput (input plus output tokens per second), cost per team per day, fallback trigger rate, and circuit breaker state changes.</li><li><strong>Build the Grafana dashboards:</strong> Create three dashboards. Operations: provider health, error rates, fallback events, circuit breaker status. Business: per-team spending, budget utilization, usage trends. Performance: latency percentiles, token throughput, cache hit rates (if integrated with the semantic caching project).</li><li><strong>Add alerting rules:</strong> Configure alerts for provider error rate above threshold, team approaching budget cap, latency P99 above SLA, and circuit breaker opening. Route alerts to Slack with actionable context: what happened, which teams are affected, and the auto-fallback status.</li></ol>
+
+<h4>Integration Test and Load Test<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Build an integration test suite:</strong> Test that rate limiting enforces correctly under concurrent load, budget caps block requests at the right threshold, fallback routing activates when primary fails (simulate failures), circuit breakers open and close correctly, and streaming responses pass through without corruption.</li><li><strong>Run a load test:</strong> Send 5,000+ concurrent requests through the gateway with mixed team keys, models, and priorities. Measure gateway overhead latency (should be under 10ms), rate limiting accuracy under load, fallback behavior under simulated provider outages, and dashboard accuracy (do displayed metrics match reality?).</li><li><strong>Containerize the full stack:</strong> Docker-compose with the gateway service, Redis, Prometheus, Grafana (with pre-configured dashboards), and mock provider endpoints for testing. Include a setup script that creates demo teams with different rate limits so reviewers can see the system in action immediately.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show requests flowing through the gateway with real-time Grafana metrics, a simulated provider outage triggering fallback routing, rate limiting kicking in for a high-volume team, and the circuit breaker opening and recovering. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built an LLM API gateway handling X requests/second with under 10ms overhead, automatic multi-provider failover, and per-team budget enforcement.” This is infrastructure. Lead with the reliability numbers and the operational problem it solves.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry Docs &#8599;</a><a class="pill" href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">Prometheus Docs &#8599;</a><a class="pill" href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">Grafana Docs &#8599;</a><a class="pill" href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis Docs &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI Docs &#8599;</a><a class="pill" href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Docs &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-12">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 12</span>
+    <h2>AI Feature Flag System with Gradual Rollout and Quality Monitoring</h2>
+    <h3>What You're Building</h3>
+    <p>A feature flag platform specifically designed for AI-powered features that supports gradual percentage-based rollouts, automatically monitors quality metrics during rollout, and triggers automatic rollback if the AI feature's output quality degrades below a configurable threshold.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Every engineering team uses feature flags for traditional software. Almost none have adapted the pattern for AI features, where “working” isn't binary, it's a quality gradient. This project proves you understand that shipping AI features requires different operational patterns than shipping traditional code, and you can build the tooling to support that.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Standard for AI tooling</td></tr><tr><td>Storage</td><td>PostgreSQL + Redis</td><td>Durable config + fast evaluation</td></tr><tr><td>Quality Eval</td><td>Custom + LLM-as-judge</td><td>Real-time quality scoring</td></tr><tr><td>SDK</td><td>Python client library</td><td>Drop-in integration for apps</td></tr><tr><td>Dashboard</td><td>React or Streamlit</td><td>Rollout monitoring</td></tr><tr><td>Alerting</td><td>Slack Webhooks</td><td>Rollback notifications</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full stack orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Flag Evaluation Engine<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Design the AI feature flag schema:</strong> Beyond traditional boolean flags, AI flags need a rollout percentage (0–100%), a quality threshold (minimum acceptable quality score), a rollback trigger (conditions that cause automatic rollback), a baseline configuration (what to serve when the flag is off, e.g. the previous prompt version or a non-AI fallback), and the experimental configuration (the new AI feature being tested).</li><li><strong>Build the evaluation SDK:</strong> A lightweight Python client that applications import. The core method, flag_client.evaluate(flag_name, user_context), returns which variant to serve. The SDK handles consistent user assignment (same user always gets same variant via hashing), percentage-based rollout, local caching of flag configurations, and graceful degradation if the flag service is unreachable (default to baseline).</li><li><strong>Implement targeting rules:</strong> Beyond random percentage splits, support targeting by user segment (e.g. internal users first, then beta users, then everyone), by geography, by request metadata (e.g. only enable for certain input types), and allowlist/blocklist for specific user IDs. This lets teams do careful, controlled rollouts.</li><li><strong>Build the flag management API:</strong> CRUD endpoints for flags, plus an endpoint to update the rollout percentage, an endpoint to pause the rollout at the current percentage, and an endpoint to immediately switch all traffic to baseline. All changes are logged with the actor and reason.</li></ol>
+
+<h4>Build the Quality Monitoring Layer<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Define quality metrics per flag:</strong> Each AI feature flag specifies how to measure quality. Built-in options include LLM-as-judge scoring (send each output to a judge model for a 1–5 rating), user feedback signals (thumbs up/down, explicit ratings), latency thresholds (AI features that are too slow degrade UX even if output is good), and error rate (API failures, malformed outputs, timeout rates).</li><li><strong>Build the async quality evaluator:</strong> After every AI-flag-gated response, queue an async quality evaluation. The evaluator scores the output using the flag's configured metrics and writes the score to the database. This must not add latency to the user-facing response. Use a background worker with a message queue.</li><li><strong>Implement rolling quality windows:</strong> Track quality scores in rolling windows (last 100 evaluations, last 1 hour, last 24 hours). Calculate the mean quality score, standard deviation, P10 quality (worst 10th percentile), and the quality trend (improving, stable, degrading). Compare experimental vs. baseline scores continuously.</li><li><strong>Build the automatic rollback trigger:</strong> When the experimental variant's quality drops below the flag's configured threshold for a sustained period (e.g. P10 below 3.0 for more than 50 consecutive evaluations), automatically set the rollout percentage to 0%, send a Slack alert with the quality data, and log the rollback event with full context. Include a cooldown to prevent flapping.</li></ol>
+
+<h4>Build Gradual Rollout Automation<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Implement staged rollout schedules:</strong> Define a rollout plan as a series of stages, for example 1% for 2 hours, 5% for 6 hours, 25% for 24 hours, 50% for 24 hours, 100%. At each stage boundary, the system checks quality metrics. If quality is above threshold, it auto-advances to the next stage. If quality dips, it pauses and alerts.</li><li><strong>Add canary analysis:</strong> At each rollout stage, compare the experimental variant's metrics against the baseline. Use statistical testing (similar to the experimentation platform project) to determine if there's a significant quality difference. The rollout only advances when the experimental variant is statistically no worse than baseline.</li><li><strong>Build the rollout dashboard:</strong> For each active rollout, show the current stage and percentage, quality metric comparison (experimental vs. baseline) over time, upcoming stage transitions and their conditions, any triggered pauses or rollbacks with reasons, and estimated time to full rollout based on current quality trends.</li><li><strong>Support dark mode testing:</strong> Before any real rollout, support “shadow mode”, running the experimental variant on all traffic but not showing results to users. Instead, log what would have been shown and evaluate quality offline. This catches catastrophic failures before any user is affected.</li></ol>
+
+<h4>Build the Dashboard and Integration<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create the flag management UI:</strong> A dashboard showing all flags and their current status (off/rolling out/fully on/rolled back), real-time quality metrics for active flags, the rollout schedule with progress indicators, and a one-click rollback button with confirmation.</li><li><strong>Build the analytics view:</strong> Historical data for each flag, including quality metrics over the full rollout history, the impact of the AI feature on business metrics (if tracked), a summary of all rollback events and their causes, and the time-to-full-rollout for successful features.</li><li><strong>Write the client SDK documentation:</strong> Show exactly how a developer integrates the flag into their application with code examples. Emphasize that the integration is minimal (3–5 lines of code) and the quality monitoring happens automatically. Include examples for common patterns: AI vs. non-AI fallback, prompt version A/B testing, and model swap testing.</li></ol>
+
+<h4>Integration Testing and Demo<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Build a demo application:</strong> Create a simple app (e.g. an AI-powered email subject line generator) that uses the flag system. Show the flag starting at 0%, gradual rollout with quality monitoring, the system detecting a deliberately bad prompt variant and auto-rolling back, and a successful rollout of a good variant to 100%.</li><li><strong>Write integration tests:</strong> Test consistent user assignment across evaluations, automatic rollback triggers correctly on quality degradation, staged rollout advances correctly on quality thresholds, and the SDK gracefully handles flag service outages.</li><li><strong>Containerize everything:</strong> Docker-compose with PostgreSQL, Redis, the flag service API, the background quality evaluator, the dashboard, and the demo application. Include a script that runs the full rollout demo scenario end to end.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show the full lifecycle, flag created, rollout started at 1%, quality checked and advancing through stages, a bad variant detected and auto-rolled back with Slack alert, a good variant reaching 100%. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a feature flag system for AI that catches quality regressions during rollout and auto-rolls back before users are impacted. Traditional feature flags can't do this because AI features fail on a gradient, not a binary.” That distinction is the whole point.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">PostgreSQL Docs &#8599;</a><a class="pill" href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis Docs &#8599;</a><a class="pill" href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener">Slack Incoming Webhooks &#8599;</a><a class="pill" href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI Docs &#8599;</a><a class="pill" href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit Docs &#8599;</a><a class="pill" href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Docs &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-13">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 13</span>
+    <h2>Automated Eval Dataset Generator from Production Logs</h2>
+    <h3>What You're Building</h3>
+    <p>A system that continuously mines production LLM logs, identifies interesting, edge-case, and failure-mode interactions, and automatically converts them into labeled evaluation test cases, building an ever-growing, production-representative eval dataset without manual curation.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>The hardest part of AI evaluation isn't building the eval harness, it's building the dataset. Most teams rely on hand-curated golden sets that go stale. You're solving the data supply problem by turning production traffic into eval data automatically. This is a force multiplier that AI teams dream about.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Standard for ML pipelines</td></tr><tr><td>Log Storage</td><td>PostgreSQL or ClickHouse</td><td>Queryable log warehouse</td></tr><tr><td>Clustering</td><td>scikit-learn + HDBSCAN</td><td>Interaction pattern discovery</td></tr><tr><td>LLM</td><td>GPT-4o or Claude Sonnet</td><td>Labeling and quality assessment</td></tr><tr><td>Eval Runner</td><td>Custom harness</td><td>Run evals against the dataset</td></tr><tr><td>Dashboard</td><td>Streamlit</td><td>Dataset explorer and curator</td></tr><tr><td>Scheduler</td><td>Cron or Celery</td><td>Automated nightly processing</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full pipeline orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Log Ingestion and Normalization Layer<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Design the log schema:</strong> Each production log entry captures the user prompt, system prompt, model used, raw LLM response, latency, token counts, any user feedback signals (thumbs up/down, edits, retries), the application feature that generated this call, and a timestamp. Normalize across all LLM call sites into this unified format.</li><li><strong>Build the ingestion pipeline:</strong> Create adapters for common logging sources, including structured JSON logs, OpenTelemetry traces, and direct database reads. The pipeline deduplicates, validates schema compliance, and writes to the central log store. Handle PII by offering configurable redaction rules (regex patterns, named entity detection) that clean sensitive data before storage.</li><li><strong>Implement sampling strategies:</strong> You don't need every log entry, you need a representative sample. Build three sampling modes: uniform random (baseline diversity), stratified by feature/model/error-status (ensures all segments are represented), and signal-boosted (oversample entries with negative user feedback, retries, or high latency). Make sampling configurable per pipeline run.</li></ol>
+
+<h4>Build the Interaction Classifier<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Cluster interactions by semantic similarity:</strong> Embed all sampled prompts and cluster them using HDBSCAN. This reveals the natural categories of questions your system handles. Name each cluster based on representative examples. Track cluster sizes to understand your traffic distribution.</li><li><strong>Identify edge cases and anomalies:</strong> Flag interactions that are outliers, including prompts that don't cluster well (novel requests), responses with low confidence scores, interactions where the user immediately retried with a rephrased question, unusually long or short responses, and responses that triggered content filters. These outliers are your most valuable eval candidates.</li><li><strong>Categorize interaction quality:</strong> Use an LLM-as-judge to assess each sampled interaction, asking whether the response was helpful, accurate, and complete. Assign a quality score (1–5). High-quality interactions become positive test cases (verify the model keeps doing this well). Low-quality interactions become negative test cases (verify future models fix this).</li><li><strong>Build a difficulty estimator:</strong> Classify each interaction by difficulty, including simple (direct question, clear answer), moderate (requires reasoning or multi-step response), hard (ambiguous, multi-part, or requires domain expertise), and adversarial (deliberately tricky, prompt injection attempts, or edge-case inputs). Difficulty labels help balance the eval dataset.</li></ol>
+
+<h4>Build the Auto-Labeling Pipeline<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Generate golden answers for test cases:</strong> For each candidate test case, generate a reference answer using a strong model with chain-of-thought reasoning. For factual questions, verify against source data if available. For subjective questions, generate a quality rubric instead of a single golden answer. Store both the reference and the rubric.</li><li><strong>Create multi-dimensional labels:</strong> Each test case gets labeled on expected quality score (1–5), expected behavior (should answer, should refuse, should ask for clarification), key assertions the response must contain, key assertions the response must NOT contain (hallucination traps), and the difficulty and category from the classifier.</li><li><strong>Implement confidence-based routing:</strong> Not all auto-generated labels are trustworthy. When the labeling model's confidence is high (strong agreement between multiple labeling runs), add the test case to the dataset automatically. When confidence is low, route to a human review queue. This keeps the dataset growing without sacrificing quality.</li><li><strong>Build deduplication against existing eval data:</strong> Before adding a new test case, check similarity against all existing test cases. If a near-duplicate exists (cosine similarity above 0.92), skip it. Track coverage metrics: which clusters are well-represented and which need more examples? Prioritize generation for under-represented categories.</li></ol>
+
+<h4>Build the Eval Runner and Regression Tracker<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Build the eval harness:</strong> A configurable runner that takes any model endpoint, runs the full eval dataset against it, scores each response using the stored rubrics and metrics, and produces a structured report with pass/fail rates per category, per difficulty level, and per metric dimension.</li><li><strong>Implement regression detection:</strong> Compare each eval run against the previous run. Flag new failures (test cases that used to pass but now fail), new passes (cases that were failing but are now fixed), score changes above a threshold, and category-level performance shifts. This is the early warning system for model degradation.</li><li><strong>Track dataset growth over time:</strong> Build a dashboard showing total test cases over time, distribution by category and difficulty, auto-labeled vs. human-reviewed counts, a coverage heatmap (which clusters are well-tested vs. sparse), and the eval dataset's “freshness” (what percentage of test cases came from the last 30 days of production traffic).</li></ol>
+
+<h4>Build the Curation Dashboard<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Create the dataset explorer:</strong> A UI where reviewers can browse test cases by category, difficulty, and quality, view the full interaction (prompt, response, labels), approve, edit, or reject auto-generated labels, and add manual annotations or notes. This is where the human-in-the-loop oversight happens.</li><li><strong>Build the review queue:</strong> Low-confidence auto-labels land in a review queue. Show reviewers the candidate test case, the auto-generated labels with confidence scores, similar existing test cases for context, and quick-action buttons (approve as-is, edit labels, reject). Track reviewer throughput and inter-annotator agreement.</li><li><strong>Containerize and schedule:</strong> Docker-compose with the log store, the classification pipeline, the auto-labeling service, the eval runner, and the curation dashboard. Set up a nightly cron job that runs the full pipeline: sample new logs, classify, auto-label, deduplicate, and add to the dataset. The eval suite grows while you sleep.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show production logs being processed, the clustering revealing interaction patterns, auto-labeling generating test cases, the eval runner catching a regression, and the dataset growth over time. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a system that automatically converts production LLM logs into a growing eval dataset. In two weeks of simulated production traffic, it generated X test cases across Y categories with Z% auto-label accuracy.” The self-growing aspect is the headline.</li></ol>
+
+    
+<div class="callout-red">
+  <span class="callout-label">INTERVIEW TALKING POINT</span>
+  <p>Worth knowing before you reach for a separate library: recent versions of scikit-learn ship HDBSCAN built in as sklearn.cluster.HDBSCAN, so for many projects you may not need the standalone package at all. Mentioning that you checked this in an interview is a small but real signal that you stay current with your tools instead of defaulting to what a tutorial told you a year ago.</p>
+</div>
+
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://scikit-learn.org/stable/" target="_blank" rel="noopener">scikit-learn Docs &#8599;</a><a class="pill" href="https://github.com/scikit-learn-contrib/hdbscan" target="_blank" rel="noopener">HDBSCAN (GitHub) &#8599;</a><a class="pill" href="https://clickhouse.com/docs" target="_blank" rel="noopener">ClickHouse Docs &#8599;</a><a class="pill" href="https://docs.celeryq.dev/" target="_blank" rel="noopener">Celery Docs &#8599;</a><a class="pill" href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit Docs &#8599;</a><a class="pill" href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Docs &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-14">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 14</span>
+    <h2>Multi-Modal Document Processor with OCR, LLM Extraction, and Validation</h2>
+    <h3>What You're Building</h3>
+    <p>An end-to-end document processing pipeline that accepts any document format (PDF, image, scan), performs OCR to extract raw text, uses LLMs to extract structured data from the text, and validates every extraction against configurable business rules, with a human-in-the-loop review interface for low-confidence results.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Document processing is one of the largest categories of enterprise AI deployment. It combines computer vision (OCR), natural language understanding (extraction), and production engineering (validation, error handling, scale). This project touches every layer of the AI engineering stack and solves a problem every large company is actively paying to solve.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>ML ecosystem standard</td></tr><tr><td>OCR</td><td>Tesseract + EasyOCR</td><td>Open-source, multi-engine</td></tr><tr><td>Vision Model</td><td>GPT-4o vision or Claude</td><td>Direct image understanding</td></tr><tr><td>LLM Extraction</td><td>GPT-4o + instructor</td><td>Structured output enforcement</td></tr><tr><td>Validation</td><td>Pydantic + custom rules</td><td>Type-safe business rules</td></tr><tr><td>Queue</td><td>Celery + Redis</td><td>Async document processing</td></tr><tr><td>Review UI</td><td>React or Streamlit</td><td>Human-in-the-loop interface</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full pipeline orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Ingestion and OCR Layer<span class="phase-days">(Day 1–3)</span></h4>
+<ol class="steps"><li><strong>Build a multi-format document loader:</strong> Accept PDFs (native text and scanned), images (JPEG, PNG, TIFF), and scanned documents. For PDFs, first try native text extraction. If the PDF has images or the text extraction yields garbage, fall back to OCR. Detect the right strategy automatically by checking text density per page.</li><li><strong>Implement dual-engine OCR:</strong> Run both Tesseract and EasyOCR on every scanned page. Compare outputs. When they agree, confidence is high. When they disagree, use character-level alignment to identify discrepancies and pick the higher-confidence reading for each segment. This ensemble approach significantly reduces OCR errors.</li><li><strong>Add vision model fallback:</strong> For documents where OCR struggles (handwriting, poor scan quality, complex layouts like tables), send the page image directly to a vision-capable model. Ask the model to extract text preserving the document's structure. This is more expensive but handles edge cases that traditional OCR cannot.</li><li><strong>Build the preprocessing pipeline:</strong> Before OCR, apply deskewing (straighten rotated scans), binarization (convert to high-contrast black and white), noise removal, and resolution upscaling for low-quality scans. Track which preprocessing steps were applied and their effect on OCR confidence for each page.</li></ol>
+
+<h4>Build the LLM Extraction Engine<span class="phase-days">(Day 3–6)</span></h4>
+<ol class="steps"><li><strong>Define extraction schemas per document type:</strong> Create Pydantic models for each document type you process. For invoices: vendor name, invoice number, line items (description, quantity, unit price, total), tax, total amount, payment terms, due date. For contracts: parties, effective date, term, key obligations, termination clauses. Make schemas configurable and extensible.</li><li><strong>Build the extraction pipeline:</strong> For each document, first classify its type (using the OCR text plus an LLM classifier). Then load the corresponding extraction schema. Send the OCR text to the LLM with the schema definition, 2–3 few-shot examples for that document type, and explicit instructions to output only information present in the text (no inference, no defaults). Use the instructor library to enforce the Pydantic schema in the LLM output.</li><li><strong>Implement chunk-and-merge for long documents:</strong> Documents longer than the context window need to be processed in chunks. Split by page or section, extract from each chunk independently, then merge results. Handle conflicts: if two chunks extract different values for the same field, flag the conflict and include both values with their source locations.</li><li><strong>Add extraction confidence scores:</strong> For each extracted field, compute a confidence score based on how clearly the value appeared in the OCR text (exact match vs. fuzzy), the LLM's self-reported confidence, whether multiple chunks agreed on the value, and whether the value passes format validation (e.g. dates parse correctly, amounts are numeric). Return per-field confidence alongside the extraction.</li></ol>
+
+<h4>Build the Validation and Business Rules Engine<span class="phase-days">(Day 6–9)</span></h4>
+<ol class="steps"><li><strong>Implement type-level validation:</strong> Using Pydantic validators, enforce that dates are valid and within plausible ranges, monetary amounts are positive and correctly formatted, required fields are present, enums match allowed values, and cross-field consistency holds (e.g. line item totals sum to the invoice total). Return specific validation error messages per field.</li><li><strong>Add business rule validation:</strong> Beyond type checking, implement domain-specific rules. For invoices: does the vendor exist in the known vendor list? Is the total within expected ranges for this vendor? Are payment terms standard? For contracts: is the effective date in the future? Are all required clause types present? Are any termination clauses unusually broad?</li><li><strong>Build the anomaly detector:</strong> Compare each extraction against historical data for that document type and source. Flag statistical outliers, including amounts significantly higher or lower than typical, unusual vendor names, dates that don't follow the expected pattern, and any fields that changed dramatically from previous documents from the same source.</li><li><strong>Create the confidence-based routing:</strong> Based on the overall confidence score and validation results, route each document. High confidence plus all validations pass goes to auto-approve. Medium confidence or minor validation warnings go to a human review queue (fast review). Low confidence or critical validation failures go to a human review queue (detailed review). Track auto-approval rates and accuracy over time.</li></ol>
+
+<h4>Build the Human Review Interface<span class="phase-days">(Day 9–11)</span></h4>
+<ol class="steps"><li><strong>Create the review dashboard:</strong> A side-by-side interface showing the original document (rendered as an image) on one side and the extracted data on the other. Highlight the source location in the document for each extracted field. Color-code fields by confidence: green (high), yellow (medium), red (low/failed validation).</li><li><strong>Build inline editing:</strong> Reviewers can click any extracted field to edit it. When edited, log the original extracted value, the corrected value, who corrected it, and whether the original was wrong (extraction error) or the business rule was too strict (validation false positive). This data feeds back into improving both extraction and validation.</li><li><strong>Implement batch review workflows:</strong> For high-volume processing, build a queue-based workflow where reviewers see a prioritized list of documents needing review, can approve/reject/edit in bulk, and see their throughput and accuracy stats. Include keyboard shortcuts for common actions to maximize reviewer efficiency.</li></ol>
+
+<h4>Build Feedback Loops and Analytics<span class="phase-days">(Day 11–13)</span></h4>
+<ol class="steps"><li><strong>Feed corrections back to the extraction pipeline:</strong> Every human correction becomes a training signal. Periodically update few-shot examples with corrected examples, identify systematic extraction errors and adjust prompts, tune confidence thresholds based on actual accuracy, and generate reports on where the pipeline fails most.</li><li><strong>Build the processing analytics dashboard:</strong> Show documents processed per day/week, auto-approval rate over time (the key efficiency metric), extraction accuracy by document type and field, average review time per document, and OCR engine performance comparison. These metrics tell the story of the pipeline's operational maturity.</li><li><strong>Containerize the full pipeline:</strong> Docker-compose with the ingestion API, OCR workers, LLM extraction workers, the validation service, the review UI, PostgreSQL, Redis, and Celery workers. Include sample documents for demo purposes.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show uploading a scanned invoice, OCR extracting text, LLM extracting structured data, validation catching an anomaly, the reviewer correcting a field, and the analytics dashboard. Under 4 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a document processing pipeline that auto-extracts structured data from scanned documents with X% accuracy, auto-approves Y% of documents without human review, and reduces manual processing time by Z%.” Lead with the efficiency numbers.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://pymupdf.readthedocs.io/" target="_blank" rel="noopener">PyMuPDF Docs &#8599;</a><a class="pill" href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noopener">Tesseract OCR (GitHub) &#8599;</a><a class="pill" href="https://github.com/JaidedAI/EasyOCR" target="_blank" rel="noopener">EasyOCR (GitHub) &#8599;</a><a class="pill" href="https://platform.openai.com/docs/guides/vision" target="_blank" rel="noopener">OpenAI Vision Guide &#8599;</a><a class="pill" href="https://docs.pydantic.dev/" target="_blank" rel="noopener">Pydantic Docs &#8599;</a><a class="pill" href="https://docs.celeryq.dev/" target="_blank" rel="noopener">Celery Docs &#8599;</a><a class="pill" href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Docs &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="project" id="project-15">
+  <div class="wrap">
+    <span class="project-tag">PROJECT 15</span>
+    <h2>Agent Orchestration System with Tool Use, Memory, and Human-in-the-Loop</h2>
+    <h3>What You're Building</h3>
+    <p>A multi-agent orchestration platform where a supervisor agent decomposes complex tasks, delegates subtasks to specialized tool-using agents, maintains persistent memory across interactions, and escalates to a human operator when confidence is low or the task requires approval, with full observability into every agent decision.</p>
+    <div class="callout">
+      <span class="callout-label">WHY THIS PROJECT LANDS INTERVIEWS</span>
+      <p>Agents are the frontier of AI engineering, and most candidate projects are single-agent toy demos. Building a multi-agent system with real tool use, persistent memory, and human-in-the-loop escalation proves you can architect the kind of autonomous AI systems that companies are actively building and hiring for right now.</p>
+    </div>
+    <h3>Tech Stack</h3>
+    
+<table class="tech">
+  <thead><tr><th>Component</th><th>Tool / Library</th><th>Why This Choice</th></tr></thead>
+  <tbody><tr><td>Language</td><td>Python 3.11+</td><td>Ecosystem standard</td></tr><tr><td>Orchestration</td><td>LangGraph</td><td>State machine for agent workflows</td></tr><tr><td>LLM Providers</td><td>OpenAI + Anthropic</td><td>Multi-model agent routing</td></tr><tr><td>Tool Framework</td><td>Custom + MCP</td><td>Extensible tool integration</td></tr><tr><td>Memory</td><td>PostgreSQL + ChromaDB</td><td>Short-term + semantic long-term</td></tr><tr><td>Queue</td><td>Redis + Celery</td><td>Async task execution</td></tr><tr><td>Review UI</td><td>React or Streamlit</td><td>Human-in-the-loop interface</td></tr><tr><td>Containerization</td><td>Docker + docker-compose</td><td>Full system orchestration</td></tr></tbody>
+</table>
+
+    <h3>Step-by-Step Build Guide</h3>
+    
+<h4>Build the Agent Architecture<span class="phase-days">(Day 1–4)</span></h4>
+<ol class="steps"><li><strong>Design the agent hierarchy:</strong> Create three layers. The Supervisor Agent receives complex tasks, creates execution plans, and delegates to specialists. Specialist Agents each own a domain (research, data analysis, writing, code execution) and have access to domain-specific tools. The Reviewer Agent validates outputs from specialists before returning to the supervisor. Model each agent as a LangGraph node with defined input/output schemas.</li><li><strong>Build the task decomposition engine:</strong> The supervisor's core capability is to take a complex request and break it into an ordered list of subtasks, each assigned to a specialist. Include dependencies (subtask B needs the output of subtask A). Use structured output to enforce a valid execution plan with subtask description, assigned specialist, required inputs, expected output format, and estimated complexity.</li><li><strong>Implement the tool registry:</strong> Build a registry where tools are registered with a name, description, input/output schemas, the specialist agents that can use them, and rate limits. Start with web search, file read/write, code execution (sandboxed), database query, and API calls. Each tool invocation is logged with inputs, outputs, latency, and success/failure.</li><li><strong>Build the LangGraph state machine:</strong> Wire the agents into a LangGraph graph with task intake, planning, parallel/sequential specialist execution, review, synthesis, and delivery. Include conditional edges: if a specialist fails, retry with a different approach; if the reviewer rejects output, route back to the specialist with feedback; if confidence is low, route to human escalation.</li></ol>
+
+<h4>Build the Memory System<span class="phase-days">(Day 4–7)</span></h4>
+<ol class="steps"><li><strong>Implement short-term working memory:</strong> During a task execution, all agents share a working memory store, including the current execution plan, outputs from completed subtasks, intermediate results, and error logs. Store in Redis for fast access. This memory is scoped to a single task and cleared when the task completes.</li><li><strong>Build long-term semantic memory:</strong> After task completion, extract and embed key information, including what the user asked for, what approach worked, what tools were used, any domain-specific facts discovered, and user preferences observed. Store in ChromaDB. Future tasks can query this memory to inform planning. This is how the system gets smarter over time.</li><li><strong>Implement memory retrieval for planning:</strong> When the supervisor creates an execution plan, it first queries long-term memory for similar past tasks and their execution plans, approaches that worked well (and those that didn't), user-specific preferences and context, and relevant domain facts. Retrieved memories are injected into the planning prompt.</li><li><strong>Add memory management:</strong> Implement memory importance scoring (frequently accessed memories are more important), memory consolidation (merge similar memories into higher-level summaries), memory expiration (stale memories decay over time), and a memory dashboard showing what the system “remembers” about each user. Include a delete endpoint for user data requests.</li></ol>
+
+<h4>Build the Human-in-the-Loop System<span class="phase-days">(Day 7–10)</span></h4>
+<ol class="steps"><li><strong>Define escalation triggers:</strong> The system escalates to a human when the supervisor's confidence in its plan is below a threshold, a specialist fails twice on the same subtask, the task involves sensitive operations (financial transactions, data deletion, external communications), the reviewer's quality score for a deliverable is below threshold, or the user explicitly requests human review.</li><li><strong>Build the approval queue:</strong> When escalation triggers, the system pauses execution at the current step, packages the full context (original task, plan, completed steps, current step that needs approval, the agent's proposed action), pushes it to a review queue, and notifies the human reviewer. The system waits for approval, rejection, or modification before continuing.</li><li><strong>Implement granular approval levels:</strong> Not all escalations need the same review depth. Define levels: Notify (proceed but inform the human), Approve action (human confirms the next step), Approve plan (human reviews the full execution plan before any work begins), and Take over (human directly provides the output, agents stand down). Map escalation triggers to appropriate levels.</li><li><strong>Build the review interface:</strong> A UI showing the task context and execution progress, the specific decision point requiring human input, the agent's proposed action with its reasoning, relevant memories and past similar decisions, and action buttons (approve, modify, reject, take over). Include a chat panel for the human to ask the agent clarifying questions before deciding.</li></ol>
+
+<h4>Build Observability and Debugging<span class="phase-days">(Day 10–12)</span></h4>
+<ol class="steps"><li><strong>Implement full execution tracing:</strong> Every task execution produces a trace tree, including the supervisor's planning decisions, each specialist's tool calls and reasoning steps, the reviewer's evaluations, memory retrievals and their influence on decisions, and human escalation events and resolutions. Use OpenTelemetry spans with custom attributes.</li><li><strong>Build the trace explorer UI:</strong> A visual representation of the agent workflow as a tree/graph. Each node shows the agent that acted, what it decided, what tools it called, latency and cost, and any errors. Color-code by status (success/warning/failure/escalated). Clicking a node expands the full context including the LLM prompt and response.</li><li><strong>Add cost and performance tracking:</strong> Per task, track total LLM tokens used (by agent and model), total tool calls, total wall-clock time, human review time (if escalated), and total cost. Aggregate across tasks to show cost per task type, most expensive agents, tool usage patterns, and escalation rate trends.</li><li><strong>Build the replay system:</strong> For debugging, allow replaying any past task execution: load the original task and context, step through each agent decision, modify any input at any step and see how the execution diverges, and compare the replayed execution against the original. This is invaluable for diagnosing failures and testing improvements.</li></ol>
+
+<h4>Integration and End-to-End Testing<span class="phase-days">(Day 12–13)</span></h4>
+<ol class="steps"><li><strong>Build a compelling demo scenario:</strong> Design a complex task that showcases the full system, such as a research task that requires web search, data extraction, analysis, and a written summary. Show the supervisor decomposing the task, specialists working in parallel, the reviewer catching an issue and sending it back, memory informing a decision, and a human approving the final deliverable.</li><li><strong>Containerize the full system:</strong> Docker-compose with the orchestration API, Redis (working memory), PostgreSQL (persistent state), ChromaDB (long-term memory), Celery workers (async specialists), the trace explorer UI, and the human review UI. Include a demo script that runs the showcase scenario automatically.</li><li><strong>Write end-to-end tests:</strong> Test that task decomposition produces valid plans, specialists correctly use their tools, the reviewer catches deliberately bad outputs, memory retrieval improves planning for repeated similar tasks, human escalation triggers at the right moments, and the system recovers gracefully from agent failures.</li></ol>
+
+<h4>Polish for Portfolio<span class="phase-days">(Day 13–14)</span></h4>
+<ol class="steps"><li><strong>Record the demo:</strong> Show the full task lifecycle, including a complex request coming in, supervisor planning, specialists executing with tool calls, reviewer validating, human approving a sensitive step, memory saving lessons learned, and the trace explorer showing every decision. Under 5 minutes.</li><li><strong>Write the narrative:</strong> Frame it as “I built a multi-agent orchestration system where AI agents decompose complex tasks, use tools to execute them, learn from past interactions via persistent memory, and escalate to humans when confidence is low. It's not an AI demo, it's production infrastructure for autonomous AI workflows.” Lead with the architecture diagram showing the agent hierarchy and decision flow.</li></ol>
+
+    
+    
+<h4>Resources for This Project</h4>
+<div class="resource-pills"><a class="pill" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">LangGraph (GitHub) &#8599;</a><a class="pill" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph Overview &#8599;</a><a class="pill" href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB Docs &#8599;</a><a class="pill" href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis Docs &#8599;</a><a class="pill" href="https://docs.celeryq.dev/" target="_blank" rel="noopener">Celery Docs &#8599;</a><a class="pill" href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry Docs &#8599;</a><a class="pill" href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Docs &#8599;</a></div>
+
+  </div>
+</section>
+
+<section class="block" id="resources">
+  <div class="wrap">
+    <h2>Verified Tools &amp; Resources</h2>
+    <p>Every link below points to the tool's official documentation or repository, checked and working as of 2026.</p>
+    <div class="resource-grid">
+      <div class="resource-cat"><h4>Evaluation &amp; Testing</h4><ul><li><a href="https://docs.ragas.io/" target="_blank" rel="noopener">RAGAS</a></li><li><a href="https://deepeval.com/" target="_blank" rel="noopener">DeepEval</a></li><li><a href="https://github.com/EleutherAI/lm-evaluation-harness" target="_blank" rel="noopener">lm-evaluation-harness</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/stats.html" target="_blank" rel="noopener">scipy.stats</a></li></ul></div><div class="resource-cat"><h4>Retrieval &amp; Vector Search</h4><ul><li><a href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB</a></li><li><a href="https://qdrant.tech/documentation/" target="_blank" rel="noopener">Qdrant</a></li><li><a href="https://pypi.org/project/rank-bm25/" target="_blank" rel="noopener">rank-bm25</a></li><li><a href="https://python.langchain.com/" target="_blank" rel="noopener">LangChain</a></li></ul></div><div class="resource-cat"><h4>LLM Serving &amp; Local Models</h4><ul><li><a href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a></li><li><a href="https://docs.vllm.ai/" target="_blank" rel="noopener">vLLM</a></li><li><a href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI Platform Docs</a></li></ul></div><div class="resource-cat"><h4>Structured Output &amp; Orchestration</h4><ul><li><a href="https://docs.pydantic.dev/" target="_blank" rel="noopener">Pydantic</a></li><li><a href="https://python.useinstructor.com/" target="_blank" rel="noopener">Instructor</a></li><li><a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">LangGraph</a></li></ul></div><div class="resource-cat"><h4>Fine-Tuning</h4><ul><li><a href="https://huggingface.co/docs/peft" target="_blank" rel="noopener">Hugging Face PEFT</a></li><li><a href="https://huggingface.co/docs/trl" target="_blank" rel="noopener">Hugging Face TRL</a></li><li><a href="https://unsloth.ai/docs" target="_blank" rel="noopener">Unsloth</a></li><li><a href="https://docs.wandb.ai/" target="_blank" rel="noopener">Weights &amp; Biases</a></li><li><a href="https://mlflow.org/docs/latest/index.html" target="_blank" rel="noopener">MLflow</a></li></ul></div><div class="resource-cat"><h4>Infrastructure &amp; Observability</h4><ul><li><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI</a></li><li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker</a></li><li><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions</a></li><li><a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener">OpenTelemetry</a></li><li><a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">Prometheus</a></li><li><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">Grafana</a></li><li><a href="https://redis.io/docs/latest/" target="_blank" rel="noopener">Redis</a></li></ul></div><div class="resource-cat"><h4>Data &amp; SQL</h4><ul><li><a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">PostgreSQL</a></li><li><a href="https://docs.sqlalchemy.org/" target="_blank" rel="noopener">SQLAlchemy</a></li><li><a href="https://duckdb.org/docs/" target="_blank" rel="noopener">DuckDB</a></li><li><a href="https://clickhouse.com/docs" target="_blank" rel="noopener">ClickHouse</a></li></ul></div><div class="resource-cat"><h4>Document Processing</h4><ul><li><a href="https://pymupdf.readthedocs.io/" target="_blank" rel="noopener">PyMuPDF</a></li><li><a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noopener">Tesseract OCR</a></li><li><a href="https://github.com/JaidedAI/EasyOCR" target="_blank" rel="noopener">EasyOCR</a></li><li><a href="https://pygithub.readthedocs.io/" target="_blank" rel="noopener">PyGithub</a></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Want More Guides Like This?</h2>
+    <p>Comment below on the Reel to get this guide sent to your DMs, or follow for more free, fact-checked AI engineering resources.</p>
+    <a class="cta-btn" href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">Follow @aiwithunnati &rarr;</a>
+    <a class="cta-btn outline" href="https://unnati-23.github.io/ai-engineer-courses-guide" target="_blank" rel="noopener">More Free Guides &rarr;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-name">&copy; 2026 Unnati Tripathi. All rights reserved.</p>
+    <p><a href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">@aiwithunnati</a> &nbsp;&middot;&nbsp; <a href="https://unnati-23.github.io/ai-engineer-courses-guide" target="_blank" rel="noopener">More Guides on GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
