@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turn Claude Into Your Personal Job-Matching Recruiter | Unnati Tripathi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C2402F;
+    --red-dark:#9C2F22;
+    --cream:#FBF1DC;
+    --cream-light:#FDF9EE;
+    --black:#1C1A17;
+    --gray:#6B6359;
+    --sage:#5F6E49;
+    --sage-border:#7C8B63;
+    --sage-bg:#EEF0E2;
+    --green:#2F6B2F;
+    --amber:#9A6B0C;
+    --redscore:#A32D2D;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--black);
+    font-family:'DM Sans', sans-serif;
+    line-height:1.6;
+  }
+  .display{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  a{color:var(--red);}
+
+  .nav{
+    background:var(--cream);
+    padding:22px 8vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    border-bottom:1px solid rgba(0,0,0,0.08);
+  }
+  .nav .logo{color:var(--red); font-size:24px; letter-spacing:1px;}
+  .nav .ig-link{
+    font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase;
+    color:var(--black); text-decoration:none; border:2px solid var(--black); padding:8px 16px;
+  }
+  .nav .ig-link:hover{background:var(--black); color:var(--cream);}
+
+  .hero{background:var(--red); color:var(--cream-light); padding:60px 8vw 70px;}
+  .eyebrow{display:inline-block; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px;}
+  .hero .eyebrow{color:#F2C9C0;}
+  .hero h1{font-size:clamp(34px,6vw,58px); margin:0 0 18px; line-height:1.05; max-width:780px;}
+  .hero p{max-width:600px; font-size:18px; color:#F6E2DB; margin:0 0 26px;}
+  .byline{display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:14px; color:#F6E2DB;}
+  .pill{background:var(--cream-light); color:var(--red); font-weight:700; font-size:12px; letter-spacing:1px; padding:6px 12px; border-radius:3px; text-decoration:none;}
+
+  .wrap{padding:46px 8vw 0;}
+  .frame{background:var(--red); padding:8px; margin-bottom:40px;}
+  .card{background:var(--cream-light); padding:38px 36px;}
+  .card .eyebrow{color:var(--red);}
+  .card h2{font-size:clamp(24px,3.4vw,36px); margin:0 0 18px; line-height:1.12;}
+  .card p{font-size:16px; color:#2A2722; max-width:680px;}
+  .card p + p{margin-top:14px;}
+  .step-num{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; background:var(--black); color:var(--cream-light); font-family:'Anton', sans-serif; font-size:14px; margin-right:10px; flex-shrink:0;}
+  ol.steps{padding-left:0; list-style:none; max-width:680px;}
+  ol.steps li{display:flex; align-items:flex-start; margin-bottom:14px; font-size:15.5px;}
+  ol.steps li span.txt{padding-top:3px;}
+  .note{background:var(--sage-bg); border-left:4px solid var(--sage-border); padding:18px 22px; margin:24px 0 6px; max-width:680px;}
+  .note .eyebrow{color:var(--sage); margin-bottom:8px;}
+  .note p{font-size:14.5px; color:#3A3D2E; margin:0;}
+  .note p + p{margin-top:10px;}
+
+  .prompt-box{position:relative; background:var(--black); border-radius:6px; padding:26px 24px 22px; margin-top:8px; max-width:680px;}
+  .prompt-box pre{margin:0; white-space:pre-wrap; word-wrap:break-word; font-family:'DM Sans', sans-serif; font-size:14px; line-height:1.7; color:#F1ECDF;}
+  .copy-btn{display:inline-block; margin-top:18px; background:var(--red); color:var(--cream-light); font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; border:none; padding:11px 20px; cursor:pointer; transition:background 0.15s ease;}
+  .copy-btn:hover{background:var(--red-dark);}
+  .editme{background:#3A372E; color:#F6D58C; padding:1px 4px; border-radius:2px;}
+  .freshme{background:#2E3F2E; color:#9FD89F; padding:1px 4px; border-radius:2px;}
+
+  .tips{max-width:680px; margin-top:6px;}
+  .tip{display:flex; gap:14px; padding:16px 0; border-top:1px solid rgba(0,0,0,0.1);}
+  .tip:last-child{border-bottom:1px solid rgba(0,0,0,0.1);}
+  .tip .label{font-family:'Anton', sans-serif; font-size:13px; color:var(--red); min-width:120px; padding-top:2px;}
+  .tip .val{font-size:15px;}
+
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin:18px 0 0;}
+  .legend span{font-size:13px; font-weight:700;}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px;}
+  .dot.strong{background:var(--green);}
+  .dot.mod{background:var(--amber);}
+  .dot.weak{background:var(--redscore);}
+
+  .card-demo{border:1.5px solid rgba(0,0,0,0.12); border-radius:8px; padding:18px 20px; max-width:680px; margin-top:18px; background:#fff;}
+  .card-demo .top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .card-demo .score{font-size:12px; font-weight:700; padding:3px 10px; border-radius:4px;}
+  .card-demo .score.g{background:#E3EFE3; color:var(--green);}
+  .card-demo .bar{height:5px; background:#EEE; border-radius:4px; overflow:hidden; margin:10px 0;}
+  .card-demo .bar div{height:100%; background:var(--green); width:71%;}
+  .card-demo .btnrow{display:flex; gap:10px; margin-top:14px;}
+  .card-demo .btnrow a, .card-demo .btnrow button{flex:1; text-align:center; font-size:12.5px; font-weight:700; padding:9px 0; border-radius:5px; text-decoration:none; cursor:pointer; border:1.5px solid var(--black); color:var(--black); background:transparent; font-family:'DM Sans', sans-serif;}
+  .card-demo .btnrow button.fill{background:var(--red); border-color:var(--red); color:var(--cream-light);}
+
+  .cta{background:var(--red); padding:50px 8vw; text-align:center;}
+  .cta .eyebrow{color:#F2C9C0;}
+  .cta h2{color:var(--cream-light); font-size:clamp(26px,4vw,40px); margin:10px 0 14px;}
+  .cta p{color:#F6E2DB; max-width:540px; margin:0 auto 26px; font-size:16px;}
+  .cta .pill{font-size:14px; padding:12px 26px;}
+
+  footer{text-align:center; padding:30px 8vw 40px; font-size:13px; color:var(--gray);}
+  footer a{color:var(--gray); text-decoration:underline;}
+
+  @media (max-width:640px){
+    .card{padding:28px 22px;}
+    .nav{padding:18px 6vw;}
+    .wrap{padding:36px 6vw 0;}
+    .hero{padding:46px 6vw 56px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="logo display">AI WITH UNNATI</div>
+  <a class="ig-link" href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">@aiwithunnati &rarr;</a>
+</div>
+
+<div class="hero">
+  <span class="eyebrow">Free guide &middot; updated</span>
+  <h1 class="display">Turn Claude into your personal job-matching recruiter</h1>
+  <p>Upload your resume, connect two tools, paste one prompt — and get a colour-coded, honest set of fresh roles posted in the last 48 hours, each with a callback-likelihood score, salary, an Apply button, and a one-click "tailor my resume" button.</p>
+  <div class="byline">
+    <span>A free guide by Unnati Tripathi</span>
+    <a class="pill" href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">&#8599; INSTAGRAM</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="frame">
+    <div class="card">
+      <span class="eyebrow display">Step 1</span>
+      <h2 class="display">Connect the Indeed connector</h2>
+      <ol class="steps">
+        <li><span class="step-num">1</span><span class="txt">In Claude, click <strong>"Search and tools"</strong> near the message box (or go to <strong>Settings &rarr; Connectors</strong>).</span></li>
+        <li><span class="step-num">2</span><span class="txt">Select <strong>"Add connectors"</strong> and search for <strong>Indeed</strong>.</span></li>
+        <li><span class="step-num">3</span><span class="txt">Click the Indeed card, then click <strong>"Connect"</strong> and follow the authentication prompt.</span></li>
+        <li><span class="step-num">4</span><span class="txt">Once it shows as connected, move to Step 3 below and try the prompt.</span></li>
+      </ol>
+      <div class="note">
+        <span class="eyebrow display">Heads up</span>
+        <p>This is the officially supported route, and Anthropic's own docs say it should let Claude search and match jobs directly. In practice it doesn't always expose live search the same way for every account yet. If Claude says it can't actually search Indeed from this connector, that's your cue to lean on Step 2 instead — don't let it talk you into faking results from memory.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="card">
+      <span class="eyebrow display">Step 2</span>
+      <h2 class="display">Give Claude access to Chrome</h2>
+      <ol class="steps">
+        <li><span class="step-num">1</span><span class="txt">Go to the Chrome Web Store and search <strong>"Claude for Chrome"</strong>, or visit <strong>claude.ai/chrome</strong>. Click <strong>"Add to Chrome."</strong></span></li>
+        <li><span class="step-num">2</span><span class="txt">Sign in with your Claude account when prompted, then pin the extension: click the puzzle-piece icon in your toolbar and tap the pin next to Claude.</span></li>
+        <li><span class="step-num">3</span><span class="txt">In Claude's <strong>Settings &rarr; Connectors</strong>, find <strong>"Claude in Chrome"</strong> and toggle it on.</span></li>
+        <li><span class="step-num">4</span><span class="txt">Back in your chat, when Claude needs the browser it will ask which connected browser to use — pick yours and confirm. That's your only manual step; Claude drives the rest, opening Indeed and reading listings itself.</span></li>
+      </ol>
+      <div class="note">
+        <span class="eyebrow display">Worth knowing</span>
+        <p>Claude in Chrome needs a paid plan (Pro, Max, Team, or Enterprise) and only works in actual Google Chrome, not other Chromium browsers or mobile. If you don't see it yet, it's still rolling out — check claude.ai/chrome for access.</p>
+        <p>It browses as <em>you</em>, in your real signed-in browser — that's exactly why it works where plain connectors sometimes don't. Keep it to reading job listings; don't ask it to apply, message, or change anything in your account.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="card">
+      <span class="eyebrow display">Step 3</span>
+      <h2 class="display">Upload your resume + paste this prompt</h2>
+      <p>Upload your resume as a PDF or image first. Edit the four highlighted lines below to match what you actually want, then paste the whole thing into the same chat. The freshness window is already locked to the last 48 hours.</p>
+      <div class="prompt-box">
+<pre id="promptText">I want you to act as a job-matching recruiter and find me real, currently open roles based on my resume.
+
+Step 1 — Analyse my resume: skills, experience, seniority, industry fit, tools/software, education, and transferable skills.
+
+Step 2 — Use your Indeed connector, or your connected Chrome browser if the connector isn't searching live, to actually navigate to Indeed and search. Don't rely on general web search results alone — open each individual listing and read the full description before scoring it. <span class="freshme">Only include listings posted within the last 48 hours — check each listing's "posted X hours/days ago" label and use Indeed's date-posted filter to narrow this down.</span>
+
+My preferences (edit these before sending):
+- Target roles / industries: <span class="editme">[e.g. Finance, Analyst, Strategy, Consulting — replace with yours]</span>
+- Location(s): <span class="editme">[e.g. Bengaluru, Mumbai, Remote — replace with yours]</span>
+- Salary expectation: <span class="editme">[e.g. &#8377;15&ndash;25L per year, or "no preference"]</span>
+- Remote/hybrid: <span class="editme">[Remote only / Hybrid OK / Open to in-office]</span>
+
+Step 3 — Search thoroughly enough to find genuine strong matches, not just moderate ones. Specifically run searches using my most distinctive, exact skills and named tools as keywords — the ones a generic candidate in this field wouldn't have. Those produce the strongest real fits. Try multiple search angles before concluding. If, after a thorough search, there's genuinely only one strong match (or none) within the last 48 hours, tell me that honestly instead of inflating a moderate match into a strong one just to hit a number.
+
+Step 4 — For every role, score the likelihood of getting a callback/interview based on resume fit (not a guess at final hiring odds — just how likely my resume clears the first screen):
+&#128994; 70&ndash;100% = Strong match
+&#128993; 40&ndash;69% = Moderate match
+&#128308; Below 40% = Weak match
+Base this on real skill overlap, years of experience, ATS keyword match, and industry alignment. Don't inflate scores to be encouraging.
+
+Step 5 — Show every real, currently open role posted in the last 48 hours that you actually opened and read, not just the strong ones. Rank everything highest to lowest.
+
+Step 6 — Present this as a colourful interactive visual, one card per role, colour-coded by tier (green/amber/red), showing: Job Title, Company, Location, estimated Salary, the callback-likelihood score, Why It Matches, and Missing Skills. Next to each role, give me two buttons side by side: an Apply button linking directly to the real listing, and a "Tailor my resume for this role" button. When I click it (or just tell you which role), generate an actual downloadable file with my resume rewritten for that exact job — summary, bullets, and keywords — so I can download it and then click Apply.
+
+Step 7 — After the cards, add: Top 3 Highest Probability Roles, Fastest Path to Increase Hiring Odds, Skills Hurting My Application Most, Resume Keywords I'm Missing, and Best Companies to Realistically Target Right Now.
+
+Be brutally honest throughout. If my resume doesn't genuinely fit one of my target categories, say so directly instead of forcing in a weak match. Flag clearly any listing where you could only get snippet-level detail instead of the full job description.</pre>
+        <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy prompt &#8599;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="card">
+      <span class="eyebrow display">What you'll get back</span>
+      <h2 class="display">Colour-coded, honest, and actionable</h2>
+      <p>Every role lands in a card like this — colour by tier, score, salary, and two buttons so you can move straight from reading to applying.</p>
+      <div class="legend">
+        <span><span class="dot strong"></span>Strong match &mdash; 70&ndash;100%</span>
+        <span><span class="dot mod"></span>Moderate match &mdash; 40&ndash;69%</span>
+        <span><span class="dot weak"></span>Weak match &mdash; below 40%</span>
+      </div>
+      <div class="card-demo">
+        <div class="top">
+          <div>
+            <p style="font-weight:700; margin:0; font-size:15px;">Operations &amp; AI Systems Builder</p>
+            <p style="font-size:12.5px; color:var(--gray); margin:3px 0 0;">RivetStays &middot; Remote &middot; &#8377;38,300&ndash;86,200/mo</p>
+          </div>
+          <span class="score g">&#128994; 71%</span>
+        </div>
+        <div class="bar"><div></div></div>
+        <p style="font-size:13px; margin:0 0 4px;"><strong>Matches:</strong> <span style="color:var(--gray);">Daily Claude Code use is an explicit required skill, an exact match.</span></p>
+        <p style="font-size:13px; margin:0;"><strong>Missing:</strong> <span style="color:var(--gray);">No Next.js/Vercel; pay below market for 7+ yrs.</span></p>
+        <div class="btnrow">
+          <a href="#">Apply &#8599;</a>
+          <button class="fill">Tailor resume &#8599;</button>
+        </div>
+      </div>
+      <div class="tips">
+        <div class="tip"><div class="label display">Customize</div><div class="val">Change the four bracketed lines for any role, city, or salary band. The structure doesn't change, only your inputs do.</div></div>
+        <div class="tip"><div class="label display">Verify</div><div class="val">Treat the cards as a shortlist, not a final answer. Open the apply link yourself before you act on anything Claude tells you.</div></div>
+        <div class="tip"><div class="label display">Re-run</div><div class="val">Since this only searches the last 48 hours, re-run the same prompt every couple of days to catch fresh postings as they go live.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta">
+  <span class="eyebrow display">More like this</span>
+  <h2 class="display">Follow for the next Claude workflow</h2>
+  <p>I test these setups before I post them — if something's broken, I'll tell you, not paper over it. Follow along for more practical ways to use Claude for real work.</p>
+  <a class="pill" href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">&#8599; @AIWITHUNNATI</a>
+</div>
+
+<footer>
+  &copy; 2026 Unnati Tripathi. All rights reserved. &middot; <a href="https://instagram.com/aiwithunnati" target="_blank" rel="noopener">@aiwithunnati</a>
+</footer>
+
+<script>
+function copyPrompt(){
+  var el = document.getElementById('promptText');
+  var text = el.innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var btn = document.getElementById('copyBtn');
+    var original = btn.innerText;
+    btn.innerText = 'Copied \u2713';
+    setTimeout(function(){ btn.innerText = original; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
