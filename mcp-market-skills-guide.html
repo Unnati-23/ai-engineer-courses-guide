@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light" />
+<title>Free Agent Skills for Claude — MCP Market Guide | @aiwithunnati</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF3E6;
+    --cream-dark:#EFE4CD;
+    --red:#C0202C;
+    --red-dark:#8F1722;
+    --sage:#5C6B4D;
+    --sage-light:#E4E9DD;
+    --black:#1A1A1A;
+    --white:#FFFFFF;
+    color-scheme: light only;
+  }
+  html{ color-scheme: light only; background:var(--cream); }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    font-family:'DM Sans', sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{ font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.01em; }
+  .mono{ font-family:'DM Mono', monospace; }
+
+  a{ color:inherit; }
+
+  /* NAV */
+  nav{
+    background:var(--cream);
+    border-bottom:2px solid var(--black);
+    padding:1.1rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--cream);
+  }
+  .nav-brand{
+    font-family:'Anton', sans-serif;
+    font-size:1.15rem;
+    letter-spacing:0.04em;
+    color:var(--red);
+    text-decoration:none;
+  }
+  .nav-handle{
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    color:var(--black);
+    text-decoration:none;
+    border-bottom:2px solid var(--red);
+    padding-bottom:2px;
+  }
+
+  /* HERO */
+  .hero{
+    background:var(--red);
+    color:var(--cream);
+    background:var(--red);
+    padding:3.2rem 1.5rem 3rem;
+    text-align:center;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.18em;
+    color:var(--cream);
+    opacity:0.85;
+    margin-bottom:1rem;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 7vw, 3.4rem);
+    line-height:1.05;
+    color:var(--cream);
+    max-width:780px;
+    margin:0 auto 1.1rem;
+  }
+  .hero h1 span{ color:var(--black); -webkit-text-stroke: 0; }
+  .hero p{
+    max-width:540px;
+    margin:0 auto 1.8rem;
+    font-size:1.02rem;
+    color:var(--cream);
+    opacity:0.95;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--black);
+    color:var(--cream);
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+    padding:0.85rem 1.8rem;
+    border-radius:2px;
+    text-decoration:none;
+    border:2px solid var(--black);
+    transition:transform 0.15s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-outline{
+    display:inline-block;
+    margin-top:0.9rem;
+    font-size:0.82rem;
+    color:var(--cream);
+    text-decoration:underline;
+    opacity:0.9;
+  }
+
+  /* SECTIONS */
+  section.block{
+    max-width:760px;
+    margin:0 auto;
+    padding:3rem 1.5rem;
+    background:var(--cream);
+  }
+  .section-label{
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.16em;
+    color:var(--red);
+    margin-bottom:0.6rem;
+  }
+  h2.display{
+    font-size:clamp(1.5rem, 4vw, 2.1rem);
+    margin-bottom:1rem;
+    color:var(--black);
+  }
+  .intro p{ font-size:1.02rem; max-width:620px; }
+  .intro p + p{ margin-top:0.9rem; }
+  .note-link{
+    font-weight:600;
+    color:var(--red-dark);
+    text-decoration:underline;
+  }
+
+  /* STEPS */
+  .step{
+    display:flex;
+    gap:1.3rem;
+    padding:1.6rem 0;
+    border-bottom:1px solid var(--cream-dark);
+    background:var(--cream);
+  }
+  .step:last-child{ border-bottom:none; }
+  .step-num{
+    font-family:'Anton', sans-serif;
+    font-size:2.4rem;
+    color:var(--red);
+    line-height:1;
+    min-width:58px;
+    flex-shrink:0;
+  }
+  .step-body h3{
+    font-family:'DM Sans', sans-serif;
+    font-weight:700;
+    font-size:1.08rem;
+    margin-bottom:0.4rem;
+    color:var(--black);
+  }
+  .step-body p{ font-size:0.96rem; color:var(--black); }
+  .step-body p + p{ margin-top:0.5rem; }
+  .step-tag{
+    display:inline-block;
+    margin-top:0.6rem;
+    font-family:'DM Mono', monospace;
+    font-size:0.78rem;
+    background:var(--black);
+    color:var(--cream);
+    padding:0.25rem 0.6rem;
+    border-radius:3px;
+  }
+  .step-body ul{ margin-top:0.5rem; padding-left:1.1rem; }
+  .step-body li{ font-size:0.94rem; margin-bottom:0.3rem; }
+
+  /* CALLOUT */
+  .callout{
+    background:var(--sage-light);
+    border-left:4px solid var(--sage);
+    padding:1.4rem 1.6rem;
+    border-radius:2px;
+    margin-top:1rem;
+  }
+  .callout .callout-label{
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    color:var(--sage);
+    text-transform:uppercase;
+    margin-bottom:0.5rem;
+  }
+  .callout p{ font-size:0.94rem; color:var(--black); }
+  .callout p + p{ margin-top:0.5rem; }
+
+  /* OTHER AGENTS GRID */
+  .agent-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0.8rem;
+    margin-top:1rem;
+  }
+  .agent-card{
+    background:var(--white);
+    border:1.5px solid var(--black);
+    padding:0.9rem 1rem;
+    font-size:0.88rem;
+  }
+  .agent-card strong{ display:block; font-size:0.95rem; margin-bottom:0.2rem; }
+
+  /* CTA BAND */
+  .cta-band{
+    background:var(--black);
+    color:var(--cream);
+    text-align:center;
+    padding:2.6rem 1.5rem;
+  }
+  .cta-band h2{
+    font-size:clamp(1.4rem, 5vw, 2rem);
+    color:var(--cream);
+    margin-bottom:0.8rem;
+  }
+  .cta-band p{ opacity:0.85; margin-bottom:1.4rem; font-size:0.95rem; }
+  .cta-band .btn{ background:var(--red); border-color:var(--red); color:var(--white); }
+
+  /* FOOTER */
+  footer{
+    background:var(--cream);
+    text-align:center;
+    padding:2.2rem 1.5rem 3rem;
+    font-size:0.82rem;
+    color:var(--black);
+    opacity:0.75;
+  }
+  footer a{ text-decoration:underline; }
+
+  @media (max-width:520px){
+    .agent-grid{ grid-template-columns:1fr; }
+    .step{ flex-direction:column; gap:0.5rem; }
+    .step-num{ font-size:1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">AI WITH UNNATI</a>
+  <a href="https://instagram.com/aiwithunnati" class="nav-handle">@aiwithunnati ↗</a>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">FREE AI TOOL GUIDE</div>
+  <h1 class="display">1.42 LAKH AGENT SKILLS.<br><span>ZERO CODE.</span></h1>
+  <p>MCP Market is a free directory of ready-made Skills you can plug straight into Claude — no setup, no scripting. Here's exactly how to find one and get it running.</p>
+  <a href="https://mcpmarket.com/tools/skills" class="btn">Open MCP Market ↗</a><br>
+  <a href="https://mcpmarket.com/tools/skills" class="btn-outline">mcpmarket.com/tools/skills</a>
+</section>
+
+<section class="block intro">
+  <div class="section-label">BEFORE YOU START</div>
+  <h2 class="display">What's an Agent Skill?</h2>
+  <p>A Skill is a small folder built around one file — <span class="mono">SKILL.md</span> — that teaches Claude how to do a specific job: write landing page copy, run an SEO audit, format a spreadsheet, whatever you need. Claude reads it and decides on its own when to use it, so you never have to re-explain the task in every chat.</p>
+  <p>MCP Market is a free, community-run directory of these Skills for Claude, Codex, and other AI agents — it isn't an official Anthropic product, just a catalogue. Anyone can browse it and download what they need.</p>
+</section>
+
+<section class="block">
+  <div class="section-label">THE PROCESS</div>
+  <h2 class="display">5 steps, start to finish</h2>
+
+  <div class="step">
+    <div class="step-num">01</div>
+    <div class="step-body">
+      <h3>Find a Skill on MCP Market</h3>
+      <p>Go to <a href="https://mcpmarket.com/tools/skills" class="note-link">mcpmarket.com/tools/skills</a> and search for whatever task you want help with — "landing page popup," "SEO audit," "PDF," anything. Open the one you like and hit download.</p>
+      <p>You'll get a folder (sometimes zipped) with a <span class="mono">SKILL.md</span> file inside. That's the whole Skill.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">02</div>
+    <div class="step-body">
+      <h3>Add it to Claude.ai (the web app)</h3>
+      <ul>
+        <li>Click your profile icon (top right) → <strong>Settings</strong></li>
+        <li>Go to <strong>Settings → Capabilities</strong> and make sure "Code execution and file creation" is turned on — Skills need this to run</li>
+        <li>Go to <strong>Customize → Skills</strong></li>
+        <li>Click the <strong>"+"</strong> button → <strong>Create skill</strong>, and upload the file you downloaded</li>
+        <li>Toggle the Skill on — it now shows up in your Skills list</li>
+      </ul>
+      <span class="step-tag">claude.ai → Settings → Customize → Skills</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">03</div>
+    <div class="step-body">
+      <h3>Add it to Claude Code (if you use the CLI)</h3>
+      <p>Unzip the folder and drop it into <span class="mono">.claude/skills/</span> inside your project — that makes it available just there. Drop it into <span class="mono">~/.claude/skills/</span> instead, and it's available across every project on your machine.</p>
+      <p>Claude Code picks it up automatically. No restart needed for most changes.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">04</div>
+    <div class="step-body">
+      <h3>Using Codex, Cursor, or another agent?</h3>
+      <p>Skills follow an open format (agentskills.io), so most agent tools now read the same <span class="mono">SKILL.md</span> structure — only the folder location changes per tool.</p>
+      <div class="agent-grid">
+        <div class="agent-card"><strong>Codex</strong>per-agent skills folder, check Codex docs for the exact path</div>
+        <div class="agent-card"><strong>Cursor / Gemini CLI</strong>same SKILL.md format, tool-specific skills directory</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">05</div>
+    <div class="step-body">
+      <h3>Just describe the task — that's it</h3>
+      <p>You don't "run" a Skill manually. Type your request normally, and Claude reads the Skill's description in the background and decides if it's relevant. If it is, it uses it without you asking.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Before you install anything</div>
+    <p>Skills can include executable code, not just instructions — so treat them like installing software. Only download from sources you trust, and skim the <span class="mono">SKILL.md</span> file before uploading it.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2 class="display">Go build your skill stack</h2>
+  <p>Free, no install, works with the Claude you already use.</p>
+  <a href="https://mcpmarket.com/tools/skills" class="btn">Browse MCP Market ↗</a>
+</section>
+
+<footer>
+  Made by Unnati · <a href="https://instagram.com/aiwithunnati">@aiwithunnati</a> · © 2026
+</footer>
+
+</body>
+</html>
