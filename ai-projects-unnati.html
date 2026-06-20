@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15 AI Engineering Projects That Actually Land Jobs — @aiwithunnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#F0E8D8;
+  --cream-light:#FAF5ED;
+  --red:#C42A2A;
+  --black:#1A1010;
+  --gray:rgba(26,16,16,0.60);
+  --line:rgba(26,16,16,0.10);
+}
+body{background:var(--cream);color:var(--black);font-family:'DM Sans',sans-serif;line-height:1.65;}
+
+/* ── HERO ── */
+.hero{background:var(--black);padding:72px 60px 56px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:var(--red);}
+.hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:var(--red);margin-bottom:20px;}
+.hero-title{font-family:'Anton',sans-serif;font-size:clamp(42px,6vw,76px);line-height:1.0;color:#fff;text-transform:uppercase;margin-bottom:24px;max-width:900px;}
+.hero-title span{color:var(--red);}
+.hero-sub{font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.55);max-width:620px;line-height:1.6;margin-bottom:40px;}
+.hero-author{display:flex;align-items:center;gap:24px;border-top:1px solid rgba(255,255,255,0.1);padding-top:28px;}
+.author-name{font-family:'Anton',sans-serif;font-size:22px;color:#fff;text-transform:uppercase;letter-spacing:1px;}
+.author-handle{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--red);letter-spacing:3px;}
+.hero-year{font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(255,255,255,0.04);position:absolute;right:40px;bottom:-20px;line-height:1;pointer-events:none;}
+
+/* ── TOC STRIP ── */
+.toc-strip{background:var(--red);padding:20px 60px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;}
+.toc-label{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;color:rgba(255,255,255,0.5);margin-right:8px;}
+.toc-item{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.5px;}
+.toc-item:hover{color:#fff;}
+
+/* ── INTRO SECTIONS ── */
+.intro{padding:64px 60px;max-width:1100px;}
+.section-eyebrow{font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.intro h2{font-family:'Anton',sans-serif;font-size:36px;text-transform:uppercase;margin-bottom:20px;}
+.intro p{font-size:15px;color:var(--gray);max-width:680px;margin-bottom:16px;}
+.intro-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px;}
+.intro-card{background:var(--cream-light);border:1px solid var(--line);border-left:4px solid var(--red);padding:24px;}
+.intro-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:10px;}
+.intro-card p{font-size:13px;color:var(--gray);}
+
+/* ── DIVIDER ── */
+.full-divider{height:2px;background:var(--line);margin:0 60px;}
+.red-divider{height:3px;background:var(--red);margin:0;}
+
+/* ── PROJECT SECTION ── */
+.projects-header{background:var(--black);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;}
+.projects-header h2{font-family:'Anton',sans-serif;font-size:28px;color:#fff;text-transform:uppercase;letter-spacing:2px;}
+.projects-header span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;color:var(--red);}
+
+.project{border-bottom:2px solid var(--line);}
+.project:last-child{border-bottom:none;}
+
+/* project top band */
+.proj-band{background:var(--red);padding:14px 60px;display:flex;justify-content:space-between;align-items:center;}
+.proj-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(255,255,255,0.25);line-height:1;}
+.proj-cat{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:#fff;}
+.proj-role{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+
+/* project body */
+.proj-body{padding:40px 60px 0;}
+.proj-what{font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.proj-title{font-family:'Anton',sans-serif;font-size:clamp(28px,4vw,46px);text-transform:uppercase;line-height:1.05;margin-bottom:20px;}
+.proj-desc{font-size:15px;color:var(--gray);max-width:700px;margin-bottom:10px;}
+.proj-why{font-size:13px;font-style:italic;color:var(--black);border-left:3px solid var(--red);padding-left:14px;margin:16px 0 28px;max-width:640px;}
+
+/* tech stack */
+.stack-label{font-family:'DM Sans',sans-serif;font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(26,16,16,0.35);margin-bottom:10px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:36px;}
+.tag{background:transparent;border:1.5px solid rgba(196,42,42,0.28);color:var(--black);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;padding:4px 10px;letter-spacing:0.3px;}
+.tag.highlight{background:var(--red);border-color:var(--red);color:#fff;}
+
+/* phases */
+.phases{padding-bottom:48px;}
+.phase{margin-bottom:24px;padding-left:20px;border-left:2px solid var(--line);}
+.phase:hover{border-left-color:var(--red);}
+.phase-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.phase-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red);line-height:1;min-width:32px;}
+.phase-name{font-family:'Anton',sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:1px;}
+.phase-days{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;color:rgba(26,16,16,0.35);letter-spacing:1px;margin-left:auto;}
+.phase ul{list-style:none;padding-left:44px;}
+.phase ul li{font-size:13px;color:var(--gray);padding:4px 0;position:relative;}
+.phase ul li::before{content:'→';position:absolute;left:-20px;color:var(--red);font-size:11px;top:5px;}
+.phase ul li strong{color:var(--black);font-weight:600;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:48px 60px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;}
+.footer-left h3{font-family:'Anton',sans-serif;font-size:28px;color:#fff;text-transform:uppercase;letter-spacing:1px;}
+.footer-left p{font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;max-width:380px;}
+.footer-handle{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--red);letter-spacing:3px;margin-top:12px;display:block;}
+.footer-right{text-align:right;}
+.footer-right p{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:1px;}
+.footer-right .year{font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(255,255,255,0.06);line-height:1;margin-top:8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero,.intro,.proj-body,.proj-band,.proj-band,.full-divider,.projects-header,.phases,.proj-body{padding-left:24px;padding-right:24px;}
+  .toc-strip{padding:16px 24px;}
+  .full-divider{margin:0 24px;}
+  footer{padding:40px 24px;}
+  .footer-right{text-align:left;}
+  .hero-year{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">AI Engineering · Portfolio Guide · 2026 Edition</div>
+  <h1 class="hero-title">15 AI Engineering<br>Projects That<br><span>Actually Land Jobs</span></h1>
+  <p class="hero-sub">A step-by-step build guide for mid-level software engineers transitioning into AI engineering. Architectural blueprints, not tutorials.</p>
+  <div class="hero-author">
+    <div>
+      <div class="author-name">Unnati Tripathi</div>
+      <div class="author-handle">@aiwithunnati</div>
+    </div>
+  </div>
+  <div class="hero-year">2026</div>
+</div>
+
+<!-- ═══════════════════════════ TOC STRIP ═══════════════════════════ -->
+<div class="toc-strip">
+  <span class="toc-label">15 Projects ·</span>
+  <span class="toc-item">01 Model Regression</span>
+  <span class="toc-item">02 Cost Autopilot</span>
+  <span class="toc-item">03 Failure Forensics</span>
+  <span class="toc-item">04 Self-Healing Docs</span>
+  <span class="toc-item">05 Output Arbitration</span>
+  <span class="toc-item">06 RAG Pipeline</span>
+  <span class="toc-item">07 Semantic Cache</span>
+  <span class="toc-item">08 Text-to-SQL</span>
+  <span class="toc-item">09 Prompt A/B Testing</span>
+  <span class="toc-item">10 LoRA Fine-Tuning</span>
+  <span class="toc-item">11 LLM Gateway</span>
+  <span class="toc-item">12 AI Feature Flags</span>
+  <span class="toc-item">13 Eval Generator</span>
+  <span class="toc-item">14 Doc Processor</span>
+  <span class="toc-item">15 Agent Orchestration</span>
+</div>
+
+<!-- ═══════════════════════════ INTRO ═══════════════════════════ -->
+<div class="intro">
+  <div class="section-eyebrow">How to Use This Guide</div>
+  <h2>Not Tutorials. Blueprints.</h2>
+  <p>Each project is designed to take a mid-level software engineer with 3–5 years of production experience and produce a portfolio project that demonstrates AI engineering competence at the level hiring managers are actively looking for. The decisions you make during the build are what you'll talk about in interviews.</p>
+  <p>You don't need to build all fifteen. Pick two or three that align with your target roles and build those exceptionally well. Two deep, polished projects beat five shallow ones every time. Each project is scoped for roughly 12–14 days of focused work at 2–3 hours per day.</p>
+  <div class="intro-cards">
+    <div class="intro-card">
+      <h3>Real Problems</h3>
+      <p>Every project solves an operational problem AI teams face in production. Not academic exercises. Not chatbots.</p>
+    </div>
+    <div class="intro-card">
+      <h3>Your Edge</h3>
+      <p>Designed to leverage your existing production skills — Docker, CI/CD, APIs, databases — as a structural advantage.</p>
+    </div>
+    <div class="intro-card">
+      <h3>Full Stack AI</h3>
+      <p>Covers evaluation, cost optimization, observability, CI/CD, retrieval, fine-tuning, and multi-agent orchestration.</p>
+    </div>
+    <div class="intro-card">
+      <h3>2026 Stacks</h3>
+      <p>All tech stacks updated to 2026 production standards — Langfuse, RAGAS, LangGraph v1.0, Cohere Rerank 4.0, Unsloth, DPO, MCP.</p>
+    </div>
+  </div>
+</div>
+
+<div class="red-divider"></div>
+
+<!-- ═══════════════════════════ PROJECTS HEADER ═══════════════════════════ -->
+<div class="projects-header">
+  <h2>The 15 Projects</h2>
+  <span>AI Engineer Roadmap · 2026</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PROJECT 01
+══════════════════════════════════════════════════════════════ -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">01</div>
+    <div class="proj-cat">Evals &amp; CI/CD</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Model Regression Detection System</h2>
+    <p class="proj-desc">A CI/CD-style pipeline that continuously tests any LLM-powered feature against a golden dataset whenever a prompt or model changes, detects quality regressions, and alerts your team via Slack before bad outputs reach users.</p>
+    <p class="proj-why">Every AI team ships prompt changes blind. This project proves you think about what happens after deployment — the exact mindset hiring managers are desperate for and almost no candidates demonstrate.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">Claude API</span>
+      <span class="tag highlight">DeepEval</span>
+      <span class="tag highlight">RAGAS</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">GitHub Actions</span>
+      <span class="tag">Slack Webhooks</span>
+      <span class="tag">SQLite</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Pydantic v2</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Define the LLM Feature Under Test</span><span class="phase-days">Days 1–2</span></div>
+        <ul>
+          <li>Build a customer support email classifier that returns a category + summary. Wrap in a single Python function with the prompt as a configurable parameter.</li>
+          <li><strong>Version your prompts</strong> as YAML files in a /prompts directory — version ID, timestamp, system prompt, few-shot examples. This is the code you're running CI against.</li>
+          <li>Define a <strong>PromptConfig dataclass</strong> (Pydantic v2) with typed input/output contracts. Input: email text. Output: structured JSON.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Golden Dataset</span><span class="phase-days">Days 2–4</span></div>
+        <ul>
+          <li><strong>Hand-curate 50–100 test cases.</strong> Do NOT generate with an LLM — these are human-verified ground truth. Include ambiguous, short, typo-filled, and sarcastic emails.</li>
+          <li>Tag each case with <strong>expected_difficulty</strong> (easy / medium / hard / adversarial). Store as versioned JSON with stable IDs.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Evaluation Engine</span><span class="phase-days">Days 4–7</span></div>
+        <ul>
+          <li>Write an async test runner using DeepEval and RAGAS. Score on: exact category match, summary faithfulness, latency, and token usage.</li>
+          <li><strong>Build comparison logic:</strong> diff every run against the previous. Track pass rate delta, per-category delta, regressions (pass → fail), and improvements (fail → pass).</li>
+          <li>Add statistical thresholds: warn at 3% delta, critical at 8%. Make configurable. Trace every eval run in Langfuse.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Alerting and Reporting Layer</span><span class="phase-days">Days 7–9</span></div>
+        <ul>
+          <li>Generate an <strong>HTML diff report:</strong> run metadata, scorecard vs baseline, regressed cases side-by-side, trend chart over last N runs.</li>
+          <li>Wire Slack webhooks: send pass/warn/fail status, headline numbers, and link to the full report. Add <strong>slow drift detection</strong> via 7-run moving average.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Wire into CI/CD</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li><strong>GitHub Actions workflow:</strong> trigger on every PR touching /prompts. Run eval, post PR comment with pass/fail, block merge on critical regressions.</li>
+          <li>Containerize everything with Docker. Write the README as internal onboarding docs — not a tutorial.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 11–12</span></div>
+        <ul>
+          <li>Record a 3-minute Loom: change a prompt → trigger eval → show Slack alert → walk through diff report.</li>
+          <li>Frame the write-up: "teams ship prompt changes blind — I built the CI/CD layer that catches regressions before users do."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 02 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">02</div>
+    <div class="proj-cat">Cost Optimization</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">LLM Cost Autopilot</h2>
+    <p class="proj-desc">An intelligent routing layer that sits in front of multiple LLM providers, analyzes each request's complexity, routes it to the cheapest model capable of handling it at acceptable quality, and continuously validates routing decisions.</p>
+    <p class="proj-why">Every company running LLMs at scale is bleeding money on over-provisioned model calls. This signals you understand AI engineering as a business problem — the gap between a junior and senior hire.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">OpenAI API</span>
+      <span class="tag">Anthropic API</span>
+      <span class="tag">Ollama</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">scikit-learn</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">DuckDB 1.0</span>
+      <span class="tag">Grafana</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Unified Model Interface</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Create a <strong>ModelConfig dataclass:</strong> provider, model ID, cost per input/output token, average latency, quality tier. Populate with real 2026 pricing for GPT-4o, Claude Sonnet, Claude Haiku, and local Llama via Ollama.</li>
+          <li>Build a single <strong>send_request(prompt, model_config)</strong> function returning a standardized Response with output, tokens, latency, cost, and model ID. Test all providers with the same 10 prompts.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Complexity Classifier</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Define 3 tiers: <strong>Tier 1</strong> (extraction, basic Q&A) → cheapest model. <strong>Tier 2</strong> (summarization, classification) → mid-tier. <strong>Tier 3</strong> (multi-step reasoning) → highest quality.</li>
+          <li>Label 200+ prompts by hand. Train scikit-learn classifier (logistic regression or random forest). 80%+ accuracy on held-out set is V1-ready. Store routing map as YAML.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Async Quality Verification Loop</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>After returning the response, queue an async job: send the same prompt to the highest-tier model and score agreement. Divergence = routing failure. Log to Langfuse.</li>
+          <li><strong>Auto-escalation:</strong> if verifier catches a failure, re-run on higher-tier model. Feed every routing failure back as a new classifier training example — the flywheel.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Logging and Cost Dashboard</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Log every request to DuckDB: timestamp, prompt hash, complexity tier, routed model, cost, latency, quality score, escalation flag.</li>
+          <li><strong>The money shot metric:</strong> display cost reduction % vs sending everything to GPT-4o. This number is the headline of your portfolio.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Expose as an API</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>Single <strong>POST /v1/completions</strong> endpoint — caller doesn't choose the model, the router does. Return response + metadata showing which model was selected and why.</li>
+          <li>Add GET /v1/stats (cost savings summary) and PUT /v1/routing-config (update mappings without redeploy). Docker-compose the full stack.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Run 500–1,000 diverse prompts through the system. Generate cost savings report. Frame: "I built a system that reduced LLM API costs by X% while maintaining Y% quality parity."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 03 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">03</div>
+    <div class="proj-cat">Observability</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Failure Forensics Tool for AI Pipelines</h2>
+    <p class="proj-desc">An observability layer for multi-step AI pipelines that traces every intermediate step, identifies exactly where failures originate when the final output is bad, and feeds flagged failures back into a growing evaluation dataset.</p>
+    <p class="proj-why">When a multi-step AI pipeline produces garbage, most teams have no idea which step broke. You're building a mini LangSmith — and being able to articulate why observability matters is a senior-level signal.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">LangGraph v1.0</span>
+      <span class="tag">Claude API</span>
+      <span class="tag highlight">OpenTelemetry</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Multi-Step Pipeline</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Design a 4-step pipeline: <strong>Intake → Extraction → Classification → Summarization.</strong> Each step takes a Pydantic v2 typed input and returns a typed output. No spaghetti — clean isolated functions.</li>
+          <li>Deliberately inject failure modes: contracts with no dates, invoices in mixed currencies, ambiguous document types. You need failures to trace.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Tracing Layer</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Every pipeline execution gets a unique <strong>trace_id.</strong> Each step becomes a Span capturing: input, output, LLM prompt, raw response, token count, latency, errors, and a <strong>self-confidence score (1–5)</strong> from the LLM.</li>
+          <li>Use OpenTelemetry + Langfuse. Store complete traces as JSON, index metadata in PostgreSQL. Decorator pattern so instrumenting a new step is one line of code.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Backward Trace Analyzer</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Walk backward through spans on failure. Use <strong>LLM-as-judge</strong> to score each step's output quality given its input. First significant quality drop = root cause.</li>
+          <li>Categorize failure types: Extraction Hallucination, Misclassification, Propagation Error, Prompt Failure, Context Loss. Build an evidence chain with specific input/output pairs.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Visual Trace Explorer</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Visualize pipeline as a node graph: <strong>green (healthy), yellow (low confidence), red (root cause).</strong> Clicking a node shows full span details.</li>
+          <li>Add a flagging button: mark any output as bad → system runs backward analysis → displays root cause with evidence.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Build the Feedback-to-Eval Loop</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>Every confirmed failure auto-generates an eval test case: original input, failing step, bad output, human-corrected output, failure category. Append to growing dataset.</li>
+          <li>Build regression tracking: re-run accumulated cases, track "known issues resolved" trend over time.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built an observability system that reduces MTTR for AI pipeline failures from hours of manual debugging to seconds of automated diagnosis." Record Loom showing the full diagnosis flow.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 04 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">04</div>
+    <div class="proj-cat">CI/CD + RAG</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Self-Healing Technical Documentation</h2>
+    <p class="proj-desc">A GitHub Action that monitors a codebase, detects when code changes make documentation inaccurate, identifies the specific stale sections, and either auto-generates a PR with corrected docs or flags discrepancies for human review.</p>
+    <p class="proj-why">This project lives inside a CI/CD pipeline, not a Streamlit demo. It solves a universal engineering pain point and demonstrates the full AI engineering stack in a system other engineers would actually install.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">text-embedding-3-small</span>
+      <span class="tag">Pinecone Serverless</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">PyGithub</span>
+      <span class="tag">GitHub Actions</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Code-to-Docs Mapping</span><span class="phase-days">Days 1–4</span></div>
+        <ul>
+          <li>Parse codebase into semantic chunks: function signatures, class definitions, API endpoints, config schemas. Each chunk gets a stable identifier (file path + name).</li>
+          <li>Build a <strong>link graph</strong> between doc sections and code chunks using heuristics + embedding similarity. Persist as a JSON index in the repo.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Change Detection Pipeline</span><span class="phase-days">Days 4–7</span></div>
+        <ul>
+          <li>Parse git diff on every PR. Skip comment-only and whitespace changes. Focus on API signature changes, config changes, new/removed features.</li>
+          <li>For each meaningful change, query the link graph for affected doc sections — your "suspects." Verify staleness with Claude: old code + new code + doc section → is this still accurate?</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Doc Repair Engine</span><span class="phase-days">Days 7–10</span></div>
+        <ul>
+          <li>For each confirmed stale section: send current doc + new code + staleness diagnosis → Claude rewrites only the stale parts, preserving original style and structure.</li>
+          <li><strong>High confidence → auto-fix.</strong> Low confidence → draft with TODO markers + human review flag. A second LLM pass validates the correction before any PR is created.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the GitHub Action</span><span class="phase-days">Days 10–12</span></div>
+        <ul>
+          <li>Package as a GitHub Action with action.yml. Inputs: LLM API key, confidence threshold, auto-merge flag. Post a PR comment on every trigger: "Doc Check: 3 verified, 1 auto-fixed, 2 flagged."</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Test on a Real Repository</span><span class="phase-days">Days 12–13</span></div>
+        <ul>
+          <li>Fork FastAPI or Pydantic. Install your Action. Deliberately break docs via code changes. Measure: true positives, false positives, false negatives, correction quality.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Publish to the GitHub Actions Marketplace — a published Action is a fundamentally different portfolio signal than a repo that just sits there.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 05 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">05</div>
+    <div class="proj-cat">Multi-Agent</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">LLM Output Arbitration System</h2>
+    <p class="proj-desc">A multi-agent pipeline that routes any LLM-generated output to multiple competing critic models that independently evaluate it for accuracy, consistency, and completeness, then synthesizes their critiques into a single confidence-scored verdict.</p>
+    <p class="proj-why">Instead of building a system that generates answers, you're building one that catches bad answers — this flips the script on every other portfolio project and demonstrates the evaluation mindset AI teams are actively hiring for.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag highlight">LangGraph v1.0</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">OpenAI API</span>
+      <span class="tag">Ollama</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">instructor</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">SQLite</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Design the Critic Agent Architecture</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Three specialist critics: <strong>Factual Accuracy Critic</strong> (GPT-4o), <strong>Logical Consistency Critic</strong> (Claude), <strong>Completeness Critic</strong> (local Llama via Ollama). Different models = different blind spots = the most valuable signal.</li>
+          <li>Each critic returns a Pydantic v2 model via <strong>instructor:</strong> dimension, score (1–5), list of specific issues with quotes and severity, self-confidence rating.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Orchestration Layer with LangGraph</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>LangGraph state graph: input parsing → <strong>parallel critic dispatch</strong> → critique collection → disagreement detection → adjudication → verdict. Fan-out to all critics simultaneously.</li>
+          <li>Handle edge cases: one API fails → graceful degradation, continue with remaining critics. All critics agree it's perfect → short-circuit adjudicator.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Adjudicator Agent</span><span class="phase-days">Days 6–8</span></div>
+        <ul>
+          <li>Adjudicator receives all three critique reports + detected disagreements. Produces: overall quality score (1–10), confidence level, confirmed issues, dismissed flags with reasoning, one-paragraph summary.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Verdict Explorer UI</span><span class="phase-days">Days 8–10</span></div>
+        <ul>
+          <li>Inline annotations on the original text: <strong>red (confirmed issues), yellow (low-confidence flags), green (validated claims).</strong></li>
+          <li>Side-by-side critic comparison panel. Agreements in green, disagreements in orange. This visual makes the architecture immediately comprehensible.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">API and Analytics</span><span class="phase-days">Days 10–12</span></div>
+        <ul>
+          <li>POST /v1/arbitrate + POST /v1/arbitrate/batch + GET /v1/arbitrations/{id}. Track which critic finds the most issues, which is overruled most often, most common failure types.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 12–14</span></div>
+        <ul>
+          <li>Test with: planted factual errors, logically flawed arguments, responses that miss the point, and a genuinely good response. Frame: "AI models auditing each other's work."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 06 — RAG (updated from slides) -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">06</div>
+    <div class="proj-cat">RAG</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Hybrid Search RAG over Internal Docs</h2>
+    <p class="proj-desc">A production-grade RAG system that ingests company documentation, indexes it with both dense vector and sparse keyword search, retrieves the most relevant context, and generates grounded answers with inline source citations and hallucination detection.</p>
+    <p class="proj-why">RAG is the single most requested skill in AI engineering job descriptions. Most candidates build a toy demo with a single PDF. You're building a system with hybrid retrieval, citation verification, and RAGAS evaluation — the concerns that separate real RAG engineers.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">LangChain</span>
+      <span class="tag">Claude API</span>
+      <span class="tag highlight">Pinecone Serverless</span>
+      <span class="tag">rank_bm25</span>
+      <span class="tag highlight">Cohere Rerank 4.0</span>
+      <span class="tag highlight">RAGAS</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Ingestion and Chunking Pipeline</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Accept markdown, text, HTML, PDF. Build <strong>three chunking strategies:</strong> fixed-size with overlap, recursive by section headers, semantic chunking via embedding similarity. Track which strategy each chunk used.</li>
+          <li>Embed every chunk with text-embedding-3-small. Store in Pinecone Serverless with metadata. Build BM25 index via rank_bm25 in parallel. Add <strong>near-duplicate deduplication</strong> (cosine > 0.95 = skip).</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Hybrid Retrieval Engine</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Dense retrieval (Pinecone) + sparse retrieval (BM25). Fuse with <strong>Reciprocal Rank Fusion (RRF)</strong> — configurable weighting (0.7 dense / 0.3 sparse).</li>
+          <li>Send top-20 candidates through <strong>Cohere Rerank 4.0</strong> (released Dec 2025). Keep top 5. The reranking step is a strong interview talking point.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Generation and Citation Layer</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Prompt Claude to cite using bracketed references [1], [2] and to explicitly say when context is insufficient. Parse and <strong>verify every citation</strong> with LLM-as-judge. Flag unsupported claims.</li>
+          <li>Build a composite confidence score: retrieval relevance + citation coverage + answer completeness. Return alongside every answer.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Evaluation Framework</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Build a 50+ Q&A golden dataset by hand. Measure with <strong>RAGAS metrics:</strong> faithfulness, context recall, context precision, answer relevance. Run across all three chunking strategies. Data drives architecture decisions.</li>
+          <li>Trace all retrieval and generation steps in Langfuse. Every eval run is linked to observable traces.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">API and Dashboard</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>POST /v1/ask returns answer + citations + confidence scores + source metadata. Build a Streamlit UI with clickable citations, retrieved chunk view, and a toggle comparing hybrid vs dense-only retrieval side-by-side.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a RAG system with hybrid search achieving X% faithfulness on a 50-question RAGAS eval suite." Lead with numbers. Show the chunking strategy comparison data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 07 — Semantic Caching (LLMOps slide) -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">07</div>
+    <div class="proj-cat">LLMOps</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Semantic Caching Layer for LLM APIs</h2>
+    <p class="proj-desc">A middleware caching service that sits between your application and any LLM provider, detects semantically similar requests already answered, and serves cached responses instantly — cutting latency to near-zero and reducing API costs by 30–60%.</p>
+    <p class="proj-why">Every company running LLMs at scale has the same problem: redundant API calls burning money. This proves you think about infrastructure efficiency — the kind of ROI engineering managers immediately understand.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag highlight">Redis Stack</span>
+      <span class="tag">OpenAI Embeddings</span>
+      <span class="tag">Claude API</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag highlight">Helicone</span>
+      <span class="tag">Grafana</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Cache Index and Similarity Engine</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Embed every incoming prompt with text-embedding-3-small. Store in <strong>Redis Stack</strong> (vector search built in). On each request, query for nearest neighbor — cosine similarity above threshold (start 0.95) = cache hit.</li>
+          <li>Cache key strategy: include system prompt hash + temperature + max_tokens + model. Two identical prompts with different system prompts must NOT share cache entries.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Drop-In Proxy API</span><span class="phase-days">Days 3–5</span></div>
+        <ul>
+          <li>Mirror the OpenAI chat completions API contract exactly — any app switches by changing base URL only. Return same format with an added cache hit/miss header.</li>
+          <li><strong>Streaming support:</strong> cache hits return instantly. Cache misses stream from provider to client while buffering for storage. Only cache complete, successful responses.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build Cache Policies and Eviction</span><span class="phase-days">Days 5–8</span></div>
+        <ul>
+          <li>TTL tiers: stable/factual queries (24h+), time-sensitive queries (1h or disabled). Build a classifier that auto-assigns TTL based on prompt content.</li>
+          <li><strong>Similarity threshold tuner:</strong> expose endpoint showing the hit rate vs accuracy tradeoff at different thresholds. This is the core interview talking point. Implement adaptive thresholds by request type.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Monitoring and Analytics</span><span class="phase-days">Days 8–10</span></div>
+        <ul>
+          <li>Track with <strong>Langfuse + Helicone:</strong> hit rate per model, latency (cached vs uncached), cost savings per hour, cache capacity, and similarity score distribution for near-misses.</li>
+          <li>Grafana dashboard: real-time hit rate, cumulative cost savings, P50/P95/P99 latency comparison. The cost savings chart is your portfolio headline visual.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Containerize and Load Test</span><span class="phase-days">Days 10–12</span></div>
+        <ul>
+          <li>Docker-compose: FastAPI proxy + Redis Stack + Grafana + optional Ollama. Send 2,000+ requests, mix of unique and repeated queries. Measure hit rate convergence and total cost savings.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 12–14</span></div>
+        <ul>
+          <li>Lead with: "A drop-in caching layer that reduced LLM API costs by X% and P95 latency by Y% on a 2,000-request load test." Record demo: same query — LLM hit → cache hit → semantically similar cache hit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 08 — Text-to-SQL (Guardrails slide) -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">08</div>
+    <div class="proj-cat">Guardrails</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Text-to-SQL with Guardrails and Hallucination Detection</h2>
+    <p class="proj-desc">A natural language interface that translates plain English questions into SQL queries, executes them safely with guardrails preventing destructive operations, validates that the generated SQL actually answers the question asked, and presents results with a confidence score.</p>
+    <p class="proj-why">Text-to-SQL is one of the highest-value enterprise LLM applications. Building one with guardrails and hallucination detection proves you can ship AI features a compliance team would actually approve.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">SQLAlchemy 2.x</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag highlight">sqlglot</span>
+      <span class="tag highlight">Guardrails AI</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">instructor</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Schema-Aware Prompt Engine</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Use SQLAlchemy 2.x to auto-introspect the database: tables, columns, types, primary/foreign keys, sample values for categorical columns. Build a <strong>dynamic prompt constructor</strong> that filters to relevant tables only (embedding similarity).</li>
+          <li>Handle ambiguity explicitly: when a question maps to multiple interpretations (e.g. "revenue" = gross or net), return a structured clarification request instead of guessing.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">SQL Generation and Safety Layer</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li><strong>Scan for prompt injection attacks first.</strong> Then generate SQL via instructor + Pydantic v2 structured output. Parse with sqlglot — block all DDL (CREATE, ALTER, DROP) and all DML writes (INSERT, UPDATE, DELETE).</li>
+          <li>Run generated SQL in a read-only PostgreSQL transaction with SELECT-only permissions. Validate output with Guardrails AI. Two-layer defence: middleware + DB permissions.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Hallucination Detection System</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li><strong>Back-translate SQL → natural language.</strong> Compare against original question. Significant divergence = the SQL probably doesn't answer the right question. Score alignment, flag low confidence.</li>
+          <li>Multi-query validation: generate two independent SQL approaches, execute both. If results match → high confidence. If they diverge → flag and present both with explanations.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Query Interface</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>POST /v1/query returns: generated SQL, results, confidence score breakdown, and guardrail warnings. Streamlit UI with syntax-highlighted editable SQL, sortable results table, and query history.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Build the Evaluation Suite</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>50+ golden question-SQL pairs. Measure: SQL exact match, execution match, hallucination detection rate, guardrail effectiveness. README leads with: "X% execution accuracy, zero unsafe queries."</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Lead with safety: "blocks 100% of destructive operations and detects Y% of hallucinated queries before they reach the user." Companies care more about not breaking things than accuracy percentages.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 09 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">09</div>
+    <div class="proj-cat">Prompt Engineering</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Prompt Versioning and A/B Testing Platform</h2>
+    <p class="proj-desc">A platform that treats prompts as versioned artifacts, lets teams deploy multiple prompt variants simultaneously, splits traffic between them, measures performance across custom metrics, and declares statistically significant winners.</p>
+    <p class="proj-why">Most AI teams change prompts by editing a string in production and hoping for the best. This project shows you understand prompt engineering at scale is an experimentation problem — the operational maturity of a senior AI engineer.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">OpenAI API</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag">scipy.stats</span>
+      <span class="tag highlight">LangSmith</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Prompt Registry</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Every prompt gets: unique ID, version number, system prompt text, few-shot examples, model parameters, commit message, timestamp. Store in PostgreSQL. <strong>This is git for prompts.</strong></li>
+          <li>Add rollback support: any version can be marked "active" — no code deploy needed. Log every activation with actor and reason. Diff endpoint showing what changed between any two versions.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Experiment Engine</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Experiment schema: name, prompt ID, variant versions, traffic split %, primary metric, target sample size, status. Use <strong>consistent hashing</strong> on user ID so same user always sees same variant.</li>
+          <li>Auto-stop experiments on: variant error rate exceeding 10%, or losing variant performing significantly worse on primary metric. Notify experiment owner when triggered.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Metrics and Analysis Layer</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Pluggable metric collectors. Built-in: latency, token usage, cost, error rate. Custom: LLM-as-judge quality score, task-specific accuracy. Run asynchronously after response.</li>
+          <li>Implement <strong>statistical significance testing:</strong> two-sample t-test, Mann-Whitney U, p-value, confidence interval. Track LangSmith for trace-linked metrics. Auto-declare winner at 95% confidence.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Management Interface</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Dashboard: create experiments, configure splits, monitor live metrics with confidence intervals, promote winners to production with one click. Build a full <strong>audit log</strong> — who changed the prompt that broke the feature last Tuesday?</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Integration and Testing</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>Seed with a customer support classifier. Create three variants (zero-shot vs few-shot vs chain-of-thought). Run 500+ synthetic requests. Let it converge to a winner.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a prompt experimentation platform that brings feature-flagging rigor to LLM development — statistically significant results instead of guessing." Position as infrastructure.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 10 — Fine-Tuning slide -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">10</div>
+    <div class="proj-cat">Fine-Tuning</div>
+    <div class="proj-role">AI Engineer + ML Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">LoRA Fine-Tuning Pipeline</h2>
+    <p class="proj-desc">An end-to-end pipeline that takes a domain-specific dataset, applies LoRA fine-tuning followed by DPO alignment to an open-source base model, evaluates the fine-tuned model against the base model on task-specific benchmarks, and packages the result for deployment with full experiment tracking.</p>
+    <p class="proj-why">Fine-tuning is where AI engineering meets ML engineering. Most candidates run a notebook once and call it done. Building a reproducible pipeline with DPO alignment and RAGAS evaluation proves you own the full model customization lifecycle.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">PyTorch 2.x</span>
+      <span class="tag">Hugging Face PEFT</span>
+      <span class="tag highlight">Unsloth</span>
+      <span class="tag">BitsAndBytes</span>
+      <span class="tag highlight">TRL (DPO)</span>
+      <span class="tag">W&amp;B</span>
+      <span class="tag highlight">vLLM</span>
+      <span class="tag">Llama 3.1 8B</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Training Dataset</span><span class="phase-days">Days 1–4</span></div>
+        <ul>
+          <li>Choose a narrow, measurable domain: legal clause classification, medical note summarization, code review comments. Curate <strong>500–2,000 instruction-format examples.</strong> 500 quality examples beat 5,000 noisy ones.</li>
+          <li>80/10/10 train/val/test split. Test set is sacred — never train on it. Create 30–50 handcrafted edge-case examples for your benchmark.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Set Up the Training Pipeline</span><span class="phase-days">Days 4–7</span></div>
+        <ul>
+          <li>Load <strong>Llama 3.1 8B in 4-bit</strong> via Unsloth + BitsAndBytes — fits on a single RTX 4090. Unsloth provides 2× faster training than vanilla PEFT with 70% less VRAM.</li>
+          <li>Configure LoRA: <strong>r=16, α=16,</strong> all-linear target modules. Log all hyperparameters, loss curves, and validation metrics to W&amp;B. Run hyperparameter sweep (rank 8/16/32 × LR 1e-4/2e-4/5e-4).</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Run DPO Alignment</span><span class="phase-days">Days 7–9</span></div>
+        <ul>
+          <li>After SFT, apply <strong>Direct Preference Optimization (DPO) via TRL.</strong> Create preference pairs: chosen (better) vs rejected (worse) responses. DPO aligns the model to human preferences without a separate reward model.</li>
+          <li>Track both SFT and DPO stages in W&amp;B. Every 2026 fine-tuning role expects the SFT → DPO pipeline, not SFT alone.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Evaluate and Compare Models</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Base model → benchmark first. Fine-tuned (best checkpoint) → same benchmark. Head-to-head on every example. Use <strong>LLM-as-judge</strong> (GPT-4o) for qualitative comparison.</li>
+          <li>Test for <strong>catastrophic forgetting:</strong> run standard benchmarks on both models. Document the tradeoffs if general capabilities dropped.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Build the Inference Pipeline</span><span class="phase-days">Days 11–12</span></div>
+        <ul>
+          <li>Export LoRA adapter weights separately (typically &lt;100MB). Deploy via <strong>vLLM</strong> — load base model, attach adapter, expose chat completions API. Build A/B comparison endpoint: base vs fine-tuned side-by-side.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Headline: "Fine-tuned Llama 3.1 8B on [domain] using LoRA + DPO, improved task performance from X% to Y% while maintaining Z% of general capabilities." Every number backed by evaluation data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 11 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">11</div>
+    <div class="proj-cat">Infrastructure</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">LLM Gateway with Rate Limiting, Fallback Routing, and Observability</h2>
+    <p class="proj-desc">A production API gateway that sits in front of all LLM calls, enforces per-team rate limits and budgets, automatically falls back to alternative providers on outage, and provides unified observability across every LLM interaction.</p>
+    <p class="proj-why">Every company with more than one team using LLMs ends up building something like this. It's pure infrastructure engineering applied to AI — lets you lead with your production engineering strengths.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Redis 7</span>
+      <span class="tag">YAML + hot reload</span>
+      <span class="tag highlight">OpenTelemetry</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">Prometheus</span>
+      <span class="tag">Grafana</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Unified Proxy Layer</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Normalize requests across OpenAI, Anthropic, Ollama behind a unified interface. Caller never knows which provider served the request. Support streaming passthrough with simultaneous logging.</li>
+          <li>Request enrichment: inject standard system prompts, compliance disclaimers, or content filters per team. Centralizes policy without requiring every team to implement it.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Rate Limiting and Budget Enforcement</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li><strong>Token bucket rate limiting</strong> via Redis 7: per-team requests/minute and tokens/minute. Atomic, distributed-safe. Return 429 with Retry-After headers.</li>
+          <li>Daily/monthly budget caps: compute cost per request in real-time. Warn at 80%, block at 100%. Admin API to adjust limits without restart. All changes logged with actor.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Fallback and Resilience Layer</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Continuous health checking every 30s. Status: healthy/degraded/down per provider-model combination. <strong>Automatic fallback:</strong> OpenAI GPT-4o timing out → route to Anthropic Claude Sonnet.</li>
+          <li><strong>Circuit breakers:</strong> N failures in M seconds → open circuit, route to fallbacks. After cooldown → half-open test request. Close circuit on success. Log every state change.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Observability Layer</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>OpenTelemetry spans for every stage. Langfuse for LLM-specific tracing. Prometheus metrics: RPS, error rate, latency P50/P95/P99, cost per team per day, fallback trigger rate.</li>
+          <li>Three Grafana dashboards: Operations (health, fallbacks), Business (spending, budgets), Performance (latency, throughput). Slack alerts for error rate spikes and budget thresholds.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Load Test</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>5,000+ concurrent requests. Measure gateway overhead latency (&lt;10ms target), rate limiting accuracy under load, fallback behaviour under simulated outages.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built an LLM API gateway handling X req/sec with &lt;10ms overhead, automatic multi-provider failover, and per-team budget enforcement." Lead with reliability numbers.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 12 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">12</div>
+    <div class="proj-cat">MLOps</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">AI Feature Flag System with Gradual Rollout and Quality Monitoring</h2>
+    <p class="proj-desc">A feature flag platform built for AI features that supports percentage-based rollouts, automatically monitors quality metrics during rollout, and triggers automatic rollback if output quality degrades below a configurable threshold.</p>
+    <p class="proj-why">Traditional feature flags are binary. AI features fail on a quality gradient. This project proves you understand that shipping AI features requires different operational patterns — and you can build the tooling to support it.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag">Redis 7</span>
+      <span class="tag">Claude-as-judge</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Slack Webhooks</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Flag Evaluation Engine</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>AI flag schema: rollout % (0–100), quality threshold, rollback trigger, baseline config, experimental config. Build a lightweight Python SDK — <strong>flag_client.evaluate(flag, context)</strong> — handling consistent user hashing and graceful degradation.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Quality Monitoring Layer</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Async quality evaluator: after every flagged response, queue an eval job (Claude-as-judge scoring, latency check, error rate). Must not add latency to user-facing response.</li>
+          <li>Rolling quality windows: last 100 evals, last 1 hour, last 24 hours. Track mean, std dev, P10 quality. Compare experimental vs baseline continuously via Langfuse.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build Gradual Rollout Automation</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Staged rollout: 1% → 5% → 25% → 50% → 100%. At each boundary: quality above threshold → auto-advance. Quality dips → pause and alert. Statistical testing before each advance.</li>
+          <li><strong>Shadow mode:</strong> run experimental variant on all traffic, log what would have been shown, evaluate offline. Catches catastrophic failures before any user is affected.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Auto-Rollback Trigger</span><span class="phase-days">Days 9–10</span></div>
+        <ul>
+          <li>When experimental variant's P10 quality drops below threshold for 50+ consecutive evaluations: set rollout % to 0, fire Slack alert with quality data, log rollback with full context. Cooldown prevents flapping.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Dashboard and Integration Testing</span><span class="phase-days">Days 10–13</span></div>
+        <ul>
+          <li>Dashboard: all flags status, real-time quality metrics, rollout schedule progress, one-click rollback. Build demo: flag starts at 0% → bad variant detected → auto-rollback with Slack alert → good variant reaches 100%.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a feature flag system for AI that catches quality regressions during rollout and auto-rolls back before users are impacted. Traditional feature flags can't do this because AI features fail on a gradient."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 13 — Evals slide -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">13</div>
+    <div class="proj-cat">Evals</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Automated Eval Dataset Generator from Production Logs</h2>
+    <p class="proj-desc">A system that continuously mines production LLM logs, identifies interesting, edge-case, and failure-mode interactions, and automatically converts them into labeled evaluation test cases — building an ever-growing, production-representative eval dataset without manual curation.</p>
+    <p class="proj-why">The hardest part of AI evaluation isn't the eval harness — it's the dataset. You're solving the data supply problem by turning production traffic into eval data automatically. This is a force multiplier AI teams dream about.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">Claude API</span>
+      <span class="tag">Pandas 2.x</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag highlight">DuckDB 1.0</span>
+      <span class="tag highlight">HDBSCAN</span>
+      <span class="tag highlight">RAGAS</span>
+      <span class="tag highlight">DeepEval</span>
+      <span class="tag highlight">LangSmith</span>
+      <span class="tag">Celery</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Log Ingestion Layer</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Log schema: user prompt, system prompt, model, raw response, latency, tokens, user feedback signals (thumbs up/down, retries), feature name, timestamp. Store in DuckDB 1.0 for fast analytical queries.</li>
+          <li>Three sampling modes: uniform random, stratified by feature/model/error-status, and <strong>signal-boosted</strong> (oversample negative feedback, retries, high latency). Add configurable PII redaction.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Interaction Classifier</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Embed all sampled prompts, cluster with <strong>HDBSCAN.</strong> Each cluster = a natural category of questions your system handles. Outliers = your most valuable eval candidates.</li>
+          <li>Categorize quality with Claude-as-judge (1–5). High quality → positive test cases. Low quality → negative test cases. Build a difficulty estimator: simple / moderate / hard / adversarial.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Auto-Labeling Pipeline</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Generate golden answers with Claude (chain-of-thought). Create multi-dimensional labels: expected quality, expected behavior, key assertions must-contain, must-NOT-contain (hallucination traps), difficulty, category. Validate with Pydantic v2.</li>
+          <li><strong>Confidence-based routing:</strong> high-confidence labels → auto-add to dataset. Low-confidence → human review queue. Deduplication: cosine similarity &gt; 0.92 against existing cases = skip.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Eval Runner</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Score each response with <strong>RAGAS + DeepEval.</strong> Trace linked evaluations in LangSmith. Flag regressions: cases that used to pass but now fail. Dashboard shows dataset growth and coverage heatmap by cluster.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Build the Curation Dashboard</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>Streamlit UI: browse cases by category/difficulty, view full interaction, approve/edit/reject auto-labels. Set up Celery nightly cron: sample → cluster → label → deduplicate → append. Dataset grows automatically.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a system that automatically converts production LLM logs into a growing eval dataset. In two weeks, it generated X test cases across Y categories with Z% auto-label accuracy — the dataset grows while you sleep."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 14 -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">14</div>
+    <div class="proj-cat">Multimodal</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Multi-Modal Document Processor with OCR, LLM Extraction, and Validation</h2>
+    <p class="proj-desc">An end-to-end pipeline that accepts any document format (PDF, image, scan), performs OCR to extract raw text, uses LLMs to extract structured data, and validates every extraction against configurable business rules — with human-in-the-loop review for low-confidence results.</p>
+    <p class="proj-why">Document processing is one of the largest enterprise AI deployment categories. It combines computer vision, NLU, and production engineering — every layer of the AI engineering stack solving a problem every large company is actively paying to solve.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag">Tesseract</span>
+      <span class="tag">EasyOCR</span>
+      <span class="tag highlight">Claude Vision API</span>
+      <span class="tag">instructor</span>
+      <span class="tag">Pydantic v2</span>
+      <span class="tag">Celery</span>
+      <span class="tag">Redis 7</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Ingestion and OCR Layer</span><span class="phase-days">Days 1–3</span></div>
+        <ul>
+          <li>Accept PDFs, images, scans. For PDFs: try native text extraction first (PyMuPDF), fall back to OCR on low text density. <strong>Dual-engine OCR:</strong> Tesseract + EasyOCR — compare outputs, pick higher-confidence reading per segment.</li>
+          <li>Vision model fallback: for handwriting or complex layouts, send page image directly to <strong>Claude Vision API.</strong> More expensive but handles what traditional OCR cannot.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the LLM Extraction Engine</span><span class="phase-days">Days 3–6</span></div>
+        <ul>
+          <li>Define Pydantic v2 schemas per document type: invoice (vendor, line items, totals, due date), contract (parties, effective date, obligations). Use <strong>instructor library</strong> to enforce schema in LLM output.</li>
+          <li>Chunk-and-merge for long documents: extract per chunk, merge results. Flag conflicts: two chunks extract different values for the same field → include both with source locations.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Validation and Business Rules Engine</span><span class="phase-days">Days 6–9</span></div>
+        <ul>
+          <li>Pydantic validators: dates in plausible ranges, amounts positive, required fields present, cross-field consistency (line items sum to invoice total).</li>
+          <li>Domain rules: vendor in known vendor list? Amount within expected range for this vendor? Statistical <strong>anomaly detection</strong> vs historical data for the same source.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build the Human Review Interface</span><span class="phase-days">Days 9–11</span></div>
+        <ul>
+          <li>Side-by-side: original document (image) on left, extracted data on right. Highlight source location per field. <strong>Color-coded confidence:</strong> green (high), yellow (medium), red (low/failed validation).</li>
+          <li>Inline editing with change logging: original value, corrected value, who corrected it, whether it was an extraction error or a false positive. This data feeds back to prompt refinement.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">Build Feedback Loops and Analytics</span><span class="phase-days">Days 11–13</span></div>
+        <ul>
+          <li>Every correction is a training signal: update few-shot examples, tune confidence thresholds, identify systematic extraction errors. Dashboard: auto-approval rate over time is the key efficiency metric.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a document processing pipeline with X% extraction accuracy, auto-approving Y% of documents without human review, reducing manual processing time by Z%." Lead with efficiency numbers.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 15 — Agents slide -->
+<div class="project">
+  <div class="proj-band">
+    <div class="proj-num">15</div>
+    <div class="proj-cat">Agents</div>
+    <div class="proj-role">AI Engineer</div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-what">Project Build</div>
+    <h2 class="proj-title">Agent Orchestration System with Tool Use, Memory, and Human-in-the-Loop</h2>
+    <p class="proj-desc">A multi-agent orchestration platform where a supervisor agent decomposes complex tasks, delegates subtasks to specialized tool-using agents, maintains persistent memory across interactions, and escalates to a human operator when confidence is low or the task requires approval.</p>
+    <p class="proj-why">Most candidate projects are single-agent toy demos. Building a multi-agent system with real tool use, persistent memory, and human-in-the-loop escalation proves you can architect the kind of autonomous AI systems companies are actively building and hiring for right now.</p>
+    <div class="stack-label">Tech Stack · 2026</div>
+    <div class="tags">
+      <span class="tag">Python 3.12</span>
+      <span class="tag highlight">LangGraph v1.0</span>
+      <span class="tag">Claude API</span>
+      <span class="tag highlight">MCP</span>
+      <span class="tag highlight">E2B</span>
+      <span class="tag">Redis 7</span>
+      <span class="tag">PostgreSQL 16</span>
+      <span class="tag highlight">Langfuse</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Celery</span>
+      <span class="tag">Docker</span>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">01</span><span class="phase-name">Build the Agent Architecture</span><span class="phase-days">Days 1–4</span></div>
+        <ul>
+          <li>Three-layer hierarchy: <strong>Supervisor Agent</strong> (plans, delegates), <strong>Specialist Agents</strong> (research, analysis, writing, code execution), <strong>Reviewer Agent</strong> (validates before returning to supervisor). Each as a LangGraph v1.0 node with typed input/output schemas.</li>
+          <li>Register every tool via <strong>MCP (Model Context Protocol)</strong> — the 2026 standard for agent tool integration. Use <strong>E2B</strong> for sandboxed code execution. Rate limit per tool and log every invocation.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">02</span><span class="phase-name">Build the Memory System</span><span class="phase-days">Days 4–7</span></div>
+        <ul>
+          <li><strong>Short-term working memory</strong> in Redis 7 — scoped to a single task, cleared on completion. Shared across all agents during execution.</li>
+          <li><strong>Long-term semantic memory</strong> in PostgreSQL 16 — extract and store what worked, what tools were used, user preferences. Future tasks query memory before planning. This is how the system gets smarter over time.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">03</span><span class="phase-name">Build the Human-in-the-Loop System</span><span class="phase-days">Days 7–10</span></div>
+        <ul>
+          <li>Escalation triggers: low planning confidence, specialist fails twice, sensitive operations (financial transactions, external comms), reviewer score below threshold.</li>
+          <li>Approval levels: <strong>Notify → Approve action → Approve plan → Take over.</strong> Review UI shows context, proposed action, agent reasoning, and relevant past decisions. Chat panel to ask the agent clarifying questions.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">04</span><span class="phase-name">Build Observability and Debugging</span><span class="phase-days">Days 10–12</span></div>
+        <ul>
+          <li>Every execution produces a trace tree in <strong>Langfuse:</strong> planning decisions, tool calls, reviewer evaluations, memory retrievals, human escalations. Color-coded nodes: success/warning/failure/escalated.</li>
+          <li><strong>Replay system:</strong> load any past execution, step through decisions, modify input at any step, compare diverged execution against original. Invaluable for diagnosing failures.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">05</span><span class="phase-name">End-to-End Testing</span><span class="phase-days">Days 12–13</span></div>
+        <ul>
+          <li>Demo scenario: research task requiring web search, data extraction, analysis, written summary. Show: supervisor planning, parallel specialist execution, reviewer catching an issue, human approving final deliverable.</li>
+          <li>Containerize: FastAPI + Redis + PostgreSQL + Celery workers + trace explorer UI + human review UI. Include demo script that runs the showcase automatically.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><span class="phase-num">06</span><span class="phase-name">Polish for Portfolio</span><span class="phase-days">Days 13–14</span></div>
+        <ul>
+          <li>Frame: "I built a multi-agent orchestration system where AI agents decompose complex tasks, use tools via MCP, learn from past interactions via persistent memory, and escalate to humans when confidence is low. This is production infrastructure for autonomous AI workflows — not an AI demo."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<div class="red-divider"></div>
+<footer>
+  <div class="footer-left">
+    <h3>Unnati Tripathi</h3>
+    <p>AI content creator making AI engineering accessible. Follow for project breakdowns, career guides, and real talk about breaking into AI in 2026.</p>
+    <span class="footer-handle">@aiwithunnati</span>
+  </div>
+  <div class="footer-right">
+    <p>AI ENGINEERING GUIDE</p>
+    <p>2026 EDITION · ALL 15 PROJECTS</p>
+    <div class="year">2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
