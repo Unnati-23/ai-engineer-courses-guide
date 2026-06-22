@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Loop — Newsletter Intelligence Guide by Unnati Tripathi</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #0C0C0C;
+    --red:     #D42B1C;
+    --red-dim: #A01F13;
+    --cream:   #F0EBE0;
+    --cream2:  #C8C1B3;
+    --white:   #FFFFFF;
+    --border:  rgba(240,235,224,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--red);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--black);
+  }
+  .header-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+  .header-handle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(240,235,224,0.75);
+    letter-spacing: 1px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 32px 56px;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 0.92;
+    letter-spacing: -1px;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero-desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--cream2);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-author {
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+  .hero-divider { width: 32px; height: 2px; background: var(--red); }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream2);
+  }
+
+  /* ── FLOW STRIP ── */
+  .flow-strip {
+    background: var(--red);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .flow-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .flow-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+  .flow-arrow {
+    font-size: 18px;
+    color: rgba(240,235,224,0.5);
+    margin-top: -12px;
+  }
+  .flow-sub {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: rgba(240,235,224,0.6);
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── CATEGORY LABEL ── */
+  .cat-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    margin-top: 40px;
+  }
+  .cat-label:first-of-type { margin-top: 0; }
+  .cat-pill {
+    font-family: 'Anton', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+  .cat-pill.meta { background: var(--red); color: var(--cream); }
+  .cat-pill.google { background: var(--cream); color: var(--black); }
+  .cat-pill.aeo { background: transparent; color: var(--red); border: 1px solid var(--red); }
+  .cat-line { flex: 1; height: 1px; background: var(--border); width: 40px; }
+
+  /* ── NEWSLETTER CARD ── */
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+  .nl-card {
+    background: #141414;
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .nl-card:hover { border-color: var(--red); }
+  .nl-card::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--red);
+    margin-bottom: 16px;
+  }
+  .nl-card.google-card::before { background: var(--cream2); }
+  .nl-card.aeo-card::before { background: #c89a3c; }
+  .nl-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: var(--cream);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .nl-author {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--red);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .nl-card.google-card .nl-author { color: var(--cream2); }
+  .nl-card.aeo-card .nl-author { color: #c89a3c; }
+  .nl-desc {
+    font-size: 13px;
+    color: var(--cream2);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .nl-best {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.35);
+  }
+  .nl-best strong { color: rgba(240,235,224,0.6); font-weight: 500; }
+  .nl-link-arrow {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    font-size: 16px;
+    color: rgba(240,235,224,0.2);
+    transition: color 0.2s;
+  }
+  .nl-card:hover .nl-link-arrow { color: var(--red); }
+
+  /* ── ALSO WORTH ── */
+  .also-worth {
+    background: #141414;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    padding: 20px 24px;
+    margin-top: 2px;
+  }
+  .also-worth p {
+    font-size: 13px;
+    color: var(--cream2);
+    line-height: 1.6;
+  }
+  .also-worth a {
+    color: var(--cream);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .also-worth a:hover { color: var(--red); }
+  .also-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  /* ── SETUP STEPS ── */
+  .steps-list { display: flex; flex-direction: column; gap: 2px; }
+  .step-card {
+    background: #141414;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 28px 24px;
+  }
+  .step-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--red);
+    opacity: 0.25;
+    min-width: 64px;
+  }
+  .step-body {}
+  .step-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .step-items { display: flex; flex-direction: column; gap: 10px; }
+  .step-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .step-dot {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--red);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: 'Anton', sans-serif;
+    font-size: 9px;
+    color: var(--red);
+    letter-spacing: 0;
+  }
+  .step-text {
+    font-size: 14px;
+    color: var(--cream2);
+    line-height: 1.55;
+  }
+  .step-text strong { color: var(--cream); font-weight: 600; }
+  .step-text code {
+    background: rgba(212,43,28,0.15);
+    color: var(--red);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* ── PROMPT BOX ── */
+  .prompt-box {
+    background: #0A0A0A;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    padding: 24px 28px;
+  }
+  .prompt-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .prompt-code {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--cream2);
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+  .prompt-code .hl { color: var(--red); }
+
+  /* ── WORKFLOW DIAGRAM ── */
+  .workflow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 32px 0;
+  }
+  .wf-node {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 440px;
+    background: #141414;
+    border: 1px solid var(--border);
+    padding: 16px 24px;
+    position: relative;
+  }
+  .wf-node:hover { border-color: var(--red); }
+  .wf-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    background: rgba(240,235,224,0.05);
+  }
+  .wf-info {}
+  .wf-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .wf-action {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--cream2);
+    text-transform: uppercase;
+  }
+  .wf-connector {
+    width: 2px;
+    height: 28px;
+    background: var(--red);
+    opacity: 0.5;
+    margin-left: 47px;
+    align-self: flex-start;
+    margin-left: calc(50% - 1px);
+  }
+  /* override for centered layout */
+  .workflow-diagram .wf-connector { margin-left: 0; }
+
+  .cost-bar {
+    background: var(--red);
+    padding: 16px 24px;
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+    margin-top: 0;
+  }
+  .cost-bar p {
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  .cost-bar span { color: var(--black); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--red);
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(240,235,224,0.8);
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+    margin: 6px;
+  }
+  .cta-btn:hover { background: transparent; color: var(--cream); border-color: var(--cream); }
+  .cta-btn.outline {
+    background: transparent;
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+  .cta-btn.outline:hover { background: var(--cream); color: var(--red); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080808;
+    padding: 32px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.25);
+  }
+  footer strong { color: rgba(240,235,224,0.5); }
+  footer a { color: var(--red); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── UTILITY ── */
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    color: var(--cream2);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 14px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .section { padding: 48px 20px; }
+    .newsletter-grid { grid-template-columns: 1fr; }
+    .step-header { flex-direction: column; gap: 8px; }
+    .step-num { font-size: 36px; }
+    .flow-strip { gap: 8px; padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-brand">Signal Loop — Newsletter Intelligence</div>
+  <div class="header-handle">@aiwithunnati</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">// AI Workflow Guide · Meta Ads · Google Ads · AEO</p>
+  <h1>Stop Reading.<br><span>Let AI</span><br>Read It.</h1>
+  <p class="hero-desc">The only 15-minute setup that watches your newsletters, filters what matters for your ads business, and pings your Telegram — automatically, every day.</p>
+  <div class="hero-meta">
+    <span class="hero-author">Unnati Tripathi</span>
+    <div class="hero-divider"></div>
+    <span class="hero-tag">Instagram: @aiwithunnati</span>
+  </div>
+</div>
+
+<!-- FLOW STRIP -->
+<div class="flow-strip">
+  <div class="flow-node">
+    <div class="flow-icon">📧</div>
+    <div class="flow-label">Gmail</div>
+    <div class="flow-sub">lands</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">
+    <div class="flow-icon">⚙️</div>
+    <div class="flow-label">Make</div>
+    <div class="flow-sub">routes</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">
+    <div class="flow-icon">✳️</div>
+    <div class="flow-label">Claude</div>
+    <div class="flow-sub">decides</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">
+    <div class="flow-icon">📊</div>
+    <div class="flow-label">Sheets</div>
+    <div class="flow-sub">logs</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">
+    <div class="flow-icon">✈️</div>
+    <div class="flow-label">Telegram</div>
+    <div class="flow-sub">pings you</div>
+  </div>
+</div>
+
+<!-- STEP 0: NEWSLETTERS -->
+<div class="section">
+  <p class="section-eyebrow">// Step 01</p>
+  <h2 class="section-title">Subscribe to These Newsletters</h2>
+
+  <div class="tag-row">
+    <span class="tag">Meta Ads</span>
+    <span class="tag">Google Ads</span>
+    <span class="tag">AEO</span>
+    <span class="tag">Free to Subscribe</span>
+  </div>
+
+  <!-- META ADS -->
+  <div class="cat-label">
+    <span class="cat-pill meta">Meta Ads</span>
+    <span class="cat-line"></span>
+  </div>
+
+  <div class="newsletter-grid">
+    <a class="nl-card" href="https://foxwelldigital.com/newsletter" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">Foxwell Digital</div>
+      <div class="nl-author">Andrew &amp; Gracie Foxwell</div>
+      <div class="nl-desc">The weekly operator briefing on paid social. Meta-heavy, hype-free — the one most working media buyers keep open.</div>
+      <div class="nl-best">Best for: <strong>Working Media Buyers</strong></div>
+    </a>
+    <a class="nl-card" href="https://barryhott.substack.com" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">Hott Takes</div>
+      <div class="nl-author">Barry Hott</div>
+      <div class="nl-desc">Creative strategy and media buying built around what actually stops the scroll, not account-structure trivia.</div>
+      <div class="nl-best">Best for: <strong>Creative-Led Growth</strong></div>
+    </a>
+    <a class="nl-card" href="https://pilothouse.co/newsletter" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">DTC Newsletter</div>
+      <div class="nl-author">Pilothouse</div>
+      <div class="nl-desc">Daily and ecommerce-first. Surfaces what is working across heavy Meta spend before the roundups catch it.</div>
+      <div class="nl-best">Best for: <strong>DTC Scale</strong></div>
+    </a>
+  </div>
+
+  <!-- GOOGLE ADS -->
+  <div class="cat-label">
+    <span class="cat-pill google">Google Ads</span>
+    <span class="cat-line"></span>
+  </div>
+
+  <div class="newsletter-grid">
+    <a class="nl-card google-card" href="https://jyll.com" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">The Insider</div>
+      <div class="nl-author">Jyll Saskin Gales</div>
+      <div class="nl-desc">Ex-Google coach, ranked #1 PPC voice of 2026. Catches the quiet Google changes that never hit the changelog.</div>
+      <div class="nl-best">Best for: <strong>Search &amp; PMax Operators</strong></div>
+    </a>
+    <a class="nl-card google-card" href="https://navahf.com" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">Navah Hopkins</div>
+      <div class="nl-author">Navah Hopkins</div>
+      <div class="nl-desc">The best early-warning system for platform changes. Translates what Google announces into what to actually do in your account.</div>
+      <div class="nl-best">Best for: <strong>Never Getting Blindsided</strong></div>
+    </a>
+    <a class="nl-card google-card" href="https://searchengineland.com/newsletters" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">Search Engine Land</div>
+      <div class="nl-author">Google Ads Brief</div>
+      <div class="nl-desc">The news of record. Every rollout, from AI Max to AI Brief, lands here first. Daily and reliable.</div>
+      <div class="nl-best">Best for: <strong>Daily Coverage</strong></div>
+    </a>
+  </div>
+
+  <!-- AEO -->
+  <div class="cat-label">
+    <span class="cat-pill aeo">AEO</span>
+    <span class="cat-line"></span>
+  </div>
+
+  <div class="newsletter-grid">
+    <a class="nl-card aeo-card" href="https://www.seofomo.co/" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">SEOFOMO</div>
+      <div class="nl-author">Aleyda Solis</div>
+      <div class="nl-desc">40,000+ readers. The cleanest weekly filter for what actually changed in AI search this week.</div>
+      <div class="nl-best">Best for: <strong>Staying Current Without the Noise</strong></div>
+    </a>
+    <a class="nl-card aeo-card" href="https://ipullrank.com/" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">iPullRank</div>
+      <div class="nl-author">Mike King</div>
+      <div class="nl-desc">The engineering view of AI search. Embeddings, retrieval, query fan-out, and his Relevance Engineering framework.</div>
+      <div class="nl-best">Best for: <strong>Technical Depth</strong></div>
+    </a>
+    <a class="nl-card aeo-card" href="https://www.kevin-indig.com/newsletter" target="_blank" rel="noopener">
+      <span class="nl-link-arrow">↗</span>
+      <div class="nl-name">Growth Memo</div>
+      <div class="nl-author">Kevin Indig</div>
+      <div class="nl-desc">Data-led. His ChatGPT-citation and ghost-citation research is the closest thing to hard evidence in a field full of opinion.</div>
+      <div class="nl-best">Best for: <strong>Research-Grade Insight</strong></div>
+    </a>
+  </div>
+
+  <!-- ALSO WORTH -->
+  <div class="also-worth">
+    <div class="also-label">Also Worth It</div>
+    <p>
+      <a href="https://sarahlevinger.com" target="_blank" rel="noopener">Sarah Levinger</a> for Meta creative psychology ·
+      <a href="https://www.optmyzr.com" target="_blank" rel="noopener">Optmyzr / PPC Town Hall</a> for Google automation ·
+      <a href="https://mariehaynes.com" target="_blank" rel="noopener">Marie Haynes</a> for AI search quality and trust
+    </p>
+  </div>
+</div>
+
+<!-- STEP 2: SETUP -->
+<div class="section">
+  <p class="section-eyebrow">// Step 02</p>
+  <h2 class="section-title">Build the Automation</h2>
+
+  <div class="steps-list">
+
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">Build Your Telegram Bot</div>
+          <div class="step-items">
+            <div class="step-item">
+              <div class="step-dot">1</div>
+              <div class="step-text">In Telegram, search <strong>@BotFather</strong> and open the chat. Tap Start.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">2</div>
+              <div class="step-text">Send <code>/newbot</code>. Give it a display name (e.g. Signal Loop) and a username ending in <code>_bot</code>.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">3</div>
+              <div class="step-text">BotFather replies with an <strong>HTTP API token</strong>. Copy it and keep it private — this is your bot key.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">4</div>
+              <div class="step-text">Send your new bot any message so it's allowed to message you back.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">5</div>
+              <div class="step-text">Get your <strong>Chat ID</strong> by messaging <code>@userinfobot</code> — it replies with your numeric ID. Save both the token and Chat ID.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">Set Up the Google Sheet</div>
+          <div class="step-items">
+            <div class="step-item">
+              <div class="step-dot">1</div>
+              <div class="step-text">Create a new Google Sheet named <strong>Signal Loop Log</strong>.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">2</div>
+              <div class="step-text">Paste these headers into row 1: <code>Timestamp</code> · <code>Source</code> · <code>Relevant</code> · <code>Why Relevant</code> · <code>Summary</code> · <code>Meta Actions</code> · <code>Google Actions</code> · <code>AEO Actions</code> · <code>Priority Action</code></div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">3</div>
+              <div class="step-text">The last two columns are yours to fill manually — this is how you track which inputs actually moved your numbers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Wire the Make Scenario</div>
+          <div class="step-items">
+            <div class="step-item">
+              <div class="step-dot">1</div>
+              <div class="step-text">Create a free account at <strong><a href="https://make.com" target="_blank" rel="noopener" style="color: var(--red);">make.com</a></strong>. Connect Gmail, Google Sheets, and Telegram.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">2</div>
+              <div class="step-text">In Gmail, create a label called <code>SignalLoop</code> and set a filter so all your newsletter senders automatically get that label.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">3</div>
+              <div class="step-text"><strong>Module 1 — Gmail: Watch Emails.</strong> Set folder/label to <code>SignalLoop</code>. Schedule: every 15 minutes.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">4</div>
+              <div class="step-text"><strong>Module 2 — Anthropic Claude: Create a Message.</strong> Model: <code>claude-sonnet-4-6</code>. Max tokens: 1500. Paste the Signal Loop prompt (Step 04) and insert the email body where marked. Add your API key from <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color: var(--red);">console.anthropic.com</a>.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">5</div>
+              <div class="step-text"><strong>Module 3 — Parse JSON.</strong> Feed it Claude's output text. Run once to generate the data structure so fields map cleanly.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">6</div>
+              <div class="step-text"><strong>Module 4 — Google Sheets: Add a Row.</strong> Map each parsed field to its column. For action lists, join the array with a newline.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">7</div>
+              <div class="step-text"><strong>Module 5 — Telegram Bot: Send a Message.</strong> Connect using your bot token and numeric Chat ID. Set parse mode to HTML for bold formatting.</div>
+            </div>
+            <div class="step-item">
+              <div class="step-dot">8</div>
+              <div class="step-text">Run once to test. When the brief lands in Telegram and the row lands in Sheets, switch scheduling <strong>ON</strong>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-title">Drop in the Claude Brain</div>
+          <div class="step-items">
+            <div class="step-item">
+              <div class="step-dot">!</div>
+              <div class="step-text">Edit the <strong>ACCOUNT CONTEXT</strong> block below to match your actual business. This one block is the difference between a real decision tool and a toy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">// Signal Loop Prompt — Paste into Make Module 2</div>
+        <pre class="prompt-code"><span class="hl">You are the Signal Loop analyst.</span> You read paid-media newsletters and decide what a specific operator needs to act on.
+
+<span class="hl">ACCOUNT CONTEXT</span> (edit this block to match your account)
+- Channels I run: Meta Ads (Advantage+ Shopping), Google Ads (PMax + Search), AEO
+- Meta priority: scaling creative volume, reducing CPAs
+- Google priority: feed quality for PMax, Smart Bidding signals
+- AEO priority: getting cited in AI Overviews and ChatGPT answers
+- I do NOT care about: TikTok, affiliate, Amazon, email marketing
+
+<span class="hl">TASK</span>
+Read the newsletter below. Return ONLY valid JSON — no preamble:
+
+{
+  "source": "newsletter name and author",
+  "relevant": "Yes or No",
+  "why_relevant": "one line — if No, name why it was skipped",
+  "summary": ["3 to 5 short bullets, plain language"],
+  "meta_ads_actions": ["specific actions for MY Meta account"],
+  "google_ads_actions": ["specific actions for MY Google account"],
+  "aeo_actions": ["specific actions for MY AEO setup"],
+  "priority_action_this_week": "the single most important action to take"
+}
+
+<span class="hl">RULES</span>
+- If a section has no genuine implication for my channels, return an empty array []
+- Tie every action to something in the newsletter — no generic advice
+- Keep each action under 20 words
+
+<span class="hl">NEWSLETTER</span>
+{{ paste the email body here from Make Module 1 }}</pre>
+      </div>
+    </div>
+
+    <!-- TELEGRAM TEMPLATE -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <div class="step-title">Telegram Message Template</div>
+          <div class="step-items">
+            <div class="step-item">
+              <div class="step-dot">!</div>
+              <div class="step-text">Paste this into <strong>Module 5 (Telegram: Message Body)</strong>. Set Parse Mode to HTML.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">// Telegram Template — Paste into Make Module 5</div>
+        <pre class="prompt-code"><span class="hl">SIGNAL LOOP</span>
+Source: {{source}}
+Relevant: {{relevant}} — {{why_relevant}}
+
+<span class="hl">SUMMARY</span>
+{{summary joined with newline}}
+
+<span class="hl">META:</span> {{meta_ads_actions}}
+<span class="hl">GOOGLE:</span> {{google_ads_actions}}
+<span class="hl">AEO:</span> {{aeo_actions}}
+
+<span class="hl">THIS WEEK:</span> {{priority_action_this_week}}</pre>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WORKFLOW DIAGRAM -->
+<div class="section">
+  <p class="section-eyebrow">// How It Works</p>
+  <h2 class="section-title">The Full Loop</h2>
+
+  <div class="workflow-diagram">
+    <div class="wf-node">
+      <div class="wf-icon-box">📧</div>
+      <div class="wf-info">
+        <div class="wf-name">Gmail</div>
+        <div class="wf-action">Newsletter lands in SignalLoop label</div>
+      </div>
+    </div>
+    <div class="wf-connector"></div>
+    <div class="wf-node">
+      <div class="wf-icon-box">⚙️</div>
+      <div class="wf-info">
+        <div class="wf-name">Make</div>
+        <div class="wf-action">Watches every 15 min &amp; routes the email body</div>
+      </div>
+    </div>
+    <div class="wf-connector"></div>
+    <div class="wf-node">
+      <div class="wf-icon-box">✳️</div>
+      <div class="wf-info">
+        <div class="wf-name">Claude</div>
+        <div class="wf-action">Reads, decides relevance &amp; outputs actions as JSON</div>
+      </div>
+    </div>
+    <div class="wf-connector"></div>
+    <div class="wf-node">
+      <div class="wf-icon-box">📊</div>
+      <div class="wf-info">
+        <div class="wf-name">Google Sheets</div>
+        <div class="wf-action">Logs every decision to your impact ledger</div>
+      </div>
+    </div>
+    <div class="wf-connector"></div>
+    <div class="wf-node">
+      <div class="wf-icon-box">✈️</div>
+      <div class="wf-info">
+        <div class="wf-name">Telegram</div>
+        <div class="wf-action">Pings your phone with the brief in &lt;30 seconds</div>
+      </div>
+    </div>
+    <div class="cost-bar">
+      <p>Cost to run: <span>cents per newsletter</span> · Time to read: <span>thirty seconds</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Start in 15<br>Minutes.</h2>
+  <p>Set it up once. Let Claude filter the noise. Get only what moves your Meta, Google, and AEO numbers.</p>
+  <a class="cta-btn" href="https://make.com" target="_blank" rel="noopener">Open Make.com →</a>
+  <a class="cta-btn outline" href="https://www.instagram.com/aiwithunnati" target="_blank" rel="noopener">Follow @aiwithunnati</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Guide by <strong>Unnati Tripathi</strong> · <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a> on Instagram · Signal Loop Workflow</p>
+</footer>
+
+</body>
+</html>
