@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakana Fugu — The Conductor | aiwithunnati</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #C8102E;
+    --black: #0D0D0D;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE7D9;
+    --white: #FFFFFF;
+    --gray: #6B6B6B;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--black);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--red);
+  }
+  .header-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+  .header-brand span { color: var(--red); }
+  .header-ig {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--cream-dark);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--black);
+    padding: 70px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'FUGU';
+    font-family: 'Anton', sans-serif;
+    font-size: 260px;
+    color: rgba(200,16,46,0.06);
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .hero-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  .hero-title span { color: var(--red); }
+  .hero-sub {
+    font-size: 16px;
+    color: #B0A99F;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 4px;
+    background: var(--red);
+  }
+
+  /* SECTION */
+  .section {
+    padding: 60px 40px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.05;
+    margin-bottom: 28px;
+    color: var(--black);
+  }
+
+  /* WHAT IS FUGU */
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .what-card {
+    background: var(--black);
+    color: var(--white);
+    padding: 32px 28px;
+  }
+  .what-card:nth-child(odd) { background: var(--black); }
+  .what-card:nth-child(even) { background: #1A1A1A; }
+  .what-card-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .what-card-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .what-card p {
+    font-size: 13px;
+    color: #A0A0A0;
+    line-height: 1.65;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    background: var(--black);
+    padding: 60px 40px;
+  }
+  .how-section .section-title { color: var(--white); }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 32px;
+    position: relative;
+  }
+  .flow-step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid #222;
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    color: var(--red);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .flow-content h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .flow-content p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.65;
+  }
+  .flow-content .tag {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    padding: 3px 10px;
+    font-weight: 600;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* BENCHMARKS */
+  .bench-section {
+    background: var(--cream-dark);
+    padding: 60px 40px;
+  }
+  .bench-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-size: 13px;
+  }
+  .bench-table thead tr {
+    background: var(--black);
+    color: var(--white);
+  }
+  .bench-table th {
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+  }
+  .bench-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #D9D2C4;
+    color: var(--black);
+    font-weight: 500;
+  }
+  .bench-table tr:nth-child(even) td { background: #EAE4D6; }
+  .bench-table .winner {
+    color: var(--red);
+    font-weight: 700;
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+  }
+  .bench-note {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  /* SPECS */
+  .specs-section {
+    background: var(--white);
+    padding: 60px 40px;
+  }
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .spec-card {
+    background: var(--cream);
+    padding: 28px 24px;
+    border-left: 4px solid var(--red);
+  }
+  .spec-val {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .spec-val span { color: var(--red); }
+  .spec-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* REAL RESULTS */
+  .results-section {
+    background: var(--black);
+    padding: 60px 40px;
+  }
+  .results-section .section-title { color: var(--white); }
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .result-card {
+    padding: 28px 24px;
+  }
+  .result-card.pos { background: #0F1F12; border-left: 4px solid #2ECC71; }
+  .result-card.neg { background: #1F0F0F; border-left: 4px solid var(--red); }
+  .result-card-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .result-card.pos .result-card-tag { color: #2ECC71; }
+  .result-card.neg .result-card-tag { color: var(--red); }
+  .result-card p {
+    font-size: 13px;
+    color: #A0A0A0;
+    line-height: 1.65;
+  }
+  .result-card strong { color: var(--white); }
+
+  /* CTA */
+  .cta-section {
+    background: var(--red);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 32px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--white);
+    color: var(--red);
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 16px 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--black); color: var(--white); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--black);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid var(--red);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+  .footer-ig {
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 680px) {
+    .header { padding: 12px 20px; }
+    .hero { padding: 50px 20px 40px; }
+    .hero::before { font-size: 120px; }
+    .section, .how-section, .bench-section, .specs-section, .results-section, .cta-section { padding: 44px 20px; }
+    .what-grid, .results-grid { grid-template-columns: 1fr; }
+    .specs-grid { grid-template-columns: 1fr 1fr; }
+    .footer { padding: 20px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">AI WITH <span>UNNATI</span></div>
+  <div class="header-ig">@aiwithunnati</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Japan's Answer to US Export Controls</div>
+  <h1 class="hero-title">SAKANA<br><span>FUGU</span></h1>
+  <p class="hero-sub">A 7 billion parameter conductor. An orchestration agent that calls frontier models — GPT, Claude, Gemini — and returns one perfect answer. One tiny model commanding giants.</p>
+  <span class="hero-tag">Launched June 22, 2026</span>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT IS FUGU -->
+<section class="section">
+  <div class="section-label">What Is It</div>
+  <h2 class="section-title">NOT A MODEL.<br>A CONDUCTOR.</h2>
+  <div class="what-grid">
+    <div class="what-card">
+      <div class="what-card-num">7B</div>
+      <div class="what-card-title">PARAMETER CONDUCTOR</div>
+      <p>Fugu itself is only 7 billion parameters — tiny by frontier standards. But its job is not to answer. Its job is to orchestrate. It's trained via reinforcement learning to know when to delegate and when to solve directly.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-card-num">∞</div>
+      <div class="what-card-title">SWAPPABLE AGENT POOL</div>
+      <p>Fugu commands a dynamic pool of frontier models — GPT, Claude Opus, Gemini and more. As better models arrive, they fold into the pool automatically. You never need to switch providers or update your code.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-card-num">1</div>
+      <div class="what-card-title">SINGLE API ENDPOINT</div>
+      <p>From the outside, Fugu looks like one model. You hit one OpenAI-compatible endpoint. The entire orchestration — routing, delegation, verification, synthesis — happens invisibly behind it.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-card-num">2</div>
+      <div class="what-card-title">ICLR 2026 PAPERS</div>
+      <p>Built on peer-reviewed research — TRINITY (an evolved LLM coordinator) and The Conductor (learning to orchestrate agents in natural language). This is not a wrapper. It's trained orchestration.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-label" style="color:var(--red)">How It Works</div>
+  <h2 class="section-title">THE ORCHESTRATION<br>PIPELINE</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div class="flow-content">
+        <h3>RECEIVE THE TASK</h3>
+        <p>Whatever task you give it — code review, research, reasoning, multi-step engineering — Fugu receives it through one API call. No complex setup. No agent graph to build.</p>
+        <span class="tag">Single Endpoint</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div class="flow-content">
+        <h3>DECOMPOSE & DECIDE</h3>
+        <p>Fugu breaks the task into components and decides: can it solve this directly, or does it need to assemble a team? This decision is learned — not hardcoded rules or if/else logic.</p>
+        <span class="tag">Learned Orchestration</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div class="flow-content">
+        <h3>ROUTE TO FRONTIER MODELS</h3>
+        <p>Each component is routed to the best frontier model in its pool — GPT, Claude, Gemini. The right specialist handles the right subtask. Fugu manages inter-agent communication throughout.</p>
+        <span class="tag">Dynamic Routing</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">04</div>
+      <div class="flow-content">
+        <h3>VERIFY & SYNTHESIZE</h3>
+        <p>Fugu verifies the outputs from each model, then synthesizes everything into one unified, reliable answer. It can even call instances of itself recursively for deeper reasoning tasks.</p>
+        <span class="tag">Self-Verification</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BENCHMARKS -->
+<section class="bench-section">
+  <div class="section-label">Benchmarks</div>
+  <h2 class="section-title">SHOULDER TO SHOULDER<br>WITH FABLE 5</h2>
+  <table class="bench-table">
+    <thead>
+      <tr>
+        <th>Benchmark</th>
+        <th>Fugu Ultra</th>
+        <th>Fable 5</th>
+        <th>Claude Opus 4.8</th>
+        <th>GPT-5.5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SWE-Bench Pro</strong><br><span style="font-size:11px;color:#888">Coding & Engineering</span></td>
+        <td class="winner">73.7</td>
+        <td>76.4</td>
+        <td>69.2</td>
+        <td>58.6</td>
+      </tr>
+      <tr>
+        <td><strong>GPQA-Diamond</strong><br><span style="font-size:11px;color:#888">Scientific Reasoning</span></td>
+        <td class="winner">95.5</td>
+        <td>95.1</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>LiveCodeBench</strong><br><span style="font-size:11px;color:#888">Live Coding Tasks</span></td>
+        <td class="winner">93.2</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>TerminalBench 2.1</strong><br><span style="font-size:11px;color:#888">Agentic Tasks</span></td>
+        <td class="winner">82.1</td>
+        <td>83.2</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>Humanity's Last Exam</strong><br><span style="font-size:11px;color:#888">General Intelligence</span></td>
+        <td class="winner">50.0</td>
+        <td>53.3</td>
+        <td>49.8</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="bench-note">⚠ Sakana's own benchmarks. Fable 5 & Mythos Preview are export-controlled and not in Fugu's pool. No independent third-party verification yet. Treat as directional.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPECS -->
+<section class="specs-section">
+  <div class="section-label">Technical Specs</div>
+  <h2 class="section-title">BY THE NUMBERS</h2>
+  <div class="specs-grid">
+    <div class="spec-card">
+      <div class="spec-val">7<span>B</span></div>
+      <div class="spec-label">Conductor Parameters</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">1<span>M</span></div>
+      <div class="spec-label">Token Context Window</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val"><span>$</span>20</div>
+      <div class="spec-label">Starting Price / Month</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val"><span>$</span>5</div>
+      <div class="spec-label">Input Per 1M Tokens (Ultra)</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val"><span>$</span>30</div>
+      <div class="spec-label">Output Per 1M Tokens (Ultra)</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">2<span>×</span></div>
+      <div class="spec-label">Free Month if Subscribe by Jul 31</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REAL RESULTS -->
+<section class="results-section">
+  <div class="section-label" style="color:var(--red)">Real World Results</div>
+  <h2 class="section-title">WHAT PEOPLE<br>ARE SEEING</h2>
+  <div class="results-grid">
+    <div class="result-card pos">
+      <div class="result-card-tag">✓ Win</div>
+      <p><strong>Code reviews finding 20+ bugs</strong> where GPT-5.5 found only 3. Users calling it the best code review model available right now.</p>
+    </div>
+    <div class="result-card neg">
+      <div class="result-card-tag">✗ Concern</div>
+      <p><strong>Incredibly slow.</strong> Ethan Mollick (top AI researcher) reported coding tests taking <strong>30 minutes</strong>. Results were "fine" but didn't match Fable in real use.</p>
+    </div>
+    <div class="result-card pos">
+      <div class="result-card-tag">✓ Win</div>
+      <p><strong>Patent landscape across 20 papers</strong> normally 3–4 days of work — done in a few hours with Fugu, including connections a human would never spot.</p>
+    </div>
+    <div class="result-card neg">
+      <div class="result-card-tag">✗ Concern</div>
+      <p><strong>Quota burns fast.</strong> One user burned through their entire <strong>5-hour quota on the $20 plan with a single prompt.</strong> Cost management is critical.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">TRY SAKANA FUGU<br>RIGHT NOW</h2>
+  <p class="cta-sub">Sign up with Google or email. No invite needed. Subscribe before July 31 for a free second month.</p>
+  <a href="https://console.sakana.ai/login" target="_blank" class="cta-btn">Access Sakana Fugu →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-name">UNNATI TRIPATHI</div>
+    <div class="footer-ig">@aiwithunnati</div>
+  </div>
+  <div class="footer-copy">© 2026 Unnati Tripathi. All rights reserved. | aiwithunnati</div>
+</footer>
+
+</body>
+</html>
