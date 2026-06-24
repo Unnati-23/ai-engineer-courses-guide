@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install GStack on Claude Code — by Unnati Tripathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #C41A1A;
+      --cream:  #F4EFE0;
+      --dark:   #1A1A1A;
+      --white:  #FFFFFF;
+      --muted:  #6B6355;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--cream);
+      text-align: center;
+      padding: 28px 20px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 26px;
+      color: var(--red);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    nav a.active { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    nav a:hover { color: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--red);
+      color: var(--white);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(36px, 8vw, 64px);
+      line-height: 1.0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 17px;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      opacity: 0.92;
+      line-height: 1.65;
+    }
+    .byline {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+    .byline a { color: var(--white); }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 52px 20px; }
+    .section-inner { max-width: 680px; margin: 0 auto; }
+    .section-red { background: var(--red); color: var(--white); }
+    .section-cream { background: var(--cream); }
+
+    /* ── LABELS ── */
+    .label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .section-red .label { color: rgba(255,255,255,0.7); }
+
+    /* ── HEADINGS ── */
+    h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(26px, 5vw, 40px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* ── BODY TEXT ── */
+    p { margin-bottom: 16px; line-height: 1.7; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      border-left: 4px solid var(--red);
+      background: rgba(196,26,26,0.06);
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .quote-block p { color: var(--dark); font-size: 15px; margin: 0; }
+    .quote-source { font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── AGENTS GRID ── */
+    .agents { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+    .agent-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .agent-tick { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .agent-info h4 {
+      font-weight: 800;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--dark);
+      margin-bottom: 3px;
+    }
+    .agent-info .cmd {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .agent-info p { font-size: 14px; color: #555; margin: 0; line-height: 1.5; }
+
+    /* ── PIPELINE ── */
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+      margin: 32px 0 0;
+    }
+    .pipeline-step {
+      background: var(--white);
+      color: var(--dark);
+      font-family: 'Anton', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pipeline-step .num {
+      background: var(--red);
+      color: var(--white);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .pipeline-arrow {
+      display: flex;
+      align-items: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 20px;
+      padding: 0 4px;
+    }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
+    .step-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .step-header {
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .step-num {
+      background: var(--white);
+      color: var(--red);
+      font-family: 'Anton', sans-serif;
+      font-size: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .step-body { padding: 22px 22px 18px; }
+    .step-body p { font-size: 15px; margin-bottom: 14px; color: #444; }
+    .step-body p:last-child { margin-bottom: 0; }
+
+    /* ── CODE BLOCK ── */
+    .code-wrap {
+      background: #1A1A1A;
+      border-radius: 6px;
+      margin: 14px 0;
+      overflow: hidden;
+    }
+    .code-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+      background: #111;
+      border-bottom: 1px solid #333;
+    }
+    .code-top span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .copy-btn {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover { background: #a01515; }
+    .copy-btn.copied { background: #2a8a2a; }
+    pre {
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #E8E8E8;
+      white-space: pre;
+    }
+    .hl { color: #FF9999; font-weight: bold; }
+
+    /* ── NOTE BOX ── */
+    .note {
+      background: #FFFBE6;
+      border-left: 4px solid #E6B800;
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+      color: #5a4a00;
+    }
+    .note strong { display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px; }
+
+    /* ── VERIFY ── */
+    .verify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+    @media (max-width: 480px) { .verify-grid { grid-template-columns: 1fr; } }
+    .verify-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 16px 18px;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .verify-card .v-label { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .verify-card code { font-family: 'Courier New', monospace; font-size: 13px; color: var(--red); font-weight: 700; }
+    .verify-card .v-out { font-size: 13px; color: #2a8a2a; font-family: 'Courier New', monospace; font-weight: 600; margin-top: 4px; }
+
+    /* ── RESULT ── */
+    .result-agents { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .result-agent {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .r-tick { font-size: 20px; flex-shrink: 0; }
+    .r-name { font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--dark); }
+    .r-cmd { font-family: 'Courier New', monospace; font-size: 12px; color: var(--red); }
+
+    /* ── CTA ── */
+    .cta-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Anton', sans-serif;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .cta-btn:hover { background: #a01515; }
+    .cta-btn.outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    .cta-btn.outline:hover { background: var(--white); color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream);
+      text-align: center;
+      padding: 36px 20px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--red); font-weight: 700; text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: rgba(0,0,0,0.08); margin: 0 auto; max-width: 680px; }
+
+    @media (max-width: 600px) {
+      .pipeline { gap: 4px; }
+      .pipeline-step { padding: 10px 14px; font-size: 13px; }
+      .pipeline-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">AI With Unnati</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#" class="active">Install Guide</a>
+    <a href="https://www.instagram.com/aiwithunnati" target="_blank">Instagram</a>
+    <a href="https://github.com/garrytan/gstack" target="_blank">GitHub →</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-tag">Claude Code · Free Guide by Unnati Tripathi</p>
+  <h1>Install GStack<br>On Claude Code</h1>
+  <p>The exact system Gary Tan (Y Combinator CEO) uses every day — 23 tools that turn Claude Code into a full ops team. Follow every step from scratch.</p>
+  <div class="byline">By <strong>Unnati Tripathi</strong> · <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a></div>
+</div>
+
+<!-- WHAT IS GSTACK -->
+<div class="section section-cream">
+  <div class="section-inner">
+    <p class="label">What Is GStack</p>
+    <h2>Your AI Ops Team, Installed In One Command</h2>
+    <p>GStack is a free, open-source toolkit built by Gary Tan — the CEO of Y Combinator, the world's biggest startup accelerator. It ships 23 skills that plug directly into Claude Code and automate your entire product workflow.</p>
+    <p>Instead of babysitting Claude through every step, GStack gives you dedicated agents for strategy, design, engineering, testing, and shipping — each one purpose-built and ready to go.</p>
+
+    <div class="quote-block">
+      <p>"These are the exact AI agents I have running across my businesses, automating 90% of my day-to-day operations. Install the same ones I use, ready to plug straight into your work."</p>
+      <div class="quote-source">— Gary Tan, CEO of Y Combinator · github.com/garrytan/gstack</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- THE 5 AGENTS -->
+<div class="section section-red">
+  <div class="section-inner">
+    <p class="label">What You Get</p>
+    <h2>5 Agents. One Complete Workflow.</h2>
+    <p>Install once. Every prompt gets planned, designed, reviewed, tested, and shipped — automatically.</p>
+
+    <div class="agents">
+      <div class="agent-card">
+        <div class="agent-tick">✅</div>
+        <div class="agent-info">
+          <h4>CEO Agent</h4>
+          <div class="cmd">/plan-ceo-review</div>
+          <p>Founder-mode strategy review. Rethinks your product scope, ambition, and direction before you write a line of code.</p>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-tick">✅</div>
+        <div class="agent-info">
+          <h4>Designer Agent</h4>
+          <div class="cmd">/design-consultation</div>
+          <p>Full design system — typography, colour, layout, motion. Catches AI slop and visual inconsistency before it ships.</p>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-tick">✅</div>
+        <div class="agent-info">
+          <h4>Eng Manager Agent</h4>
+          <div class="cmd">/plan-eng-review</div>
+          <p>Architecture and technical plan review. Locks your design before you build so you don't have to redo it later.</p>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-tick">✅</div>
+        <div class="agent-info">
+          <h4>QA Agent</h4>
+          <div class="cmd">/qa</div>
+          <p>Headless browser testing on a real Chromium instance. Finds bugs, screenshots evidence, fixes them automatically.</p>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-tick">✅</div>
+        <div class="agent-info">
+          <h4>Release Agent</h4>
+          <div class="cmd">/ship</div>
+          <p>Bumps VERSION, updates CHANGELOG, creates the PR, and deploys — one command from code to production.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipeline-step"><span class="num">1</span> Planned</div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step"><span class="num">2</span> Designed</div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step"><span class="num">3</span> Reviewed</div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step"><span class="num">4</span> Tested</div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step"><span class="num">5</span> Shipped</div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALLATION STEPS -->
+<div class="section section-cream">
+  <div class="section-inner">
+    <p class="label">Installation Guide</p>
+    <h2>From Zero To GStack In 4 Steps</h2>
+    <p>Follow every command below. Each one is exactly what we ran — copy and paste directly into your terminal.</p>
+
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-title">Install Claude Code</div>
+        </div>
+        <div class="step-body">
+          <p>Claude Code is Anthropic's official CLI. Install it globally via npm. If you already have it, skip to Step 2.</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>npm install -g @anthropic-ai/claude-code</pre>
+          </div>
+          <p>Verify it installed correctly:</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>claude --version</pre>
+          </div>
+          <p>You should see something like <code style="font-family:monospace;color:var(--red);font-weight:700;">2.1.183 (Claude Code)</code></p>
+          <div class="note">
+            <strong>⚡ Note</strong>
+            You need Node.js installed first. Get it at <strong>nodejs.org</strong> if you don't have it.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-title">Verify Git Is Installed</div>
+        </div>
+        <div class="step-body">
+          <p>GStack clones from GitHub, so you need Git. Check if it's already on your machine:</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>git --version</pre>
+          </div>
+          <p>Expected output: <code style="font-family:monospace;color:var(--red);font-weight:700;">git version 2.39.5 (Apple Git-154)</code></p>
+          <div class="note">
+            <strong>⚡ Mac Users</strong>
+            If Git is missing, run <code style="font-family:monospace;font-weight:700;">xcode-select --install</code> — it installs Git automatically.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-title">Install Bun (JavaScript Runtime)</div>
+        </div>
+        <div class="step-body">
+          <p>GStack uses Bun to build its browser binary and compile skills. Install it with the official one-liner:</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>curl -fsSL https://bun.sh/install | bash</pre>
+          </div>
+          <p>After it installs, reload your shell so the PATH updates:</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>exec /bin/zsh</pre>
+          </div>
+          <p>Verify Bun is ready:</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>bun --version</pre>
+          </div>
+          <p>You should see: <code style="font-family:monospace;color:var(--red);font-weight:700;">1.3.14</code></p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-title">Clone & Install GStack</div>
+        </div>
+        <div class="step-body">
+          <p>This is the main event. One command clones Gary Tan's GStack repo directly into your Claude skills folder and runs the full setup — including downloading Playwright (headless Chrome) and compiling all 23 tools.</p>
+          <div class="code-wrap">
+            <div class="code-top">
+              <span>Terminal — this takes ~1-2 min</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup</pre>
+          </div>
+          <div class="note">
+            <strong>⚡ What happens during setup</strong>
+            Bun installs 297 packages → 55+ skill files generated → Playwright Chromium (~162 MB) downloaded → browse binary compiled. This only runs once.
+          </div>
+          <p>The GStack repo lives at: <a href="https://github.com/garrytan/gstack" target="_blank" style="color:var(--red);font-weight:700;">github.com/garrytan/gstack</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VERIFY -->
+<div class="section section-red">
+  <div class="section-inner">
+    <p class="label">Verify Your Install</p>
+    <h2>Confirm Everything Is Working</h2>
+    <p>After setup completes, open a new Claude Code session and check the 5 agents are all live:</p>
+
+    <div class="result-agents">
+      <div class="result-agent">
+        <div class="r-tick">✅</div>
+        <div>
+          <div class="r-name">CEO Agent</div>
+          <div class="r-cmd">/plan-ceo-review</div>
+        </div>
+      </div>
+      <div class="result-agent">
+        <div class="r-tick">✅</div>
+        <div>
+          <div class="r-name">Designer Agent</div>
+          <div class="r-cmd">/design-consultation</div>
+        </div>
+      </div>
+      <div class="result-agent">
+        <div class="r-tick">✅</div>
+        <div>
+          <div class="r-name">Eng Manager Agent</div>
+          <div class="r-cmd">/plan-eng-review</div>
+        </div>
+      </div>
+      <div class="result-agent">
+        <div class="r-tick">✅</div>
+        <div>
+          <div class="r-name">QA Agent</div>
+          <div class="r-cmd">/qa</div>
+        </div>
+      </div>
+      <div class="result-agent">
+        <div class="r-tick">✅</div>
+        <div>
+          <div class="r-name">Release Agent</div>
+          <div class="r-cmd">/ship</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;text-align:center;">
+      <p style="font-size:20px;font-family:'Anton',sans-serif;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Planned → Designed → Reviewed → Tested → Shipped</p>
+      <p style="opacity:0.8;font-size:15px;">Your next feature ships itself.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GET THE REPO -->
+<div class="section section-cream">
+  <div class="section-inner" style="text-align:center;">
+    <p class="label">Get GStack</p>
+    <h2>Get Access To All 23 AI Agents</h2>
+    <p style="max-width:520px;margin:0 auto 28px;">These are the exact tools Gary Tan uses across his portfolio companies — automating 90% of the day-to-day ops. Completely free and open source.</p>
+    <a href="https://github.com/garrytan/gstack" target="_blank" class="cta-btn">Get GStack on GitHub →</a>
+  </div>
+</div>
+
+<!-- WORK WITH ME -->
+<div class="section section-red">
+  <div class="section-inner">
+    <p class="label">Work With Me</p>
+    <h2>Learn AI With Unnati</h2>
+    <p>I teach founders and creators how to actually use AI tools — not just talk about them. Follow along on Instagram for daily Claude Code tips, walkthroughs, and the setups that save hours every week.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;">
+      <a href="https://www.instagram.com/aiwithunnati" target="_blank" class="cta-btn outline">Follow @aiwithunnati →</a>
+      <a href="https://github.com/garrytan/gstack" target="_blank" class="cta-btn">Star GStack →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Guide by <strong>Unnati Tripathi</strong> · <a href="https://www.instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a></p>
+  <p style="margin-top:6px;">GStack by <strong>Gary Tan</strong> · <a href="https://github.com/garrytan/gstack" target="_blank">github.com/garrytan/gstack</a></p>
+  <p style="margin-top:16px;">© 2026 Unnati Tripathi. All rights reserved.</p>
+</footer>
+
+<script>
+  function copyCode(btn) {
+    const pre = btn.closest('.code-wrap').querySelector('pre');
+    const text = pre.innerText.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
