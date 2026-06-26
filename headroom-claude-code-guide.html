@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headroom + Claude Code — Setup Guide by Unnati Tripathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#F5EAD0;color:#1A1A1A;line-height:1.6}
+    a{text-decoration:none}
+    .hr-hdr{background:#F5EAD0;padding:18px 32px;border-bottom:2px solid #1A1A1A;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    .hr-brand{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:#C41515;text-transform:uppercase}
+    .hr-ig{display:inline-flex;align-items:center;gap:6px;background:#C41515;color:#ffffff;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .hr-ig:hover{opacity:.88}
+    .hr-hero{background:#C41515;padding:56px 32px 48px;color:#ffffff}
+    .hr-eyebrow-badge{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;background:#ffffff;color:#C41515;display:inline-block;padding:4px 12px;margin-bottom:18px;border-radius:2px}
+    .hr-h1{font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,68px);line-height:1.05;text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;color:#ffffff}
+    .hr-hero-sub{font-size:17px;line-height:1.75;max-width:640px;margin-bottom:32px;color:#ffffff}
+    .hr-btn-white{display:inline-flex;align-items:center;gap:10px;background:#ffffff;color:#C41515;padding:15px 28px;font-family:'Anton',sans-serif;font-size:15px;letter-spacing:1px;text-transform:uppercase;border-radius:4px;cursor:pointer}
+    .hr-btn-white:hover{opacity:.9}
+    .hr-sect-cream{background:#F5EAD0;padding:48px 32px;color:#1A1A1A}
+    .hr-sect-white{background:#ffffff;padding:48px 32px;color:#1A1A1A;border-top:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.1)}
+    .hr-sect-red{background:#C41515;padding:48px 32px;color:#ffffff}
+    .hr-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;color:#888888}
+    .hr-sect-red .hr-eyebrow{color:rgba(255,255,255,.75)}
+    .hr-h2{font-family:'Anton',sans-serif;font-size:clamp(28px,4vw,44px);text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;line-height:1.1;color:#1A1A1A}
+    .hr-sect-red .hr-h2{color:#ffffff}
+    .hr-callout{background:rgba(0,0,0,.06);border-left:4px solid #1A1A1A;padding:18px 22px;border-radius:0 6px 6px 0;margin-bottom:26px}
+    .hr-callout p{font-size:15px;line-height:1.8;color:#1A1A1A}
+    .hr-pill{display:inline-block;background:rgba(196,21,21,.12);color:#C41515;padding:3px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-right:6px;margin-bottom:6px}
+    .hr-step{background:#ffffff;border-radius:8px;border:1.5px solid rgba(0,0,0,.1);padding:28px;margin-bottom:22px;position:relative;max-width:800px}
+    .hr-step-num{font-family:'Anton',sans-serif;font-size:56px;color:#C41515;line-height:1;opacity:.1;position:absolute;top:14px;right:20px}
+    .hr-step-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C41515;margin-bottom:6px}
+    .hr-step-title{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;color:#1A1A1A}
+    .hr-step-desc{font-size:14px;line-height:1.75;color:#444444;margin-bottom:14px}
+    .hr-code{position:relative;background:#1A1A1A;border-radius:6px;padding:20px 60px 20px 22px;margin-top:8px}
+    .hr-code pre{font-family:'Courier New',monospace;font-size:13px;color:#E8E8E8;white-space:pre-wrap;line-height:1.75}
+    .hr-code .cm{color:#777777}
+    .hr-copy{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#dddddd;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;font-family:'Inter',sans-serif}
+    .hr-copy:hover{background:rgba(255,255,255,.2)}
+    .hr-copy.ok{background:rgba(0,180,80,.3);color:#7fffb4;border-color:rgba(0,180,80,.4)}
+    .hr-opt{display:inline-block;background:#e8f4e8;color:#2d7a2d;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+    .hr-note{background:rgba(196,21,21,.06);border:1px solid rgba(196,21,21,.2);border-radius:6px;padding:14px 18px;font-size:13px;color:#333333;margin-top:12px;line-height:1.65}
+    .hr-note strong{color:#C41515}
+    .hr-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:22px}
+    .hr-stat{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:20px;text-align:center}
+    .hr-stat-num{font-family:'Anton',sans-serif;font-size:42px;letter-spacing:1px;color:#ffffff}
+    .hr-stat-label{font-size:12px;color:rgba(255,255,255,.8);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+    .hr-gh-btn{display:inline-flex;align-items:center;gap:10px;background:#C41515;color:#ffffff;padding:15px 28px;border-radius:6px;font-family:'Anton',sans-serif;font-size:15px;letter-spacing:1px;text-transform:uppercase;margin-top:22px;cursor:pointer}
+    .hr-gh-btn:hover{opacity:.88}
+    .hr-divider{height:2px;background:#1A1A1A;margin:0}
+    .hr-rdivider{height:3px;background:#C41515}
+    .hr-footer{background:#F5EAD0;color:#1A1A1A;padding:40px 32px;text-align:center;border-top:2px solid #1A1A1A}
+    .hr-footer-brand{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:2px;color:#C41515;text-transform:uppercase;margin-bottom:10px;display:block}
+    .hr-footer-ig{display:inline-flex;align-items:center;gap:6px;color:#1A1A1A;font-weight:700;font-size:14px;margin-bottom:16px}
+    .hr-footer-ig:hover{color:#C41515}
+    .hr-footer-copy{font-size:12px;color:#555555;letter-spacing:.5px}
+    .hr-repo-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:20px}
+    .hr-repo-links a{font-size:13px;color:#C41515;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    code.ic{background:#f0f0f0;color:#1A1A1A;padding:2px 7px;border-radius:3px;font-size:13px;font-family:'Courier New',monospace}
+    svg.icon{width:16px;height:16px;vertical-align:-2px;fill:currentColor;display:inline-block}
+  </style>
+</head>
+<body>
+
+  <header class="hr-hdr">
+    <span class="hr-brand">Learn AI with Unnati</span>
+    <a href="https://instagram.com/aiwithunnati" target="_blank" class="hr-ig">
+      &#x1F4F7; @aiwithunnati
+    </a>
+  </header>
+
+  <section class="hr-hero">
+    <div class="hr-eyebrow-badge">Claude Code</div>
+    <h1 class="hr-h1">Cut 60–95% of Your<br>Token Usage —<br>Zero Code Changes</h1>
+    <p class="hr-hero-sub">Headroom compresses everything Claude Code reads — tool outputs, logs, RAG chunks, files, conversation history — before it hits the LLM. Same answers. A fraction of the tokens.</p>
+    <a href="https://github.com/headroomlabs-ai/headroom" target="_blank" class="hr-btn-white">
+      &#11088; View on GitHub &rarr;
+    </a>
+  </section>
+
+  <div class="hr-rdivider"></div>
+
+  <section class="hr-sect-cream">
+    <div class="hr-eyebrow">Why It Works</div>
+    <h2 class="hr-h2">What Headroom Does</h2>
+    <div class="hr-callout">
+      <p>Claude Code burns tokens reading tool outputs, file contents, and long conversation history. Headroom sits between your agent and the LLM, compressing all of that using 6 algorithms — JSON, AST, text, image — before it's sent. Your data stays local. The model gets the same signal at a fraction of the size.</p>
+    </div>
+    <div>
+      <span class="hr-pill">Library</span>
+      <span class="hr-pill">Proxy Mode</span>
+      <span class="hr-pill">Agent Wrap</span>
+      <span class="hr-pill">MCP Server</span>
+      <span class="hr-pill">Cross-agent Memory</span>
+      <span class="hr-pill">Reversible (CCR)</span>
+    </div>
+  </section>
+
+  <div class="hr-divider"></div>
+
+  <section class="hr-sect-white">
+    <div class="hr-eyebrow">Step-by-Step Setup</div>
+    <h2 class="hr-h2" style="color:#1A1A1A">Set Up Headroom in Claude Code</h2>
+
+    <div class="hr-step">
+      <div class="hr-step-num">1</div>
+      <div class="hr-step-label">Step 1</div>
+      <div class="hr-step-title">Check Your Python Version</div>
+      <p class="hr-step-desc">Headroom requires Python 3.10+. On macOS the system Python (3.9) is too old — install 3.13 from python.org if needed.</p>
+      <div class="hr-code">
+        <pre id="c1">python3 --version
+<span class="cm"># Need 3.10 or higher</span>
+<span class="cm"># macOS: install Python 3.13 from python.org if below 3.10</span></pre>
+        <button class="hr-copy" onclick="cp('c1',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">2</div>
+      <div class="hr-step-label">Step 2</div>
+      <div class="hr-step-title">Install Headroom</div>
+      <p class="hr-step-desc">Install with the <code class="ic">[all]</code> extra to get every compressor, the proxy, MCP server, and memory features.</p>
+      <div class="hr-code">
+        <pre id="c2">pip install "headroom-ai[all]"
+
+<span class="cm"># On macOS with Python 3.13 specifically:</span>
+/usr/local/bin/python3.13 -m pip install "headroom-ai[all]"
+
+<span class="cm"># With pipx (recommended for global CLI tools):</span>
+pipx install --python python3.13 "headroom-ai[all]"</pre>
+        <button class="hr-copy" onclick="cp('c2',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">3</div>
+      <div class="hr-step-label">Step 3</div>
+      <div class="hr-step-title">Add Headroom to Your PATH</div>
+      <p class="hr-step-desc">The <code class="ic">headroom</code> CLI installs into Python's bin directory. Add it so you can run it from anywhere.</p>
+      <div class="hr-code">
+        <pre id="c3"><span class="cm"># Add to ~/.zshrc or ~/.bashrc:</span>
+export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:$PATH"
+
+<span class="cm"># Reload your shell:</span>
+source ~/.zshrc
+
+<span class="cm"># Verify:</span>
+headroom --version</pre>
+        <button class="hr-copy" onclick="cp('c3',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">4</div>
+      <div class="hr-step-label">Step 4 — Main Step</div>
+      <div class="hr-step-title">Wrap Claude Code</div>
+      <p class="hr-step-desc">One command starts the Headroom proxy and launches Claude Code through it. Token compression happens automatically — no config needed.</p>
+      <div class="hr-code">
+        <pre id="c4">headroom wrap claude
+
+<span class="cm"># With cross-agent memory:</span>
+headroom wrap claude --memory
+
+<span class="cm"># With code graph (better code search compression):</span>
+headroom wrap claude --memory --code-graph
+
+<span class="cm"># For 1M context window:</span>
+headroom wrap claude --1m</pre>
+        <button class="hr-copy" onclick="cp('c4',this)">Copy</button>
+      </div>
+      <div class="hr-note"><strong>What this does:</strong> Headroom starts a local proxy on port 8787, sets ANTHROPIC_BASE_URL through it, then launches Claude Code. Prompts, tool outputs, and file reads are compressed before reaching Anthropic's API. Your data never leaves your machine.</div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">5</div>
+      <div class="hr-step-label">Step 5 <span class="hr-opt">Optional</span></div>
+      <div class="hr-step-title">Install as MCP Server</div>
+      <p class="hr-step-desc">Adds Headroom as a native MCP tool inside Claude Code — unlocks <code class="ic">headroom_compress</code>, <code class="ic">headroom_retrieve</code>, and <code class="ic">headroom_stats</code>.</p>
+      <div class="hr-code">
+        <pre id="c5">headroom mcp install
+
+<span class="cm"># Verify it registered:</span>
+claude mcp list</pre>
+        <button class="hr-copy" onclick="cp('c5',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">6</div>
+      <div class="hr-step-label">Step 6 <span class="hr-opt">Optional</span></div>
+      <div class="hr-step-title">Enable Output Token Reduction</div>
+      <p class="hr-step-desc">Cuts what Claude writes back too. On Opus-class models output costs 5x input — this adds up fast.</p>
+      <div class="hr-code">
+        <pre id="c6"><span class="cm"># Add to ~/.zshrc:</span>
+export HEADROOM_OUTPUT_SHAPER=1
+
+<span class="cm"># Let Headroom learn your preferred verbosity from past sessions:</span>
+headroom learn --verbosity
+headroom learn --verbosity --apply</pre>
+        <button class="hr-copy" onclick="cp('c6',this)">Copy</button>
+      </div>
+    </div>
+
+    <div class="hr-step">
+      <div class="hr-step-num">7</div>
+      <div class="hr-step-label">Step 7</div>
+      <div class="hr-step-title">Check Your Savings</div>
+      <p class="hr-step-desc">After a few sessions, see exactly how many tokens you've saved.</p>
+      <div class="hr-code">
+        <pre id="c7">headroom perf
+headroom dashboard
+headroom output-savings</pre>
+        <button class="hr-copy" onclick="cp('c7',this)">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="hr-divider"></div>
+
+  <section class="hr-sect-red">
+    <div class="hr-eyebrow">Proof It Works</div>
+    <h2 class="hr-h2">Real Savings on Real Workloads</h2>
+    <div class="hr-stats">
+      <div class="hr-stat"><div class="hr-stat-num">92%</div><div class="hr-stat-label">Code search</div></div>
+      <div class="hr-stat"><div class="hr-stat-num">92%</div><div class="hr-stat-label">SRE debugging</div></div>
+      <div class="hr-stat"><div class="hr-stat-num">73%</div><div class="hr-stat-label">Issue triage</div></div>
+      <div class="hr-stat"><div class="hr-stat-num">47%</div><div class="hr-stat-label">Codebase explore</div></div>
+    </div>
+    <p style="font-size:13px;color:rgba(255,255,255,.8);margin-top:18px;line-height:1.7">97% accuracy on BFCL tool-use benchmark at 32% compression. 100% match on GSM8K math benchmarks.</p>
+  </section>
+
+  <div class="hr-divider"></div>
+
+  <section class="hr-sect-cream" style="text-align:center">
+    <div class="hr-eyebrow" style="text-align:center">Source</div>
+    <h2 class="hr-h2" style="text-align:center;color:#1A1A1A">Get the Repo</h2>
+    <p style="font-size:16px;line-height:1.75;max-width:540px;margin:0 auto;color:#1A1A1A">Everything is open-source on GitHub. Star the repo, read the docs, join the Discord.</p>
+    <a href="https://github.com/headroomlabs-ai/headroom" target="_blank" class="hr-gh-btn">
+      &#11088; github.com/headroomlabs-ai/headroom &rarr;
+    </a>
+    <div class="hr-repo-links">
+      <a href="https://headroom-docs.vercel.app/docs" target="_blank">Read the Docs</a>
+      <a href="https://pypi.org/project/headroom-ai/" target="_blank">View on PyPI</a>
+      <a href="https://discord.gg/yRmaUNpsPJ" target="_blank">Join Discord</a>
+    </div>
+  </section>
+
+  <div class="hr-divider"></div>
+
+  <footer class="hr-footer">
+    <span class="hr-footer-brand">Unnati Tripathi</span>
+    <br>
+    <a href="https://instagram.com/aiwithunnati" target="_blank" class="hr-footer-ig">
+      &#x1F4F7; @aiwithunnati
+    </a>
+    <div class="hr-footer-copy">© 2026 Unnati Tripathi. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function cp(id, btn) {
+      var text = document.getElementById(id).innerText
+        .split('\n')
+        .filter(function(l){ return !l.trim().startsWith('#'); })
+        .join('\n')
+        .trim();
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        btn.classList.add('ok');
+        setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
