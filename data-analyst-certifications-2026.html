@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 Free Data Analyst Certifications 2026 | AI with Unnati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #C41B1B;
+      --red-dark:  #9E1515;
+      --cream:     #F5F0E4;
+      --cream-mid: #EDE7D8;
+      --cream-dk:  #DDD7C8;
+      --black:     #1A1A1A;
+      --white:     #FFFFFF;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    header {
+      background: var(--cream);
+      padding: 22px 24px 18px;
+      text-align: center;
+      border-bottom: 2px solid var(--red);
+    }
+    .brand {
+      font-family: 'Anton', sans-serif;
+      font-size: 30px;
+      letter-spacing: 3px;
+      color: var(--red);
+      text-transform: uppercase;
+    }
+    .sub-brand {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.55;
+      margin-top: 4px;
+    }
+
+    /* ─── HERO ───────────────────────────────── */
+    .hero {
+      background: var(--red);
+      padding: 52px 24px 48px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 4px 14px;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,0.85);
+    }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 46px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .hero h1 span {
+      display: block;
+      font-size: 36px;
+      opacity: 0.88;
+    }
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.92;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 28px;
+      display: block;
+    }
+    .stat-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* ─── ORDER BANNER ───────────────────────── */
+    .order-banner {
+      background: var(--black);
+      padding: 16px 24px;
+      text-align: center;
+    }
+    .order-banner p {
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .order-banner span {
+      color: var(--red);
+    }
+
+    /* ─── CARDS WRAPPER ──────────────────────── */
+    .cards-section {
+      background: var(--red);
+      padding: 28px 18px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* ─── SINGLE CARD ────────────────────────── */
+    .card {
+      background: var(--cream);
+      padding: 28px 22px 24px;
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .step-badge {
+      font-family: 'Anton', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--white);
+      background: var(--red);
+      padding: 4px 10px;
+      flex-shrink: 0;
+    }
+    .card-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .card h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .provider-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-left: 3px solid var(--red);
+      padding: 3px 10px 3px 8px;
+      background: var(--cream-mid);
+      margin-bottom: 14px;
+      color: var(--black);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: var(--black);
+      color: var(--cream);
+    }
+    .tag.free { background: #1D6B1D; color: #fff; }
+    .tag.labs { background: var(--red); color: #fff; }
+
+    .insight-box {
+      background: var(--cream-mid);
+      border-left: 4px solid var(--red);
+      padding: 13px 14px;
+      margin-bottom: 14px;
+    }
+    .insight-box p {
+      font-size: 14px;
+      font-style: italic;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .card-body {
+      font-size: 14.5px;
+      color: #333;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .learn-list {
+      list-style: none;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--cream-dk);
+    }
+    .learn-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      font-size: 13.5px;
+      color: var(--black);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--cream-dk);
+    }
+    .learn-list li::before {
+      content: "→";
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .enroll-btn {
+      display: block;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 20px;
+      transition: background 0.2s ease;
+    }
+    .enroll-btn:hover { background: var(--red-dark); }
+
+    /* ─── TIPS SECTION ───────────────────────── */
+    .tips-section {
+      background: var(--cream);
+      padding: 40px 20px;
+    }
+    .tips-header {
+      font-family: 'Anton', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .tips-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+    .tip-card {
+      background: var(--cream-mid);
+      border-left: 4px solid var(--red);
+      padding: 20px 18px;
+      margin-bottom: 16px;
+    }
+    .tip-card .tip-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .tip-card h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .tip-card p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.65;
+    }
+
+    /* ─── FOLLOW CTA ──────────────────────────── */
+    .follow-section {
+      background: var(--red);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--white);
+    }
+    .follow-section .f-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+    .follow-section h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+    .follow-section p {
+      font-size: 15px;
+      opacity: 0.9;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .follow-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--red);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 28px;
+      transition: opacity 0.2s;
+    }
+    .follow-btn:hover { opacity: 0.88; }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    footer {
+      background: var(--black);
+      color: var(--cream);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    footer .f-brand {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    footer .f-handle {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 14px;
+    }
+    footer .f-copy {
+      font-size: 11px;
+      opacity: 0.4;
+      letter-spacing: 0.5px;
+    }
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin: 12px auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">AI with Unnati</div>
+  <div class="sub-brand">@aiwithunnati &nbsp;·&nbsp; by Unnati Tripathi</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Free Guide · Data Careers 2026</div>
+  <h1>
+    5 FREE Certifications
+    <span>to Land a Data Analyst Job</span>
+  </h1>
+  <p class="hero-desc">
+    No paid courses. No excuses. Just the exact certifications hiring managers look for in 2026 — all free, all beginner-friendly, all worth your time.
+  </p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">5</span>
+      <span class="stat-lbl">Certificates</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">₹0</span>
+      <span class="stat-lbl">Total Cost</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">100%</span>
+      <span class="stat-lbl">Beginner Friendly</span>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER BANNER -->
+<div class="order-banner">
+  <p>Do them in this order — <span>each one builds on the last</span></p>
+</div>
+
+<!-- COURSE CARDS -->
+<div class="cards-section">
+
+  <!-- 01: Great Learning -->
+  <div class="card">
+    <div class="card-top">
+      <span class="step-badge">STEP 01</span>
+      <span class="card-eyebrow">Start Here · Excel Foundation</span>
+    </div>
+    <h2>Excel for Beginners</h2>
+    <div class="provider-tag">Great Learning × Microsoft</div>
+    <div class="tags">
+      <span class="tag free">FREE</span>
+      <span class="tag">6.75 Hours</span>
+      <span class="tag">Beginner</span>
+      <span class="tag">1.7M+ Learners</span>
+    </div>
+    <div class="insight-box">
+      <p>"Every single data analyst job description says Excel. This is the fastest way to check that box — free, with a Microsoft-backed certificate attached to your name."</p>
+    </div>
+    <p class="card-body">
+      Covers everything from cell referencing and table creation to IF-ELSE logic and date functions. Real-world business scenarios included so you understand how to apply each skill on the job.
+    </p>
+    <ul class="learn-list">
+      <li>VLOOKUP, Pivot Tables & essential formulas</li>
+      <li>Data sorting, filtering & cleaning techniques</li>
+      <li>IF / IF-ELSE conditions for data decisions</li>
+      <li>Date & time functions for business analysis</li>
+      <li>Microsoft + Great Learning certificate on completion</li>
+    </ul>
+    <a class="enroll-btn" href="https://www.mygreatlearning.com/academy/learn-for-free/courses/excel-for-beginners" target="_blank">
+      Enroll Free → Great Learning
+    </a>
+  </div>
+
+  <!-- 02: Cisco -->
+  <div class="card">
+    <div class="card-top">
+      <span class="step-badge">STEP 02</span>
+      <span class="card-eyebrow">Core Skills · Full Analyst Stack</span>
+    </div>
+    <h2>Data Analytics Essentials</h2>
+    <div class="provider-tag">Cisco Networking Academy</div>
+    <div class="tags">
+      <span class="tag free">FREE</span>
+      <span class="tag">30 Hours</span>
+      <span class="tag labs">29 Labs</span>
+      <span class="tag">Self-Paced</span>
+      <span class="tag">Beginner</span>
+    </div>
+    <div class="insight-box">
+      <p>"Excel + SQL + Tableau in one free course. This is as close as it gets to a complete data analyst toolkit without paying a rupee. The 29 hands-on labs are what make it real."</p>
+    </div>
+    <p class="card-body">
+      10 structured modules with hands-on labs and a real portfolio project. You analyze a movies dataset from scratch — something you can actually show in interviews. Cisco badges count on LinkedIn.
+    </p>
+    <ul class="learn-list">
+      <li>Excel: pivot tables, VLOOKUP, data transformation</li>
+      <li>SQL: querying relational databases from zero</li>
+      <li>Tableau: building dashboards & visual reports</li>
+      <li>Statistics fundamentals for data analysis</li>
+      <li>Data ethics & bias — now required knowledge</li>
+      <li>Cisco digital badges + certificate on LinkedIn</li>
+    </ul>
+    <a class="enroll-btn" href="https://www.netacad.com/courses/data-analytics-essentials" target="_blank">
+      Enroll Free → Cisco Netacad
+    </a>
+  </div>
+
+  <!-- 03: freeCodeCamp -->
+  <div class="card">
+    <div class="card-top">
+      <span class="step-badge">STEP 03</span>
+      <span class="card-eyebrow">Python Stack · Real Projects</span>
+    </div>
+    <h2>Data Analysis with Python</h2>
+    <div class="provider-tag">freeCodeCamp</div>
+    <div class="tags">
+      <span class="tag free">FREE</span>
+      <span class="tag">Self-Paced</span>
+      <span class="tag">Project-Based</span>
+      <span class="tag">Certificate</span>
+    </div>
+    <div class="insight-box">
+      <p>"Python is the #1 skill in data analyst job postings in 2026. Pandas + NumPy + Matplotlib is the exact stack used in real data jobs at every company you want to work at."</p>
+    </div>
+    <p class="card-body">
+      Covers the full Python data workflow from Jupyter Notebooks to complex data manipulation. You complete 5 real projects — not toy exercises — that go directly onto your resume and GitHub.
+    </p>
+    <ul class="learn-list">
+      <li>Jupyter Notebooks setup & workflow</li>
+      <li>NumPy: arrays, operations & algebra</li>
+      <li>Pandas: DataFrames, indexing & conditional selection</li>
+      <li>Data cleaning & importing/exporting data</li>
+      <li>Matplotlib & Seaborn for visualization</li>
+      <li>5 real-world projects + freeCodeCamp certificate</li>
+    </ul>
+    <a class="enroll-btn" href="https://www.freecodecamp.org/learn/data-analysis-with-python" target="_blank">
+      Enroll Free → freeCodeCamp
+    </a>
+  </div>
+
+  <!-- 04: Google AI -->
+  <div class="card">
+    <div class="card-top">
+      <span class="step-badge">STEP 04</span>
+      <span class="card-eyebrow">Mandatory in 2026 · AI Skills</span>
+    </div>
+    <h2>Google AI Essentials</h2>
+    <div class="provider-tag">Google</div>
+    <div class="tags">
+      <span class="tag free">FREE</span>
+      <span class="tag">~21 Hours</span>
+      <span class="tag">Beginner</span>
+      <span class="tag">Google Certificate</span>
+    </div>
+    <div class="insight-box">
+      <p>"AI is now in almost every data analyst job description. Employers don't just want people who know data — they want people who use AI to do it faster. This is that course."</p>
+    </div>
+    <p class="card-body">
+      Taught directly by Google AI experts. Covers how to use AI tools to generate insights, automate repetitive tasks, draft reports, and work responsibly with AI in a professional setting — practical, not theoretical.
+    </p>
+    <ul class="learn-list">
+      <li>Introduction to Google AI Essentials</li>
+      <li>AI and the future of work — what changes, what stays</li>
+      <li>Prompting AI tools for data and analysis tasks</li>
+      <li>Using AI for research, organization & content</li>
+      <li>Responsible AI practices for the workplace</li>
+      <li>Official Google certificate on completion</li>
+    </ul>
+    <a class="enroll-btn" href="https://grow.google/certificates/ai-essentials" target="_blank">
+      Enroll Free → Google
+    </a>
+  </div>
+
+  <!-- 05: Microsoft Power BI -->
+  <div class="card">
+    <div class="card-top">
+      <span class="step-badge">STEP 05</span>
+      <span class="card-eyebrow">Advanced · Industry Standard</span>
+    </div>
+    <h2>Data Analyst Career Path</h2>
+    <div class="provider-tag">Microsoft Learn · Power BI</div>
+    <div class="tags">
+      <span class="tag free">FREE</span>
+      <span class="tag">2 Milestones</span>
+      <span class="tag">Self-Paced</span>
+      <span class="tag">Official Microsoft</span>
+    </div>
+    <div class="insight-box">
+      <p>"Power BI is the most-requested visualization tool in Indian data analyst job listings in 2026. This official Microsoft path teaches you exactly how companies use it — the way recruiters expect."</p>
+    </div>
+    <p class="card-body">
+      Official Microsoft Data Analyst career path. Takes you from preparing raw data to building advanced dashboards and deploying analytics assets using Power BI — the industry standard tool for business intelligence.
+    </p>
+    <ul class="learn-list">
+      <li>Prepare & clean data for analysis in Power BI</li>
+      <li>Model data for scalable analytics</li>
+      <li>Build interactive dashboards & visualizations</li>
+      <li>Deploy and maintain analytics reports</li>
+      <li>Real business reporting scenarios throughout</li>
+      <li>Microsoft Learn official certificate on completion</li>
+    </ul>
+    <a class="enroll-btn" href="https://learn.microsoft.com/en-us/training/career-paths/data-analyst" target="_blank">
+      Enroll Free → Microsoft Learn
+    </a>
+  </div>
+
+</div>
+
+<!-- TIPS SECTION -->
+<div class="tips-section">
+  <p class="tips-header">Pro Tips</p>
+  <h2 class="tips-title">Make These Certs Actually Work For You</h2>
+
+  <div class="tip-card">
+    <div class="tip-label">On Your Resume</div>
+    <h3>Add Every Certificate to LinkedIn</h3>
+    <p>Under "Licenses & Certifications" — add each one with the issuing organization (Microsoft, Cisco, Google, freeCodeCamp, Microsoft) and 2026 as the year. Recruiters actively filter by certifications. These 5 will make your profile appear in searches.</p>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-label">On Your Resume</div>
+    <h3>List the Skills, Not Just the Courses</h3>
+    <p>Don't write "Completed Excel course." Write: "Excel — VLOOKUP, Pivot Tables, data cleaning (Great Learning × Microsoft)." Be specific about what you can do. Hiring managers scan for tool names, not course names.</p>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-label">For Interviews</div>
+    <h3>Use the Projects as Portfolio Proof</h3>
+    <p>The Cisco course gives you a movies dataset project. The freeCodeCamp course gives you 5 Python projects. Put them on GitHub. Link to them in your resume. When an interviewer asks "show me something you've built" — you have an answer.</p>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-label">The Stack You'll Have</div>
+    <h3>Excel → SQL → Python → Power BI → AI</h3>
+    <p>After completing all 5 in order, your resume covers the full 2026 data analyst stack. That is: Excel, SQL, Python, Pandas, NumPy, Tableau, Power BI, and AI tools. Most entry-level job descriptions require 3-4 of these. You'll have all of them.</p>
+  </div>
+</div>
+
+<!-- FOLLOW CTA -->
+<div class="follow-section">
+  <p class="f-label">More Free Resources</p>
+  <h2>Follow for More Free Guides Like This</h2>
+  <p>AI tools, data career tips, and free resources dropped every week — all designed to help you grow without spending money.</p>
+  <a class="follow-btn" href="https://www.instagram.com/aiwithunnati" target="_blank">
+    Follow @aiwithunnati →
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">AI with Unnati</div>
+  <div class="f-handle">@aiwithunnati on Instagram</div>
+  <div class="divider"></div>
+  <div class="f-copy">© 2026 Unnati Tripathi · aiwithunnati · All rights reserved.</div>
+</footer>
+
+</body>
+</html>
