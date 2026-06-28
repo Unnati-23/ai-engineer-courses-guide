@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Engineering — The Complete Guide by Unnati Tripathi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --red: #C41E1E;
+            --dark-red: #9B1515;
+            --black: #111111;
+            --cream: #F5EEE0;
+            --light-cream: #FDF8F0;
+            --white: #FFFFFF;
+            --gray: #555555;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--black);
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--red);
+            letter-spacing: 0.08em;
+        }
+        .nav-links { display: flex; gap: 0; }
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.65);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-left: 2rem;
+            transition: color 0.15s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        @media (max-width: 640px) { .nav-links { display: none; } }
+
+        /* HERO */
+        .hero {
+            background: var(--red);
+            color: var(--white);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: 'LOOP';
+            position: absolute;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30vw;
+            color: rgba(0,0,0,0.08);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        .hero-tag {
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.6);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 13vw, 9rem);
+            line-height: 0.9;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .hero-sub {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .hero p {
+            font-size: 1rem;
+            max-width: 540px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.88;
+            line-height: 1.75;
+            position: relative;
+        }
+        .hero-meta {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            position: relative;
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 2rem;
+        }
+        .toc .inner { max-width: 800px; margin: 0 auto; }
+        .toc-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        .toc h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        .toc-list { list-style: none; }
+        .toc-list li {
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        .toc-list li:last-child { border-bottom: none; }
+        .toc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--red);
+            min-width: 2rem;
+        }
+        .toc-list a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        .toc-list a:hover { color: var(--white); }
+        .toc-badge {
+            margin-left: auto;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+        .tb-all { background: rgba(196,30,30,0.25); color: #ff8080; }
+        .tb-beg { background: rgba(39,174,96,0.25); color: #6ddf9a; }
+        .tb-mid { background: rgba(243,156,18,0.25); color: #f7c96e; }
+        .tb-dev { background: rgba(52,152,219,0.25); color: #7ec8f7; }
+
+        /* SECTION WRAPPERS */
+        .s-cream  { background: var(--light-cream); padding: 5rem 2rem; }
+        .s-white  { background: var(--white);       padding: 5rem 2rem; }
+        .s-red    { background: var(--red); color: var(--white); padding: 5rem 2rem; }
+        .s-black  { background: var(--black); color: var(--white); padding: 5rem 2rem; }
+        .inner    { max-width: 800px; margin: 0 auto; }
+
+        /* SECTION LABEL + HEADER */
+        .sec-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+        .s-red .sec-label, .s-black .sec-label { color: rgba(255,255,255,0.5); }
+        .sec-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            line-height: 1;
+            opacity: 0.1;
+            margin-bottom: -1.5rem;
+            display: block;
+        }
+        .s-red .sec-num, .s-black .sec-num { color: var(--white); opacity: 0.15; }
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            letter-spacing: 0.02em;
+            line-height: 0.95;
+            margin-bottom: 0.8rem;
+        }
+        h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+            margin-top: 2.2rem;
+        }
+        h4 {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            margin-top: 1.2rem;
+        }
+        p { font-size: 0.97rem; line-height: 1.78; margin-bottom: 1rem; }
+
+        /* DIVIDER */
+        .div-r { width: 50px; height: 4px; background: var(--red); margin: 1rem 0 1.8rem; }
+        .div-w { width: 50px; height: 4px; background: var(--white); margin: 1rem 0 1.8rem; }
+
+        /* QUOTE */
+        .quote {
+            border-left: 4px solid var(--red);
+            padding: 1rem 1.5rem;
+            margin: 1.8rem 0;
+            background: rgba(196,30,30,0.05);
+            border-radius: 0 6px 6px 0;
+        }
+        .s-red .quote, .s-black .quote {
+            border-left-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.07);
+        }
+        .quote p { font-size: 1.05rem; font-style: italic; margin: 0; line-height: 1.65; }
+        .quote-attr {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        /* CALLOUT */
+        .callout {
+            background: var(--cream);
+            border-left: 4px solid var(--red);
+            padding: 1.1rem 1.4rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.93rem;
+        }
+        .callout.on-dark {
+            background: rgba(255,255,255,0.07);
+            border-left-color: rgba(255,255,255,0.4);
+        }
+        .callout-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 0.35rem;
+        }
+        .callout.on-dark .callout-label { color: rgba(255,255,255,0.5); }
+
+        /* EVOLUTION TIMELINE */
+        .timeline { margin: 2rem 0; }
+        .tl-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 0.5rem;
+            align-items: stretch;
+        }
+        .tl-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 3rem;
+        }
+        .tl-dot {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--red);
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+        .tl-line {
+            width: 2px;
+            flex: 1;
+            background: rgba(196,30,30,0.2);
+            min-height: 2rem;
+        }
+        .tl-item:last-child .tl-line { display: none; }
+        .tl-content { padding-bottom: 1.5rem; }
+        .tl-era {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+            color: var(--red);
+            line-height: 1.2;
+        }
+        .tl-era.current { color: var(--black); }
+        .s-black .tl-era { color: #ff8080; }
+        .s-black .tl-era.current { color: var(--white); }
+        .s-black .tl-line { background: rgba(255,255,255,0.1); }
+        .s-black .tl-dot { background: var(--red); }
+
+        /* 5 PIECES CARDS */
+        .pieces-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+        .piece-card {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 1.4rem 1.6rem;
+            border-left: 5px solid var(--red);
+            position: relative;
+        }
+        .piece-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--red);
+            opacity: 0.15;
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            line-height: 1;
+        }
+        .piece-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.04em;
+            color: var(--black);
+            margin-bottom: 0.3rem;
+        }
+        .piece-tag {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.7rem;
+        }
+        .piece-desc { font-size: 0.92rem; margin-bottom: 0.5rem; color: #333; }
+        .piece-example {
+            font-size: 0.83rem;
+            background: rgba(0,0,0,0.05);
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            font-style: italic;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        /* COMPARISON TABLE */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.88rem;
+        }
+        .compare-table th {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .compare-table th:first-child { background: var(--red); }
+        .compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            vertical-align: top;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+        .check { color: #1A8040; font-weight: 700; }
+        .cross { color: #C41E1E; font-weight: 700; }
+
+        /* CODE BLOCK */
+        .code-block {
+            background: #111;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            overflow: hidden;
+        }
+        .code-header {
+            background: #1e1e1e;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .code-lang { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #666; }
+        .copy-btn {
+            background: var(--red);
+            color: white;
+            border: none;
+            padding: 0.28rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: opacity 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .copy-btn:hover { opacity: 0.8; }
+        .copy-btn.copied { background: #27AE60; }
+        .code-block code {
+            display: block;
+            padding: 1.1rem 1.4rem;
+            color: #ddd;
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.86rem;
+            line-height: 1.85;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* INLINE CODE */
+        .ic {
+            background: rgba(0,0,0,0.08);
+            padding: 0.1rem 0.45rem;
+            border-radius: 3px;
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.85em;
+        }
+        .on-dark .ic { background: rgba(255,255,255,0.12); }
+
+        /* LOOP ANATOMY */
+        .loop-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2rem 0;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255,255,255,0.06);
+            border-left: 3px solid rgba(255,255,255,0.15);
+            position: relative;
+        }
+        .flow-step:first-child { border-top-left-radius: 6px; border-top-right-radius: 6px; }
+        .flow-step:last-child { border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+        .flow-arrow {
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 1.1rem;
+            padding: 0.1rem 0;
+        }
+        .flow-icon { font-size: 1.3rem; min-width: 2rem; }
+        .flow-label { font-size: 0.9rem; font-weight: 600; }
+        .flow-desc { font-size: 0.8rem; opacity: 0.65; }
+
+        /* RESOURCE LINKS */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .resource-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.2rem 1.4rem;
+            text-decoration: none;
+            color: var(--white);
+            display: block;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .resource-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .resource-card-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 0.35rem;
+        }
+        .resource-card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.3rem;
+        }
+        .resource-card-desc { font-size: 0.83rem; opacity: 0.6; margin: 0; }
+
+        /* CTA */
+        .cta-box {
+            background: var(--red);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .cta-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        .cta-box p { color: rgba(255,255,255,0.85); margin-bottom: 1.2rem; font-size: 0.95rem; }
+        .cta-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--red);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: opacity 0.15s;
+        }
+        .cta-btn:hover { opacity: 0.88; }
+
+        /* LINK */
+        a.lnk { color: var(--red); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(196,30,30,0.3); transition: border-color 0.15s; }
+        a.lnk:hover { border-color: var(--red); }
+        a.lnk.w { color: var(--white); border-color: rgba(255,255,255,0.3); }
+        a.lnk.w:hover { border-color: var(--white); }
+
+        /* FOOTER */
+        footer {
+            background: #0a0a0a;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 0.06em;
+            color: var(--red);
+            margin-bottom: 0.4rem;
+        }
+        .footer-ig { font-size: 0.88rem; opacity: 0.55; margin-bottom: 0.3rem; }
+        .footer-ig a { color: var(--white); opacity: 1; text-decoration: none; }
+        .footer-ig a:hover { color: var(--red); }
+        .footer-copy { margin-top: 2.5rem; font-size: 0.75rem; opacity: 0.3; }
+        .footer-divider { width: 40px; height: 2px; background: var(--red); margin: 1.5rem auto; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-brand">AI WITH UNNATI</div>
+    <div class="nav-links">
+        <a href="#evolution">Evolution</a>
+        <a href="#what-is">What Is A Loop</a>
+        <a href="#five-pieces">5 Pieces</a>
+        <a href="#loops-running">Loops Running Loops</a>
+        <a href="#build">Build One</a>
+        <a href="#resources">Resources</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-tag">The Complete Guide · 2026</div>
+    <h1>LOOP<br>ENGINEERING</h1>
+    <div class="hero-sub">The shift that's changing everything for developers</div>
+    <p>Prompt eng → Context eng → Harness eng → Loop eng. Here's what changed at each step, what a loop actually is, and how to build one — from beginner to developer.</p>
+    <div class="hero-meta">By Unnati Tripathi &nbsp;·&nbsp; @aiwithunnati</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <div class="inner">
+        <div class="toc-label">What's Inside</div>
+        <h2>TABLE OF CONTENTS</h2>
+        <ul class="toc-list">
+            <li>
+                <span class="toc-num">01</span>
+                <a href="#evolution">The Evolution — Prompt → Context → Harness → Loop</a>
+                <span class="toc-badge tb-all">Everyone</span>
+            </li>
+            <li>
+                <span class="toc-num">02</span>
+                <a href="#what-is">What Is A Loop? Simple, No Jargon</a>
+                <span class="toc-badge tb-beg">Beginner</span>
+            </li>
+            <li>
+                <span class="toc-num">03</span>
+                <a href="#five-pieces">The 5 Pieces of Every Loop</a>
+                <span class="toc-badge tb-beg">Beginner+</span>
+            </li>
+            <li>
+                <span class="toc-num">04</span>
+                <a href="#loops-running">Loops Running Loops — Agent Teams</a>
+                <span class="toc-badge tb-mid">Intermediate</span>
+            </li>
+            <li>
+                <span class="toc-num">05</span>
+                <a href="#build">How To Actually Build One</a>
+                <span class="toc-badge tb-dev">Developer</span>
+            </li>
+            <li>
+                <span class="toc-num">06</span>
+                <a href="#resources">Resources & Next Steps</a>
+                <span class="toc-badge tb-all">Everyone</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- SECTION 1: EVOLUTION -->
+<div id="evolution" class="s-black">
+    <div class="inner on-dark">
+        <div class="sec-label">Section 01 — For Everyone</div>
+        <span class="sec-num">01</span>
+        <h2>THE EVOLUTION</h2>
+        <div class="div-w"></div>
+        <p>AI coding didn't stay still. In just a few years, the leverage point shifted four times. Each step made the previous one look primitive. Here's what actually changed.</p>
+
+        <div class="timeline" style="margin-top:2.5rem;">
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-dot" style="background:#666;"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-era">Prompt Engineering</div>
+                    <p style="opacity:0.65; font-size:0.9rem; margin-top:0.3rem;">You crafted clever prompts to get better answers from AI. Write better → get better output. One shot, one result. The human was doing all the thinking about <em>how to ask</em>.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-dot" style="background:#888;"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-era">Context Engineering</div>
+                    <p style="opacity:0.65; font-size:0.9rem; margin-top:0.3rem;">You realised what goes <em>around</em> the prompt matters more than the prompt itself. Docs, examples, system instructions, memory. Fill the context window with the right information and the model surprises you.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-dot" style="background:#aaa;"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-era">Harness Engineering</div>
+                    <p style="opacity:0.65; font-size:0.9rem; margin-top:0.3rem;">You stopped running AI manually and put it inside a framework. Claude Code, Codex, Cursor. The harness handles memory, tools, file access, and agent coordination. You write rules, not prompts.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-dot"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-era current" style="font-size:1.8rem;">→ Loop Engineering</div>
+                    <p style="font-size:0.93rem; margin-top:0.4rem; opacity:0.85;">You stop prompting entirely. You design the system that prompts the agent, runs it on a schedule, verifies the output, and loops again until the goal is complete. <strong style="color:white;">You are no longer in the loop. The loop runs without you.</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote" style="margin-top:2rem;">
+            <p>"I don't prompt Claude anymore. I have loops running that prompt Claude and figure out what to do. My job is to write loops."</p>
+            <div class="quote-attr">— Boris Cherny, Head of Claude Code at Anthropic</div>
+        </div>
+
+        <div class="quote">
+            <p>"You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents."</p>
+            <div class="quote-attr">— Peter Steinberger</div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: WHAT IS A LOOP -->
+<div id="what-is" class="s-red">
+    <div class="inner">
+        <div class="sec-label">Section 02 — Beginner</div>
+        <span class="sec-num">02</span>
+        <h2>WHAT IS A LOOP?</h2>
+        <div class="div-w"></div>
+
+        <div class="quote">
+            <p>Think of it like a night-shift employee who doesn't need managing. You give them a goal before you leave. They work through the night, check their own work, fix their mistakes, and leave a report on your desk by morning.</p>
+        </div>
+
+        <p>A <strong>loop</strong> is a small program that runs on a schedule with agent intelligence built in. Instead of typing a prompt and waiting for a reply, you define an <em>outcome</em> — and the loop figures out the steps, runs them, checks the result, and repeats until done.</p>
+
+        <h3>The Old Way vs The Loop Way</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0;">
+            <div style="background:rgba(0,0,0,0.15); padding:1.2rem; border-radius:6px;">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:0.7rem;">Old way</div>
+                <ul style="list-style:none; font-size:0.88rem; opacity:0.8;">
+                    <li style="padding:0.3rem 0;">→ You open ChatGPT</li>
+                    <li style="padding:0.3rem 0;">→ You write a prompt</li>
+                    <li style="padding:0.3rem 0;">→ You check the output</li>
+                    <li style="padding:0.3rem 0;">→ You fix errors</li>
+                    <li style="padding:0.3rem 0;">→ You send it back</li>
+                    <li style="padding:0.3rem 0; font-weight:700;">→ You are the loop</li>
+                </ul>
+            </div>
+            <div style="background:rgba(255,255,255,0.12); padding:1.2rem; border-radius:6px; border:1px solid rgba(255,255,255,0.2);">
+                <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:0.7rem;">Loop way</div>
+                <ul style="list-style:none; font-size:0.88rem; opacity:0.85;">
+                    <li style="padding:0.3rem 0;">→ You define the goal</li>
+                    <li style="padding:0.3rem 0;">→ The loop finds the work</li>
+                    <li style="padding:0.3rem 0;">→ AI generates output</li>
+                    <li style="padding:0.3rem 0;">→ AI verifies output</li>
+                    <li style="padding:0.3rem 0;">→ Loop runs again</li>
+                    <li style="padding:0.3rem 0; font-weight:700;">→ You get a report</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout on-dark">
+            <div class="callout-label">Key difference</div>
+            With ChatGPT, you remove yourself from the loop when you're satisfied. With loop engineering, you were never in the loop to begin with. The AI generates, the AI verifies, and it keeps running until the output is correct.
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: 5 PIECES -->
+<div id="five-pieces" class="s-cream">
+    <div class="inner">
+        <div class="sec-label">Section 03 — Beginner + Intermediate</div>
+        <span class="sec-num">03</span>
+        <h2>THE 5 PIECES OF EVERY LOOP</h2>
+        <div class="div-r"></div>
+        <p>Every powerful loop — no matter what tool you use — has these five components. Miss one and the loop breaks down.</p>
+
+        <div class="pieces-grid">
+
+            <div class="piece-card">
+                <span class="piece-num">1</span>
+                <div class="piece-title">Automation</div>
+                <span class="piece-tag">Finds the work</span>
+                <p class="piece-desc">The loop runs on a schedule — every hour, every day, every 15 minutes. It doesn't wait for you to start it. It wakes up, finds what needs doing, and begins.</p>
+                <div class="piece-example">Example: Every morning at 8am, the loop scans your GitHub issues for anything new, labelled or unassigned, and queues them for the agent.</div>
+            </div>
+
+            <div class="piece-card">
+                <span class="piece-num">2</span>
+                <div class="piece-title">Parallel Agents</div>
+                <span class="piece-tag">Work simultaneously</span>
+                <p class="piece-desc">Multiple agents work at the same time in isolated environments (called worktrees) so they can't break each other. One writes, one checks. Both run at once.</p>
+                <div class="piece-example">Example: While Agent A is fixing a bug, Agent B is already writing the test for it — in a separate branch that can't conflict.</div>
+            </div>
+
+            <div class="piece-card">
+                <span class="piece-num">3</span>
+                <div class="piece-title">Skills / Context</div>
+                <span class="piece-tag">Agents know your project</span>
+                <p class="piece-desc">The agent already has context about your codebase, your style, your conventions — loaded before it starts. You don't re-explain your project every time.</p>
+                <div class="piece-example">Example: A CLAUDE.md file in your project tells the agent which patterns to use, which files to touch, and what "done" looks like.</div>
+            </div>
+
+            <div class="piece-card">
+                <span class="piece-num">4</span>
+                <div class="piece-title">Connectors</div>
+                <span class="piece-tag">Agents plug into real tools</span>
+                <p class="piece-desc">The agent isn't just writing code — it's opening GitHub PRs, posting Slack updates, updating your CRM, sending emails. It reaches into your actual workflow.</p>
+                <div class="piece-example">Example: After fixing a bug, the loop opens a PR, assigns it, and posts a summary in your #dev Slack channel — without you touching anything.</div>
+            </div>
+
+            <div class="piece-card">
+                <span class="piece-num">5</span>
+                <div class="piece-title">Subagents</div>
+                <span class="piece-tag">One writes, one checks</span>
+                <p class="piece-desc">The maker/checker split. One subagent generates the output. A completely separate subagent reviews it with fresh eyes. The loop only exits when the checker approves.</p>
+                <div class="piece-example">Example: Agent A writes the code change. Agent B runs the tests, checks the diff, and either approves or sends it back with notes. Human sees only the approved result.</div>
+            </div>
+
+        </div>
+
+        <div class="callout" style="margin-top:1rem;">
+            <div class="callout-label">The result</div>
+            You're not in the middle checking outputs anymore. The AI generates, the AI verifies, and it keeps going until the goal is met. You get a report.
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: LOOPS RUNNING LOOPS -->
+<div id="loops-running" class="s-black">
+    <div class="inner on-dark">
+        <div class="sec-label">Section 04 — Intermediate</div>
+        <span class="sec-num">04</span>
+        <h2>LOOPS RUNNING LOOPS</h2>
+        <div class="div-w"></div>
+        <p>One loop can start other loops — controlling entire agent teams while you sleep. This is where things get powerful.</p>
+
+        <h3>How It Works</h3>
+        <p>Think of it as a company hierarchy — but made of AI. You have an <strong style="color:white;">orchestrator loop</strong> at the top that routes work to specialist loops below it. Each specialist loop is optimised for exactly one job.</p>
+
+        <div class="loop-flow">
+            <div class="flow-step" style="background:rgba(196,30,30,0.2); border-color:var(--red);">
+                <span class="flow-icon">🎯</span>
+                <div>
+                    <div class="flow-label">Orchestrator Loop</div>
+                    <div class="flow-desc">Runs daily. Checks what work exists. Decides which specialist loop to trigger. Verifies final outputs. Reports to you.</div>
+                </div>
+            </div>
+            <div class="flow-arrow">↓ triggers</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.5rem;">
+                <div class="flow-step">
+                    <span class="flow-icon">🐛</span>
+                    <div>
+                        <div class="flow-label">Bug Fix Loop</div>
+                        <div class="flow-desc">Scans issues, fixes bugs, opens PRs.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">🧪</span>
+                    <div>
+                        <div class="flow-label">Test Loop</div>
+                        <div class="flow-desc">Monitors CI failures, writes missing tests.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">📦</span>
+                    <div>
+                        <div class="flow-label">Dependency Loop</div>
+                        <div class="flow-desc">Updates packages, checks compatibility.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <span class="flow-icon">📝</span>
+                    <div>
+                        <div class="flow-label">Changelog Loop</div>
+                        <div class="flow-desc">Drafts release notes from git history.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flow-arrow">↓ results flow back up</div>
+            <div class="flow-step" style="background:rgba(255,255,255,0.05);">
+                <span class="flow-icon">📋</span>
+                <div>
+                    <div class="flow-label">You — Morning Report</div>
+                    <div class="flow-desc">PRs opened, bugs fixed, tests written. Here's what needs your decision.</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Real Use Cases</h3>
+        <div style="display:grid; gap:0.8rem; margin-top:1rem;">
+            <div class="callout on-dark">
+                <div class="callout-label">Content creator</div>
+                Researcher loop scrapes competitors → CMO loop writes scripts in your voice → Publisher loop posts and tracks → Analyst loop reports what worked → next loop scripts more of that.
+            </div>
+            <div class="callout on-dark">
+                <div class="callout-label">Developer</div>
+                Triage loop categorises issues → Bug loop fixes P1s → PR Babysitter loop watches CI → Changelog loop drafts release notes. All without you touching it.
+            </div>
+            <div class="callout on-dark">
+                <div class="callout-label">Business owner</div>
+                Lead research loop scores inbound leads → Sales prep loop writes briefing docs → Follow-up loop drafts emails → Analytics loop tracks what closed. You focus on the call.
+            </div>
+        </div>
+
+        <div class="quote" style="margin-top:2rem;">
+            <p>"In 12 months, this will be the difference between businesses running on compounding systems that are impossible to catch — and businesses that aren't."</p>
+            <div class="quote-attr">— Shaun Pervis</div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: HOW TO BUILD -->
+<div id="build" class="s-white">
+    <div class="inner">
+        <div class="sec-label">Section 05 — Developer</div>
+        <span class="sec-num">05</span>
+        <h2>HOW TO ACTUALLY BUILD ONE</h2>
+        <div class="div-r"></div>
+        <p>Both Claude Code and Codex now have all five loop primitives built in natively. Here's where to start.</p>
+
+        <h3>Claude Code vs Codex</h3>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Claude Code</th>
+                    <th>Codex CLI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Scheduling / Automations</td><td><span class="check">✓ Built in</span></td><td><span class="check">✓ Via GitHub Actions</span></td></tr>
+                <tr><td>Parallel agents / Worktrees</td><td><span class="check">✓ Native worktrees</span></td><td><span class="check">✓ Supported</span></td></tr>
+                <tr><td>Skills / Context (CLAUDE.md)</td><td><span class="check">✓ CLAUDE.md</span></td><td><span class="check">✓ AGENTS.md</span></td></tr>
+                <tr><td>Connectors (MCP)</td><td><span class="check">✓ Full MCP support</span></td><td><span class="check">✓ Supported</span></td></tr>
+                <tr><td>Subagents</td><td><span class="check">✓ Native</span></td><td><span class="check">✓ Native</span></td></tr>
+                <tr><td>Best for</td><td>Agentic loops, long tasks</td><td>Code-focused tasks, CI</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Start in 5 Minutes</h3>
+        <p>The easiest way to get started is the <strong>loop-engineering GitHub repo</strong> — it has 7 production-ready patterns you can run immediately with no clone required.</p>
+
+        <div class="callout" style="margin-bottom:1.5rem;">
+            <div class="callout-label">GitHub Repo</div>
+            <a href="https://github.com/cobusgreyling/loop-engineering" class="lnk" target="_blank">github.com/cobusgreyling/loop-engineering</a>
+            &nbsp;· ⭐ 3,400+ stars · MIT License
+        </div>
+
+        <p><strong>Step 1 — Scaffold your first loop (Daily Triage pattern):</strong></p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <code>npx @cobusgreyling/loop-init . --pattern daily-triage --tool claude-code</code>
+        </div>
+
+        <p><strong>Step 2 — Estimate token cost before you run:</strong></p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <code>npx @cobusgreyling/loop-cost --pattern daily-triage --level L1</code>
+        </div>
+
+        <p><strong>Step 3 — Audit your loop readiness score:</strong></p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <code>npx @cobusgreyling/loop-audit . --suggest</code>
+        </div>
+
+        <p><strong>Step 4 — Start in report-only mode first (safe):</strong></p>
+        <div class="code-block">
+            <div class="code-header">
+                <span class="code-lang">Claude Code</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <code>/loop 1d Run loop-triage. Update STATE.md. No auto-fix in week one.</code>
+        </div>
+
+        <h3>The 7 Production Patterns</h3>
+        <div style="display:grid; gap:0.6rem; margin-top:0.8rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>Daily Triage</strong> — categorise issues every day</span>
+                <span style="color:#888; font-size:0.78rem;">Low cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>PR Babysitter</strong> — watch CI every 15 minutes</span>
+                <span style="color:#888; font-size:0.78rem;">High cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>CI Sweeper</strong> — fix failing tests automatically</span>
+                <span style="color:#888; font-size:0.78rem;">Very high cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>Dependency Sweeper</strong> — update packages daily</span>
+                <span style="color:#888; font-size:0.78rem;">Medium cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>Changelog Drafter</strong> — write release notes on tag</span>
+                <span style="color:#888; font-size:0.78rem;">Low cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>Post-Merge Cleanup</strong> — tidy up after merges</span>
+                <span style="color:#888; font-size:0.78rem;">Low cost</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:0.7rem 1rem; background:#f8f4ec; border-radius:5px; font-size:0.88rem;">
+                <span><strong>Issue Triage</strong> — label and sort new issues</span>
+                <span style="color:#888; font-size:0.78rem;">Low cost</span>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top:1.5rem;">
+            <div class="callout-label">Rule of thumb</div>
+            Start at <strong>L1 (report only)</strong> — the loop tells you what it would do, but doesn't do it. Once you trust it, move to <strong>L2 (assisted)</strong>, then <strong>L3 (unattended)</strong>. Never skip to L3 on day one.
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 6: RESOURCES -->
+<div id="resources" class="s-black">
+    <div class="inner on-dark">
+        <div class="sec-label">Section 06 — Everyone</div>
+        <span class="sec-num">06</span>
+        <h2>RESOURCES & NEXT STEPS</h2>
+        <div class="div-w"></div>
+        <p>Everything you need to go from zero to your first loop running.</p>
+
+        <div class="resource-grid" style="margin-top:1.5rem;">
+            <a href="https://github.com/cobusgreyling/loop-engineering" class="resource-card" target="_blank">
+                <div class="resource-card-label">GitHub · 3,400+ Stars</div>
+                <div class="resource-card-title">LOOP ENGINEERING REPO</div>
+                <p class="resource-card-desc">7 production patterns, 3 CLI tools, starters for Claude Code & Codex. Start here.</p>
+            </a>
+            <a href="https://cobusgreyling.github.io/loop-engineering/" class="resource-card" target="_blank">
+                <div class="resource-card-label">Interactive Tool</div>
+                <div class="resource-card-title">PATTERN PICKER</div>
+                <p class="resource-card-desc">Not sure which loop to build first? Answer 3 questions and get a recommendation.</p>
+            </a>
+            <a href="https://addyosmani.com/blog/loop-engineering/" class="resource-card" target="_blank">
+                <div class="resource-card-label">Canonical Essay · Addy Osmani</div>
+                <div class="resource-card-title">THE ORIGINAL LOOP ENGINEERING ESSAY</div>
+                <p class="resource-card-desc">The essay that defined the concept. Read this for the why before the how.</p>
+            </a>
+            <a href="https://claude.ai/code" class="resource-card" target="_blank">
+                <div class="resource-card-label">Tool</div>
+                <div class="resource-card-title">CLAUDE CODE</div>
+                <p class="resource-card-desc">Anthropic's agentic coding tool — all 5 loop primitives built in natively.</p>
+            </a>
+            <a href="https://github.com/openai/codex" class="resource-card" target="_blank">
+                <div class="resource-card-label">Tool</div>
+                <div class="resource-card-title">CODEX CLI</div>
+                <p class="resource-card-desc">OpenAI's coding agent — works great for loop patterns inside GitHub Actions.</p>
+            </a>
+        </div>
+
+        <h3 style="margin-top:2.5rem;">Quick Commands to Bookmark</h3>
+        <div class="code-block" style="margin-top:1rem;">
+            <div class="code-header">
+                <span class="code-lang">bash — run any of these without cloning</span>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <code># Scaffold a loop starter
+npx @cobusgreyling/loop-init . --pattern daily-triage --tool claude-code
+
+# Check token cost before running
+npx @cobusgreyling/loop-cost --pattern daily-triage --level L1
+
+# Score your loop readiness
+npx @cobusgreyling/loop-audit . --suggest
+
+# Add a loop-ready badge to your README
+npx @cobusgreyling/loop-audit . --badge</code>
+        </div>
+
+        <div style="margin-top:3rem;">
+            <div class="cta-box">
+                <h3>WANT MORE LIKE THIS?</h3>
+                <p>Follow along on Instagram for daily breakdowns of AI tools, workflows, and what's actually working — no fluff, just the real stuff.</p>
+                <a href="https://instagram.com/aiwithunnati" class="cta-btn" target="_blank">Follow @aiwithunnati →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-brand">AI WITH UNNATI</div>
+    <div class="footer-divider"></div>
+    <p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;">Written by <strong style="opacity:1;">Unnati Tripathi</strong></p>
+    <div class="footer-ig">
+        Instagram: <a href="https://instagram.com/aiwithunnati" target="_blank">@aiwithunnati</a>
+    </div>
+    <div style="margin-top:1.5rem; font-size:0.82rem; opacity:0.4;">
+        Loop Engineering repo credit: <a href="https://github.com/cobusgreyling/loop-engineering" target="_blank" style="color:inherit;">cobusgreyling/loop-engineering</a> &nbsp;·&nbsp;
+        Concept by <a href="https://addyosmani.com/blog/loop-engineering/" target="_blank" style="color:inherit;">Addy Osmani</a>
+    </div>
+    <div class="footer-copy">© 2026 Unnati Tripathi. All rights reserved.</div>
+</footer>
+
+<script>
+    function copyCode(btn) {
+        const code = btn.closest('.code-block').querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>
